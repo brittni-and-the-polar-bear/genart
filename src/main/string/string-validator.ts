@@ -15,7 +15,6 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - unit tests
 /**
  * StringValidator provides static methods that can be used
  * to verify that strings contain specified patterns.
