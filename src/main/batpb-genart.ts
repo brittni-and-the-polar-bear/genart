@@ -20,3 +20,4 @@ export * from 'discriminator';
 export * from 'map';
 export * from 'p5-context';
 export * from 'random';
+export * from 'string';

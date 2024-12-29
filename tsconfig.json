@@ -14,7 +14,8 @@
       "discriminator": ["./src/main/discriminator"],
       "map": ["./src/main/map"],
       "p5-context": ["./src/main/sketch/p5-context"],
-      "random": ["./src/main/random"]
+      "random": ["./src/main/random"],
+      "string": ["./src/main/string"]
     },
 
     /* JSON Modules */
