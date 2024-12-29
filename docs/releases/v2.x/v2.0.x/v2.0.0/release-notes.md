@@ -41,6 +41,7 @@ Released on TBD.
 [New Classes](#new-classes)
 - [`AspectRatio`](#aspectratio)
 - [`P5Context`](#p5context)
+- [`StringValidator`](#stringvalidator)
 
 [Updated Classes](#updated-classes)
 - [`SketchContext`](#sketchcontext)
@@ -94,6 +95,36 @@ declare class P5Context {
      * using the {@link P5Context.initialize} method.
      */
     public static reset(): void;
+}
+```
+
+[Table of Contents](#table-of-contents)
+
+## `StringValidator`
+
+```typescript
+/**
+ * StringValidator provides static methods that can be used
+ * to verify that strings contain specified patterns.
+ *
+ * @category Utility
+ */
+declare class StringValidator {
+    /**
+     * Is the given string a hex color string?
+     *
+     * @param hex - string to check for the hex color pattern
+     * @param withAlpha - When `true` the string will be checked for a `#RRGGBBAA` pattern.
+     * When `false`, the given string will be checked for a `#RRGGBB` pattern.
+     */
+    public static isHex(hex: string, withAlpha?: boolean): boolean;
+
+    /**
+     * Is the given string a hex color string with an alpha component (`#RRGGBBAA`)?
+     *
+     * @param hex - string to check for the hex color pattern.
+     */
+    public static isHexWithAlpha(hex: string): boolean;
 }
 ```
 

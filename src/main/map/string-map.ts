@@ -18,7 +18,7 @@
 /**
  * A map of string keys to some ValueType.
  *
- * @category Map
+ * @category Utility
  */
 export class StringMap<ValueType> {
     /**

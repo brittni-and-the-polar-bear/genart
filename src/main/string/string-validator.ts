@@ -16,9 +16,20 @@
  */
 
 // TODO - unit tests
-// TODO - documentation
-// TODO - release notes
+/**
+ * StringValidator provides static methods that can be used
+ * to verify that strings contain specified patterns.
+ *
+ * @category Utility
+ */
 export class StringValidator {
+    /**
+     * Is the given string a hex color string?
+     *
+     * @param hex - string to check for the hex color pattern
+     * @param withAlpha - When `true` the string will be checked for a `#RRGGBBAA` pattern.
+     * When `false`, the given string will be checked for a `#RRGGBB` pattern.
+     */
     public static isHex(hex: string, withAlpha?: boolean): boolean {
         if (withAlpha) {
             return StringValidator.isHexWithAlpha(hex);
@@ -27,14 +38,25 @@ export class StringValidator {
         }
     }
 
+    /**
+     * Is the given string a hex color string with an alpha component (`#RRGGBBAA`)?
+     *
+     * @param hex - string to check for the hex color pattern.
+     */
     public static isHexWithAlpha(hex: string): boolean {
         return StringValidator.#HEX_ALPHA_PATTERN.test(hex);
     }
 
+    /**
+     * The {@link RegExp} used to match hex color strings.
+     */
     static get #HEX_PATTERN(): RegExp {
         return /^#[A-F|0-9]{6}$/;
     }
 
+    /**
+     * The {@link RegExp} used to match hex color strings with an alpha component.
+     */
     static get #HEX_ALPHA_PATTERN(): RegExp {
         return /^#[A-F|0-9]{8}$/;
     }
