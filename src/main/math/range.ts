@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -23,15 +23,21 @@
  * @category Random
  */
 export class Range {
+    #minimum: number;
+    #maximum: number;
+
     /**
-     * @param _min - The minimum value of the Range.
-     * @param _max - The maximum value of the Range.
+     * @param min - The minimum value of the Range.
+     * @param max - The maximum value of the Range.
      */
-    public constructor(private _min: number, private _max: number) {
-        if (_max < _min) {
-            const temp: number = _max;
-            this._max = _min;
-            this._min = temp;
+    public constructor(min: number, max: number) {
+        this.#minimum = min;
+        this.#maximum = max;
+
+        if (max < min) {
+            const temp: number = max;
+            this.#maximum = min;
+            this.#minimum = temp;
         }
     }
 
@@ -39,22 +45,31 @@ export class Range {
      * @returns The maximum value of the Range.
      */
     public get max(): number {
-        return this._max;
+        return this.#maximum;
     }
 
     /**
-     * If the given {@link newMax} is less than the current {@link min},
+     * Alias for {@link max}.
+     *
+     * @returns The maximum value of the Range.
+     */
+    public get maximum(): number {
+        return this.max;
+    }
+
+    /**
+     * If the given maximum is less than the current {@link min},
      * the fields {@link min} and {@link max} will be set so that {@link min} is less than {@link max}.
      *
-     * @param newMax - The new maximum value of the Range.
+     * @param max - The new maximum value of the Range.
      */
-    public set max(newMax: number) {
-        if (newMax < this._min) {
-            console.warn(`max (${newMax.toString()}) is less than current min (${this._min.toString()}). object fields will be set so that min is less than max.`);
-            this._max = this._min;
-            this._min = newMax;
+    public set max(max: number) {
+        if (max < this.#minimum) {
+            console.warn(`max (${max.toString()}) is less than current min (${this.#minimum.toString()}). object fields will be set so that min is less than max.`);
+            this.#maximum = this.#minimum;
+            this.#minimum = max;
         } else {
-            this._max = newMax;
+            this.#maximum = max;
         }
     }
 
@@ -62,22 +77,31 @@ export class Range {
      * @returns The minimum value of the Range.
      */
     public get min(): number {
-        return this._min;
+        return this.#minimum
     }
 
     /**
-     * If the given {@link newMin} is greater than the current {@link max},
+     * Alias for {@link min}.
+     *
+     * @returns The minimum value of the Range.
+     */
+    public get minimum(): number {
+        return this.min;
+    }
+
+    /**
+     * If the given minimum is greater than the current {@link max},
      * the fields {@link min} and {@link max} will be set so that {@link min} is less than {@link max}.
      *
-     * @param newMin - The new minimum value of the Range.
+     * @param min - The new minimum value of the Range.
      */
-    public set min(newMin: number) {
-        if (newMin > this._max) {
-            console.warn(`min (${newMin.toString()}) is greater than current max (${this._max.toString()}). object fields will be set so that min is less than max.`);
-            this._min = this._max;
-            this._max = newMin;
+    public set min(min: number) {
+        if (min > this.#maximum) {
+            console.warn(`min (${min.toString()}) is greater than current max (${this.#maximum.toString()}). object fields will be set so that min is less than max.`);
+            this.#minimum = this.#maximum;
+            this.#maximum = min;
         } else {
-            this._min = newMin;
+            this.#minimum = min;
         }
     }
 }
