@@ -15,6 +15,8 @@
  * See the GNU Affero General Public License for more details.
  */
 
+// TODO - Test docs output
+// TODO - unit tests
 /**
  * Structure to handle a range of values,
  * where the range has a minimum value and a maximum value.

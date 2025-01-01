@@ -44,6 +44,7 @@ Released on TBD.
 - [`StringValidator`](#stringvalidator)
 
 [Updated Classes](#updated-classes)
+- [`Range`](#range)
 - [`SketchContext`](#sketchcontext)
 
 [Updated Interfaces](#updated-interfaces)
@@ -133,6 +134,65 @@ declare class StringValidator {
 ----
 
 # Updated Classes
+
+## `Range`
+
+```typescript
+/**
+ * Structure to handle a range of values,
+ * where the range has a minimum value and a maximum value.
+ *
+ * @category Math
+ * @category Random
+ */
+declare class Range {
+    /**
+     * @param min - The minimum value of the Range.
+     * @param max - The maximum value of the Range.
+     */
+    public constructor(min: number, max: number);
+
+    /**
+     * @returns The maximum value of the Range.
+     */
+    public get max(): number;
+
+    /**
+     * Alias for {@link max}.
+     *
+     * @returns The maximum value of the Range.
+     */
+    public get maximum(): number;
+
+    /**
+     * If the given maximum is less than the current {@link min},
+     * the fields {@link min} and {@link max} will be set so that {@link min} is less than {@link max}.
+     *
+     * @param max - The new maximum value of the Range.
+     */
+    public set max(max: number);
+
+    /**
+     * @returns The minimum value of the Range.
+     */
+    public get min(): number;
+
+    /**
+     * Alias for {@link min}.
+     *
+     * @returns The minimum value of the Range.
+     */
+    public get minimum(): number;
+
+    /**
+     * If the given minimum is greater than the current {@link max},
+     * the fields {@link min} and {@link max} will be set so that {@link min} is less than {@link max}.
+     *
+     * @param min - The new minimum value of the Range.
+     */
+    public set min(min: number);
+}
+```
 
 ## `SketchContext`
 
