@@ -130,11 +130,14 @@ describe('discriminator tests', (): void => {
         test.todo('Discriminator.isPalette() - existing palette');
 
         test('Discriminator.isPalette() - new palette', (): void => {
-            const fakeColor: Palette = {
+            const fakePalette: Palette = {
+                NAME: 'test fake palette',
+                COLORS: [],
+                IS_GRADIENT: false,
                 DISCRIMINATOR: Discriminators.PALETTE
             };
 
-            expect(Discriminator.isPalette(fakeColor)).toBeTruthy();
+            expect(Discriminator.isPalette(fakePalette)).toBeTruthy();
         });
     });
 

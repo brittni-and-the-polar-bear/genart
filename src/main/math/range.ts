@@ -15,14 +15,13 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - Test docs output
 // TODO - unit tests
 /**
  * Structure to handle a range of values,
  * where the range has a minimum value and a maximum value.
  *
- * @category Math
  * @category Random
+ * @category Utility
  */
 export class Range {
     #minimum: number;
@@ -60,8 +59,8 @@ export class Range {
     }
 
     /**
-     * If the given maximum is less than the current {@link min},
-     * the fields {@link min} and {@link max} will be set so that {@link min} is less than {@link max}.
+     * If the given maximum is less than the current minimum,
+     * the fields `min` and `max` will be set so that `min` is less than `max`.
      *
      * @param max - The new maximum value of the Range.
      */
@@ -92,8 +91,8 @@ export class Range {
     }
 
     /**
-     * If the given minimum is greater than the current {@link max},
-     * the fields {@link min} and {@link max} will be set so that {@link min} is less than {@link max}.
+     * If the given minimum is greater than the current maximum,
+     * the fields `min` and `max` will be set so that `min` is less than `max`.
      *
      * @param min - The new minimum value of the Range.
      */
