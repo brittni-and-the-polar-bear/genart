@@ -27,7 +27,7 @@ const config: JestConfigWithTsJest = {
         // '^color$': '<rootDir>/src/main/color'
         '^discriminator$': '<rootDir>/src/main/discriminator',
         '^map$': '<rootDir>/src/main/map',
-        // '^math$': '<rootDir>/src/main/math',
+        '^math$': '<rootDir>/src/main/math',
         '^p5-context$': '<rootDir>/src/main/sketch/p5-context',
         // '^palette$': '<rootDir>/src/main/color/palette',
         // '^palette-colors$': '<rootDir>/src/main/color/palette/palette-colors',
