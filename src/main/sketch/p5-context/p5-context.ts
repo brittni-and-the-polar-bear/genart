@@ -17,7 +17,7 @@
 
 import P5Lib from 'p5';
 
-const noP5: P5Lib = new P5Lib((): void => {});
+const noP5: P5Lib = new P5Lib((): void => { /* empty */ });
 noP5.noCanvas();
 
 /**

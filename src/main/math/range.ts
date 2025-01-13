@@ -15,7 +15,6 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - unit tests
 /**
  * Structure to handle a range of values,
  * where the range has a minimum value and a maximum value.
@@ -50,15 +49,6 @@ export class Range {
     }
 
     /**
-     * Alias for {@link max}.
-     *
-     * @returns The maximum value of the Range.
-     */
-    public get maximum(): number {
-        return this.max;
-    }
-
-    /**
      * If the given maximum is less than the current minimum,
      * the fields `min` and `max` will be set so that `min` is less than `max`.
      *
@@ -75,19 +65,19 @@ export class Range {
     }
 
     /**
-     * @returns The minimum value of the Range.
+     * Alias for {@link max}.
+     *
+     * @returns The maximum value of the Range.
      */
-    public get min(): number {
-        return this.#minimum
+    public get maximum(): number {
+        return this.max;
     }
 
     /**
-     * Alias for {@link min}.
-     *
      * @returns The minimum value of the Range.
      */
-    public get minimum(): number {
-        return this.min;
+    public get min(): number {
+        return this.#minimum;
     }
 
     /**
@@ -104,5 +94,14 @@ export class Range {
         } else {
             this.#minimum = min;
         }
+    }
+
+    /**
+     * Alias for {@link min}.
+     *
+     * @returns The minimum value of the Range.
+     */
+    public get minimum(): number {
+        return this.min;
     }
 }
