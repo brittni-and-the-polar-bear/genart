@@ -24,8 +24,12 @@ describe('Range tests', (): void => {
         const expectedMin: number = min;
         const expectedMax: number = max;
         const range: Range = new Range(min, max);
+
         expect(range.min).toBe(expectedMin);
         expect(range.max).toBe(expectedMax);
+
+        expect(range.minimum).toBe(range.min);
+        expect(range.maximum).toBe(range.max);
     });
 
     test('new Range(min, max) with bad min and max', (): void => {
@@ -34,8 +38,12 @@ describe('Range tests', (): void => {
         const expectedMin: number = max;
         const expectedMax: number = min;
         const range: Range = new Range(min, max);
+
         expect(range.min).toBe(expectedMin);
         expect(range.max).toBe(expectedMax);
+
+        expect(range.minimum).toBe(range.min);
+        expect(range.maximum).toBe(range.max);
     });
 
     test('Range.min setter', (): void => {
@@ -44,9 +52,15 @@ describe('Range tests', (): void => {
         const max: number = 100;
         const newMin: number = 0;
         const range: Range = new Range(min, max);
+
         range.min = newMin;
+
         expect(range.min).toBe(newMin);
         expect(range.max).toBe(max);
+
+        expect(range.minimum).toBe(range.min);
+        expect(range.maximum).toBe(range.max);
+
         expect(logSpy).not.toHaveBeenCalled();
         logSpy.mockRestore();
     });
@@ -57,9 +71,15 @@ describe('Range tests', (): void => {
         const max: number = 100;
         const newMin: number = 200;
         const range: Range = new Range(min, max);
+
         range.min = newMin;
+
         expect(range.min).toBe(max);
         expect(range.max).toBe(newMin);
+
+        expect(range.minimum).toBe(range.min);
+        expect(range.maximum).toBe(range.max);
+
         expect(logSpy).toHaveBeenCalled();
         logSpy.mockRestore();
     });
@@ -70,9 +90,15 @@ describe('Range tests', (): void => {
         const max: number = 100;
         const newMax: number = 200;
         const range: Range = new Range(min, max);
+
         range.max = newMax;
+
         expect(range.min).toBe(min);
         expect(range.max).toBe(newMax);
+
+        expect(range.minimum).toBe(range.min);
+        expect(range.maximum).toBe(range.max);
+
         expect(logSpy).not.toHaveBeenCalled();
         logSpy.mockRestore();
     });
@@ -83,9 +109,15 @@ describe('Range tests', (): void => {
         const max: number = 100;
         const newMax: number = 0;
         const range: Range = new Range(min, max);
+
         range.max = newMax;
+
         expect(range.min).toBe(newMax);
         expect(range.max).toBe(min);
+
+        expect(range.minimum).toBe(range.min);
+        expect(range.maximum).toBe(range.max);
+
         expect(logSpy).toHaveBeenCalled();
         logSpy.mockRestore();
     });
