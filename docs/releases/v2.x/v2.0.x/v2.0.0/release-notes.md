@@ -158,13 +158,6 @@ declare class Range {
     public get max(): number;
 
     /**
-     * Alias for {@link max}.
-     *
-     * @returns The maximum value of the Range.
-     */
-    public get maximum(): number;
-
-    /**
      * If the given maximum is less than the current {@link min},
      * the fields {@link min} and {@link max} will be set so that {@link min} is less than {@link max}.
      *
@@ -176,13 +169,6 @@ declare class Range {
      * @returns The minimum value of the Range.
      */
     public get min(): number;
-
-    /**
-     * Alias for {@link min}.
-     *
-     * @returns The minimum value of the Range.
-     */
-    public get minimum(): number;
 
     /**
      * If the given minimum is greater than the current {@link max},

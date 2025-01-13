@@ -65,15 +65,6 @@ export class Range {
     }
 
     /**
-     * Alias for {@link max}.
-     *
-     * @returns The maximum value of the Range.
-     */
-    public get maximum(): number {
-        return this.max;
-    }
-
-    /**
      * @returns The minimum value of the Range.
      */
     public get min(): number {
@@ -94,14 +85,5 @@ export class Range {
         } else {
             this.#minimum = min;
         }
-    }
-
-    /**
-     * Alias for {@link min}.
-     *
-     * @returns The minimum value of the Range.
-     */
-    public get minimum(): number {
-        return this.min;
     }
 }
