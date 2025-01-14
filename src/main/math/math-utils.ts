@@ -27,7 +27,7 @@
  * If {@link row} is greater than or equal to {@link totalRows}, the function will return undefined.<br/>
  * If {@link column} is greater than or equal to {@link totalColumns}, the function will return undefined.
  *
- * @category Math
+ * @category Utility
  */
 export function getSingleDimensionIndex(row: number,
                                         column: number,
