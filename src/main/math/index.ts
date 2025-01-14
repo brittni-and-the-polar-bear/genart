@@ -15,4 +15,5 @@
  * See the GNU Affero General Public License for more details.
  */
 
+export * from './math-utils';
 export * from './range';
