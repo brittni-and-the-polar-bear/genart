@@ -23,9 +23,9 @@
  *
  * @return The index in a single-dimension structure of the
  * given row and column in a two-dimensional structure.<br/>
- * If {@link row} or {@link column} are negative, the function will return undefined.<br/>
- * If {@link row} is greater than or equal to {@link totalRows}, the function will return undefined.<br/>
- * If {@link column} is greater than or equal to {@link totalColumns}, the function will return undefined.
+ * If `row` or `column` are negative, the function will return undefined.<br/>
+ * If `row` is greater than or equal to `totalRows`, the function will return undefined.<br/>
+ * If `column` is greater than or equal to `totalColumns`, the function will return undefined.
  *
  * @category Utility
  */
