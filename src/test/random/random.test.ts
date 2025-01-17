@@ -15,11 +15,11 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import {Random, WeightedElement} from 'random';
-import {Range} from 'math';
+import { Discriminators } from 'discriminator';
+import { Range } from 'math';
+import { Random, WeightedElement } from 'random';
 
-import {RANDOM_TEST_TRIES} from 'unit-test/shared';
-import {Discriminators} from "discriminator";
+import { RANDOM_TEST_TRIES } from 'unit-test/shared';
 
 describe('Random tests', (): void => {
     test.each([
