@@ -95,22 +95,8 @@ export class Random {
      *
      * @returns A random boolean value.
      */
-    public static randomBoolean(chanceOfTrue?: number): boolean {
-        let value: boolean = true;
-
-        if (chanceOfTrue &&
-            (chanceOfTrue > 0 && chanceOfTrue < 1)) {
-            const r: number = Random.randomFloat(0, 1);
-
-            if (r > chanceOfTrue) {
-                value = false;
-            }
-        } else {
-            const r: number = Random.randomFloat(0, 1);
-            value = r < 0.5;
-        }
-
-        return value;
+    public static randomBoolean(chanceOfTrue: number = 0.5): boolean {
+        return Random.randomFloat(0, 1) < chanceOfTrue;
     }
 
     /**
@@ -121,18 +107,12 @@ export class Random {
      * If an empty list is provided, the function will return undefined.
      */
     public static randomElement<Type>(list: Type[]): Type | undefined {
-        let element: Type | undefined = undefined;
-        const size: number = list.length;
-
-        if (size > 0) {
-            const index: number = Random.randomInt(0, size);
-
-            if (index < size) {
-                element = list[index];
-            }
+        if (list.length === 0) {
+            return undefined;
         }
 
-        return element;
+        const index: number = Random.randomInt(0, list.length);
+        return list[index];
     }
 
     /**
@@ -146,38 +126,32 @@ export class Random {
      * If the sum of weights in the list is less than 1.0, the function will return `undefined`.
      */
     public static randomWeightedElement<Type>(list: WeightedElement<Type>[]): Type | undefined {
-        let element: Type | undefined = undefined;
+        if (list.length === 0) {
+            return undefined;
+        }
 
-        if (list.length > 0) {
-            let weightSum: number = list.reduce((total: number, e: WeightedElement<Type>): number => {
-                return total + e.WEIGHT;
-            }, 0);
+        let weightSum: number = list.reduce((total: number, e: WeightedElement<Type>): number => total + e.WEIGHT, 0);
+        weightSum = parseFloat(weightSum.toFixed(4));
 
-            weightSum = parseFloat(weightSum.toFixed(4));
+        if (weightSum < 1) {
+            console.warn('Sum of element weights is less than 1.0. Random element cannot be retrieved.');
+            return undefined;
+        }
 
-            if (weightSum >= 1) {
-                if (weightSum > 1) {
-                    console.warn('Sum of element weights is greater than 1.0. ' +
-                        'This could cause some elements to never be selected from the list.');
-                }
+        if (weightSum > 1) {
+            console.warn('Sum of element weights is greater than 1.0. This could cause some elements to never be selected from the list.');
+        }
 
-                const r: number = Random.randomFloat(0, 1);
-                let sum: number = 0;
+        const r: number = Random.randomFloat(0, 1);
+        let sum: number = 0;
 
-                for (const e of list) {
-                    if (r < sum + e.WEIGHT) {
-                        element = e.VALUE;
-                        break;
-                    } else {
-                        sum += e.WEIGHT;
-                    }
-                }
-            } else {
-                console.warn('Sum of element weights is less than 1.0. ' +
-                    'Random element cannot be retrieved.');
+        for (const e of list) {
+            sum += e.WEIGHT;
+            if (r < sum) {
+                return e.VALUE;
             }
         }
 
-        return element;
+        return undefined;
     }
 }
