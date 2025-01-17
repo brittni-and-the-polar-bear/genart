@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -150,7 +150,7 @@ export class Random {
 
         if (list.length > 0) {
             let weightSum: number = list.reduce((total: number, e: WeightedElement<Type>): number => {
-                return total + e.weight;
+                return total + e.WEIGHT;
             }, 0);
 
             weightSum = parseFloat(weightSum.toFixed(4));
@@ -164,11 +164,11 @@ export class Random {
                 let sum: number = 0;
 
                 for (const e of list) {
-                    if (r < sum + e.weight) {
-                        element = e.value;
+                    if (r < sum + e.WEIGHT) {
+                        element = e.VALUE;
                         break;
                     } else {
-                        sum += e.weight;
+                        sum += e.WEIGHT;
                     }
                 }
             } else {
