@@ -144,14 +144,16 @@ export class Random {
 
         const r: number = Random.randomFloat(0, 1);
         let sum: number = 0;
+        let result: Type | undefined;
 
         for (const e of list) {
             sum += e.WEIGHT;
             if (r < sum) {
-                return e.VALUE;
+                result = e.VALUE;
+                break;
             }
         }
 
-        return undefined;
+        return result;
     }
 }

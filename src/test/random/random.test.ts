@@ -44,6 +44,12 @@ describe('Random tests', (): void => {
         }
     );
 
+    test('Random.randomFloat(min == max)', (): void => {
+        const num: number = 5;
+        const value: number = Random.randomFloat(num, num);
+        expect(value).toBe(num);
+    });
+
     test.each([
         { min: 0, max: 250, expectMin: 0, expectMax: 250 },
         { min: -65, max: 65, expectMin: -65, expectMax: 65 },
@@ -65,6 +71,13 @@ describe('Random tests', (): void => {
             }
         }
     );
+
+    test('Random.randomFloatInRange(range with min == max)', (): void => {
+        const num: number = 10;
+        const range: Range = new Range(num, num);
+        const value: number = Random.randomFloatInRange(range);
+        expect(value).toBe(num);
+    });
 
     test.each([
         { min: 0, max: 250, expectMin: 0, expectMax: 250 },
@@ -88,6 +101,12 @@ describe('Random tests', (): void => {
         }
     );
 
+    test('Random.randomInt(min == max)', (): void => {
+        const num: number = -20;
+        const value: number = Random.randomInt(num, num);
+        expect(value).toBe(num);
+    });
+
     test.each([
         { min: 0, max: 250, expectMin: 0, expectMax: 250 },
         { min: -65, max: 65, expectMin: -65, expectMax: 65 },
@@ -110,6 +129,13 @@ describe('Random tests', (): void => {
             }
         }
     );
+
+    test('Random.randomIntInRange(range with min == max)', (): void => {
+        const num: number = 1_456;
+        const range: Range = new Range(num, num);
+        const value: number = Random.randomIntInRange(range);
+        expect(value).toBe(num);
+    });
 
     test('Random.randomBoolean()', (): void => {
         let trueResult: boolean = false;
@@ -159,6 +185,18 @@ describe('Random tests', (): void => {
         expect(falseResult).toBeTruthy();
     });
 
+    test('Random.randomBoolean(0)', (): void => {
+        for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
+            expect(Random.randomBoolean(0)).toBe(false);
+        }
+    });
+
+    test('Random.randomBoolean(1)', (): void => {
+        for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
+            expect(Random.randomBoolean(1)).toBe(true);
+        }
+    });
+
     test('Random.randomElement(numbers)', (): void => {
         const list: number[] = [10, 68, 24.5, -3];
 
@@ -189,6 +227,22 @@ describe('Random tests', (): void => {
         const empty: string[] = [];
         const choice: string | undefined = Random.randomElement(empty);
         expect(choice).toBeUndefined();
+    });
+
+    test('Random.randomElement(single element number list)', (): void => {
+        const num: number = 42;
+        const list: number[] = [num];
+        for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
+            expect(Random.randomElement(list)).toBe(num);
+        }
+    });
+
+    test('Random.randomElement(single element string list)', (): void => {
+        const word: string = 'chocolate';
+        const list: string[] = [word];
+        for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
+            expect(Random.randomElement(list)).toBe(word);
+        }
     });
 
     test('Random.randomWeightedElement(numbers)', (): void => {
@@ -340,6 +394,24 @@ describe('Random tests', (): void => {
 
         expect(logSpy).toHaveBeenCalledTimes(1);
         logSpy.mockRestore();
+    });
+
+    test('Random.randomWeightedElement(single element number list)', (): void => {
+        const num: number = 50;
+        const weightedList: WeightedElement<number>[] = [{ VALUE: num, WEIGHT: 1, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }];
+
+        for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
+            expect(Random.randomWeightedElement(weightedList)).toBe(num);
+        }
+    });
+
+    test('Random.randomWeightedElement(single element string list)', (): void => {
+        const word: string = 'feather';
+        const weightedList: WeightedElement<string>[] = [{ VALUE: word, WEIGHT: 1, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }];
+
+        for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
+            expect(Random.randomWeightedElement(weightedList)).toBe(word);
+        }
     });
 
     test('Random.randomMethod setter', (): void => {
