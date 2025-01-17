@@ -15,10 +15,11 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { Random, WeightedElement } from 'random';
-import { Range } from 'math';
+import {Random, WeightedElement} from 'random';
+import {Range} from 'math';
 
-import { RANDOM_TEST_TRIES } from 'unit-test/shared';
+import {RANDOM_TEST_TRIES} from 'unit-test/shared';
+import {Discriminators} from "discriminator";
 
 describe('random tests', (): void => {
     test.each([
@@ -193,13 +194,13 @@ describe('random tests', (): void => {
     test('test randomWeightedElement with number type', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedNums: WeightedElement<number>[] = [
-            { value: 48, weight: 0.2 },
-            { value: 23.96, weight: 0.4 },
-            { value: 10.445, weight: 0.3 },
-            { value: 11, weight: 0.1 }
+            { VALUE: 48, WEIGHT: 0.2, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 23.96, WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 10.445, WEIGHT: 0.3, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 11, WEIGHT: 0.1, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }
         ];
 
-        const expectedValues: number[] = weightedNums.map((e: WeightedElement<number>) => e.value);
+        const expectedValues: number[] = weightedNums.map((e: WeightedElement<number>) => e.VALUE);
         const actualValues: Set<number> = new Set<number>();
 
         for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
@@ -225,12 +226,12 @@ describe('random tests', (): void => {
     test('test randomWeightedElement with strings', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedStrings: WeightedElement<string>[] = [
-            { value: 'hello', weight: 0.4 },
-            { value: 'goodbye', weight: 0.3 },
-            { value: 'howdy!', weight: 0.3 }
+            { VALUE: 'hello', WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 'goodbye', WEIGHT: 0.3, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 'howdy!', WEIGHT: 0.3, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }
         ];
 
-        const expectedValues: string[] = weightedStrings.map((e: WeightedElement<string>) => e.value);
+        const expectedValues: string[] = weightedStrings.map((e: WeightedElement<string>) => e.VALUE);
         const actualValues: Set<string> = new Set<string>();
 
         for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
@@ -275,9 +276,9 @@ describe('random tests', (): void => {
     test('test randomWeighedElement with numbers and weight sum < 1', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedNums: WeightedElement<number>[] = [
-            { value: 48, weight: 0.2 },
-            { value: 23.96, weight: 0.4 },
-            { value: 10.445, weight: 0.3 }
+            { VALUE: 48, WEIGHT: 0.2, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 23.96, WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 10.445, WEIGHT: 0.3, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }
         ];
 
         const result: number | undefined = Random.randomWeightedElement(weightedNums);
@@ -289,9 +290,9 @@ describe('random tests', (): void => {
     test('test randomWeighedElement with strings and weight sum < 1', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedStrings: WeightedElement<string>[] = [
-            { value: 'hello', weight: 0.4 },
-            { value: 'goodbye', weight: 0.3 },
-            { value: 'howdy!', weight: 0.29 }
+            { VALUE: 'hello', WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 'goodbye', WEIGHT: 0.3, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 'howdy!', WEIGHT: 0.29, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }
         ];
 
         const result: string | undefined = Random.randomWeightedElement(weightedStrings);
@@ -303,13 +304,13 @@ describe('random tests', (): void => {
     test('test randomWeighedElement with numbers and weight sum > 1', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedNums: WeightedElement<number>[] = [
-            { value: 48, weight: 0.2 },
-            { value: 23.96, weight: 0.4 },
-            { value: 10.445, weight: 0.3 },
-            { value: 11, weight: 0.2 }
+            { VALUE: 48, WEIGHT: 0.2, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 23.96, WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 10.445, WEIGHT: 0.3, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 11, WEIGHT: 0.2, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }
         ];
 
-        const expectedValues: number[] = weightedNums.map((e: WeightedElement<number>) => e.value);
+        const expectedValues: number[] = weightedNums.map((e: WeightedElement<number>) => e.VALUE);
         const result: number | undefined = Random.randomWeightedElement(weightedNums);
         expect(result).toBeTruthy();
 
@@ -324,12 +325,12 @@ describe('random tests', (): void => {
     test('test randomWeighedElement with strings and weight sum > 1', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedStrings: WeightedElement<string>[] = [
-            { value: 'hello', weight: 0.4 },
-            { value: 'goodbye', weight: 0.3 },
-            { value: 'howdy!', weight: 0.4 }
+            { VALUE: 'hello', WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 'goodbye', WEIGHT: 0.3, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: 'howdy!', WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }
         ];
 
-        const expectedValues: string[] = weightedStrings.map((e: WeightedElement<string>) => e.value);
+        const expectedValues: string[] = weightedStrings.map((e: WeightedElement<string>) => e.VALUE);
         const result: string | undefined = Random.randomWeightedElement(weightedStrings);
         expect(result).toBeTruthy();
 
