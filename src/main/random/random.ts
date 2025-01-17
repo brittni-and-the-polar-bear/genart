@@ -29,7 +29,7 @@ export class Random {
      * The primary function to be called when generating any random numbers.
      * Set to Math.random by default.
      */
-    private static _randomMethod: (() => number) = Math.random;
+    static #randomMethod: (() => number) = Math.random;
 
     /**
      * Set the primary function to be called when generating any random numbers.<br/>
@@ -38,7 +38,7 @@ export class Random {
      * @param method
      */
     public static set randomMethod(method: () => number) {
-        Random._randomMethod = method;
+        Random.#randomMethod = method;
     }
 
     /**
@@ -54,7 +54,7 @@ export class Random {
             min = temp;
         }
 
-        return (Random._randomMethod() * (max - min)) + min;
+        return (Random.#randomMethod() * (max - min)) + min;
     }
 
     /**
@@ -106,8 +106,8 @@ export class Random {
                 value = false;
             }
         } else {
-            const r: number = Random.randomInt(0, 2);
-            value = r % 2 === 0;
+            const r: number = Random.randomFloat(0, 1);
+            value = r < 0.5;
         }
 
         return value;
@@ -157,7 +157,8 @@ export class Random {
 
             if (weightSum >= 1) {
                 if (weightSum > 1) {
-                    console.warn('Sum of element weights is greater than 1.0. This could cause some elements to never be selected from the list.');
+                    console.warn('Sum of element weights is greater than 1.0. ' +
+                        'This could cause some elements to never be selected from the list.');
                 }
 
                 const r: number = Random.randomFloat(0, 1);
@@ -172,7 +173,8 @@ export class Random {
                     }
                 }
             } else {
-                console.warn('Sum of element weights is less than 1.0. Random element cannot be retrieved.');
+                console.warn('Sum of element weights is less than 1.0. ' +
+                    'Random element cannot be retrieved.');
             }
         }
 
