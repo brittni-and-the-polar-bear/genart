@@ -15,4 +15,5 @@
  * See the GNU Affero General Public License for more details.
  */
 
+export * from './random';
 export * from './weighted-element';
