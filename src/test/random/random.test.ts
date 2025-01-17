@@ -21,7 +21,7 @@ import {Range} from 'math';
 import {RANDOM_TEST_TRIES} from 'unit-test/shared';
 import {Discriminators} from "discriminator";
 
-describe('random tests', (): void => {
+describe('Random tests', (): void => {
     test.each([
         { min: 0, max: 100, expectMin: 0, expectMax: 100 },
         { min: -50, max: 50, expectMin: -50, expectMax: 50 },
@@ -34,7 +34,7 @@ describe('random tests', (): void => {
         { min: 0, max: 1, expectMin: 0, expectMax: 1 },
         { min: 0.25, max: 0.8, expectMin: 0.25, expectMax: 0.8 },
         { min: -0.9, max: 0.75, expectMin: -0.9, expectMax: 0.75 }
-    ])('$# random float test: randomFloat($min, $max)',
+    ])('$# Random.randomFloat($min, $max)',
         ({ min, max, expectMin, expectMax }): void => {
             for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
                 const r: number = Random.randomFloat(min, max);
@@ -55,7 +55,7 @@ describe('random tests', (): void => {
         { min: 1_750, max: 800, expectMin: 800, expectMax: 1_750 },
         { min: 0, max: 1, expectMin: 0, expectMax: 1 },
         { min: 0, max: 2, expectMin: 0, expectMax: 2 }
-    ])('$# random float in range test: randomFloatInRange(new Range($min, $max))',
+    ])('$# Random.randomFloatInRange(new Range($min, $max))',
         ({ min, max, expectMin, expectMax }): void => {
             const range: Range = new Range(min, max);
             for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
@@ -77,7 +77,7 @@ describe('random tests', (): void => {
         { min: 1_750, max: 800, expectMin: 800, expectMax: 1_750 },
         { min: 0, max: 1, expectMin: 0, expectMax: 1 },
         { min: 0, max: 2, expectMin: 0, expectMax: 2 }
-    ])('$# random int test: randomInt($min, $max)',
+    ])('$# Random.randomInt($min, $max)',
         ({ min, max, expectMin, expectMax }): void => {
             for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
                 const r: number = Random.randomInt(min, max);
@@ -99,7 +99,7 @@ describe('random tests', (): void => {
         { min: 1_750, max: 800, expectMin: 800, expectMax: 1_750 },
         { min: 0, max: 1, expectMin: 0, expectMax: 1 },
         { min: 0, max: 2, expectMin: 0, expectMax: 2 }
-    ])('$# random int in range test: randomIntInRange(new Range($min, $max))',
+    ])('$# Random.randomIntInRange(new Range($min, $max))',
         ({ min, max, expectMin, expectMax }): void => {
             const range: Range = new Range(min, max);
             for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
@@ -111,7 +111,7 @@ describe('random tests', (): void => {
         }
     );
 
-    test('test randomBoolean without weight', (): void => {
+    test('Random.randomBoolean()', (): void => {
         let trueResult: boolean = false;
         let falseResult: boolean = false;
 
@@ -135,7 +135,7 @@ describe('random tests', (): void => {
         expect(falseResult).toBeTruthy();
     });
 
-    test('test randomBoolean with weight', (): void => {
+    test('Random.randomBoolean(weight)', (): void => {
         let trueResult: boolean = false;
         let falseResult: boolean = false;
 
@@ -159,7 +159,7 @@ describe('random tests', (): void => {
         expect(falseResult).toBeTruthy();
     });
 
-    test('test randomListElement with number type', (): void => {
+    test('Random.randomElement(numbers)', (): void => {
         const list: number[] = [10, 68, 24.5, -3];
 
         for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
@@ -169,7 +169,7 @@ describe('random tests', (): void => {
         }
     });
 
-    test('test randomListElement with string type', (): void => {
+    test('Random.randomElement(strings)', (): void => {
         const list: string[] = ['hello', 'goodbye', 'jack', 'sally', 'george'];
 
         for (let i: number = 0; i < RANDOM_TEST_TRIES; i++) {
@@ -179,19 +179,19 @@ describe('random tests', (): void => {
         }
     });
 
-    test('test randomListElement with empty number list', (): void => {
+    test('Random.randomElement(empty number list)', (): void => {
         const empty: number[] = [];
         const choice: number | undefined = Random.randomElement(empty);
         expect(choice).toBeUndefined();
     });
 
-    test('test randomListElement with empty string list', (): void => {
+    test('Random.randomElement(empty string list)', (): void => {
         const empty: string[] = [];
         const choice: string | undefined = Random.randomElement(empty);
         expect(choice).toBeUndefined();
     });
 
-    test('test randomWeightedElement with number type', (): void => {
+    test('Random.randomWeightedElement(numbers)', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedNums: WeightedElement<number>[] = [
             { VALUE: 48, WEIGHT: 0.2, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
@@ -223,7 +223,7 @@ describe('random tests', (): void => {
         logSpy.mockRestore();
     });
 
-    test('test randomWeightedElement with strings', (): void => {
+    test('Random.randomWeightedElement(strings)', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedStrings: WeightedElement<string>[] = [
             { VALUE: 'hello', WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
@@ -254,7 +254,7 @@ describe('random tests', (): void => {
         logSpy.mockRestore();
     });
 
-    test('test randomWeightedElement with empty number list', (): void => {
+    test('Random.randomWeightedElement(empty numbers list)', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const numbers: WeightedElement<number>[] = [];
 
@@ -264,7 +264,7 @@ describe('random tests', (): void => {
         logSpy.mockRestore();
     });
 
-    test('test randomWeightedElement with empty string list', (): void => {
+    test('Random.randomWeightedElement(empty string list)', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const strings: WeightedElement<string>[] = [];
         const result: string | undefined = Random.randomWeightedElement(strings);
@@ -273,7 +273,7 @@ describe('random tests', (): void => {
         logSpy.mockRestore();
     });
 
-    test('test randomWeighedElement with numbers and weight sum < 1', (): void => {
+    test('Random.randomWeightedElement(numbers) - weight sum < 1', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedNums: WeightedElement<number>[] = [
             { VALUE: 48, WEIGHT: 0.2, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
@@ -287,7 +287,7 @@ describe('random tests', (): void => {
         logSpy.mockRestore();
     });
 
-    test('test randomWeighedElement with strings and weight sum < 1', (): void => {
+    test('Random.randomWeightedElement(strings) - weight sum < 1', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedStrings: WeightedElement<string>[] = [
             { VALUE: 'hello', WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
@@ -301,7 +301,7 @@ describe('random tests', (): void => {
         logSpy.mockRestore();
     });
 
-    test('test randomWeighedElement with numbers and weight sum > 1', (): void => {
+    test('Random.randomWeightedElement(numbers) - weight sum > 1', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedNums: WeightedElement<number>[] = [
             { VALUE: 48, WEIGHT: 0.2, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
@@ -322,7 +322,7 @@ describe('random tests', (): void => {
         logSpy.mockRestore();
     });
 
-    test('test randomWeighedElement with strings and weight sum > 1', (): void => {
+    test('Random.randomWeightedElement(strings) - weight sum > 1', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const weightedStrings: WeightedElement<string>[] = [
             { VALUE: 'hello', WEIGHT: 0.4, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
@@ -342,7 +342,7 @@ describe('random tests', (): void => {
         logSpy.mockRestore();
     });
 
-    test('test set random method', (): void => {
+    test('Random.randomMethod setter', (): void => {
         Random.randomMethod = (): number => {
             return 1;
         };
