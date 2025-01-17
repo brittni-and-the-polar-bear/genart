@@ -32,11 +32,11 @@ const config: JestConfigWithTsJest = {
         // '^palette$': '<rootDir>/src/main/color/palette',
         // '^palette-colors$': '<rootDir>/src/main/color/palette/palette-colors',
         // '^palettes$': '<rootDir>/src/main/color/palette/palettes',
-        // '^random$': '<rootDir>/src/main/random',
+        '^random$': '<rootDir>/src/main/random',
         // '^screen$': '<rootDir>/src/main/screen',
         // '^string$': '<rootDir>/src/main/string',
         // '^sketch-context$': '<rootDir>/src/main/sketch',
-        // '^unit-test/shared$': '<rootDir>/src/test/shared',
+        '^unit-test/shared$': '<rootDir>/src/test/shared',
         // '^color-name-list$': '<rootDir>/node_modules/color-name-list'
         '^string$': '<rootDir>/src/main/string'
     },
