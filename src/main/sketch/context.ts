@@ -15,26 +15,67 @@
  * See the GNU Affero General Public License for more details.
  */
 
+// TODO - release notes
+// TODO - documentation
+// TODO - unit tests
+
+import { P5Context } from 'p5-context';
+
+import { ASPECT_RATIOS, AspectRatio, AspectRatioConfig } from './aspect-ratio';
+
 export interface ContextConfig {
-    isWebGL: boolean;
+    readonly CANVAS_TYPE: 'p2d' | 'webgl';
+    readonly ASPECT_RATIO?: AspectRatio;
+    readonly RESOLUTION?: number;
+    readonly MATCHING_CONTAINER_RATIO: boolean;
 }
 
 export abstract class Context {
-    #isWebGL: boolean;
+    /**
+     * Is the context rendering mode set to WebGL?
+     *
+     * @defaultValue false
+     */
+    #isWebGL: boolean = false;
+
+    /**
+     * Current {@link AspectRatio} of the context.
+     *
+     * @defaultValue {@link ASPECT_RATIOS.SQUARE}
+     */
+    #aspectRatio: AspectRatio = new AspectRatio(ASPECT_RATIOS.SQUARE);
+
+    /**
+     * Current resolution of the context.
+     *
+     * @defaultValue 720
+     */
+    #resolution: number = 720;
+
+    /**
+     * Should the aspect ratio of the context always
+     * match the aspect ratio of the container?
+     *
+     * @defaultValue false
+     */
+    #matchingContainerRatio: boolean = false;
 
     protected constructor(config: ContextConfig) {
-        this.#isWebGL = config.isWebGL;
+        const p5: P5Lib = P5Context.p5;
+        this.#isWebGL = config.CANVAS_TYPE === p5.WEBGL;
+
+        if (config.ASPECT_RATIO) {
+            this.#aspectRatio = config.ASPECT_RATIO;
+        }
+
+        if (config.RESOLUTION) {
+            this.#resolution = config.RESOLUTION;
+        }
+
+        if (config.MATCHING_CONTAINER_RATIO) {
+            this.#matchingContainerRatio = config.MATCHING_CONTAINER_RATIO;
+        }
     }
-
-    // #resolution: number;
-
-    // TODO - AspectRatio object
-    // #aspectRatio: number;
-
-    // TODO - return AspectRatio object
-    // public abstract get aspectRatio(): void;
-
-    // public abstract get resolution(): number;
 
     public abstract get minX(): number;
 
@@ -48,23 +89,25 @@ export abstract class Context {
 
     public abstract get height(): number;
 
-    // TODO - accepts an AspectRatio object
-    // public setAspectRatio(aspectRatio: number): void {
-    //     this.updateAspectRatio(aspectRatio);
-    //     this.#aspectRatio = aspectRatio;
-    // }
-
-    // public setResolution(resolution: number): void {
-    //     this.updateResolution(resolution);
-    //     this.#resolution = resolution;
-    // }
-
-    // protected abstract updateResolution(resolution: number): void;
-
-    // TODO - accepts an AspectRatio object
-    // protected abstract updateAspectRatio(aspectRatio: number): void;
+    public get aspectRatio(): AspectRatio {
+        return this.#aspectRatio;
+    }
 
     public get isWebGL(): boolean {
         return this.#isWebGL;
     }
+
+    public get resolution(): number {
+        return this.#resolution;
+    }
+
+    protected get matchingContainerRatio(): boolean {
+        return this.#matchingContainerRatio;
+    }
+
+    public abstract resize(): void;
+
+    protected abstract updateAspectRatio(config: AspectRatioConfig): void;
+
+    protected abstract updateResolution(resolution: number): void;
 }

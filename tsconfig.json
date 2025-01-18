@@ -16,6 +16,7 @@
       "math": ["./src/main/math"],
       "p5-context": ["./src/main/sketch/p5-context"],
       "random": ["./src/main/random"],
+      "sketch": ["./src/main/sketch"],
       "string": ["./src/main/string"],
       "unit-test/shared": ["./src/test/shared"]
     },
