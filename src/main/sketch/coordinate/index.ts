@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,13 +15,5 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - Coordinate constructor should be able to accept:
-// TODO -  - no arguments
-// TODO -  - (x, y) coordinate pair
-// TODO -  - (x, y, z) coordinate pair
-// TODO -  - another Coordinate object
-// TODO -  - P5Lib.Vector object
-
-// export class Coordinate {
-//
-// }
+export * from './coordinate';
+export * from './coordinate-mapper';
