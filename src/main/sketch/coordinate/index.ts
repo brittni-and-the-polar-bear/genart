@@ -15,5 +15,6 @@
  * See the GNU Affero General Public License for more details.
  */
 
+export * from './container-mapper';
 export * from './coordinate';
 export * from './coordinate-mapper';

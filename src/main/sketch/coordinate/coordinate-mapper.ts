@@ -18,8 +18,9 @@
 // TODO - documentation
 // TODO - release notes
 // TODO - unit tests
-import {P5Context} from "p5-context";
-import P5Lib from "p5";
+import P5Lib from 'p5';
+
+import { P5Context } from 'p5-context';
 
 export class CoordinateMapper {
     #width: number;
@@ -36,14 +37,14 @@ export class CoordinateMapper {
      * The center x-axis value of the canvas.
      */
     public get centerX(): number {
-        return this.mapRatioToContextX(0.5);
+        return this.mapRatioToCoordinateX(0.5);
     }
 
     /**
      * The center y-axis value of the canvas.
      */
     public get centerY(): number {
-        return this.mapRatioToContextY(0.5);
+        return this.mapRatioToCoordinateY(0.5);
     }
 
     /**
@@ -98,10 +99,10 @@ export class CoordinateMapper {
         return max;
     }
 
-    public mapRatioToContext(ratioVector: P5Lib.Vector): P5Lib.Vector {
-        const canvasX: number = this.mapRatioToContextX(ratioVector.x);
-        const canvasY: number = this.mapRatioToContextY(ratioVector.y);
-        return new P5Lib.Vector(canvasX, canvasY);
+    public mapRatioToCoordinate(ratioVector: P5Lib.Vector): P5Lib.Vector {
+        const coordinateX: number = this.mapRatioToCoordinateX(ratioVector.x);
+        const coordinateY: number = this.mapRatioToCoordinateY(ratioVector.y);
+        return new P5Lib.Vector(coordinateX, coordinateY);
     }
 
     /**
@@ -111,7 +112,7 @@ export class CoordinateMapper {
      *
      * @param ratio - The percentage expressed as a decimal number (e.g. 50% = 0.5)
      */
-    public mapRatioToContextX(ratio: number): number {
+    public mapRatioToCoordinateX(ratio: number): number {
         return P5Context.p5.map(ratio, 0, 1, this.minX, this.maxX);
     }
 
@@ -122,23 +123,25 @@ export class CoordinateMapper {
      *
      * @param ratio - The percentage expressed as a decimal number (e.g. 50% = 0.5)
      */
-    public mapRatioToContextY(ratio: number): number {
+    public mapRatioToCoordinateY(ratio: number): number {
         return P5Context.p5.map(ratio, 0, 1, this.minY, this.maxY);
     }
 
-    public mapContextToRatio(contextVector: P5Lib.Vector): P5Lib.Vector {
-        const contextX: number = this.mapContextXToRatio(contextVector.x);
-        const contextY: number = this.mapContextYToRatio(contextVector.y);
-        return new P5Lib.Vector(contextX, contextY);
+    public mapCoordinateToRatio(coordinate: P5Lib.Vector): P5Lib.Vector {
+        const coordinateX: number = this.mapCoordinateXToRatio(coordinate.x);
+        const coordinateY: number = this.mapCoordinateYToRatio(coordinate.y);
+        return new P5Lib.Vector(coordinateX, coordinateY);
     }
 
     // TODO - unit tests - are results constrained to 0 and 1?
-    public mapContextXToRatio(contextX: number): number {
-        return P5Context.p5.map(contextX, this.minX, this.maxX, 0, 1);
+    public mapCoordinateXToRatio(coordinateX: number): number {
+        return P5Context.p5.map(coordinateX, this.minX, this.maxX, 0, 1);
     }
 
     // TODO - unit tests - are results constrained to 0 and 1?
-    public mapContextYToRatio(contextY: number): number {
-        return P5Context.p5.map(contextY, this.minY, this.maxY, 0, 1);
+    public mapCoordinateYToRatio(coordinateY: number): number {
+        return P5Context.p5.map(coordinateY, this.minY, this.maxY, 0, 1);
     }
+
+
 }
