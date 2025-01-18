@@ -17,6 +17,7 @@
 
 export * from './aspect-ratio';
 export * from './canvas';
+export * from './coordinate';
 export * from './graphics';
 
 export * from './context';
