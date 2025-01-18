@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,15 +15,16 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { AspectRatio } from './aspect-ratio';
-
+// TODO - unit tests
 // TODO - release notes
+import { AspectRatioConfig } from './aspect-ratio-config';
+
 /**
  * Valid keys for the {@link ASPECT_RATIOS} record.
- * Each key corresponds to a pre-saved {@link AspectRatio} object.
+ * Each key corresponds to a pre-saved {@link AspectRatioConfig} object.
  *
- * @category Sketch Context
- * @category Sketch Context: Canvas
+ * @category Sketch
+ * @category Sketch/Aspect Ratio
  */
 export enum AspectRatioName {
     /**
@@ -38,6 +39,11 @@ export enum AspectRatioName {
      * This aspect ratio will only change the canvas aspect ratio one time.
      */
     INITIAL = 'INITIAL',
+
+    /**
+     * The standard aspect ratio of an Instagram photo.
+     */
+    INSTAGRAM_PHOTO = 'INSTAGRAM_PHOTO',
 
     /**
      * The standard aspect ratio of a Pinterest pin.
@@ -72,48 +78,53 @@ export enum AspectRatioName {
 }
 
 /**
- * Pre-set {@link AspectRatio} objects for easy access.
+ * Pre-set {@link AspectRatioConfig} objects for easy access.
  *
- * @category Sketch Context
- * @category Sketch Context: Canvas
+ * @category Sketch
+ * @category Sketch/Aspect Ratio
  */
-export const ASPECT_RATIOS: Record<AspectRatioName, AspectRatio> = {
-    MATCH: {
+export const ASPECT_RATIOS: Record<AspectRatioName, AspectRatioConfig> = {
+    [AspectRatioName.MATCH]: {
         NAME: 'match',
         WIDTH_RATIO: 0,
         HEIGHT_RATIO: 0
     },
-    INITIAL: {
+    [AspectRatioName.INITIAL]: {
         NAME: 'initial',
         WIDTH_RATIO: 0,
         HEIGHT_RATIO: 0
     },
-    PINTEREST_PIN: {
+    [AspectRatioName.INSTAGRAM_PHOTO]: {
+        NAME: '4:5',
+        WIDTH_RATIO: 4,
+        HEIGHT_RATIO: 5
+    },
+    [AspectRatioName.PINTEREST_PIN]: {
         NAME: '2:3',
         WIDTH_RATIO: 2,
         HEIGHT_RATIO: 3
     },
-    SOCIAL_VIDEO: {
+    [AspectRatioName.SOCIAL_VIDEO]: {
         NAME: '9:16',
         WIDTH_RATIO: 9,
         HEIGHT_RATIO: 16
     },
-    SQUARE: {
+    [AspectRatioName.SQUARE]: {
         NAME: 'square',
         WIDTH_RATIO: 1,
         HEIGHT_RATIO: 1
     },
-    TIKTOK_PHOTO: {
+    [AspectRatioName.TIKTOK_PHOTO]: {
         NAME: '3:4',
         WIDTH_RATIO: 3,
         HEIGHT_RATIO: 4
     },
-    ULTRAWIDE: {
+    [AspectRatioName.ULTRAWIDE]: {
         NAME: 'ultrawide (21:9)',
         WIDTH_RATIO: 64,
         HEIGHT_RATIO: 27
     },
-    WIDESCREEN: {
+    [AspectRatioName.WIDESCREEN]: {
         NAME: 'widescreen (16:9)',
         WIDTH_RATIO: 16,
         HEIGHT_RATIO: 9

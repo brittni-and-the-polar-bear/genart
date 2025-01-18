@@ -28,7 +28,7 @@
  * for the running p5.js sketch canvas.
  *
  * @category Sketch
- * @category Sketch: Canvas
+ * @category Sketch/Canvas
  */
 export class Canvas {
     /**
@@ -38,35 +38,6 @@ export class Canvas {
      */
     static #lockedCanvas: boolean = false;
 
-//     /**
-//      * Is the canvas rendering mode set to WebGL?
-//      *
-//      * @defaultValue false
-//      */
-//     private static _isWebGL: boolean = false;
-//
-//     /**
-//      * Current {@link AspectRatio} of the canvas.
-//      *
-//      * @defaultValue {@link ASPECT_RATIOS.SQUARE}
-//      */
-//     private static _aspectRatio: AspectRatio = ASPECT_RATIOS.SQUARE;
-//
-//     /**
-//      * Current resolution of the canvas.
-//      *
-//      * @defaultValue 1080
-//      */
-//     private static _resolution: number = 1080;
-//
-//     /**
-//      * Should the {@link AspectRatio} of the canvas always
-//      * match the aspect ratio of the browser window?
-//      *
-//      * @defaultValue false
-//      */
-//     private static _matchingWindowRatio: boolean = false;
-//
 //     // TODO - update release notes
 //     /**
 //      * Build a p5 canvas with the given aspect ratio, resolution, and canvas type.
@@ -75,11 +46,11 @@ export class Canvas {
 //      * @param aspectRatio
 //      * @param resolution
 //      * @param lockCanvas - When `true`, the canvas will be locked after it has been created.
-//      * @param canvasType - Can be WEBGL ("webgl") or P2D ("p2d").
+//      * @param CANVAS_TYPE - Can be WEBGL ("webgl") or P2D ("p2d").
 //      */
 //     public static buildCanvas(aspectRatio: AspectRatio,
 //                               resolution: number,
-//                               canvasType?: string,
+//                               CANVAS_TYPE?: string,
 //                               lockCanvas?: boolean): void {
 //         if (!CanvasContext.lockedCanvas) {
 //             CanvasContext._resolution = resolution;
@@ -89,7 +60,7 @@ export class Canvas {
 //                 new AspectRatioHandler(CanvasContext._aspectRatio, CanvasContext._resolution);
 //             const p5: P5Lib = P5Context.p5;
 //
-//             if (canvasType && canvasType === p5.WEBGL) {
+//             if (CANVAS_TYPE && CANVAS_TYPE === p5.WEBGL) {
 //                 p5.createCanvas(ratioHandler.width, ratioHandler.height, p5.WEBGL);
 //                 CanvasContext._isWebGL = true;
 //             } else {
@@ -104,29 +75,12 @@ export class Canvas {
 //             }
 //         }
 //     }
-//
-//     /**
-//      * Is the canvas rendering mode set to WebGL?
-//      */
-//     public static get isWebGL(): boolean {
-//         return CanvasContext._isWebGL;
-//     }
-//
+
 //     /**
 //      * When true, {@link buildCanvas} will not create a new canvas.
 //      */
 //     public static get lockedCanvas(): boolean {
 //         return CanvasContext._lockedCanvas;
-//     }
-//
-//     /**
-//      * The default stroke of the sketch.
-//      * Equivalent to a stroke of 1 in a 500x500 sketch.
-//      */
-//     public static get defaultStroke(): number {
-//         const p5: P5Lib = P5Context.p5;
-//         const minDimension: number = Math.min(p5.width, p5.height);
-//         return minDimension * 0.002;
 //     }
 //
 //     /**

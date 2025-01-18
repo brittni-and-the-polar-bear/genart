@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,18 +15,8 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import {Context} from "../context";
-// import {P5Context} from "p5-context";
+import { Context } from '../context';
 
-export class GraphicsContext extends Context {
-    // /**
-    //  * The default stroke weight of the sketch.
-    //  * Equivalent to a stroke of 1 in a 500x500 sketch.
-    //  */
-    // public static get defaultStrokeWeight(): number {
-    //     const p5: P5Lib = P5Context.p5;
-    //     // TODO - map should be based on size of graphics
-    //     const minDimension: number = Math.min(p5.width, p5.height);
-    //     return minDimension * 0.002;
-    // }
+export class CanvasContext extends Context {
+
 }

@@ -15,7 +15,12 @@
  * See the GNU Affero General Public License for more details.
  */
 
+// TODO - release notes
+// TODO - unit tests
 // TODO canvas context or graphics context
+// TODO - documentation
+import { AspectRatioConfig } from './aspect-ratio-config';
+
 /**
  * Defines the width to height ratio of a canvas.
  *
@@ -38,7 +43,10 @@ export class AspectRatio {
      */
     readonly #HEIGHT_RATIO: number;
 
-    constructor(widthRatio: number, heightRatio: number, name?: string) {
+    constructor(config: AspectRatioConfig) {
+        let widthRatio = config.WIDTH_RATIO;
+        let heightRatio: number = config.HEIGHT_RATIO;
+
         if (widthRatio < 1) {
             widthRatio = 1;
         }
@@ -49,7 +57,7 @@ export class AspectRatio {
 
         this.#WIDTH_RATIO = widthRatio;
         this.#HEIGHT_RATIO = heightRatio;
-        this.#NAME = name;
+        this.#NAME = config.NAME;
     }
 
     public get NAME(): string {
