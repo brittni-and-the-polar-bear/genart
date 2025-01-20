@@ -28,50 +28,48 @@ export interface ContainerMapperConfig {
     /**
      * maximum (x, y) coordinate of the context relative to the container.
      */
-    readonly MAX_CONTAINER_POSITON: P5Lib.Vector;
+    readonly MAX_CONTAINER_POSITION: P5Lib.Vector;
 }
 
 export class ContainerMapper {
-    // TODO - replace x and y with vectors
     /**
-     * minimum x-axis coordinate of the context relative to the container.
+     * The minimum (x, y) coordinate of the context relative to the container.
+     * The top-left corner of the context in the container's coordinate system.
      */
-    #minContainerX: number;
+    #minContainerPosition: P5Lib.Vector;
 
     /**
-     * minimum y-axis coordinate of the context relative to the container.
+     * The maximum (x, y) coordinate of the context relative to the container.
+     * The bottom-right corner of the context in the container's coordinate system.
      */
-    #minContainerY: number;
-
-    /**
-     * maximum x-axis coordinate of the context relative to the container.
-     */
-    #maxContainerX: number;
-
-    /**
-     * maximum y-axis coordinate of the context relative to the container.
-     */
-    #maxContainerY: number;
+    #maxContainerPosition: P5Lib.Vector;
 
     /**
      * {@link CoordinateMapper} of the context.
      */
-    #coordinateMapper: CoordinateMapper;
+    #contextCoordinateMapper: CoordinateMapper;
 
     /**
      * {@link CoordinateMapper} of the container.
      */
     #containerCoordinateMapper: CoordinateMapper;
 
-    // TODO - add constructor
+    public constructor(config: ContainerMapperConfig) {
+        this.#minContainerPosition = config.MIN_CONTAINER_POSITION;
+        this.#maxContainerPosition = config.MAX_CONTAINER_POSITION;
+    }
 
     public mapContextRatioToContainerRatioX(ratio: number) {
-        const containerCoordinate: number = P5Context.p5.map(ratio, 0, 1, this.#minContainerX, this.#maxContainerX);
+        const containerCoordinate: number =
+            P5Context.p5.map(ratio, 0, 1,
+                             this.#minContainerPosition.x, this.#maxContainerPosition.x);
         return this.#containerCoordinateMapper.mapCoordinateXToRatio(containerCoordinate);
     }
 
     public mapContextRatioToContainerRatioY(ratio: number) {
-        const containerCoordinate: number = P5Context.p5.map(ratio, 0, 1, this.#minContainerY, this.#maxContainerY);
+        const containerCoordinate: number =
+            P5Context.p5.map(ratio, 0, 1,
+                             this.#minContainerPosition.y, this.#maxContainerPosition.y);
         return this.#containerCoordinateMapper.mapCoordinateYToRatio(containerCoordinate);
     }
 }
