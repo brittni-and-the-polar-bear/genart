@@ -19,6 +19,8 @@
 // TODO - unit tests
 // TODO canvas context or graphics context
 // TODO - documentation
+import { Discriminator } from 'discriminator';
+
 import { AspectRatioConfig } from './aspect-ratio-config';
 
 /**
@@ -43,21 +45,37 @@ export class AspectRatio {
      */
     readonly #HEIGHT_RATIO: number;
 
-    constructor(config: AspectRatioConfig) {
-        let widthRatio = config.WIDTH_RATIO;
-        let heightRatio: number = config.HEIGHT_RATIO;
+    constructor(width: number, height: number, name?: string);
+    constructor(config: AspectRatioConfig);
+    constructor(arg1: AspectRatioConfig | number, arg2?: number, arg3?: string) {
+        if (Discriminator.isAspectRatioConfig(arg1)) {
+            let widthRatio: number = arg1.WIDTH_RATIO;
+            let heightRatio: number = arg1.HEIGHT_RATIO;
 
-        if (widthRatio < 1) {
-            widthRatio = 1;
+            if (widthRatio < 1) {
+                widthRatio = 1;
+            }
+
+            if (heightRatio < 1) {
+                heightRatio = 1;
+            }
+
+            this.#WIDTH_RATIO = widthRatio;
+            this.#HEIGHT_RATIO = heightRatio;
+            this.#NAME = arg1.NAME;
+        } else if ((arg1 && arg1 > 0) && (arg2 && arg2 > 0)) {
+            const width: number = arg1;
+            const height: number = arg2;
+            const minDim: number = Math.min(width, height);
+            const widthRatioCalculated: number = width / minDim;
+            const heightRatioCalculated: number = height / minDim;
+            this.#WIDTH_RATIO = parseFloat(widthRatioCalculated.toFixed(2));
+            this.#HEIGHT_RATIO = parseFloat(heightRatioCalculated.toFixed(2));
+            this.#NAME = arg3;
+        } else {
+            this.#WIDTH_RATIO = 1;
+            this.#HEIGHT_RATIO = 1;
         }
-
-        if (heightRatio < 1) {
-            heightRatio = 1;
-        }
-
-        this.#WIDTH_RATIO = widthRatio;
-        this.#HEIGHT_RATIO = heightRatio;
-        this.#NAME = config.NAME;
     }
 
     public get NAME(): string {

@@ -18,8 +18,11 @@
 // TODO - release notes
 // TODO - documentation
 // TODO - unit tests
-export interface AspectRatioConfig {
+import { Discriminable, Discriminators } from 'discriminator';
+
+export interface AspectRatioConfig extends Discriminable {
     readonly NAME?: string,
     readonly WIDTH_RATIO: number,
-    readonly HEIGHT_RATIO: number
+    readonly HEIGHT_RATIO: number,
+    readonly DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG
 }

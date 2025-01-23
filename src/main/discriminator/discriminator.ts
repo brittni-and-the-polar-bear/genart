@@ -17,16 +17,38 @@
 
 import { Palette, PaletteColor } from 'color';
 import { WeightedElement } from 'random';
+import { AspectRatioConfig } from 'sketch';
 
 import { Discriminable } from './discriminable';
 import { Discriminators } from './discriminators';
 
+// TODO - release notes
+// TODO - unit tests
 /**
  * Methods for evaluating if objects implement various interfaces.
  *
  * @category Discriminator
  */
 export class Discriminator {
+    /**
+     * Determines if the given object is an {@link AspectRatioConfig}.
+     * (i.e. implements the AspectRatioConfig interface).
+     *
+     * @param object
+     *
+     * @returns `true` if the given object implements
+     * the {@link AspectRatioConfig} interface, `false` if it does not.
+     */
+    public static isAspectRatioConfig(object: unknown): object is AspectRatioConfig {
+        let hasMatch: boolean = false;
+
+        if (object && typeof object === 'object') {
+            hasMatch = (object as Discriminable).DISCRIMINATOR === Discriminators.ASPECT_RATIO_CONFIG;
+        }
+
+        return hasMatch;
+    }
+
     /**
      * Determines if the given object is a {@link PaletteColor}
      * (i.e. implements the PaletteColor interface).
