@@ -18,5 +18,5 @@
 import { Context } from '../context';
 
 export class CanvasContext extends Context {
-
+    // TODO - container mapper to Canvas
 }

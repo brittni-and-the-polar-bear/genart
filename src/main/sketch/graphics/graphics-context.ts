@@ -19,6 +19,9 @@ import {Context} from "../context";
 // import {P5Context} from "p5-context";
 
 export class GraphicsContext extends Context {
+    // TODO - container mapper to parent
+    // TODO - container mapper to Canvas
+
     // /**
     //  * The default stroke weight of the sketch.
     //  * Equivalent to a stroke of 1 in a 500x500 sketch.
