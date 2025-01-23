@@ -15,8 +15,12 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { Context } from '../context';
+import {Context, ContextConfig} from '../context';
 
 export class CanvasContext extends Context {
     // TODO - container mapper to Canvas
+
+    public constructor(config: ContextConfig) {
+        super(config);
+    }
 }
