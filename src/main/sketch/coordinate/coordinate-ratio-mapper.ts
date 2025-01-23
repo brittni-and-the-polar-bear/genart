@@ -22,7 +22,7 @@ import P5Lib from 'p5';
 
 import { P5Context } from 'p5-context';
 
-export class CoordinateMapper {
+export class CoordinateRatioMapper {
     #width: number;
     #height: number;
     #isWebGL: boolean;
@@ -142,6 +142,4 @@ export class CoordinateMapper {
     public mapCoordinateYToRatio(coordinateY: number): number {
         return P5Context.p5.map(coordinateY, this.minY, this.maxY, 0, 1);
     }
-
-
 }
