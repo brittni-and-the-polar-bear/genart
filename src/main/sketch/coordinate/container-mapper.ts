@@ -83,12 +83,12 @@ export class ContainerMapper {
 
     public mapContextRatioToContainerRatioX(contextRatioX: number) {
         const containerX: number = this.mapContextRatioToContainerCoordinateX(contextRatioX);
-        return this.#containerCoordinateMapper.mapCoordinateXToRatio(containerX);
+        return this.#containerCoordinateMapper.mapCoordinateToRatioX(containerX);
     }
 
     public mapContextRatioToContainerRatioY(contextRatioY: number) {
         const containerY: number = this.mapContextRatioToContainerCoordinateY(contextRatioY);
-        return this.#containerCoordinateMapper.mapCoordinateYToRatio(containerY);
+        return this.#containerCoordinateMapper.mapCoordinateToRatioY(containerY);
     }
 
     public mapContextRatioToContainerRatio(contextRatioVector: P5Lib.Vector): P5Lib.Vector {
@@ -98,12 +98,12 @@ export class ContainerMapper {
     }
 
     public mapContextCoordinateToContainerRatioX(contextX: number): number {
-        const contextRatioX: number = this.#contextCoordinateMapper.mapCoordinateXToRatio(contextX);
+        const contextRatioX: number = this.#contextCoordinateMapper.mapCoordinateToRatioX(contextX);
         return this.mapContextRatioToContainerRatioX(contextRatioX);
     }
 
     public mapContextCoordinateToContainerRatioY(contextY: number): number {
-        const contextRatioY: number = this.#contextCoordinateMapper.mapCoordinateYToRatio(contextY);
+        const contextRatioY: number = this.#contextCoordinateMapper.mapCoordinateToRatioY(contextY);
         return this.mapContextRatioToContainerRatioY(contextRatioY);
     }
 
