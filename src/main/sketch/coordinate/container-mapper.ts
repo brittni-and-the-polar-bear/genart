@@ -31,6 +31,10 @@ export interface ContainerMapperConfig {
      * maximum (x, y) coordinate of the context relative to the container.
      */
     readonly MAX_CONTAINER_POSITION: P5Lib.Vector;
+
+    readonly CONTEXT_COORDINATE_MAPPER: CoordinateRatioMapper;
+
+    readonly CONTAINER_COORDINATE_MAPPER: CoordinateRatioMapper;
 }
 
 export class ContainerMapper {
@@ -59,6 +63,8 @@ export class ContainerMapper {
     public constructor(config: ContainerMapperConfig) {
         this.#minContainerPosition = config.MIN_CONTAINER_POSITION;
         this.#maxContainerPosition = config.MAX_CONTAINER_POSITION;
+        this.#contextCoordinateMapper = config.CONTEXT_COORDINATE_MAPPER;
+        this.#containerCoordinateMapper = config.CONTAINER_COORDINATE_MAPPER;
     }
 
     public mapContextRatioXToContainerRatioX(ratio: number) {
@@ -105,5 +111,11 @@ export class ContainerMapper {
     public mapContextCoordinateYToContainerCoordinateY(y: number): number {
         const containerRatioY: number = this.mapContextCoordinateYToContainerRatioY(y);
         return this.#containerCoordinateMapper.mapRatioToCoordinateY(containerRatioY);
+    }
+
+    public mapContextCoordinateToContainerCoordinate(coordinate: P5Lib.Vector): P5Lib.Vector {
+        const containerCoordinateX: number = this.mapContextCoordinateXToContainerCoordinateX(coordinate.x);
+        const containerCoordinateY: number = this.mapContextCoordinateYToContainerCoordinateY(coordinate.y);
+        return P5Context.p5.createVector(containerCoordinateX, containerCoordinateY);
     }
 }
