@@ -16,6 +16,8 @@
  */
 
 // TODO - release notes
+// TODO - documentation
+// TODO - unit tests
 export interface AspectRatioConfig {
     readonly NAME?: string,
     readonly WIDTH_RATIO: number,
