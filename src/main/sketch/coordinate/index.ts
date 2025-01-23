@@ -17,4 +17,4 @@
 
 export * from './container-mapper';
 export * from './coordinate';
-export * from './coordinate-mapper';
+export * from './coordinate-ratio-mapper';

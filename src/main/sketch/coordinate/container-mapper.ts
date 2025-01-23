@@ -15,9 +15,11 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import P5Lib from "p5";
-import {CoordinateMapper} from "./coordinate-mapper";
-import {P5Context} from "p5-context";
+import P5Lib from 'p5';
+
+import { P5Context } from 'p5-context';
+
+import { CoordinateRatioMapper } from './coordinate-ratio-mapper';
 
 export interface ContainerMapperConfig {
     /**
@@ -45,31 +47,63 @@ export class ContainerMapper {
     #maxContainerPosition: P5Lib.Vector;
 
     /**
-     * {@link CoordinateMapper} of the context.
+     * {@link CoordinateRatioMapper} of the context.
      */
-    #contextCoordinateMapper: CoordinateMapper;
+    #contextCoordinateMapper: CoordinateRatioMapper;
 
     /**
-     * {@link CoordinateMapper} of the container.
+     * {@link CoordinateRatioMapper} of the container.
      */
-    #containerCoordinateMapper: CoordinateMapper;
+    #containerCoordinateMapper: CoordinateRatioMapper;
 
     public constructor(config: ContainerMapperConfig) {
         this.#minContainerPosition = config.MIN_CONTAINER_POSITION;
         this.#maxContainerPosition = config.MAX_CONTAINER_POSITION;
     }
 
-    public mapContextRatioToContainerRatioX(ratio: number) {
-        const containerCoordinate: number =
+    public mapContextRatioXToContainerRatioX(ratio: number) {
+        const containerX: number =
             P5Context.p5.map(ratio, 0, 1,
                              this.#minContainerPosition.x, this.#maxContainerPosition.x);
-        return this.#containerCoordinateMapper.mapCoordinateXToRatio(containerCoordinate);
+        return this.#containerCoordinateMapper.mapCoordinateXToRatio(containerX);
     }
 
-    public mapContextRatioToContainerRatioY(ratio: number) {
-        const containerCoordinate: number =
+    public mapContextRatioYToContainerRatioY(ratio: number) {
+        const containerY: number =
             P5Context.p5.map(ratio, 0, 1,
                              this.#minContainerPosition.y, this.#maxContainerPosition.y);
-        return this.#containerCoordinateMapper.mapCoordinateYToRatio(containerCoordinate);
+        return this.#containerCoordinateMapper.mapCoordinateYToRatio(containerY);
+    }
+
+    public mapContextRatioToContainerRatio(ratioVector: P5Lib.Vector): P5Lib.Vector {
+        const containerRatioX: number = this.mapContextRatioXToContainerRatioX(ratioVector.x);
+        const containerRatioY: number = this.mapContextRatioYToContainerRatioY(ratioVector.y);
+        return P5Context.p5.createVector(containerRatioX, containerRatioY);
+    }
+
+    public mapContextCoordinateXToContainerRatioX(x: number): number {
+        const contextRatioX: number = this.#contextCoordinateMapper.mapCoordinateXToRatio(x);
+        return this.mapContextRatioXToContainerRatioX(contextRatioX);
+    }
+
+    public mapContextCoordinateYToContainerRatioY(y: number): number {
+        const contextRatioY: number = this.#contextCoordinateMapper.mapCoordinateYToRatio(y);
+        return this.mapContextRatioYToContainerRatioY(contextRatioY);
+    }
+
+    public mapContextCoordinateToContainerRatio(coordinate: P5Lib.Vector): P5Lib.Vector {
+        const containerRatioX: number = this.mapContextCoordinateXToContainerRatioX(coordinate.x);
+        const containerRatioY: number = this.mapContextCoordinateYToContainerRatioY(coordinate.y);
+        return P5Context.p5.createVector(containerRatioX, containerRatioY);
+    }
+
+    public mapContextCoordinateXToContainerCoordinateX(x: number): number {
+        const containerRatioX: number = this.mapContextCoordinateXToContainerRatioX(x);
+        return this.#containerCoordinateMapper.mapRatioToCoordinateX(containerRatioX);
+    }
+
+    public mapContextCoordinateYToContainerCoordinateY(y: number): number {
+        const containerRatioY: number = this.mapContextCoordinateYToContainerRatioY(y);
+        return this.#containerCoordinateMapper.mapRatioToCoordinateY(containerRatioY);
     }
 }
