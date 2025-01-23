@@ -23,14 +23,31 @@ import P5Lib from 'p5';
 import { P5Context } from 'p5-context';
 
 export class CoordinateRatioMapper {
+    readonly #IS_WEB_GL: boolean;
+
     #width: number;
     #height: number;
-    #isWebGL: boolean;
 
     public constructor(width: number, height: number, isWebGL: boolean) {
         this.#width = width;
         this.#height = height;
-        this.#isWebGL = isWebGL;
+        this.#IS_WEB_GL = isWebGL;
+    }
+
+    public get width(): number {
+        return this.#width;
+    }
+
+    public set width(width: number) {
+        this.#width = width;
+    }
+
+    public get height(): number {
+        return this.#height;
+    }
+
+    public set height(height: number) {
+        this.#height = height;
     }
 
     /**
@@ -53,7 +70,7 @@ export class CoordinateRatioMapper {
     public get minX(): number {
         let min: number = 0;
 
-        if (this.#isWebGL) {
+        if (this.#IS_WEB_GL) {
             min = (this.#width / 2.0) * -1.0;
         }
 
@@ -66,7 +83,7 @@ export class CoordinateRatioMapper {
     public get maxX(): number {
         let max: number = this.#width;
 
-        if (this.#isWebGL) {
+        if (this.#IS_WEB_GL) {
             max = (this.#width / 2.0);
         }
 
@@ -79,7 +96,7 @@ export class CoordinateRatioMapper {
     public get minY(): number {
         let min: number = 0;
 
-        if (this.#isWebGL) {
+        if (this.#IS_WEB_GL) {
             min = (this.#height / 2.0) * -1.0;
         }
 
@@ -92,7 +109,7 @@ export class CoordinateRatioMapper {
     public get maxY(): number {
         let max: number = this.#height;
 
-        if (this.#isWebGL) {
+        if (this.#IS_WEB_GL) {
             max = (this.#height / 2.0);
         }
 
@@ -102,7 +119,7 @@ export class CoordinateRatioMapper {
     public mapRatioToCoordinate(ratioVector: P5Lib.Vector): P5Lib.Vector {
         const coordinateX: number = this.mapRatioToCoordinateX(ratioVector.x);
         const coordinateY: number = this.mapRatioToCoordinateY(ratioVector.y);
-        return new P5Lib.Vector(coordinateX, coordinateY);
+        return P5Context.p5.createVector(coordinateX, coordinateY);
     }
 
     /**
@@ -110,10 +127,10 @@ export class CoordinateRatioMapper {
      * A percentage value of 0.5 will be exactly in the middle of the x-axis,
      * regardless of context resolution or aspect ratio.
      *
-     * @param ratio - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     * @param ratioX - The percentage expressed as a decimal number (e.g. 50% = 0.5)
      */
-    public mapRatioToCoordinateX(ratio: number): number {
-        return P5Context.p5.map(ratio, 0, 1, this.minX, this.maxX);
+    public mapRatioToCoordinateX(ratioX: number): number {
+        return P5Context.p5.map(ratioX, 0, 1, this.minX, this.maxX);
     }
 
     /**
@@ -121,25 +138,25 @@ export class CoordinateRatioMapper {
      * A percentage value of 0.5 will be exactly in the middle of the y-axis,
      * regardless of context resolution or aspect ratio.
      *
-     * @param ratio - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     * @param ratioY - The percentage expressed as a decimal number (e.g. 50% = 0.5)
      */
-    public mapRatioToCoordinateY(ratio: number): number {
-        return P5Context.p5.map(ratio, 0, 1, this.minY, this.maxY);
+    public mapRatioToCoordinateY(ratioY: number): number {
+        return P5Context.p5.map(ratioY, 0, 1, this.minY, this.maxY);
     }
 
-    public mapCoordinateToRatio(coordinate: P5Lib.Vector): P5Lib.Vector {
-        const coordinateX: number = this.mapCoordinateXToRatio(coordinate.x);
-        const coordinateY: number = this.mapCoordinateYToRatio(coordinate.y);
-        return new P5Lib.Vector(coordinateX, coordinateY);
+    public mapCoordinateToRatio(coordinateVector: P5Lib.Vector): P5Lib.Vector {
+        const coordinateX: number = this.mapCoordinateToRatioX(coordinateVector.x);
+        const coordinateY: number = this.mapCoordinateToRatioY(coordinateVector.y);
+        return P5Context.p5.createVector(coordinateX, coordinateY);
     }
 
     // TODO - unit tests - are results constrained to 0 and 1?
-    public mapCoordinateXToRatio(coordinateX: number): number {
+    public mapCoordinateToRatioX(coordinateX: number): number {
         return P5Context.p5.map(coordinateX, this.minX, this.maxX, 0, 1);
     }
 
     // TODO - unit tests - are results constrained to 0 and 1?
-    public mapCoordinateYToRatio(coordinateY: number): number {
+    public mapCoordinateToRatioY(coordinateY: number): number {
         return P5Context.p5.map(coordinateY, this.minY, this.maxY, 0, 1);
     }
 }
