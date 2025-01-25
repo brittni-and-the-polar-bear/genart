@@ -17,6 +17,8 @@
 
 // TODO - unit tests
 // TODO - release notes
+import { Discriminators } from 'discriminator';
+
 import { AspectRatioConfig } from './aspect-ratio-config';
 
 /**
@@ -27,19 +29,6 @@ import { AspectRatioConfig } from './aspect-ratio-config';
  * @category Sketch/Aspect Ratio
  */
 export enum AspectRatioName {
-    /**
-     * Match the aspect ratio of the browser window.
-     * The aspect ratio of the canvas will continue to match
-     * the browser window until a different ratio is selected.
-     */
-    MATCH = 'MATCH',
-
-    /**
-     * Use the initial or current aspect ratio of the browser window.
-     * This aspect ratio will only change the canvas aspect ratio one time.
-     */
-    INITIAL = 'INITIAL',
-
     /**
      * The standard aspect ratio of an Instagram photo.
      */
@@ -84,49 +73,46 @@ export enum AspectRatioName {
  * @category Sketch/Aspect Ratio
  */
 export const ASPECT_RATIOS: Record<AspectRatioName, AspectRatioConfig> = {
-    [AspectRatioName.MATCH]: {
-        NAME: 'match',
-        WIDTH_RATIO: 0,
-        HEIGHT_RATIO: 0
-    },
-    [AspectRatioName.INITIAL]: {
-        NAME: 'initial',
-        WIDTH_RATIO: 0,
-        HEIGHT_RATIO: 0
-    },
     [AspectRatioName.INSTAGRAM_PHOTO]: {
         NAME: '4:5',
         WIDTH_RATIO: 4,
-        HEIGHT_RATIO: 5
+        HEIGHT_RATIO: 5,
+        DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG
     },
     [AspectRatioName.PINTEREST_PIN]: {
         NAME: '2:3',
         WIDTH_RATIO: 2,
-        HEIGHT_RATIO: 3
+        HEIGHT_RATIO: 3,
+        DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG
     },
     [AspectRatioName.SOCIAL_VIDEO]: {
         NAME: '9:16',
         WIDTH_RATIO: 9,
-        HEIGHT_RATIO: 16
+        HEIGHT_RATIO: 16,
+        DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG
     },
     [AspectRatioName.SQUARE]: {
         NAME: 'square',
         WIDTH_RATIO: 1,
-        HEIGHT_RATIO: 1
+        HEIGHT_RATIO: 1,
+        DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG
     },
     [AspectRatioName.TIKTOK_PHOTO]: {
         NAME: '3:4',
         WIDTH_RATIO: 3,
-        HEIGHT_RATIO: 4
+        HEIGHT_RATIO: 4,
+        DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG
     },
     [AspectRatioName.ULTRAWIDE]: {
         NAME: 'ultrawide (21:9)',
         WIDTH_RATIO: 64,
-        HEIGHT_RATIO: 27
+        HEIGHT_RATIO: 27,
+        DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG
     },
     [AspectRatioName.WIDESCREEN]: {
         NAME: 'widescreen (16:9)',
         WIDTH_RATIO: 16,
-        HEIGHT_RATIO: 9
+        HEIGHT_RATIO: 9,
+        DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG
     }
 };
