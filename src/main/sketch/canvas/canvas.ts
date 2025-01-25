@@ -23,6 +23,8 @@
 // import { P5Context } from '../p5-context';
 // import { ASPECT_RATIOS, AspectRatio, AspectRatioHandler } from './aspect-ratio';
 
+// TODO - Canvas provides static access to a singleton CanvasContext instance.
+
 /**
  * The CanvasContext provides static access to information and methods
  * for the running p5.js sketch canvas.

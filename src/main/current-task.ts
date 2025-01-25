@@ -15,46 +15,4 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { AspectRatioConfig } from "../aspect-ratio";
-import { Context, ContextConfig } from '../context';
-
-export class CanvasContext extends Context {
-    // TODO - container mapper to Canvas
-
-    public constructor(config: ContextConfig) {
-        super(config);
-    }
-
-    get minX(): number {
-        return 0;
-    }
-
-    get maxX(): number {
-        return 0;
-    }
-
-    get minY(): number {
-        return 0;
-    }
-
-    get maxY(): number {
-        return 0;
-    }
-
-    get width(): number {
-        return 0;
-    }
-
-    get height(): number {
-        return 0;
-    }
-
-    resize(): void {
-    }
-
-    protected updateAspectRatio(config: AspectRatioConfig): void {
-    }
-
-    protected updateResolution(resolution: number): void {
-    }
-}
+// TODO - Current Task - Create and build a Canvas
