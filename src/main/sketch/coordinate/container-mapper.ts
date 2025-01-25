@@ -15,6 +15,10 @@
  * See the GNU Affero General Public License for more details.
  */
 
+// TODO - documentation
+// TODO - release notes
+// TODO - unit tests
+
 import P5Lib from 'p5';
 
 import { P5Context } from 'p5-context';
