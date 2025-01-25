@@ -15,7 +15,7 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { AspectRatioConfig } from "../aspect-ratio";
+import { AspectRatioConfig } from '../aspect-ratio';
 import { Context, ContextConfig } from '../context';
 
 export class CanvasContext extends Context {
@@ -25,31 +25,31 @@ export class CanvasContext extends Context {
         super(config);
     }
 
-    get minX(): number {
+    public get minX(): number {
         return 0;
     }
 
-    get maxX(): number {
+    public get maxX(): number {
         return 0;
     }
 
-    get minY(): number {
+    public get minY(): number {
         return 0;
     }
 
-    get maxY(): number {
+    public get maxY(): number {
         return 0;
     }
 
-    get width(): number {
+    public get width(): number {
         return 0;
     }
 
-    get height(): number {
+    public get height(): number {
         return 0;
     }
 
-    resize(): void {
+    public resize(): void {
     }
 
     protected updateAspectRatio(config: AspectRatioConfig): void {
