@@ -23,15 +23,14 @@ import P5Lib from 'p5';
 import { P5Context } from 'p5-context';
 
 export class CoordinateRatioMapper {
-    readonly #IS_WEB_GL: boolean;
-
     #width: number;
     #height: number;
+    #isWebGL: boolean;
 
-    public constructor(width: number, height: number, isWebGL: boolean) {
-        this.#width = width;
-        this.#height = height;
-        this.#IS_WEB_GL = isWebGL;
+    public constructor(width?: number, height?: number, isWebGL?: boolean) {
+        this.#width = width ?? 720;
+        this.#height = height ?? 720;
+        this.#isWebGL = isWebGL ?? false;
     }
 
     public get width(): number {
@@ -48,6 +47,14 @@ export class CoordinateRatioMapper {
 
     public set height(height: number) {
         this.#height = height;
+    }
+
+    public get isWebGL(): boolean {
+        return this.#isWebGL;
+    }
+
+    public set isWebGL(isWebGL: boolean) {
+        this.#isWebGL = isWebGL;
     }
 
     /**
@@ -70,8 +77,8 @@ export class CoordinateRatioMapper {
     public get minX(): number {
         let min: number = 0;
 
-        if (this.#IS_WEB_GL) {
-            min = (this.#width / 2.0) * -1.0;
+        if (this.isWebGL) {
+            min = (this.width / 2.0) * -1.0;
         }
 
         return min;
@@ -81,10 +88,10 @@ export class CoordinateRatioMapper {
      * The maximum visible x-axis value.
      */
     public get maxX(): number {
-        let max: number = this.#width;
+        let max: number = this.width;
 
-        if (this.#IS_WEB_GL) {
-            max = (this.#width / 2.0);
+        if (this.isWebGL) {
+            max = (this.width / 2.0);
         }
 
         return max;
@@ -96,8 +103,8 @@ export class CoordinateRatioMapper {
     public get minY(): number {
         let min: number = 0;
 
-        if (this.#IS_WEB_GL) {
-            min = (this.#height / 2.0) * -1.0;
+        if (this.isWebGL) {
+            min = (this.height / 2.0) * -1.0;
         }
 
         return min;
@@ -107,10 +114,10 @@ export class CoordinateRatioMapper {
      * The maximum visible y-axis value.
      */
     public get maxY(): number {
-        let max: number = this.#height;
+        let max: number = this.height;
 
-        if (this.#IS_WEB_GL) {
-            max = (this.#height / 2.0);
+        if (this.isWebGL) {
+            max = (this.height / 2.0);
         }
 
         return max;
