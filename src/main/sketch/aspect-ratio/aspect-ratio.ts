@@ -33,7 +33,7 @@ export class AspectRatio {
     /**
      * The name of the aspect ratio.
      */
-    readonly #NAME?: string;
+    readonly #NAME: string;
 
     /**
      * The width ratio component.
@@ -49,8 +49,9 @@ export class AspectRatio {
     constructor(config: AspectRatioConfig);
     constructor(arg1: AspectRatioConfig | number, arg2?: number, arg3?: string) {
         if (Discriminator.isAspectRatioConfig(arg1)) {
-            let widthRatio: number = arg1.WIDTH_RATIO;
-            let heightRatio: number = arg1.HEIGHT_RATIO;
+            const config: AspectRatioConfig = arg1;
+            let widthRatio: number = config.WIDTH_RATIO;
+            let heightRatio: number = config.HEIGHT_RATIO;
 
             if (widthRatio < 1) {
                 widthRatio = 1;
@@ -62,28 +63,26 @@ export class AspectRatio {
 
             this.#WIDTH_RATIO = widthRatio;
             this.#HEIGHT_RATIO = heightRatio;
-            this.#NAME = arg1.NAME;
+            this.#NAME = this.#buildName(config.NAME);
         } else if ((arg1 && arg1 > 0) && (arg2 && arg2 > 0)) {
             const width: number = arg1;
             const height: number = arg2;
+            const name: string | undefined = arg3;
             const minDim: number = Math.min(width, height);
             const widthRatioCalculated: number = width / minDim;
             const heightRatioCalculated: number = height / minDim;
             this.#WIDTH_RATIO = parseFloat(widthRatioCalculated.toFixed(2));
             this.#HEIGHT_RATIO = parseFloat(heightRatioCalculated.toFixed(2));
-            this.#NAME = arg3;
+            this.#NAME = this.#buildName(name);
         } else {
             this.#WIDTH_RATIO = 1;
             this.#HEIGHT_RATIO = 1;
+            this.#NAME = this.#buildName();
         }
     }
 
     public get NAME(): string {
-        if (this.#NAME) {
-            return this.#NAME;
-        } else {
-            return `${this.#WIDTH_RATIO}:${this.#HEIGHT_RATIO}`;
-        }
+        return this.#NAME;
     }
 
     public get WIDTH_RATIO(): number {
@@ -95,11 +94,11 @@ export class AspectRatio {
     }
 
     public getWidth(resolution: number): number {
-        return Math.floor(this.calculateUnit(resolution) * this.#WIDTH_RATIO);
+        return Math.floor(this.#calculateUnit(resolution) * this.#WIDTH_RATIO);
     }
 
     public getHeight(resolution: number): number {
-        return Math.floor(this.calculateUnit(resolution) * this.#HEIGHT_RATIO);
+        return Math.floor(this.#calculateUnit(resolution) * this.#HEIGHT_RATIO);
     }
 
     /**
@@ -107,7 +106,15 @@ export class AspectRatio {
      *
      * @param resolution - The target resolution.
      */
-    private calculateUnit(resolution: number): number {
+    #calculateUnit(resolution: number): number {
         return resolution / Math.min(this.#WIDTH_RATIO, this.#HEIGHT_RATIO);
+    }
+
+    #buildName(name?: string): string {
+        if (name) {
+            return name;
+        }
+
+        return `${this.#WIDTH_RATIO}:${this.#HEIGHT_RATIO}`;
     }
 }
