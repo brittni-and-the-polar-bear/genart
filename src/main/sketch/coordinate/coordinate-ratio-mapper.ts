@@ -27,6 +27,8 @@ export class CoordinateRatioMapper {
     #height: number;
     #isWebGL: boolean;
 
+    public constructor();
+    public constructor(width: number, height: number, isWebGL: boolean);
     public constructor(width?: number, height?: number, isWebGL?: boolean) {
         this.#width = width ?? 720;
         this.#height = height ?? 720;
