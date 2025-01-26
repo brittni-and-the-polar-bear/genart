@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,7 +15,7 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { Random } from './random';
+import { Random } from '../random';
 
 /**
  * A class for randomly selecting elements from a given list.
@@ -23,48 +23,48 @@ import { Random } from './random';
  *
  * @category Random
  */
-export class RandomSelector<Type> {
+export class RandomListSelector<Type> {
     /**
      * The elements that {@link getRandomElement} and
      * {@link getRandomElementAndRemove} can select from.
      */
-    private readonly _elements: Type[];
+    readonly #elements: Type[];
 
     public constructor(elements: Type[]) {
-        this._elements = Array.from(elements);
+        this.#elements = Array.from(elements);
     }
 
     /**
-     * Get the number of elements in the list.
+     * The number of elements in the list.
      */
     public get size(): number {
-        return this._elements.length;
+        return this.#elements.length;
     }
 
     /**
-     * Selects random element from the list.<br/>
+     * Select a random element from the list.<br/>
      * This method assumes an equal distribution for all elements of the list.<br/>
      * If the list is empty, the function will return undefined.
      */
     public getRandomElement(): Type | undefined {
-        return Random.randomElement(this._elements);
+        return Random.randomElement(this.#elements);
     }
 
     /**
-     * Selects random element from the list, then removes that element from the list.<br/>
+     * Select a random element from the list, then removes that element from the list.<br/>
      * This method assumes an equal distribution for all elements of the list.<br/>
      * If the list is empty, the function will return undefined.
      */
     public getRandomElementAndRemove(): Type | undefined {
         let element: Type | undefined;
-        const size: number = this._elements.length;
+        const size: number = this.#elements.length;
 
         if (size > 0) {
             const index: number = Random.randomInt(0, size);
 
             if (index < size) {
-                element = this._elements[index];
-                this._elements.splice(index, 1);
+                element = this.#elements[index];
+                this.#elements.splice(index, 1);
             }
         }
 
