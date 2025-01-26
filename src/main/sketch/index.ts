@@ -21,3 +21,4 @@ export * from './coordinate';
 export * from './graphics';
 
 export * from './context';
+export * from './render-type';

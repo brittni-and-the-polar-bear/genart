@@ -15,19 +15,21 @@
  * See the GNU Affero General Public License for more details.
  */
 
-//
-// import P5Lib from 'p5';
-//
-// import { ScreenHandler } from 'screen';
-//
-// import { P5Context } from '../p5-context';
-// import { ASPECT_RATIOS, AspectRatio, AspectRatioHandler } from './aspect-ratio';
+import { P5Context } from 'p5-context';
 
-// TODO - Canvas provides static access to a singleton CanvasContext instance.
+import { AspectRatio, AspectRatioConfig } from '../aspect-ratio';
+import { ContextConfig } from '../context';
+import { RenderType } from '../render-type';
+
+import { CanvasContext } from './canvas-context';
+
+// TODO - documentation
+// TODO - relase notes
+// TODO - unit tests
 
 /**
- * The CanvasContext provides static access to information and methods
- * for the running p5.js sketch canvas.
+ * The Canvas class provides static access to the {@link CanvasContext}
+ * for the sketch.
  *
  * @category Sketch
  * @category Sketch/Canvas
@@ -38,166 +40,107 @@ export class Canvas {
      *
      * @defaultValue false
      */
-    static #lockedCanvas: boolean = false;
+    static #isLocked: boolean = false;
 
-//     // TODO - update release notes
-//     /**
-//      * Build a p5 canvas with the given aspect ratio, resolution, and canvas type.
-//      * If {@link lockedCanvas} is `true`, no canvas will be built.
-//      *
-//      * @param aspectRatio
-//      * @param resolution
-//      * @param lockCanvas - When `true`, the canvas will be locked after it has been created.
-//      * @param CANVAS_TYPE - Can be WEBGL ("webgl") or P2D ("p2d").
-//      */
-//     public static buildCanvas(aspectRatio: AspectRatio,
-//                               resolution: number,
-//                               CANVAS_TYPE?: string,
-//                               lockCanvas?: boolean): void {
-//         if (!CanvasContext.lockedCanvas) {
-//             CanvasContext._resolution = resolution;
-//             CanvasContext.aspectRatio = aspectRatio;
-//
-//             const ratioHandler: AspectRatioHandler =
-//                 new AspectRatioHandler(CanvasContext._aspectRatio, CanvasContext._resolution);
-//             const p5: P5Lib = P5Context.p5;
-//
-//             if (CANVAS_TYPE && CANVAS_TYPE === p5.WEBGL) {
-//                 p5.createCanvas(ratioHandler.width, ratioHandler.height, p5.WEBGL);
-//                 CanvasContext._isWebGL = true;
-//             } else {
-//                 p5.createCanvas(ratioHandler.width, ratioHandler.height);
-//                 CanvasContext._isWebGL = false;
-//             }
-//
-//             CanvasContext.decorateCanvas();
-//
-//             if (lockCanvas) {
-//                 CanvasContext.lockCanvas();
-//             }
-//         }
-//     }
+    static #canvasContext: CanvasContext = new CanvasContext({});
 
-//     /**
-//      * When true, {@link buildCanvas} will not create a new canvas.
-//      */
-//     public static get lockedCanvas(): boolean {
-//         return CanvasContext._lockedCanvas;
-//     }
-//
-//     /**
-//      * Locks the canvas. After this is called, {@link buildCanvas} will not create a new canvas.
-//      */
-//     public static lockCanvas(): void {
-//         CanvasContext._lockedCanvas = true;
-//     }
-//
-//     /**
-//      * Unlocks the canvas. After this is called, {@link buildCanvas} will create a new canvas.
-//      */
-//     public static unlockCanvas(): void {
-//         CanvasContext._lockedCanvas = false;
-//     }
-//
-//     /**
-//      * Resizes the canvas and decorates the canvas with the appropriate
-//      * updated attributes.
-//      */
-//     public static resizeCanvas(): void {
-//         if (CanvasContext._matchingWindowRatio) {
-//             CanvasContext.updateAspectRatio(ASPECT_RATIOS.MATCH);
-//         } else {
-//             CanvasContext.updateCanvas();
-//         }
-//     }
-//
-//     // TODO - unit test -> initial aspect ratio
-//     /**
-//      * Update the current aspect ratio of the canvas to the given aspect ratio.
-//      * This method will resize the canvas and decorate it with the appropriate
-//      * updated attributes.
-//      *
-//      * @param aspectRatio
-//      */
-//     public static updateAspectRatio(aspectRatio: AspectRatio): void {
-//         CanvasContext.aspectRatio = aspectRatio;
-//
-//         const ratioHandler: AspectRatioHandler =
-//             new AspectRatioHandler(CanvasContext._aspectRatio, CanvasContext._resolution);
-//         const p5: P5Lib = P5Context.p5;
-//
-//         p5.resizeCanvas(ratioHandler.width, ratioHandler.height);
-//         CanvasContext.updateCanvas();
-//     }
-//
-//     /**
-//      * Update the current resolution of the canvas to the given resolution.
-//      * This method will resize the canvas and decorate it with the appropriate
-//      * updated attributes.
-//      *
-//      * @param resolution
-//      */
-//     public static updateResolution(resolution: number): void {
-//         CanvasContext._resolution = resolution;
-//
-//         const p5: P5Lib = P5Context.p5;
-//         const ratioHandler: AspectRatioHandler =
-//             new AspectRatioHandler(CanvasContext._aspectRatio,
-//                 CanvasContext._resolution);
-//         const width: number = ratioHandler.width;
-//         const height: number = ratioHandler.height;
-//
-//         p5.resizeCanvas(width, height);
-//         CanvasContext.updateCanvas();
-//     }
-//
-//     // TODO - documentation
-//     // TODO - unit test coverage
-//     private static set aspectRatio(aspectRatio: AspectRatio) {
-//         if (aspectRatio === ASPECT_RATIOS.INITIAL || aspectRatio === ASPECT_RATIOS.MATCH) {
-//             CanvasContext._aspectRatio = CanvasContext.getWindowAspectRatio();
-//         } else {
-//             CanvasContext._aspectRatio = aspectRatio;
-//         }
-//
-//         CanvasContext._matchingWindowRatio = (aspectRatio === ASPECT_RATIOS.MATCH);
-//     }
-//
-//     /**
-//      * Decorates the canvas with the proper attributes according to current canvas
-//      * size and aspect ratio and current browser window size.
-//      */
-//     private static decorateCanvas(): void {
-//         const p5: P5Lib = P5Context.p5;
-//         const canvas: P5Lib.Element | null = p5.select('canvas');
-//
-//         if (canvas) {
-//             const goalRatio: number = CanvasContext._aspectRatio.WIDTH_RATIO / CanvasContext._aspectRatio.HEIGHT_RATIO;
-//             const actualRatio: number = p5.windowWidth / p5.windowHeight;
-//
-//             if (goalRatio < actualRatio) {
-//                 canvas.attribute('style', 'height: 100vh;');
-//             } else {
-//                 canvas.attribute('style', 'width: 100vw;');
-//             }
-//         }
-//     }
-//
-//     // TODO - docs
-//     // TODO - unit test
-//     private static updateCanvas(): void {
-//         CanvasContext.decorateCanvas();
-//         ScreenHandler.publishRedraw();
-//     }
-//
-//     // TODO - docs
-//     // TODO - check unit tests coverage
-//     private static getWindowAspectRatio(): AspectRatio {
-//         const windowWidth: number = P5Context.p5.windowWidth;
-//         const windowHeight: number = P5Context.p5.windowHeight;
-//         const windowAspectRatio: AspectRatio | undefined =
-//             AspectRatioHandler.buildAspectRatioFromDimensions(windowWidth, windowHeight, 'window');
-//
-//         return (windowAspectRatio ?? ASPECT_RATIOS.SQUARE);
-//     }
+    public static buildCanvas(aspectRatio: AspectRatio | AspectRatioConfig,
+                              resolution: number,
+                              renderType?: RenderType,
+                              matchWindowRatio?: boolean,
+                              lockCanvas?: boolean): void {
+        if (!Canvas.isLocked) {
+            let configAspectRatio: AspectRatio;
+
+            if (aspectRatio instanceof AspectRatio) {
+                configAspectRatio = aspectRatio;
+            } else {
+                configAspectRatio = new AspectRatio(aspectRatio);
+            }
+
+            const config: ContextConfig = {
+                ASPECT_RATIO: configAspectRatio,
+                RENDER_TYPE: renderType ?? P5Context.p5.P2D,
+                RESOLUTION: resolution,
+                MATCH_CONTAINER_RATIO: matchWindowRatio ?? false
+            };
+
+            Canvas.#canvasContext = new CanvasContext(config);
+
+            if (lockCanvas) {
+                Canvas.lockCanvas();
+            }
+        }
+    }
+
+    public static get context(): CanvasContext {
+        return Canvas.#canvasContext;
+    }
+
+    /**
+     * When true, {@link buildCanvas} will not create a new canvas.
+     */
+    public static get isLocked(): boolean {
+        return Canvas.#isLocked;
+    }
+
+    /**
+     * Locks the canvas. After this is called, {@link buildCanvas} will not create a new canvas.
+     */
+    public static lockCanvas(): void {
+        Canvas.#isLocked = true;
+    }
+
+    /**
+     * Unlocks the canvas. After this is called, {@link buildCanvas} will create a new canvas.
+     */
+    public static unlockCanvas(): void {
+        Canvas.#isLocked = false;
+    }
+
+    public get matchWindowRatio(): boolean {
+        return Canvas.#canvasContext.matchContainerRatio;
+    }
+
+    public set matchWindowRatio(match: boolean) {
+        Canvas.#canvasContext.matchContainerRatio = match;
+    }
+
+    /**
+     * Resizes the canvas based on the current browser window size and aspect ratio.<br/>
+     * NOTE: This method will not change the canvas resolution.
+     */
+    public static resize(): void {
+        Canvas.#canvasContext.resize();
+    }
+
+    /**
+     * Update the current {@link AspectRatio} of the canvas to the given {@link AspectRatio}.
+     *
+     * @param aspectRatio
+     */
+    public static updateAspectRatio(aspectRatio: AspectRatio): void {
+        Canvas.#canvasContext.updateAspectRatio(aspectRatio);
+    }
+
+    /**
+     * Update the current resolution of the canvas to the given resolution.
+     *
+     * @param resolution
+     */
+    public static updateResolution(resolution: number): void {
+        Canvas.#canvasContext.updateResolution(resolution);
+    }
+
+    public static get width(): number {
+        return Canvas.#canvasContext.width;
+    }
+
+    public static get height(): number {
+        return Canvas.#canvasContext.height;
+    }
+
+    public static get defaultStrokeWeight(): number {
+        return Canvas.#canvasContext.defaultStrokeWeight;
+    }
 }

@@ -21,22 +21,22 @@
 
 import { P5Context } from 'p5-context';
 
-import { ASPECT_RATIOS, AspectRatio, AspectRatioConfig } from './aspect-ratio';
+import { ASPECT_RATIOS, AspectRatio } from './aspect-ratio';
+import { CoordinateRatioMapper } from './coordinate';
+import { RenderType } from './render-type';
 
 export interface ContextConfig {
-    readonly CANVAS_TYPE: 'p2d' | 'webgl';
+    readonly RENDER_TYPE?: RenderType;
     readonly ASPECT_RATIO?: AspectRatio;
     readonly RESOLUTION?: number;
-    readonly MATCHING_CONTAINER_RATIO: boolean;
+    readonly MATCH_CONTAINER_RATIO?: boolean;
 }
 
 export abstract class Context {
     /**
      * Is the context rendering mode set to WebGL?
-     *
-     * @defaultValue false
      */
-    #isWebGL: boolean = false;
+    #isWebGL: boolean;
 
     /**
      * Current {@link AspectRatio} of the context.
@@ -58,56 +58,96 @@ export abstract class Context {
      *
      * @defaultValue false
      */
-    #matchingContainerRatio: boolean = false;
+    #matchContainerRatio: boolean = false;
+
+    #coordinateMapper: CoordinateRatioMapper;
 
     protected constructor(config: ContextConfig) {
-        const p5: P5Lib = P5Context.p5;
-        this.#isWebGL = config.CANVAS_TYPE === p5.WEBGL;
+        const renderType: RenderType = config.RENDER_TYPE ?? P5Context.p5.P2D;
+        this.#isWebGL = renderType === P5Context.p5.WEBGL;
 
         if (config.ASPECT_RATIO) {
             this.#aspectRatio = config.ASPECT_RATIO;
         }
 
         if (config.RESOLUTION) {
-            this.#resolution = config.RESOLUTION;
+            if (config.RESOLUTION < Context.MIN_RESOLUTION) {
+                this.#resolution = Context.MIN_RESOLUTION;
+            } else {
+                this.#resolution = config.RESOLUTION;
+            }
         }
 
-        if (config.MATCHING_CONTAINER_RATIO) {
-            this.#matchingContainerRatio = config.MATCHING_CONTAINER_RATIO;
+        if (config.MATCH_CONTAINER_RATIO) {
+            this.#matchContainerRatio = config.MATCH_CONTAINER_RATIO;
         }
+
+        const width: number = this.aspectRatio.getWidth(this.resolution);
+        const height: number = this.aspectRatio.getHeight(this.resolution);
+        this.#coordinateMapper = new CoordinateRatioMapper(width, height, this.isWebGL);
+
+        this.resize();
     }
 
-    public abstract get minX(): number;
-
-    public abstract get maxX(): number;
-
-    public abstract get minY(): number;
-
-    public abstract get maxY(): number;
-
-    public abstract get width(): number;
-
-    public abstract get height(): number;
+    public static get MIN_RESOLUTION(): number {
+        return 100;
+    }
 
     public get aspectRatio(): AspectRatio {
         return this.#aspectRatio;
+    }
+
+    public get coordinateMapper(): CoordinateRatioMapper {
+        return this.#coordinateMapper;
+    }
+
+    /**
+     * The default stroke weight of the sketch.
+     * Equivalent to a stroke of 1 in a 500x500 sketch.
+     */
+    public get defaultStrokeWeight(): number {
+        return this.resolution * 0.002;
     }
 
     public get isWebGL(): boolean {
         return this.#isWebGL;
     }
 
+    public get matchContainerRatio(): boolean {
+        return this.#matchContainerRatio;
+    }
+
+    public set matchContainerRatio(matchContainerRatio: boolean) {
+        this.#matchContainerRatio = matchContainerRatio;
+    }
+
     public get resolution(): number {
         return this.#resolution;
     }
 
-    protected get matchingContainerRatio(): boolean {
-        return this.#matchingContainerRatio;
+    public get width(): number {
+        return this.coordinateMapper.width;
+    }
+
+    public get height(): number {
+        return this.coordinateMapper.height;
     }
 
     public abstract resize(): void;
 
-    protected abstract updateAspectRatio(config: AspectRatioConfig): void;
+    public abstract updateAspectRatio(aspectRatio: AspectRatio): void;
 
-    protected abstract updateResolution(resolution: number): void;
+    public abstract updateResolution(resolution: number): void;
+
+    protected set aspectRatio(aspectRatio: AspectRatio) {
+        this.#aspectRatio = aspectRatio;
+        this.coordinateMapper.width = aspectRatio.getWidth(this.resolution);
+        this.coordinateMapper.height = aspectRatio.getHeight(this.resolution);
+    }
+
+    protected set resolution(resolution: number) {
+        this.#resolution = resolution;
+        this.coordinateMapper.width = this.aspectRatio.getWidth(resolution);
+        this.coordinateMapper.height = this.aspectRatio.getHeight(resolution);
+    }
 }

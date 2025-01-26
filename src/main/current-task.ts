@@ -15,4 +15,13 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - Current Task - Create and build a Canvas
+// TODO - Current Task - Random Module
+// TODO - Screen
+// TODO - ScreenHandler
+// TODO - CanvasRedrawListener
+// TODO - GraphicsContext
+// TODO - KeyboardMapper
+// TODO - MouseMapper
+// TODO - Coordinate
+// TODO - Geometry
+// TODO - Color

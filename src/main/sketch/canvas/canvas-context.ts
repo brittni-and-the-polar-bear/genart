@@ -15,7 +15,11 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { AspectRatioConfig } from '../aspect-ratio';
+import P5Lib from 'p5';
+
+import { P5Context } from 'p5-context';
+
+import { AspectRatio } from '../aspect-ratio';
 import { Context, ContextConfig } from '../context';
 
 export class CanvasContext extends Context {
@@ -23,38 +27,62 @@ export class CanvasContext extends Context {
 
     public constructor(config: ContextConfig) {
         super(config);
-    }
-
-    public get minX(): number {
-        return 0;
-    }
-
-    public get maxX(): number {
-        return 0;
-    }
-
-    public get minY(): number {
-        return 0;
-    }
-
-    public get maxY(): number {
-        return 0;
-    }
-
-    public get width(): number {
-        return 0;
-    }
-
-    public get height(): number {
-        return 0;
+        this.#destroyCanvas();
+        P5Context.p5.createCanvas(this.width, this.height, config.RENDER_TYPE);
+        this.#decorateCanvas();
     }
 
     public resize(): void {
+        if (this.matchContainerRatio) {
+            this.updateAspectRatio(CanvasContext.#getWindowAspectRatio());
+        }
+
+        this.#decorateCanvas();
     }
 
-    protected updateAspectRatio(config: AspectRatioConfig): void {
+    public updateAspectRatio(aspectRatio: AspectRatio): void {
+        this.aspectRatio = aspectRatio;
+        this.#updateCanvas();
     }
 
-    protected updateResolution(resolution: number): void {
+    public updateResolution(resolution: number): void {
+        this.resolution = resolution;
+        this.#updateCanvas()
+    }
+
+    static #getWindowAspectRatio(): AspectRatio {
+        const windowWidth: number = P5Context.p5.windowWidth;
+        const windowHeight: number = P5Context.p5.windowHeight;
+        return (new AspectRatio(windowWidth, windowHeight, 'window'));
+    }
+
+    /**
+     * Decorates the canvas with the proper attributes according to current canvas
+     * size and aspect ratio and current browser window size.
+     */
+    #decorateCanvas(): void {
+        const p5: P5Lib = P5Context.p5;
+        const canvas: P5Lib.Element | null = p5.select('canvas');
+
+        if (canvas) {
+            const goalRatio: number = this.aspectRatio.WIDTH_RATIO / this.aspectRatio.HEIGHT_RATIO;
+            const actualRatio: number = p5.windowWidth / p5.windowHeight;
+
+            if (goalRatio < actualRatio) {
+                canvas.attribute('style', 'height: 100vh;');
+            } else {
+                canvas.attribute('style', 'width: 100vw;');
+            }
+        }
+    }
+
+    #destroyCanvas(): void {
+        const canvas: P5Lib.Element | null = P5Context.p5.select('canvas');
+        canvas?.remove();
+    }
+
+    #updateCanvas(): void {
+        P5Context.p5.resizeCanvas(this.width, this.height);
+        this.#decorateCanvas();
     }
 }

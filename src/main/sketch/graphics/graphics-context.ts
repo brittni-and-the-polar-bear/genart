@@ -16,20 +16,24 @@
  */
 
 import {Context} from "../context";
+import {AspectRatio} from "../aspect-ratio";
 // import {P5Context} from "p5-context";
 
+// TODO - GraphicsContext - register as CanvasUpdateListener on screen
+// TODO - on screen canvas update - if matching, update ratio.
+// TODO - canvas updates hanled by screen handler
+
 export class GraphicsContext extends Context {
+    resize(): void {
+    }
+
+    public updateAspectRatio(aspectRatio: AspectRatio): void {
+        console.log(aspectRatio);
+    }
+
+    public updateResolution(resolution: number): void {
+        console.log(resolution);
+    }
     // TODO - container mapper to parent
     // TODO - container mapper to Canvas
-
-    // /**
-    //  * The default stroke weight of the sketch.
-    //  * Equivalent to a stroke of 1 in a 500x500 sketch.
-    //  */
-    // public static get defaultStrokeWeight(): number {
-    //     const p5: P5Lib = P5Context.p5;
-    //     // TODO - map should be based on size of graphics
-    //     const minDimension: number = Math.min(p5.width, p5.height);
-    //     return minDimension * 0.002;
-    // }
 }
