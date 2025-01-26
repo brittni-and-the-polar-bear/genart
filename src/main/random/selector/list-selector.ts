@@ -17,6 +17,9 @@
 
 import { Random } from '../random';
 
+// TODO - unit tests
+// TODO - documentation
+// TODO - release notes
 /**
  * A class for randomly selecting elements from a given list.
  * This class assumes an equal distribution for all elements of the list.
