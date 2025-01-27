@@ -15,4 +15,8 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - RangeSelector
+import { RandomSelector } from './random-selector';
+
+export class RandomRangeSelector extends RandomSelector {
+
+}

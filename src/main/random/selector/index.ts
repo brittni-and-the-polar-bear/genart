@@ -18,3 +18,4 @@
 export * from './enum-selector';
 export * from './list-selector';
 export * from './random-selector';
+export * from './range-selector';
