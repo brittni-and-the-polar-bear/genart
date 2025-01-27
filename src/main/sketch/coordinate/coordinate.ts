@@ -23,5 +23,11 @@
 // TODO -  - P5Lib.Vector object
 
 export class Coordinate {
+    public constructor() {
+        console.log('Coordinate constructor');
+    }
 
+    public getX(): number {
+        return 0;
+    }
 }

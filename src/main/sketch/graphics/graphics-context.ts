@@ -15,9 +15,8 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import {Context} from "../context";
-import {AspectRatio} from "../aspect-ratio";
-// import {P5Context} from "p5-context";
+import { Context } from '../context';
+import { AspectRatio } from '../aspect-ratio';
 
 // TODO - GraphicsContext - register as CanvasUpdateListener on screen
 // TODO - on screen canvas update - if matching, update ratio.
@@ -25,6 +24,7 @@ import {AspectRatio} from "../aspect-ratio";
 
 export class GraphicsContext extends Context {
     resize(): void {
+        console.log('resize');
     }
 
     public updateAspectRatio(aspectRatio: AspectRatio): void {

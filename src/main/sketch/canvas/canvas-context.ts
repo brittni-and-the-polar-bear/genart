@@ -47,7 +47,7 @@ export class CanvasContext extends Context {
 
     public updateResolution(resolution: number): void {
         this.resolution = resolution;
-        this.#updateCanvas()
+        this.#updateCanvas();
     }
 
     static #getWindowAspectRatio(): AspectRatio {

@@ -25,11 +25,11 @@ import { RandomRangeSelector } from './range-selector';
 // TODO - unit tests
 // TODO - documentation
 // TODO - release notes
-export class WeightedRangeSelector<Type> extends RandomRangeSelector<Type>{
+export class WeightedRangeSelector<Type> extends RandomRangeSelector<Type> {
     readonly #WEIGHTED_CHOICES: WeightedElement<{ category: Type; range: Range; }>[] = [];
 
     public constructor(choices: WeightedElement<{ category: Type; range: Range; }>[], sameChoice: boolean) {
-        super(choices.map((choice: WeightedElement<{ category: Type; range: Range; }>): { category: Type; range: Range } => choice.VALUE), sameChoice);
+        super(choices.map((choice: WeightedElement<{ category: Type; range: Range; }>): { category: Type; range: Range; } => choice.VALUE), sameChoice);
 
         for (const choice of choices) {
             this.#WEIGHTED_CHOICES.push(choice);

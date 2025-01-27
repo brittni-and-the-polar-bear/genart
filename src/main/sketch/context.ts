@@ -97,6 +97,12 @@ export abstract class Context {
         return this.#aspectRatio;
     }
 
+    protected set aspectRatio(aspectRatio: AspectRatio) {
+        this.#aspectRatio = aspectRatio;
+        this.coordinateMapper.width = aspectRatio.getWidth(this.resolution);
+        this.coordinateMapper.height = aspectRatio.getHeight(this.resolution);
+    }
+
     public get coordinateMapper(): CoordinateRatioMapper {
         return this.#coordinateMapper;
     }
@@ -125,6 +131,12 @@ export abstract class Context {
         return this.#resolution;
     }
 
+    protected set resolution(resolution: number) {
+        this.#resolution = resolution;
+        this.coordinateMapper.width = this.aspectRatio.getWidth(resolution);
+        this.coordinateMapper.height = this.aspectRatio.getHeight(resolution);
+    }
+
     public get width(): number {
         return this.coordinateMapper.width;
     }
@@ -138,16 +150,4 @@ export abstract class Context {
     public abstract updateAspectRatio(aspectRatio: AspectRatio): void;
 
     public abstract updateResolution(resolution: number): void;
-
-    protected set aspectRatio(aspectRatio: AspectRatio) {
-        this.#aspectRatio = aspectRatio;
-        this.coordinateMapper.width = aspectRatio.getWidth(this.resolution);
-        this.coordinateMapper.height = aspectRatio.getHeight(this.resolution);
-    }
-
-    protected set resolution(resolution: number) {
-        this.#resolution = resolution;
-        this.coordinateMapper.width = this.aspectRatio.getWidth(resolution);
-        this.coordinateMapper.height = this.aspectRatio.getHeight(resolution);
-    }
 }
