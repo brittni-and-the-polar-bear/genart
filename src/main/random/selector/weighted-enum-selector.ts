@@ -24,18 +24,25 @@ import { RandomEnumSelector } from './enum-selector';
 // TODO - documentation
 // TODO - release notes
 export class WeightedEnumSelector<Type> extends RandomEnumSelector<Type> {
-    readonly #WEIGHTED_CHOICES: Set<WeightedElement<Type>> = new Set<WeightedElement<Type>>();
+    readonly #WEIGHTED_CHOICES: WeightedElement<Type>[] = [];
 
     public constructor(choices: WeightedElement<Type>[], sameChoice: boolean) {
         super(choices.map((choice: WeightedElement<Type>): Type => choice.VALUE), sameChoice);
 
         for (const choice of choices) {
-            this.#WEIGHTED_CHOICES.add(choice);
+            this.#WEIGHTED_CHOICES.push(choice);
         }
     }
 
     public override getRandomSelection(): Type | undefined {
-        const values: WeightedElement<Type>[] = Array.from(this.#WEIGHTED_CHOICES.values());
-        return Random.randomWeightedElement(values);
+        if (this.isValid()) {
+            return Random.randomWeightedElement(this.#WEIGHTED_CHOICES);
+        } else {
+            return undefined;
+        }
+    }
+
+    public override isValid(): boolean {
+        return this.#WEIGHTED_CHOICES.length > 0;
     }
 }
