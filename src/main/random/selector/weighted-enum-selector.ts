@@ -20,6 +20,9 @@ import { WeightedElement } from '../weighted-element';
 
 import { RandomEnumSelector } from './enum-selector';
 
+// TODO - unit tests
+// TODO - documentation
+// TODO - release notes
 export class WeightedEnumSelector<Type> extends RandomEnumSelector<Type> {
     readonly #WEIGHTED_CHOICES: Set<WeightedElement<Type>> = new Set<WeightedElement<Type>>();
 
