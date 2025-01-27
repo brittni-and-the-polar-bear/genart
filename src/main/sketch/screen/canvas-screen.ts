@@ -15,64 +15,57 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// // TODO - click event handler
-// // TODO - hover handler
-// // TODO - keyboard event handler
-// // TODO - keyboard mapper
-//
-// import { CanvasRedrawEvent, CanvasRedrawListener } from 'sketch-context';
-//
-// // TODO - documentation
-// // TODO - unit tests
-// // TODO - release notes
-// /**
-//  * @category Canvas Screen
-//  */
-// export abstract class CanvasScreen {
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
+// TODO - click event handler
+// TODO - hover handler
+// TODO - keyboard event handler
+// TODO - keyboard mapper
+
+// TODO - documentation
+// TODO - unit tests
+// TODO - release notes
+
+/**
+ * @category Sketch
+ * @category Sketch / Screen
+ */
+export abstract class CanvasScreen {
+    // TODO - CanvasRedrawEvent
 //     private readonly _CANVAS_REDRAW_EVENT: CanvasRedrawEvent = new CanvasRedrawEvent();
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     private readonly _NAME: string;
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     // private _isActive: boolean = false;
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public abstract draw(): void;
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public abstract mousePressed(): void;
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public abstract keyPressed(): void;
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     protected constructor(name: string) {
-//         this._NAME = name;
-//     }
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public get NAME(): string {
-//         return this._NAME;
-//     }
-//
+    readonly #NAME: string;
+
+    #isActive: boolean = false;
+
+    protected constructor(name: string) {
+        this.#NAME = name;
+    }
+
+    public get isActive(): boolean {
+        return this.#isActive;
+    }
+
+    public activate(): void {
+        this.#isActive = true;
+        // this.publishRedraw();
+    }
+
+    public deactivate(): void {
+        this.#isActive = false;
+    }
+
+    public get NAME(): string {
+        return this.#NAME;
+    }
+
+    public abstract draw(): void;
+
+    public mousePressed(): void {
+        /* empty */
+    }
+
+    public keyPressed(): void {
+        /* empty */
+    }
+
 //     // TODO - documentation
 //     // TODO - unit tests
 //     // TODO - release notes
@@ -86,19 +79,4 @@
 //     public addRedrawListener(listener: CanvasRedrawListener): void {
 //         this._CANVAS_REDRAW_EVENT.addListener(listener);
 //     }
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public activate(): void {
-//         // this._isActive = true;
-//         this.publishRedraw();
-//     }
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     // public deactivate(): void {
-//     //     this._isActive = false;
-//     // }
-// }
+}
