@@ -36,6 +36,14 @@ export class RandomEnumSelector<Type> extends RandomSelector {
         this.#currentSelection = this.getRandomSelection();
     }
 
+    public get currentSelection(): Type | undefined {
+        return this.#currentSelection;
+    }
+
+    public set currentSelection(currentSelection: Type | undefined) {
+        this.#currentSelection = currentSelection;
+    }
+
     public getRandomSelection(): Type | undefined {
         const keys: Type[] = Array.from(this.#CHOICES.values());
         return Random.randomElement(keys);
@@ -43,7 +51,7 @@ export class RandomEnumSelector<Type> extends RandomSelector {
 
     public setRandomSelection(): void {
         this.reset();
-        this.#currentSelection = this.getRandomSelection();
+        this.currentSelection = this.getRandomSelection();
     }
 
     public isValid(): boolean {
@@ -51,18 +59,22 @@ export class RandomEnumSelector<Type> extends RandomSelector {
     }
 
     public reset(): void {
-        this.#currentSelection = undefined;
+        this.currentSelection = undefined;
     }
 
     public select(): Type | undefined {
         if (this.sameChoice) {
-            if (!this.#currentSelection) {
-                this.#currentSelection = this.getRandomSelection();
+            if (!this.currentSelection) {
+                this.currentSelection = this.getRandomSelection();
             }
 
-            return this.#currentSelection;
+            return this.currentSelection;
         } else {
             return this.getRandomSelection();
         }
+    }
+
+    protected get CHOICES(): Set<Type> {
+        return this.#CHOICES;
     }
 }

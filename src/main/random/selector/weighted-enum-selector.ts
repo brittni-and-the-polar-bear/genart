@@ -16,3 +16,61 @@
  */
 
 // TODO - WeightedEnumSelector
+
+import { WeightedElement } from '../weighted-element';
+
+import {Random} from "../random";
+import {RandomSelector} from "./random-selector";
+
+export class WeightedEnumSelector<Type> extends RandomSelector {
+    readonly #CHOICES: Set<WeightedElement<Type>> = new Set<WeightedElement<Type>>();
+
+    #currentSelection: Type | undefined;
+
+    public constructor(choices: WeightedElement<Type>[], sameChoice: boolean) {
+        super(sameChoice);
+        for (const choice of choices) {
+            this.#CHOICES.add(choice);
+        }
+
+        this.#currentSelection = this.getRandomSelection();
+    }
+
+    public get currentSelection(): Type | undefined {
+        return this.#currentSelection;
+    }
+
+    public set currentSelection(currentSelection: Type | undefined) {
+        this.#currentSelection = currentSelection;
+    }
+
+    public getRandomSelection(): Type | undefined {
+        const values: WeightedElement<Type>[] = Array.from(this.#CHOICES.values());
+        return Random.randomWeightedElement(values);
+    }
+
+    public setRandomSelection(): void {
+        this.reset();
+        this.currentSelection = this.getRandomSelection();
+    }
+
+    public isValid(): boolean {
+        return this.#CHOICES.size > 0;
+    }
+
+    public reset(): void {
+        this.currentSelection = undefined;
+    }
+
+    public select(): Type | undefined {
+        if (this.sameChoice) {
+            if (!this.currentSelection) {
+                this.currentSelection = this.getRandomSelection();
+            }
+
+            return this.currentSelection;
+        } else {
+            return this.getRandomSelection();
+        }
+    }
+}
