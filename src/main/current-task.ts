@@ -15,8 +15,7 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - Current Task - Random Module
-// TODO - Screen
+// TODO - Current Task - Screen
 // TODO - ScreenHandler
 // TODO - CanvasRedrawListener
 // TODO - GraphicsContext
@@ -25,3 +24,10 @@
 // TODO - Coordinate
 // TODO - Geometry
 // TODO - Color
+
+// Things To Do Later:
+// TODO - Discriminator Module: documentation, unit tests, and release notes
+// TODO - Map Module: documentation, unit tests, and release notes
+// TODO - Math Module: documentation, unit tests, and release notes
+// TODO - Random Module: documentation, unit tests, and release notes
+// TODO - String Module: documentation, unit tests, and release notes
