@@ -15,4 +15,64 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - EnumSelector
+import { Random } from '../random';
+
+import { RandomSelector } from './random-selector';
+
+// TODO - unit tests
+// TODO - documentation
+// TODO - release notes
+export class RandomEnumSelector<Type> extends RandomSelector {
+    readonly #CHOICES: Set<Type> = new Set<Type>();
+
+    #currentSelection: Type | undefined;
+
+    constructor(choices: Type[], sameChoice: boolean) {
+        super(sameChoice);
+        for (const choice of choices) {
+            this.#CHOICES.add(choice);
+        }
+
+        this.#currentSelection = this.getRandomSelection();
+    }
+
+    public get currentSelection(): Type | undefined {
+        return this.#currentSelection;
+    }
+
+    public set currentSelection(selection: Type | undefined) {
+        if (selection) {
+            this.#currentSelection = selection;
+        }
+    }
+
+    public getRandomSelection(): Type | undefined {
+        const keys: Type[] = Array.from(this.#CHOICES.values());
+        return Random.randomElement(keys);
+    }
+
+    public setRandomSelection(): void {
+        this.reset();
+        this.#currentSelection = this.getRandomSelection();
+    }
+
+    public isValid(): boolean {
+        return this.#CHOICES.size > 0;
+    }
+
+    public reset(): void {
+        this.#currentSelection = undefined;
+    }
+
+    public select(): Type | undefined {
+        if (this.sameChoice) {
+            if (!this.#currentSelection) {
+                this.#currentSelection = this.getRandomSelection();
+            }
+
+            return this.#currentSelection;
+        } else {
+            return this.getRandomSelection();
+        }
+    }
+}

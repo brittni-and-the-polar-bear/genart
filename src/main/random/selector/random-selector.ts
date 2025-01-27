@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,6 +15,27 @@
  * See the GNU Affero General Public License for more details.
  */
 
-export * from './enum-selector';
-export * from './list-selector';
-export * from './random-selector';
+// TODO - release notes
+// TODO - documentation
+// TODO - unit tests
+export abstract class RandomSelector {
+    #sameChoice: boolean = false;
+
+    protected constructor(sameChoice: boolean) {
+        this.#sameChoice = sameChoice;
+    }
+
+    public get sameChoice(): boolean {
+        return this.#sameChoice;
+    }
+
+    public set sameChoice(sameChoice: boolean) {
+        this.#sameChoice = sameChoice;
+    }
+
+    public abstract isValid(): boolean;
+
+    public abstract reset(): void;
+
+    public abstract select(): unknown;
+}
