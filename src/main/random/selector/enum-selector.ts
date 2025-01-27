@@ -36,16 +36,6 @@ export class RandomEnumSelector<Type> extends RandomSelector {
         this.#currentSelection = this.getRandomSelection();
     }
 
-    public get currentSelection(): Type | undefined {
-        return this.#currentSelection;
-    }
-
-    public set currentSelection(selection: Type | undefined) {
-        if (selection) {
-            this.#currentSelection = selection;
-        }
-    }
-
     public getRandomSelection(): Type | undefined {
         const keys: Type[] = Array.from(this.#CHOICES.values());
         return Random.randomElement(keys);
