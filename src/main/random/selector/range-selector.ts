@@ -65,8 +65,12 @@ export class RandomRangeSelector<Type> extends RandomSelector {
     }
 
     public getRandomCategory(): Type | undefined {
-        const keys: Type[] = Array.from(this.#CHOICES.keys());
-        return Random.randomElement(keys);
+        if (this.isValid()){
+            const keys: Type[] = Array.from(this.#CHOICES.keys());
+            return Random.randomElement(keys);
+        }
+
+        return undefined;
     }
 
     public setRandomCategory(): void {

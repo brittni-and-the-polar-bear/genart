@@ -20,3 +20,4 @@ export * from './list-selector';
 export * from './random-selector';
 export * from './range-selector';
 export * from './weighted-enum-selector';
+export * from './weighted-range-selector';
