@@ -21,6 +21,9 @@ import { Random } from '../random';
 
 import { RandomSelector } from './random-selector';
 
+// TODO - documentation
+// TODO - unit tests
+// TODO - release notes
 export class RandomRangeSelector<Type> extends RandomSelector {
     readonly #CHOICES: Map<Type, Range> = new Map<Type, Range>();
 
