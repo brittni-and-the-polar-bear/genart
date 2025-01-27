@@ -15,62 +15,24 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - WeightedEnumSelector
-
+import { Random } from '../random';
 import { WeightedElement } from '../weighted-element';
 
-import {Random} from "../random";
-import {RandomSelector} from "./random-selector";
+import { RandomEnumSelector } from './enum-selector';
 
-export class WeightedEnumSelector<Type> extends RandomSelector {
-    readonly #CHOICES: Set<WeightedElement<Type>> = new Set<WeightedElement<Type>>();
-
-    #currentSelection: Type | undefined;
+export class WeightedEnumSelector<Type> extends RandomEnumSelector<Type> {
+    readonly #WEIGHTED_CHOICES: Set<WeightedElement<Type>> = new Set<WeightedElement<Type>>();
 
     public constructor(choices: WeightedElement<Type>[], sameChoice: boolean) {
-        super(sameChoice);
+        super(choices.map((choice: WeightedElement<Type>): Type => choice.VALUE), sameChoice);
+
         for (const choice of choices) {
-            this.#CHOICES.add(choice);
+            this.#WEIGHTED_CHOICES.add(choice);
         }
-
-        this.#currentSelection = this.getRandomSelection();
     }
 
-    public get currentSelection(): Type | undefined {
-        return this.#currentSelection;
-    }
-
-    public set currentSelection(currentSelection: Type | undefined) {
-        this.#currentSelection = currentSelection;
-    }
-
-    public getRandomSelection(): Type | undefined {
-        const values: WeightedElement<Type>[] = Array.from(this.#CHOICES.values());
+    public override getRandomSelection(): Type | undefined {
+        const values: WeightedElement<Type>[] = Array.from(this.#WEIGHTED_CHOICES.values());
         return Random.randomWeightedElement(values);
-    }
-
-    public setRandomSelection(): void {
-        this.reset();
-        this.currentSelection = this.getRandomSelection();
-    }
-
-    public isValid(): boolean {
-        return this.#CHOICES.size > 0;
-    }
-
-    public reset(): void {
-        this.currentSelection = undefined;
-    }
-
-    public select(): Type | undefined {
-        if (this.sameChoice) {
-            if (!this.currentSelection) {
-                this.currentSelection = this.getRandomSelection();
-            }
-
-            return this.currentSelection;
-        } else {
-            return this.getRandomSelection();
-        }
     }
 }
