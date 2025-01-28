@@ -24,39 +24,68 @@
 // TODO - unit tests
 // TODO - release notes
 
+import P5Lib from 'p5';
+
+import { RedrawEvent, RedrawListener } from '../redraw-event';
+import { GraphicsContext, GraphicsContextHandler } from "../graphics";
+import {P5Context} from "p5-context";
+import {Canvas} from "../canvas";
+
+export interface CanvasScreenConfig {
+    readonly NAME: string;
+    readonly ACTIVE_GRAPHICS: GraphicsContext;
+    readonly OTHER_GRAPHICS?: GraphicsContext[];
+}
+
 /**
  * @category Sketch
  * @category Sketch / Screen
  */
 export abstract class CanvasScreen {
-    // TODO - CanvasRedrawEvent
-//     private readonly _CANVAS_REDRAW_EVENT: CanvasRedrawEvent = new CanvasRedrawEvent();
+    readonly #REDRAW_EVENT: RedrawEvent = new RedrawEvent();
+    readonly #GRAPHICS_HANDLER: GraphicsContextHandler;
     readonly #NAME: string;
 
     #isActive: boolean = false;
+    #saveCount: number = 0;
 
-    protected constructor(name: string) {
-        this.#NAME = name;
+    protected constructor(config: CanvasScreenConfig) {
+        this.#NAME = config.NAME;
+        this.#GRAPHICS_HANDLER = new GraphicsContextHandler(config.ACTIVE_GRAPHICS, config.OTHER_GRAPHICS);
     }
 
     public get isActive(): boolean {
         return this.#isActive;
     }
 
+    public get NAME(): string {
+        return this.#NAME;
+    }
+
+    public abstract drawToGraphics(graphics: P5Lib.Graphics): void;
+
     public activate(): void {
         this.#isActive = true;
-        // this.publishRedraw();
+        this.publishRedraw();
     }
 
     public deactivate(): void {
         this.#isActive = false;
     }
 
-    public get NAME(): string {
-        return this.#NAME;
+    public render(): void {
+        const p5: P5Lib = P5Context.p5;
+        this.drawToActiveGraphics();
+        p5.imageMode(p5.CENTER);
+        const canvasCenter: P5Lib.Vector = Canvas.center;
+        p5.image(
+            this.#GRAPHICS_HANDLER.getActiveGraphics(),
+            canvasCenter.x,
+            canvasCenter.y,
+            Canvas.width,
+            Canvas.height
+        );
     }
-
-    public abstract draw(): void;
 
     public mousePressed(): void {
         /* empty */
@@ -66,17 +95,56 @@ export abstract class CanvasScreen {
         /* empty */
     }
 
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public publishRedraw(): void {
-//         this._CANVAS_REDRAW_EVENT.publishRedraw();
-//     }
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public addRedrawListener(listener: CanvasRedrawListener): void {
-//         this._CANVAS_REDRAW_EVENT.addListener(listener);
-//     }
+    public drawToActiveGraphics(): void {
+        this.drawToGraphics(this.#GRAPHICS_HANDLER.getActiveGraphics());
+    }
+
+    public saveActiveGraphics(): void {
+        this.#saveGraphics(this.#GRAPHICS_HANDLER.getActiveContext(), 1_000)
+            .then((filename: string): void => {
+                console.log(`Saved ${filename}.`);
+            });
+    }
+
+    public saveAllGraphics(): void {
+        this.#GRAPHICS_HANDLER.getAllContexts()
+            .forEach((context: GraphicsContext): void => {
+                this.#saveGraphics(context, 1_000)
+                    .then((filename: string): void => {
+                        console.log(`Saved ${filename}.`);
+                    });
+            });
+    }
+
+    public publishRedraw(): void {
+        this.#REDRAW_EVENT.publishRedraw();
+    }
+
+    public addRedrawListener(listener: RedrawListener): void {
+        this.#REDRAW_EVENT.addListener(listener);
+    }
+
+    #getSaveCount(): number {
+        return this.#saveCount++;
+    }
+
+    #buildFileName(graphicsContext: GraphicsContext): string {
+        const saveCount: string = this.#getSaveCount().toString().padStart(3, '0');
+        return `${this.#NAME}_${saveCount}_${graphicsContext.NAME}.png`;
+    }
+
+    async #saveGraphics(graphicsContext: GraphicsContext, timeout: number): Promise<string> {
+        this.drawToGraphics(graphicsContext.GRAPHICS);
+        await this.#timeout(timeout);
+        const filename: string = this.#buildFileName(graphicsContext);
+        P5Context.p5.save(graphicsContext.GRAPHICS, filename);
+        await this.#timeout(timeout);
+        return filename;
+    }
+
+    async #timeout(milliseconds: number): Promise<void> {
+        await new Promise<void>((f: (value: void | PromiseLike<void>) => void): void => {
+            setTimeout(f, milliseconds);
+        });
+    }
 }
