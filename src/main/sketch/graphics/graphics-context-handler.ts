@@ -15,7 +15,7 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import P5Lib from "p5";
+import P5Lib from 'p5';
 
 import { StringMap } from 'map';
 
@@ -33,6 +33,10 @@ export class GraphicsContextHandler {
         if (otherContexts) {
             this.addContexts(otherContexts);
         }
+    }
+
+    public get NAMES(): string[] {
+        return Array.from(this.#CONTEXTS.keys);
     }
 
     public getActiveContext(): GraphicsContext {
