@@ -28,8 +28,8 @@ import P5Lib from 'p5';
 
 import { P5Context } from 'p5-context';
 
-import { Canvas } from "../canvas";
-import { GraphicsContext, GraphicsContextHandler } from "../graphics";
+import { Canvas } from '../canvas';
+import { GraphicsContext, GraphicsContextHandler } from '../graphics';
 import { RedrawEvent, RedrawListener } from '../redraw-event';
 
 export interface CanvasScreenConfig {
@@ -102,18 +102,28 @@ export abstract class CanvasScreen {
 
     public saveActiveGraphics(): void {
         this.#saveGraphics(this.#GRAPHICS_HANDLER.getActiveContext(), 1_000)
-            .then((filename: string): void => {
-                console.log(`Saved ${filename}.`);
-            });
+            .then(
+                (filename: string): void => {
+                    console.log(`Saved file: ${filename}.`);
+                },
+                (error: unknown): void => {
+                    console.error(error);
+                }
+            );
     }
 
     public saveAllGraphics(): void {
         this.#GRAPHICS_HANDLER.getAllContexts()
             .forEach((context: GraphicsContext): void => {
                 this.#saveGraphics(context, 1_000)
-                    .then((filename: string): void => {
-                        console.log(`Saved ${filename}.`);
-                    });
+                    .then(
+                        (filename: string): void => {
+                            console.log(`Saved file: ${filename}.`);
+                        },
+                        (error: unknown): void => {
+                            console.error(error);
+                        }
+                    );
             });
     }
 

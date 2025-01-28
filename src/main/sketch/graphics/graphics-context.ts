@@ -15,10 +15,12 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { Context } from '../context';
+import P5Lib from 'p5';
+
+import { P5Context } from 'p5-context';
+
 import { AspectRatio } from '../aspect-ratio';
-import P5Lib from "p5";
-import {P5Context} from "p5-context";
+import { Context } from '../context';
 
 // TODO - GraphicsContext - register as CanvasUpdateListener on screen
 // TODO - on screen canvas update - if matching, update ratio.

@@ -46,7 +46,7 @@ export class GraphicsContextHandler {
     public setActiveContext(name: string): void {
         const context: GraphicsContext | undefined = this.#CONTEXTS.get(name);
 
-        if (context){
+        if (context) {
             this.#activeContext = context;
         } else {
             console.error(`GraphicsContext with name '${name}' not found.`);
