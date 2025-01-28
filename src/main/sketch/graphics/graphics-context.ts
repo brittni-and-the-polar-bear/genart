@@ -17,12 +17,22 @@
 
 import { Context } from '../context';
 import { AspectRatio } from '../aspect-ratio';
+import P5Lib from "p5";
+import {P5Context} from "p5-context";
 
 // TODO - GraphicsContext - register as CanvasUpdateListener on screen
 // TODO - on screen canvas update - if matching, update ratio.
 // TODO - canvas updates hanled by screen handler
 
 export class GraphicsContext extends Context {
+    public get NAME(): string {
+        return 'name';
+    }
+
+    public get GRAPHICS(): P5Lib.Graphics {
+        return P5Context.p5.createGraphics(100, 100);
+    }
+
     resize(): void {
         console.log('resize');
     }

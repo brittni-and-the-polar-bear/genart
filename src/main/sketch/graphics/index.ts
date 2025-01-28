@@ -16,3 +16,4 @@
  */
 
 export * from './graphics-context';
+export * from './graphics-context-handler';
