@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,18 +15,13 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { Drawable } from '../drawable';
-
+// TODO - unit tests
 // TODO - release notes
-// TODO - docs
+// TODO - documentation
 /**
- * @category Sketch Context
- * @category Sketch Context: Canvas
- * @category Sketch Context: Drawing
- * @category Sketch Context: Events
+ * @category Sketch
+ * @category Sketch / Redraw Event
  */
-export interface CanvasRedrawListener extends Drawable {
-    // TODO - release notes
-    // TODO - docs
-    canvasRedraw(): void;
+export interface RedrawListener {
+    redraw(): void;
 }

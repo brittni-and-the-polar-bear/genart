@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,34 +15,25 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { CanvasRedrawListener } from './canvas-redraw-listener';
-
 // TODO - release notes
-// TODO - docs
+// TODO - documentation
 // TODO - unit tests
-/**
- * @category Sketch Context
- * @category Sketch Context: Canvas
- * @category Sketch Context: Drawing
- * @category Sketch Context: Events
- */
-export class CanvasRedrawEvent {
-    // TODO - docs
-    private readonly _LISTENERS: Set<CanvasRedrawListener> = new Set<CanvasRedrawListener>();
+import { RedrawListener } from './redraw-listener';
 
-    // TODO - release notes
-    // TODO - docs
-    // TODO - unit tests
-    public addListener(listener: CanvasRedrawListener): void {
-        this._LISTENERS.add(listener);
+/**
+ * @category Sketch
+ * @category Sketch / Redraw Event
+ */
+export class RedrawEvent {
+    readonly #LISTENERS: Set<RedrawListener> = new Set<RedrawListener>();
+
+    public addListener(listener: RedrawListener): void {
+        this.#LISTENERS.add(listener);
     }
 
-    // TODO - release notes
-    // TODO - docs
-    // TODO - unit tests
     public publishRedraw(): void {
-        this._LISTENERS.forEach((listener: CanvasRedrawListener): void => {
-            listener.canvasRedraw();
+        this.#LISTENERS.forEach((listener: RedrawListener): void => {
+            listener.redraw();
         });
     }
 }
