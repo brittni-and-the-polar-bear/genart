@@ -15,5 +15,5 @@
  * See the GNU Affero General Public License for more details.
  */
 
-export * from './canvas-redraw-event';
-export * from './canvas-redraw-listener';
+export * from './redraw-event';
+export * from './redraw-listener';

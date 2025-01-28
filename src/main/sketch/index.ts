@@ -19,6 +19,7 @@ export * from './aspect-ratio';
 export * from './canvas';
 export * from './coordinate';
 export * from './graphics';
+export * from './redraw-event';
 export * from './screen';
 
 export * from './context';
