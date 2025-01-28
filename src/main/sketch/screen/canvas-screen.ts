@@ -26,10 +26,11 @@
 
 import P5Lib from 'p5';
 
-import { RedrawEvent, RedrawListener } from '../redraw-event';
+import { P5Context } from 'p5-context';
+
+import { Canvas } from "../canvas";
 import { GraphicsContext, GraphicsContextHandler } from "../graphics";
-import {P5Context} from "p5-context";
-import {Canvas} from "../canvas";
+import { RedrawEvent, RedrawListener } from '../redraw-event';
 
 export interface CanvasScreenConfig {
     readonly NAME: string;
