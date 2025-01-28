@@ -59,6 +59,10 @@ export class CoordinateRatioMapper {
         this.#isWebGL = isWebGL;
     }
 
+    public get center(): P5Lib.Vector {
+        return P5Context.p5.createVector(this.centerX, this.centerY);
+    }
+
     /**
      * The center x-axis value of the canvas.
      */

@@ -19,6 +19,8 @@
 // TODO - documentation
 // TODO - unit tests
 
+import P5Lib from 'p5';
+
 import { P5Context } from 'p5-context';
 
 import { ASPECT_RATIOS, AspectRatio } from './aspect-ratio';
@@ -143,6 +145,10 @@ export abstract class Context {
 
     public get height(): number {
         return this.coordinateMapper.height;
+    }
+
+    public get center(): P5Lib.Vector {
+        return this.coordinateMapper.center;
     }
 
     public abstract resize(): void;

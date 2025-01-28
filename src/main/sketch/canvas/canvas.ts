@@ -15,6 +15,8 @@
  * See the GNU Affero General Public License for more details.
  */
 
+import P5Lib from 'p5';
+
 import { P5Context } from 'p5-context';
 
 import { AspectRatio, AspectRatioConfig } from '../aspect-ratio';
@@ -138,6 +140,10 @@ export class Canvas {
 
     public static get height(): number {
         return Canvas.#canvasContext.height;
+    }
+
+    public static get center(): P5Lib.Vector {
+        return Canvas.#canvasContext.center;
     }
 
     public static get defaultStrokeWeight(): number {
