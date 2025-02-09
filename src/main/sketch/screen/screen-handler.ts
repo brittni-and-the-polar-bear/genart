@@ -15,72 +15,49 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// import { StringMap } from 'map';
-//
-// import { CanvasScreen } from './canvas-screen';
-//
-// // TODO - documentation
-// // TODO - unit tests
-// // TODO - release notes
-// /**
-//  * @category Canvas Screen
-//  */
-// export class ScreenHandler {
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     private static readonly _SCREENS: StringMap<CanvasScreen> = new StringMap<CanvasScreen>();
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     private static _currentScreen: CanvasScreen;
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public static set currentScreen(name: string) {
-//         const screen: CanvasScreen | undefined = ScreenHandler._SCREENS.get(name);
-//
-//         if (screen) {
-//             // ScreenHandler._currentScreen.deactivate();
-//             ScreenHandler._currentScreen = screen;
-//             ScreenHandler._currentScreen.activate();
-//         }
-//     }
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public static addScreen(screen: CanvasScreen): boolean {
-//         return ScreenHandler._SCREENS.setUndefinedKey(screen.NAME, screen);
-//     }
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public static draw(): void {
-//         ScreenHandler._currentScreen.draw();
-//     }
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public static mousePressed(): void {
-//         ScreenHandler._currentScreen.mousePressed();
-//     }
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public static keyPressed(): void {
-//         ScreenHandler._currentScreen.keyPressed();
-//     }
-//
-//     // TODO - documentation
-//     // TODO - unit tests
-//     // TODO - release notes
-//     public static publishRedraw(): void {
-//         ScreenHandler._currentScreen.publishRedraw();
-//     }
-// }
+import { StringMap } from 'map';
+
+import { CanvasScreen } from './canvas-screen';
+
+// TODO - documentation
+// TODO - unit tests
+// TODO - release notes
+/**
+ * @category Sketch
+ * @category Sketch / Screen
+ */
+export class ScreenHandler {
+    static readonly #SCREENS: StringMap<CanvasScreen> = new StringMap<CanvasScreen>();
+
+    static #currentScreen: CanvasScreen;
+
+    public static set currentScreen(name: string) {
+        const screen: CanvasScreen | undefined = ScreenHandler.#SCREENS.get(name);
+
+        if (screen) {
+            ScreenHandler.#currentScreen.deactivate();
+            ScreenHandler.#currentScreen = screen;
+            ScreenHandler.#currentScreen.activate();
+        }
+    }
+
+    public static addScreen(screen: CanvasScreen): boolean {
+        return ScreenHandler.#SCREENS.setUndefinedKey(screen.NAME, screen);
+    }
+
+    public static draw(): void {
+        ScreenHandler.#currentScreen.render();
+    }
+
+    public static mousePressed(): void {
+        ScreenHandler.#currentScreen.mousePressed();
+    }
+
+    public static keyPressed(): void {
+        ScreenHandler.#currentScreen.keyPressed();
+    }
+
+    public static publishRedraw(): void {
+        ScreenHandler.#currentScreen.publishRedraw();
+    }
+}

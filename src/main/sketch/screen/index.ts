@@ -16,3 +16,4 @@
  */
 
 export * from './canvas-screen';
+export * from './screen-handler';
