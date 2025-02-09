@@ -29,13 +29,7 @@ import { CanvasScreen } from './canvas-screen';
 export class ScreenHandler {
     readonly #SCREENS: StringMap<CanvasScreen> = new StringMap<CanvasScreen>();
 
-    #currentScreen: CanvasScreen | undefined;
-
-    public constructor(currentScreen?: CanvasScreen) {
-        if (currentScreen) {
-            this.#currentScreen = currentScreen;
-        }
-    }
+    #currentScreen: CanvasScreen | undefined = undefined;
 
     public set currentScreen(name: string) {
         const screen: CanvasScreen | undefined = this.#SCREENS.get(name);
