@@ -22,6 +22,7 @@ import { P5Context } from 'p5-context';
 import { AspectRatio, AspectRatioConfig } from '../aspect-ratio';
 import { ContextConfig } from '../context';
 import { RenderType } from '../render-type';
+import { CanvasScreen } from '../screen';
 
 import { CanvasContext } from './canvas-context';
 
@@ -45,6 +46,37 @@ export class Canvas {
     static #isLocked: boolean = false;
 
     static #canvasContext: CanvasContext = new CanvasContext({});
+
+    public static get context(): CanvasContext {
+        return Canvas.#canvasContext;
+    }
+
+    /**
+     * When true, {@link buildCanvas} will not create a new canvas.
+     */
+    public static get isLocked(): boolean {
+        return Canvas.#isLocked;
+    }
+
+    public static get currentScreen(): string {
+        return Canvas.#canvasContext.currentScreen;
+    }
+
+    public static set currentScreen(name: string) {
+        Canvas.#canvasContext.currentScreen = name;
+    }
+
+    public static draw(): void {
+        Canvas.#canvasContext.draw();
+    }
+
+    public static keyPressed(): void {
+        Canvas.#canvasContext.keyPressed();
+    }
+
+    public static mousePressed(): void {
+        Canvas.#canvasContext.mousePressed();
+    }
 
     public static buildCanvas(aspectRatio: AspectRatio | AspectRatioConfig,
                               resolution: number,
@@ -75,15 +107,8 @@ export class Canvas {
         }
     }
 
-    public static get context(): CanvasContext {
-        return Canvas.#canvasContext;
-    }
-
-    /**
-     * When true, {@link buildCanvas} will not create a new canvas.
-     */
-    public static get isLocked(): boolean {
-        return Canvas.#isLocked;
+    public static addScreen(screen: CanvasScreen): void {
+        Canvas.#canvasContext.addScreen(screen);
     }
 
     /**
@@ -100,11 +125,11 @@ export class Canvas {
         Canvas.#isLocked = false;
     }
 
-    public get matchWindowRatio(): boolean {
+    public static get matchWindowRatio(): boolean {
         return Canvas.#canvasContext.matchContainerRatio;
     }
 
-    public set matchWindowRatio(match: boolean) {
+    public static set matchWindowRatio(match: boolean) {
         Canvas.#canvasContext.matchContainerRatio = match;
     }
 
