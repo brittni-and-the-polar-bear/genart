@@ -27,37 +27,43 @@ import { CanvasScreen } from './canvas-screen';
  * @category Sketch / Screen
  */
 export class ScreenHandler {
-    static readonly #SCREENS: StringMap<CanvasScreen> = new StringMap<CanvasScreen>();
+    readonly #SCREENS: StringMap<CanvasScreen> = new StringMap<CanvasScreen>();
 
-    static #currentScreen: CanvasScreen;
+    #currentScreen: CanvasScreen | undefined;
 
-    public static set currentScreen(name: string) {
-        const screen: CanvasScreen | undefined = ScreenHandler.#SCREENS.get(name);
-
-        if (screen) {
-            ScreenHandler.#currentScreen.deactivate();
-            ScreenHandler.#currentScreen = screen;
-            ScreenHandler.#currentScreen.activate();
+    public constructor(currentScreen?: CanvasScreen) {
+        if (currentScreen) {
+            this.#currentScreen = currentScreen;
         }
     }
 
-    public static addScreen(screen: CanvasScreen): boolean {
-        return ScreenHandler.#SCREENS.setUndefinedKey(screen.NAME, screen);
+    public set currentScreen(name: string) {
+        const screen: CanvasScreen | undefined = this.#SCREENS.get(name);
+
+        if (screen && this.#currentScreen) {
+            this.#currentScreen.deactivate();
+            this.#currentScreen = screen;
+            this.#currentScreen.activate();
+        }
     }
 
-    public static draw(): void {
-        ScreenHandler.#currentScreen.render();
+    public addScreen(screen: CanvasScreen): boolean {
+        return this.#SCREENS.setUndefinedKey(screen.NAME, screen);
     }
 
-    public static mousePressed(): void {
-        ScreenHandler.#currentScreen.mousePressed();
+    public draw(): void {
+        this.#currentScreen?.render();
     }
 
-    public static keyPressed(): void {
-        ScreenHandler.#currentScreen.keyPressed();
+    public mousePressed(): void {
+        this.#currentScreen?.mousePressed();
     }
 
-    public static publishRedraw(): void {
-        ScreenHandler.#currentScreen.publishRedraw();
+    public keyPressed(): void {
+        this.#currentScreen?.keyPressed();
+    }
+
+    public publishRedraw(): void {
+        this.#currentScreen?.publishRedraw();
     }
 }
