@@ -75,17 +75,19 @@ export abstract class CanvasScreen {
     }
 
     public render(): void {
-        const p5: P5Lib = P5Context.p5;
-        this.drawToActiveGraphics();
-        p5.imageMode(p5.CENTER);
-        const canvasCenter: P5Lib.Vector = Canvas.center;
-        p5.image(
-            this.#GRAPHICS_HANDLER.getActiveGraphics(),
-            canvasCenter.x,
-            canvasCenter.y,
-            Canvas.width,
-            Canvas.height
-        );
+        if (this.isActive) {
+            const p5: P5Lib = P5Context.p5;
+            this.drawToActiveGraphics();
+            p5.imageMode(p5.CENTER);
+            const canvasCenter: P5Lib.Vector = Canvas.center;
+            p5.image(
+                this.#GRAPHICS_HANDLER.getActiveGraphics(),
+                canvasCenter.x,
+                canvasCenter.y,
+                Canvas.width,
+                Canvas.height
+            );
+        }
     }
 
     public mousePressed(): void {
