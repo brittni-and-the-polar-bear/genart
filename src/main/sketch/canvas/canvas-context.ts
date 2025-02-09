@@ -33,10 +33,7 @@ export class CanvasContext extends Context {
         this.#destroyCanvas();
         P5Context.p5.createCanvas(this.width, this.height, config.RENDER_TYPE);
         this.#decorateCanvas();
-    }
-
-    public get SCREEN_HANDLER(): ScreenHandler {
-        return this.#SCREEN_HANDLER;
+        this.#SCREEN_HANDLER.publishRedraw();
     }
 
     public get currentScreen(): string {

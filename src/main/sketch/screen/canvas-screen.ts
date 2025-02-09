@@ -15,6 +15,10 @@
  * See the GNU Affero General Public License for more details.
  */
 
+// TODO - CanvasScreenBuilder
+// TODO - - methods to build graphics contexts and screen.
+// TODO - - add a list of graphics configurations at one time.
+
 // TODO - click event handler
 // TODO - hover handler
 // TODO - keyboard event handler
@@ -76,6 +80,7 @@ export abstract class CanvasScreen {
 
     public render(): void {
         if (this.isActive) {
+            console.log(`Rendering screen: ${this.NAME}.`);
             const p5: P5Lib = P5Context.p5;
             this.drawToActiveGraphics();
             p5.imageMode(p5.CENTER);

@@ -38,10 +38,10 @@ export class ScreenHandler {
     public set currentScreen(name: string) {
         const screen: CanvasScreen | undefined = this.#SCREENS.get(name);
 
-        if (screen && this.#currentScreen) {
-            this.#currentScreen.deactivate();
+        if (screen) {
+            this.#currentScreen?.deactivate();
             this.#currentScreen = screen;
-            this.#currentScreen.activate();
+            this.#currentScreen?.activate();
         }
     }
 
