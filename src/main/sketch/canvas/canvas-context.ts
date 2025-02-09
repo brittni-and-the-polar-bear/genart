@@ -21,9 +21,12 @@ import { P5Context } from 'p5-context';
 
 import { AspectRatio } from '../aspect-ratio';
 import { Context, ContextConfig } from '../context';
+import { CanvasScreen, ScreenHandler } from '../screen';
 
 export class CanvasContext extends Context {
     // TODO - container mapper to Canvas
+
+    readonly #SCREEN_HANDLER: ScreenHandler = new ScreenHandler();
 
     public constructor(config: ContextConfig) {
         super(config);
@@ -32,12 +35,41 @@ export class CanvasContext extends Context {
         this.#decorateCanvas();
     }
 
+    public get SCREEN_HANDLER(): ScreenHandler {
+        return this.#SCREEN_HANDLER;
+    }
+
+    public get currentScreen(): string {
+        return this.#SCREEN_HANDLER.currentScreen;
+    }
+
+    public set currentScreen(name: string) {
+        this.#SCREEN_HANDLER.currentScreen = name;
+    }
+
+    public draw(): void {
+        this.#SCREEN_HANDLER.draw();
+    }
+
+    public keyPressed(): void {
+        this.#SCREEN_HANDLER.keyPressed();
+    }
+
+    public mousePressed(): void {
+        this.#SCREEN_HANDLER.mousePressed();
+    }
+
+    public addScreen(screen: CanvasScreen): void {
+        this.#SCREEN_HANDLER.addScreen(screen);
+    }
+
     public resize(): void {
         if (this.matchContainerRatio) {
             this.updateAspectRatio(CanvasContext.#getWindowAspectRatio());
         }
 
         this.#decorateCanvas();
+        this.#SCREEN_HANDLER.publishRedraw();
     }
 
     public updateAspectRatio(aspectRatio: AspectRatio): void {
@@ -84,5 +116,6 @@ export class CanvasContext extends Context {
     #updateCanvas(): void {
         P5Context.p5.resizeCanvas(this.width, this.height);
         this.#decorateCanvas();
+        this.#SCREEN_HANDLER.publishRedraw();
     }
 }

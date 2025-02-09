@@ -31,6 +31,10 @@ export class ScreenHandler {
 
     #currentScreen: CanvasScreen | undefined = undefined;
 
+    public get currentScreen(): string {
+        return this.#currentScreen?.NAME ?? '';
+    }
+
     public set currentScreen(name: string) {
         const screen: CanvasScreen | undefined = this.#SCREENS.get(name);
 
@@ -49,12 +53,12 @@ export class ScreenHandler {
         this.#currentScreen?.render();
     }
 
-    public mousePressed(): void {
-        this.#currentScreen?.mousePressed();
-    }
-
     public keyPressed(): void {
         this.#currentScreen?.keyPressed();
+    }
+
+    public mousePressed(): void {
+        this.#currentScreen?.mousePressed();
     }
 
     public publishRedraw(): void {
