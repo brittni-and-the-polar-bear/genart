@@ -33,17 +33,25 @@ const config: JestConfigWithTsJest = {
         // '^palette-colors$': '<rootDir>/src/main/color/palette/palette-colors',
         // '^palettes$': '<rootDir>/src/main/color/palette/palettes',
         '^random$': '<rootDir>/src/main/random',
-        // '^screen$': '<rootDir>/src/main/screen',
-        // '^string$': '<rootDir>/src/main/string',
-        // '^sketch-context$': '<rootDir>/src/main/sketch',
-        '^unit-test/shared$': '<rootDir>/src/test/shared',
+        '^sketch$': '<rootDir>/src/main/sketch',
+        '^string$': '<rootDir>/src/main/string',
+        '^unit-test/shared$': '<rootDir>/src/test/shared'
         // '^color-name-list$': '<rootDir>/node_modules/color-name-list'
-        '^string$': '<rootDir>/src/main/string'
     },
     testEnvironment: '@happy-dom/jest-environment',
     testRegex: './src/test/.*\\.(test|spec)?\\.(ts|tsx)$',
     transform: { '^.+\\.(ts|tsx)$': 'ts-jest' },
-    verbose: true
+    verbose: true,
+    testEnvironmentOptions: {
+        "url": "http://localhost",
+        "width": 1920,
+        "height": 1080,
+        "settings": {
+            "navigator": {
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+            }
+        }
+    }
 };
 
 export default config;
