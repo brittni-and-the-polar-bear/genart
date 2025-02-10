@@ -63,6 +63,7 @@ export class P5Context {
         console.warn('P5Context.reset() will create a new p5.js context.' +
             'This may cause unexpected behavior.' +
             'You will loose access to the current context and the current canvas.');
+        P5Context.#p5?.noCanvas();
         P5Context.#p5?.remove();
         P5Context.#p5 = null;
     }
