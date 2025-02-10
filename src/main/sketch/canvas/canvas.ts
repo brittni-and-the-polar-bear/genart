@@ -68,6 +68,16 @@ export class Canvas {
         }
     }
 
+    public static set name(name: string) {
+        if (Canvas.#canvasContext) {
+            Canvas.#canvasContext.name = name;
+        }
+    }
+
+    public static get name(): string {
+        return Canvas.#canvasContext?.name ?? '';
+    }
+
     public static draw(): void {
         Canvas.#canvasContext?.draw();
     }

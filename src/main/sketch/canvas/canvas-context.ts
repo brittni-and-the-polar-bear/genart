@@ -23,6 +23,10 @@ import { AspectRatio } from '../aspect-ratio';
 import { Context, ContextConfig } from '../context';
 import { CanvasScreen, ScreenHandler } from '../screen';
 
+// TODO - documentation
+// TODO - release notes
+// TODO - unit tests
+
 export class CanvasContext extends Context {
     // TODO - container mapper to Canvas
 
@@ -30,7 +34,6 @@ export class CanvasContext extends Context {
 
     public constructor(config: ContextConfig) {
         super(config);
-        this.#destroyCanvas();
         P5Context.p5.createCanvas(this.width, this.height, this.RENDER_TYPE);
         this.resize();
     }
@@ -41,6 +44,24 @@ export class CanvasContext extends Context {
 
     public set currentScreen(name: string) {
         this.#SCREEN_HANDLER.currentScreen = name;
+    }
+
+    public override get name(): string {
+        if (!super.name) {
+            const p5: P5Lib = P5Context.p5;
+            const canvas: P5Lib.Element | null = p5.select('canvas');
+
+            if (canvas) {
+                return canvas.id();
+            }
+        }
+
+        return super.name;
+    }
+
+    public override set name(name: string) {
+        super.name = name;
+        this.#decorateCanvas();
     }
 
     public draw(): void {
@@ -101,12 +122,11 @@ export class CanvasContext extends Context {
             } else {
                 canvas.attribute('style', 'width: 100vw;');
             }
-        }
-    }
 
-    #destroyCanvas(): void {
-        const canvas: P5Lib.Element | null = P5Context.p5.select('canvas');
-        canvas?.remove();
+            if (this.name) {
+                canvas.attribute('id', this.name);
+            }
+        }
     }
 
     #updateCanvas(): void {

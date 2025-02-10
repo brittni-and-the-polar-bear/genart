@@ -32,10 +32,13 @@ export interface ContextConfig {
     readonly ASPECT_RATIO?: AspectRatio;
     readonly RESOLUTION?: number;
     readonly MATCH_CONTAINER_RATIO?: boolean;
+    readonly NAME?: string;
 }
 
 export abstract class Context {
     readonly #RENDER_TYPE: RenderType = P5Context.p5.P2D;
+
+    #name: string;
 
     /**
      * Current {@link AspectRatio} of the context.
@@ -63,6 +66,7 @@ export abstract class Context {
 
     protected constructor(config: ContextConfig) {
         this.#RENDER_TYPE = config.RENDER_TYPE ?? P5Context.p5.P2D;
+        this.#name = config.NAME ?? '';
 
         if (config.ASPECT_RATIO) {
             this.#aspectRatio = config.ASPECT_RATIO;
@@ -121,6 +125,14 @@ export abstract class Context {
 
     public set matchContainerRatio(matchContainerRatio: boolean) {
         this.#matchContainerRatio = matchContainerRatio;
+    }
+
+    public get name(): string {
+        return this.#name;
+    }
+
+    public set name(name: string) {
+        this.#name = name;
     }
 
     public get RENDER_TYPE(): RenderType {
