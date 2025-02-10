@@ -85,12 +85,12 @@
     "color-name-list": "11.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@happy-dom/jest-environment": "^16.8.1",
-    "@stylistic/eslint-plugin": "^3.0.1",
+    "@eslint/js": "^9.20.0",
+    "@happy-dom/jest-environment": "^17.0.2",
+    "@stylistic/eslint-plugin": "^3.1.0",
     "@types/eslint__js": "^8.42.3",
     "@types/jest": "^29.5.14",
-    "eslint": "^9.19.0",
+    "eslint": "^9.20.0",
     "eslint-plugin-es-x": "^8.4.1",
     "eslint-plugin-n": "^17.15.1",
     "eslint-plugin-security": "^3.0.1",
@@ -99,9 +99,9 @@
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "tsup": "^8.3.6",
-    "typedoc": "^0.27.6",
+    "typedoc": "^0.27.7",
     "typedoc-plugin-coverage": "^3.4.1",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.22.0"
+    "typescript-eslint": "^8.23.0"
   }
 }
