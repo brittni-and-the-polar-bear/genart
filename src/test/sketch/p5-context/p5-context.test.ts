@@ -24,6 +24,10 @@ describe('P5Context tests', (): void => {
         P5Context.reset();
     });
 
+    afterAll((): void => {
+        P5Context.reset();
+    });
+
     test('P5Context.p5 default context', (): void => {
         expect(P5Context.p5).toBeTruthy();
         expect(P5Context.p5.width).toBe(0);
@@ -39,7 +43,6 @@ describe('P5Context tests', (): void => {
                 p.noLoop();
             };
         });
-        P5Context.initialize(p5);
         expect(P5Context.p5).toBe(p5);
         expect(P5Context.p5.color(255, 255, 0)).toBeTruthy();
     });
@@ -52,7 +55,6 @@ describe('P5Context tests', (): void => {
                 p.noLoop();
             };
         });
-        P5Context.initialize(p5);
         expect(P5Context.p5).toBe(p5);
         expect(P5Context.p5.color(255, 175, 255)).toBeTruthy();
 
@@ -62,7 +64,6 @@ describe('P5Context tests', (): void => {
                 p.noLoop();
             };
         });
-        P5Context.initialize(otherP5);
         expect(P5Context.p5).not.toBe(otherP5);
         expect(P5Context.p5).toBe(p5);
         expect(P5Context.p5.color(175, 175, 255)).toBeTruthy();
@@ -76,7 +77,6 @@ describe('P5Context tests', (): void => {
                 p.noLoop();
             };
         });
-        P5Context.initialize(p5);
         expect(P5Context.p5).toBe(p5);
         expect(P5Context.p5.color(255, 0, 255)).toBeTruthy();
 
@@ -88,7 +88,6 @@ describe('P5Context tests', (): void => {
                 p.noLoop();
             };
         });
-        P5Context.initialize(otherP5);
         expect(P5Context.p5).toBe(otherP5);
         expect(P5Context.p5).not.toBe(p5);
         expect(P5Context.p5.color(0, 175, 255)).toBeTruthy();

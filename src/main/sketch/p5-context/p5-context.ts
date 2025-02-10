@@ -17,8 +17,9 @@
 
 import P5Lib from 'p5';
 
-const noP5: P5Lib = new P5Lib((): void => { /* empty */ });
-noP5.noCanvas();
+// TODO - documentation
+// TODO - release notes
+// TODO - unit tests
 
 /**
  * P5Context provides static access to the p5.js context.
@@ -31,36 +32,38 @@ export class P5Context {
     /**
      * The underlying p5.js context object.
      */
-    static #p5?: P5Lib | null = null;
+    static #p5: P5Lib | null = null;
 
-    /**
-     * Initializes the context to allow other accessors to have
-     * accurate canvas, environment, and runtime information.
-     *
-     * @param p5 - The sketch context of the running p5.js script.
-     */
-    public static initialize(p5: P5Lib): void {
-        if (!this.#p5) {
-            this.#p5 = p5;
-        }
+    private constructor() {
+        throw new Error('P5Context is a static class and cannot be instantiated.');
     }
 
     /**
      * The current p5.js context.<br/>
-     * If no context has been initialized with {@link P5Context.initialize},
-     * the method will return an "empty" sketch context (0x0 canvas; no loop).
+     * If no context has been initialized,
+     * a default context will be created with an empty setup and draw method.
      */
     public static get p5(): P5Lib {
-        return this.#p5 ?? noP5;
+        if (!P5Context.#p5) {
+            P5Context.#p5 = new P5Lib((p: P5Lib): void => {
+                p.setup = (): void => {
+                    /* empty */
+                }
+
+                p.draw = (): void => {
+                    /* empty */
+                }
+            });
+        }
+
+        return P5Context.#p5;
     }
 
-    /**
-     * Resets the p5.js context to null.
-     * This will allow the context to be re-initialized
-     * using the {@link P5Context.initialize} method.
-     */
     public static reset(): void {
-        this.#p5?.noCanvas();
-        this.#p5 = null;
+        console.warn('P5Context.reset() will create a new p5.js context.' +
+            'This may cause unexpected behavior.' +
+            'You will loose access to the current context and the current canvas.');
+        P5Context.#p5?.remove();
+        P5Context.#p5 = null;
     }
 }

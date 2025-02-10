@@ -31,9 +31,8 @@ export class CanvasContext extends Context {
     public constructor(config: ContextConfig) {
         super(config);
         this.#destroyCanvas();
-        P5Context.p5.createCanvas(this.width, this.height, config.RENDER_TYPE);
-        this.#decorateCanvas();
-        this.#SCREEN_HANDLER.publishRedraw();
+        P5Context.p5.createCanvas(this.width, this.height, this.RENDER_TYPE);
+        this.resize();
     }
 
     public get currentScreen(): string {
@@ -60,7 +59,7 @@ export class CanvasContext extends Context {
         this.#SCREEN_HANDLER.addScreen(screen);
     }
 
-    public resize(): void {
+    public override resize(): void {
         if (this.matchContainerRatio) {
             this.updateAspectRatio(CanvasContext.#getWindowAspectRatio());
         }
@@ -69,12 +68,12 @@ export class CanvasContext extends Context {
         this.#SCREEN_HANDLER.publishRedraw();
     }
 
-    public updateAspectRatio(aspectRatio: AspectRatio): void {
+    public override updateAspectRatio(aspectRatio: AspectRatio): void {
         this.aspectRatio = aspectRatio;
         this.#updateCanvas();
     }
 
-    public updateResolution(resolution: number): void {
+    public override updateResolution(resolution: number): void {
         this.resolution = resolution;
         this.#updateCanvas();
     }

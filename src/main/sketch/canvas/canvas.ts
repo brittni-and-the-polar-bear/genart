@@ -45,9 +45,9 @@ export class Canvas {
      */
     static #isLocked: boolean = false;
 
-    static #canvasContext: CanvasContext = new CanvasContext({});
+    static #canvasContext: CanvasContext | undefined;
 
-    public static get context(): CanvasContext {
+    public static get context(): CanvasContext | undefined {
         return Canvas.#canvasContext;
     }
 
@@ -59,23 +59,25 @@ export class Canvas {
     }
 
     public static get currentScreen(): string {
-        return Canvas.#canvasContext.currentScreen;
+        return Canvas.#canvasContext?.currentScreen ?? '';
     }
 
     public static set currentScreen(name: string) {
-        Canvas.#canvasContext.currentScreen = name;
+        if (Canvas.#canvasContext) {
+            Canvas.#canvasContext.currentScreen = name;
+        }
     }
 
     public static draw(): void {
-        Canvas.#canvasContext.draw();
+        Canvas.#canvasContext?.draw();
     }
 
     public static keyPressed(): void {
-        Canvas.#canvasContext.keyPressed();
+        Canvas.#canvasContext?.keyPressed();
     }
 
     public static mousePressed(): void {
-        Canvas.#canvasContext.mousePressed();
+        Canvas.#canvasContext?.mousePressed();
     }
 
     public static buildCanvas(aspectRatio: AspectRatio | AspectRatioConfig,
@@ -108,7 +110,7 @@ export class Canvas {
     }
 
     public static addScreen(screen: CanvasScreen): void {
-        Canvas.#canvasContext.addScreen(screen);
+        Canvas.#canvasContext?.addScreen(screen);
     }
 
     /**
@@ -126,11 +128,13 @@ export class Canvas {
     }
 
     public static get matchWindowRatio(): boolean {
-        return Canvas.#canvasContext.matchContainerRatio;
+        return Canvas.#canvasContext?.matchContainerRatio ?? false;
     }
 
     public static set matchWindowRatio(match: boolean) {
-        Canvas.#canvasContext.matchContainerRatio = match;
+        if (Canvas.#canvasContext) {
+            Canvas.#canvasContext.matchContainerRatio = match;
+        }
     }
 
     /**
@@ -138,7 +142,7 @@ export class Canvas {
      * NOTE: This method will not change the canvas resolution.
      */
     public static resize(): void {
-        Canvas.#canvasContext.resize();
+        Canvas.#canvasContext?.resize();
     }
 
     /**
@@ -147,7 +151,7 @@ export class Canvas {
      * @param aspectRatio
      */
     public static updateAspectRatio(aspectRatio: AspectRatio): void {
-        Canvas.#canvasContext.updateAspectRatio(aspectRatio);
+        Canvas.#canvasContext?.updateAspectRatio(aspectRatio);
     }
 
     /**
@@ -156,22 +160,22 @@ export class Canvas {
      * @param resolution
      */
     public static updateResolution(resolution: number): void {
-        Canvas.#canvasContext.updateResolution(resolution);
+        Canvas.#canvasContext?.updateResolution(resolution);
     }
 
     public static get width(): number {
-        return Canvas.#canvasContext.width;
+        return Canvas.#canvasContext?.width ?? 0;
     }
 
     public static get height(): number {
-        return Canvas.#canvasContext.height;
+        return Canvas.#canvasContext?.height ?? 0;
     }
 
     public static get center(): P5Lib.Vector {
-        return Canvas.#canvasContext.center;
+        return Canvas.#canvasContext?.center ?? P5Context.p5.createVector();
     }
 
     public static get defaultStrokeWeight(): number {
-        return Canvas.#canvasContext.defaultStrokeWeight;
+        return Canvas.#canvasContext?.defaultStrokeWeight || 1;
     }
 }

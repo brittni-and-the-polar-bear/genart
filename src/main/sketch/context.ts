@@ -35,10 +35,7 @@ export interface ContextConfig {
 }
 
 export abstract class Context {
-    /**
-     * Is the context rendering mode set to WebGL?
-     */
-    #isWebGL: boolean;
+    readonly #RENDER_TYPE: RenderType = P5Context.p5.P2D;
 
     /**
      * Current {@link AspectRatio} of the context.
@@ -65,8 +62,7 @@ export abstract class Context {
     #coordinateMapper: CoordinateRatioMapper;
 
     protected constructor(config: ContextConfig) {
-        const renderType: RenderType = config.RENDER_TYPE ?? P5Context.p5.P2D;
-        this.#isWebGL = renderType === P5Context.p5.WEBGL;
+        this.#RENDER_TYPE = config.RENDER_TYPE ?? P5Context.p5.P2D;
 
         if (config.ASPECT_RATIO) {
             this.#aspectRatio = config.ASPECT_RATIO;
@@ -87,8 +83,6 @@ export abstract class Context {
         const width: number = this.aspectRatio.getWidth(this.resolution);
         const height: number = this.aspectRatio.getHeight(this.resolution);
         this.#coordinateMapper = new CoordinateRatioMapper(width, height, this.isWebGL);
-
-        this.resize();
     }
 
     public static get MIN_RESOLUTION(): number {
@@ -118,7 +112,7 @@ export abstract class Context {
     }
 
     public get isWebGL(): boolean {
-        return this.#isWebGL;
+        return this.#RENDER_TYPE === P5Context.p5.WEBGL;
     }
 
     public get matchContainerRatio(): boolean {
@@ -127,6 +121,10 @@ export abstract class Context {
 
     public set matchContainerRatio(matchContainerRatio: boolean) {
         this.#matchContainerRatio = matchContainerRatio;
+    }
+
+    public get RENDER_TYPE(): RenderType {
+        return this.#RENDER_TYPE;
     }
 
     public get resolution(): number {
