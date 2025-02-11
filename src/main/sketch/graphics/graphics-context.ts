@@ -20,7 +20,7 @@ import P5Lib from 'p5';
 import { P5Context } from 'p5-context';
 
 import { AspectRatio } from '../aspect-ratio';
-import {Context, ContextConfig} from '../context';
+import { Context, ContextConfig } from '../context';
 
 // TODO - GraphicsContext - register as CanvasUpdateListener on screen
 // TODO - on screen canvas update - if matching, update ratio.
@@ -32,29 +32,22 @@ export class GraphicsContext extends Context {
 
     public constructor(config: ContextConfig) {
         super(config);
-        // TODO - fix width and height and renderer.
-        this.#GRAPHICS = P5Context.p5.createGraphics(100, 100);
-    }
-
-    public get NAME(): string {
-        return 'name';
+        this.#GRAPHICS = P5Context.p5.createGraphics(this.width, this.height, this.RENDER_TYPE);
     }
 
     public get GRAPHICS(): P5Lib.Graphics {
         return this.#GRAPHICS;
     }
 
-    resize(): void {
+    public override resize(): void {
         console.log('resize');
     }
 
-    public updateAspectRatio(aspectRatio: AspectRatio): void {
+    public override updateAspectRatio(aspectRatio: AspectRatio): void {
         console.log(aspectRatio);
     }
 
-    public updateResolution(resolution: number): void {
+    public override updateResolution(resolution: number): void {
         console.log(resolution);
     }
-    // TODO - container mapper to parent
-    // TODO - container mapper to Canvas
 }
