@@ -46,6 +46,8 @@ export class CanvasContext extends Context {
         this.#SCREEN_HANDLER.currentScreen = name;
     }
 
+    // TODO - unit test
+    // TODO - - if name is set to '', should return canvas id
     public override get NAME(): string {
         if (!super.NAME) {
             const p5: P5Lib = P5Context.p5;

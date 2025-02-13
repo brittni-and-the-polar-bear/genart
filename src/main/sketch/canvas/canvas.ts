@@ -89,6 +89,7 @@ export class Canvas {
     public static buildCanvas(aspectRatio: AspectRatio | AspectRatioConfig,
                               resolution: number,
                               renderType?: RenderType,
+                              name?: string,
                               matchWindowRatio?: boolean,
                               lockCanvas?: boolean): void {
         if (!Canvas.isLocked) {
@@ -101,6 +102,7 @@ export class Canvas {
             }
 
             const config: ContextConfig = {
+                NAME: name ?? '',
                 ASPECT_RATIO: configAspectRatio,
                 RENDER_TYPE: renderType ?? P5Context.p5.P2D,
                 RESOLUTION: resolution,

@@ -28,11 +28,11 @@ import { CoordinateRatioMapper } from './coordinate';
 import { RenderType } from './render-type';
 
 export interface ContextConfig {
+    readonly NAME: string;
     readonly RENDER_TYPE?: RenderType;
     readonly ASPECT_RATIO?: AspectRatio;
     readonly RESOLUTION?: number;
     readonly MATCH_CONTAINER_RATIO?: boolean;
-    readonly NAME?: string;
 }
 
 export abstract class Context {
@@ -66,7 +66,7 @@ export abstract class Context {
 
     protected constructor(config: ContextConfig) {
         this.#RENDER_TYPE = config.RENDER_TYPE ?? P5Context.p5.P2D;
-        this.#NAME = config.NAME ?? '';
+        this.#NAME = config.NAME;
 
         if (config.ASPECT_RATIO) {
             this.#aspectRatio = config.ASPECT_RATIO;

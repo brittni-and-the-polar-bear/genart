@@ -35,6 +35,14 @@ export class GraphicsContext extends Context {
         this.#GRAPHICS = P5Context.p5.createGraphics(this.width, this.height, this.RENDER_TYPE);
     }
 
+    public override get NAME(): string {
+        if (!super.NAME) {
+            return this.#GRAPHICS.id();
+        }
+
+        return super.NAME;
+    }
+
     public get GRAPHICS(): P5Lib.Graphics {
         return this.#GRAPHICS;
     }
