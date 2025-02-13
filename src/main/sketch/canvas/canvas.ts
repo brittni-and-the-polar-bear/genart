@@ -68,14 +68,8 @@ export class Canvas {
         }
     }
 
-    public static set name(name: string) {
-        if (Canvas.#canvasContext) {
-            Canvas.#canvasContext.name = name;
-        }
-    }
-
     public static get name(): string {
-        return Canvas.#canvasContext?.name ?? '';
+        return Canvas.#canvasContext?.NAME ?? '';
     }
 
     public static draw(): void {
@@ -90,6 +84,8 @@ export class Canvas {
         Canvas.#canvasContext?.mousePressed();
     }
 
+    // TODO - pass in Canvas name
+    // TODO - what happens when no name?
     public static buildCanvas(aspectRatio: AspectRatio | AspectRatioConfig,
                               resolution: number,
                               renderType?: RenderType,

@@ -80,11 +80,12 @@ export abstract class CanvasScreen {
 
     public render(): void {
         if (this.isActive) {
-            console.log(`Rendering screen: ${this.NAME}.`);
             const p5: P5Lib = P5Context.p5;
             this.drawToActiveGraphics();
             p5.imageMode(p5.CENTER);
             const canvasCenter: P5Lib.Vector = Canvas.center;
+
+            // TODO - aspect ratio of width and height need to match aspect ratio of graphics
             p5.image(
                 this.#GRAPHICS_HANDLER.getActiveGraphics(),
                 canvasCenter.x,

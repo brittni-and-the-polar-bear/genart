@@ -46,8 +46,8 @@ export class CanvasContext extends Context {
         this.#SCREEN_HANDLER.currentScreen = name;
     }
 
-    public override get name(): string {
-        if (!super.name) {
+    public override get NAME(): string {
+        if (!super.NAME) {
             const p5: P5Lib = P5Context.p5;
             const canvas: P5Lib.Element | null = p5.select('canvas');
 
@@ -56,12 +56,7 @@ export class CanvasContext extends Context {
             }
         }
 
-        return super.name;
-    }
-
-    public override set name(name: string) {
-        super.name = name;
-        this.#decorateCanvas();
+        return super.NAME;
     }
 
     public draw(): void {
@@ -123,8 +118,8 @@ export class CanvasContext extends Context {
                 canvas.attribute('style', 'width: 100vw;');
             }
 
-            if (this.name) {
-                canvas.attribute('id', this.name);
+            if (this.NAME) {
+                canvas.attribute('id', this.NAME);
             }
         }
     }
