@@ -72,6 +72,10 @@ export class Canvas {
         return Canvas.#canvasContext?.NAME ?? '';
     }
 
+    public static get resolution(): number {
+        return Canvas.#canvasContext?.resolution ?? 100;
+    }
+
     public static draw(): void {
         Canvas.#canvasContext?.draw();
     }

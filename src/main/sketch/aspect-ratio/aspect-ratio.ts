@@ -93,20 +93,25 @@ export class AspectRatio {
         return this.#HEIGHT_RATIO;
     }
 
-    public getWidth(resolution: number): number {
-        return Math.floor(this.#calculateUnit(resolution) * this.#WIDTH_RATIO);
+    public getWidth(resolution: number, applyToLongSide?: boolean): number {
+        return Math.floor(this.#calculateUnit(resolution, applyToLongSide) * this.#WIDTH_RATIO);
     }
 
-    public getHeight(resolution: number): number {
-        return Math.floor(this.#calculateUnit(resolution) * this.#HEIGHT_RATIO);
+    public getHeight(resolution: number, applyToLongSide?: boolean): number {
+        return Math.floor(this.#calculateUnit(resolution, applyToLongSide) * this.#HEIGHT_RATIO);
     }
 
     /**
      * Calculates the base unit for the aspect ratio given the target resolution.
      *
      * @param resolution - The target resolution.
+     * @param applyToLongSide - When true, the unit is calculated based on the longer side of the aspect ratio.
      */
-    #calculateUnit(resolution: number): number {
+    #calculateUnit(resolution: number, applyToLongSide?: boolean): number {
+        if (applyToLongSide) {
+            return resolution / Math.max(this.#WIDTH_RATIO, this.#HEIGHT_RATIO);
+        }
+
         return resolution / Math.min(this.#WIDTH_RATIO, this.#HEIGHT_RATIO);
     }
 

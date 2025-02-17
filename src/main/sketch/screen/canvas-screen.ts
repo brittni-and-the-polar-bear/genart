@@ -32,6 +32,7 @@ import P5Lib from 'p5';
 
 import { P5Context } from 'p5-context';
 
+import { AspectRatio } from '../aspect-ratio';
 import { Canvas } from '../canvas';
 import { GraphicsContext, GraphicsContextHandler } from '../graphics';
 import { RedrawEvent, RedrawListener } from '../redraw-event';
@@ -53,10 +54,13 @@ export abstract class CanvasScreen {
 
     #isActive: boolean = false;
     #saveCount: number = 0;
+    //
+    // #fixToXAxis: boolean = false;
 
     protected constructor(config: CanvasScreenConfig) {
         this.#NAME = config.NAME;
         this.#GRAPHICS_HANDLER = new GraphicsContextHandler(config.ACTIVE_GRAPHICS, config.OTHER_GRAPHICS);
+        // this.#calculateFit();
     }
 
     public get isActive(): boolean {
@@ -84,16 +88,38 @@ export abstract class CanvasScreen {
             this.drawToActiveGraphics();
             p5.imageMode(p5.CENTER);
             const canvasCenter: P5Lib.Vector = Canvas.center;
+            const { width, height } = this.#calculateGraphicsDimensions();
 
-            // TODO - aspect ratio of width and height need to match aspect ratio of graphics
             p5.image(
                 this.#GRAPHICS_HANDLER.getActiveGraphics(),
                 canvasCenter.x,
                 canvasCenter.y,
-                Canvas.width,
-                Canvas.height
+                width,
+                height
             );
         }
+    }
+
+    // #calculateFit(): void {
+    //     const graphics: P5Lib.Graphics = this.#GRAPHICS_HANDLER.getActiveGraphics();
+    //     const goalRatio: number = graphics.width / graphics.height;
+    //     const canvasRatio: number = Canvas.width / Canvas.height;
+    //     this.#fixToXAxis = goalRatio > canvasRatio;
+    // }
+
+    #calculateGraphicsDimensions(): { width: number; height: number } {
+        const graphicsContext: GraphicsContext = this.#GRAPHICS_HANDLER.getActiveContext();
+        const graphicsRatio: AspectRatio = graphicsContext.aspectRatio;
+
+        let width: number = graphicsRatio.getWidth(Canvas.resolution);
+        let height: number = graphicsRatio.getHeight(Canvas.resolution);
+
+        if (width > Canvas.width || height > Canvas.height) {
+            width = graphicsRatio.getWidth(Canvas.resolution, true);
+            height = graphicsRatio.getHeight(Canvas.resolution, true);
+        }
+
+        return { width: width, height: height };
     }
 
     public mousePressed(): void {
@@ -137,6 +163,7 @@ export abstract class CanvasScreen {
 
     public publishRedraw(): void {
         this.#REDRAW_EVENT.publishRedraw();
+        // this.#calculateFit();
     }
 
     public addRedrawListener(listener: RedrawListener): void {
