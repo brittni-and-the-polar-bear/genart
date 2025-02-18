@@ -17,6 +17,8 @@
 
 import { Discriminable, Discriminators } from 'discriminator';
 
+// TODO - unit tests
+
 /**
  * A color to be used in a {@link Palette}.
  *
