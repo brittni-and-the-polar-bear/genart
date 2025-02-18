@@ -17,3 +17,5 @@
 
 export * from './color-name';
 export * from './palette';
+
+export * from './color-selector-type'

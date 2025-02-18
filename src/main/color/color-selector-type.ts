@@ -16,6 +16,9 @@
  */
 
 // TODO - fix link to ColorSelector
+// TODO - documentation
+// TODO - release notes
+// TODO - unit tests
 /**
  * Enum for the different types of {@link ColorSelector} classes.
  *
@@ -32,11 +35,8 @@ export enum ColorSelectorType {
      */
     RGB = 'RGB color selector',
 
-    // TODO - docs
-    // TODO - release notes
     OTHER = 'other color selector',
 
-    // TODO - fix link to DefaultColorSelector
     /**
      * Default color selector. Should only be used in {@link DefaultColorSelector}.
      */
