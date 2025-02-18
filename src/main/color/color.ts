@@ -37,27 +37,36 @@ export class Color {
     /**
      * The color's red component. Ranges in value from 0-255.
      */
-    private _red: number;
+    #red: number;
 
     /**
      * The color's green component. Ranges in value from 0-255.
      */
-    private _green: number;
+    #green: number;
 
     /**
      * The color's blue component. Ranges in value from 0-255.
      */
-    private _blue: number;
+    #blue: number;
 
     /**
      * The color's alpha component. Ranges in value from 0-255.
      */
-    private _alpha: number; // 0-255
+    #alpha: number; // 0-255
 
     /**
      * The color's name. Retrieved from a {@link PaletteColor} or {@link ColorNames}.
      */
-    private _name: string | null;
+    #name: string | null;
+
+    #originalLerpColor: Color;
+    #endLerpColor: Color;
+    #componentLerp: boolean;
+    #lerpPercentage: { red: number, green: number, blue: number, alpha: number };
+    #lerpSteps: number;
+    #lerpInitiated: boolean;
+    #lerpComplete: boolean;
+    #lerpPaused: boolean;
 
     /**
      * @param color - A p5.js Color, {@link Color}, or {@link PaletteColor} object.<br/>
@@ -74,7 +83,7 @@ export class Color {
      * will be used to build the color.
      */
     public constructor(
-        color?: P5Lib.Color | Color | PaletteColor
+        color?: P5Lib.Color | Color | PaletteColor | string
     );
     public constructor(
         red: number,
@@ -83,50 +92,65 @@ export class Color {
         alpha?: number
     );
     public constructor(
-        comp1?: P5Lib.Color | Color | PaletteColor | number,
-        comp2?: number,
-        comp3?: number,
-        comp4?: number
+        arg1?: P5Lib.Color | Color | PaletteColor | number | string,
+        arg2?: number,
+        arg3?: number,
+        arg4?: number
     ) {
-        this._red = 0;
-        this._green = 0;
-        this._blue = 0;
-        this._alpha = 255;
-        this._name = 'black';
+        this.#red = 0;
+        this.#green = 0;
+        this.#blue = 0;
+        this.#alpha = 255;
+        this.#name = 'black';
 
-        if (((comp1 && (typeof comp1 === 'number')) || (comp1 === 0)) &&
-            (comp2 || (comp2 === 0)) &&
-            (comp3 || (comp3 === 0))) {
-            this.red = comp1;
-            this.green = comp2;
-            this.blue = comp3;
+        if (((arg1 && (typeof arg1 === 'number')) || (arg1 === 0)) &&
+            (arg2 || (arg2 === 0)) &&
+            (arg3 || (arg3 === 0))) {
+            this.red = arg1;
+            this.green = arg2;
+            this.blue = arg3;
 
-            if (comp4 || comp4 === 0) {
-                this.alpha = comp4;
+            if (arg4 || arg4 === 0) {
+                this.alpha = arg4;
             }
 
-            this._name = null;
-        } else if (comp1) {
-            if (comp1 instanceof P5Lib.Color) {
-                this.setColorValues(comp1);
-                this._name = null;
-            } else if (comp1 instanceof Color) {
-                this.setColorValues(comp1);
-            } else if (Discriminator.isPaletteColor(comp1)) {
-                if (comp1.RGB) {
-                    this.red = comp1.RGB.R;
-                    this.green = comp1.RGB.G;
-                    this.blue = comp1.RGB.B;
+            this.#name = null;
+        } else if (arg1) {
+            if (arg1 instanceof P5Lib.Color) {
+                this.#setColorValues(arg1);
+                this.#name = null;
+            } else if (arg1 instanceof Color) {
+                this.#setColorValues(arg1);
+            } else if (Discriminator.isPaletteColor(arg1)) {
+                if (arg1.RGB) {
+                    this.red = arg1.RGB.R;
+                    this.green = arg1.RGB.G;
+                    this.blue = arg1.RGB.B;
 
                 } else {
                     // TODO - unit test setting color from HEX value
-                    const c: P5Lib.Color = P5Context.p5.color(comp1.HEX);
-                    this.setColorValues(c);
+                    const c: P5Lib.Color = P5Context.p5.color(arg1.HEX);
+                    this.#setColorValues(c);
                 }
 
-                this._name = comp1.NAME;
+                this.#name = arg1.NAME;
+            } else if (typeof arg1 === 'string') {
+                // TODO - unit test HEX string argument
+                // TODO - unit test RGB string argument
+                const c: P5Lib.Color = P5Context.p5.color(arg1);
+                this.#setColorValues(c);
+                this.#name = null;
             }
         }
+
+        this.#originalLerpColor = Color.copy(this);
+        this.#endLerpColor = Color.copy(this);
+        this.#componentLerp = false;
+        this.#lerpPercentage = { red: 0, green: 0, blue: 0, alpha: 0 };
+        this.#lerpSteps = 0;
+        this.#lerpInitiated = false;
+        this.#lerpComplete = false;
+        this.#lerpPaused = false;
     }
 
     /**
@@ -195,15 +219,15 @@ export class Color {
      * {@link red}, {@link green}, {@link blue}, and {@link alpha}.
      */
     public set color(c: P5Lib.Color) {
-        this.setColorValues(c);
-        this._name = null;
+        this.#setColorValues(c);
+        this.#name = null;
     }
 
     /**
      * @returns The current red component value (0-255).
      */
     public get red(): number {
-        return this._red;
+        return this.#red;
     }
 
     /**
@@ -213,15 +237,15 @@ export class Color {
      */
     public set red(r: number) {
         const p5: P5Lib = P5Context.p5;
-        this._red = Math.floor(p5.constrain(r, 0, 255));
-        this._name = null;
+        this.#red = Math.floor(p5.constrain(r, 0, 255));
+        this.#name = null;
     }
 
     /**
      * @returns The current green component value (0-255).
      */
     public get green(): number {
-        return this._green;
+        return this.#green;
     }
 
     /**
@@ -231,15 +255,15 @@ export class Color {
      */
     public set green(g: number) {
         const p5: P5Lib = P5Context.p5;
-        this._green = Math.floor(p5.constrain(g, 0, 255));
-        this._name = null;
+        this.#green = Math.floor(p5.constrain(g, 0, 255));
+        this.#name = null;
     }
 
     /**
      * @returns The current blue component value (0-255).
      */
     public get blue(): number {
-        return this._blue;
+        return this.#blue;
     }
 
     /**
@@ -249,15 +273,15 @@ export class Color {
      */
     public set blue(b: number) {
         const p5: P5Lib = P5Context.p5;
-        this._blue = Math.floor(p5.constrain(b, 0, 255));
-        this._name = null;
+        this.#blue = Math.floor(p5.constrain(b, 0, 255));
+        this.#name = null;
     }
 
     /**
      * @returns The current alpha component value (0-255).
      */
     public get alpha(): number {
-        return this._alpha;
+        return this.#alpha;
     }
 
     /**
@@ -267,23 +291,23 @@ export class Color {
      */
     public set alpha(a: number) {
         const p5: P5Lib = P5Context.p5;
-        this._alpha = Math.floor(p5.constrain(a, 0, 255));
+        this.#alpha = Math.floor(p5.constrain(a, 0, 255));
     }
 
     /**
      * @returns The name of the color.
      */
     public get name(): string {
-        if (!this._name) {
-            this._name = 'UNKNOWN';
+        if (!this.#name) {
+            this.#name = 'UNKNOWN';
             const name: string | undefined = ColorNames.getColorName(this.hex);
 
             if (name) {
-                this._name = name;
+                this.#name = name;
             }
         }
 
-        return this._name;
+        return this.#name;
     }
 
     /**
@@ -326,6 +350,30 @@ export class Color {
         return this.getRGBHex(true);
     }
 
+    public beginLerp(finalColor: Color, steps: number, componentLerp: boolean): void {
+
+    }
+
+    public pauseLerp(): void {
+
+    }
+
+    public resumeLerp(): void {
+
+    }
+
+    public endLerp(): void {
+
+    }
+
+    public resetLerp(): void {
+
+    }
+
+    public isLerping(): boolean {
+        return false;
+    }
+
     /**
      * Set the color values.
      *
@@ -339,20 +387,24 @@ export class Color {
      * properties will become the new values of this color's respective
      * properties.
      */
-    private setColorValues(color: P5Lib.Color | Color): void {
+    #setColorValues(color: P5Lib.Color | Color): void {
         if (color instanceof P5Lib.Color) {
             const p5: P5Lib = P5Context.p5;
             this.red = p5.red(color);
             this.green = p5.green(color);
             this.blue = p5.blue(color);
             this.alpha = p5.alpha(color);
-            this._name = null;
+            this.#name = null;
         } else {
             this.red = color.red;
             this.green = color.green;
             this.blue = color.blue;
             this.alpha = color.alpha;
-            this._name = color.name;
+            this.#name = color.name;
         }
+    }
+
+    #lerp(): void {
+
     }
 }
