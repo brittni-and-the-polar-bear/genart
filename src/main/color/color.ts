@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2024 brittni and the polar bear LLC.
+ * Copyright (C) 2023-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -18,10 +18,14 @@
 import P5Lib from 'p5';
 
 import { Discriminator } from 'discriminator';
-import { PaletteColor } from 'palette';
-import { P5Context } from 'sketch-context';
+import { P5Context } from 'p5-context';
 
 import { ColorNames } from './color-name';
+import { PaletteColor } from './palette';
+
+// TODO - documentation
+// TODO - release notes
+// TODO - unit tests
 
 /**
  * Color information and functionality.
@@ -51,8 +55,7 @@ export class Color {
     private _alpha: number; // 0-255
 
     /**
-     * The color's name. Retrieved from a {@link PaletteColor} or the
-     * {@link ColorNameManager}.
+     * The color's name. Retrieved from a {@link PaletteColor} or {@link ColorNames}.
      */
     private _name: string | null;
 
@@ -110,9 +113,17 @@ export class Color {
             } else if (comp1 instanceof Color) {
                 this.setColorValues(comp1);
             } else if (Discriminator.isPaletteColor(comp1)) {
-                this.red = comp1.RGB.R;
-                this.green = comp1.RGB.G;
-                this.blue = comp1.RGB.B;
+                if (comp1.RGB) {
+                    this.red = comp1.RGB.R;
+                    this.green = comp1.RGB.G;
+                    this.blue = comp1.RGB.B;
+
+                } else {
+                    // TODO - unit test setting color from HEX value
+                    const c: P5Lib.Color = P5Context.p5.color(comp1.HEX);
+                    this.setColorValues(c);
+                }
+
                 this._name = comp1.NAME;
             }
         }
@@ -265,7 +276,7 @@ export class Color {
     public get name(): string {
         if (!this._name) {
             this._name = 'UNKNOWN';
-            const name: string | undefined = ColorNameManager.getColorName(this.hex);
+            const name: string | undefined = ColorNames.getColorName(this.hex);
 
             if (name) {
                 this._name = name;
