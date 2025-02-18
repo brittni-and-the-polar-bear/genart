@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -19,8 +19,9 @@ import nearestColor from 'nearest-color';
 
 import { Discriminator } from 'discriminator';
 import { StringMap } from 'map';
-import { PaletteColor } from 'palette';
 import { StringValidator } from 'string';
+
+import { PaletteColor } from '../palette';
 
 interface NearestColorMatch {
     name: string;
@@ -30,7 +31,11 @@ interface NearestColorMatch {
 }
 
 // TODO - test building nearest color match in project
-// TODO -if successful, remove color-name-list dependency and add to project
+// TODO - if successful, remove color-name-list dependency and add to project
+
+// TODO - release notes
+// TODO - docs
+// TODO - unit tests
 
 /**
  * Manager to store and retrieve the names of colors based on their
@@ -45,16 +50,12 @@ export class ColorNames {
      */
     static readonly #MATCHED_COLORS: StringMap<string> = new StringMap<string>();
 
-    // TODO - unit test
     /**
      * The method used in the {@link getColorName} function to find the nearest color.
      * If the method is `null`, the nearest-color library will use its list of default colors;
      */
     static #nearestColor: ((hex: string) => NearestColorMatch | null) | null = null;
 
-    // TODO - test
-    // TODO - docs
-    // TODO - release notes
     /**
      * Set the color names that could possibly be selected when searching for the nearest
      * color match in {@link getColorName}.
@@ -124,8 +125,6 @@ export class ColorNames {
         return ColorNames.#MATCHED_COLORS.hasKey(hex);
     }
 
-    // TODO - release notes
-    // TODO - unit tests
     /**
      * Map the given hex to the given name.
      *
@@ -169,5 +168,3 @@ export class ColorNames {
         return hex.toUpperCase();
     }
 }
-
-export default ColorNames;
