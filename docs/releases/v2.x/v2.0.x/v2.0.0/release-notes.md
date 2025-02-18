@@ -33,10 +33,14 @@ Released on TBD.
 > - [New `AspectRatio` class](#aspectratio)
 > - [`SketchContext` renamed](#sketchcontext)
 > - [Updated `WeightedElement` interface](#weightedelement)
+> - [Removed `ColorNameManager` class](#colornamemanager)
 
 ----
 
 # Table of Contents
+
+[Deleted Classes](#deleted-classes)
+- [`ColorNameManager`](#colornamemanager)
 
 [New Classes](#new-classes)
 - [`AspectRatio`](#aspectratio)
@@ -50,6 +54,17 @@ Released on TBD.
 [Updated Interfaces](#updated-interfaces)
 - [`PaletteColor`](#palettecolor)
 - [`WeightedElement`](#weightedelement)
+
+----
+
+# Deleted Classes
+
+## `ColorNameManager`
+
+[!CAUTION]
+> Breaking Change!
+>
+> The `ColorNameManager` class has been replaced by the `ColorNames` class.
 
 ----
 
