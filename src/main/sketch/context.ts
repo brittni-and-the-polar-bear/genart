@@ -141,8 +141,8 @@ export abstract class Context {
 
     protected set resolution(resolution: number) {
         this.#resolution = resolution;
-        this.coordinateMapper.width = this.aspectRatio.getWidth(resolution);
-        this.coordinateMapper.height = this.aspectRatio.getHeight(resolution);
+        this.coordinateMapper.width = this.aspectRatio.getWidth(resolution, true);
+        this.coordinateMapper.height = this.aspectRatio.getHeight(resolution, true);
     }
 
     public get width(): number {

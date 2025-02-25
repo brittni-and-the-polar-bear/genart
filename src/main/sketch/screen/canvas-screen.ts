@@ -100,24 +100,17 @@ export abstract class CanvasScreen {
         }
     }
 
-    // #calculateFit(): void {
-    //     const graphics: P5Lib.Graphics = this.#GRAPHICS_HANDLER.getActiveGraphics();
-    //     const goalRatio: number = graphics.width / graphics.height;
-    //     const canvasRatio: number = Canvas.width / Canvas.height;
-    //     this.#fixToXAxis = goalRatio > canvasRatio;
-    // }
-
     #calculateGraphicsDimensions(): { width: number; height: number } {
         const graphicsContext: GraphicsContext = this.#GRAPHICS_HANDLER.getActiveContext();
         const graphicsRatio: AspectRatio = graphicsContext.aspectRatio;
 
-        let width: number = graphicsRatio.getWidth(Canvas.resolution);
-        let height: number = graphicsRatio.getHeight(Canvas.resolution);
+        let width: number = graphicsRatio.getWidth(Canvas.resolution, true);
+        let height: number = graphicsRatio.getHeight(Canvas.resolution, true);
 
-        if (width > Canvas.width || height > Canvas.height) {
-            width = graphicsRatio.getWidth(Canvas.resolution, true);
-            height = graphicsRatio.getHeight(Canvas.resolution, true);
-        }
+        // if (width > Canvas.width || height > Canvas.height) {
+        //     width = graphicsRatio.getWidth(Canvas.resolution, true);
+        //     height = graphicsRatio.getHeight(Canvas.resolution, true);
+        // }
 
         return { width: width, height: height };
     }
