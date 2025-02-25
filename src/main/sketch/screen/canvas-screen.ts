@@ -100,21 +100,6 @@ export abstract class CanvasScreen {
         }
     }
 
-    #calculateGraphicsDimensions(): { width: number; height: number } {
-        const graphicsContext: GraphicsContext = this.#GRAPHICS_HANDLER.getActiveContext();
-        const graphicsRatio: AspectRatio = graphicsContext.aspectRatio;
-
-        let width: number = graphicsRatio.getWidth(Canvas.resolution, true);
-        let height: number = graphicsRatio.getHeight(Canvas.resolution, true);
-
-        // if (width > Canvas.width || height > Canvas.height) {
-        //     width = graphicsRatio.getWidth(Canvas.resolution, true);
-        //     height = graphicsRatio.getHeight(Canvas.resolution, true);
-        // }
-
-        return { width: width, height: height };
-    }
-
     public mousePressed(): void {
         /* empty */
     }
@@ -161,6 +146,30 @@ export abstract class CanvasScreen {
 
     public addRedrawListener(listener: RedrawListener): void {
         this.#REDRAW_EVENT.addListener(listener);
+    }
+
+    protected get GRAPHICS_HANDLER(): GraphicsContextHandler {
+        return this.#GRAPHICS_HANDLER;
+    }
+
+    #calculateGraphicsDimensions(): { width: number; height: number } {
+        const graphicsContext: GraphicsContext = this.#GRAPHICS_HANDLER.getActiveContext();
+        const graphicsRatio: AspectRatio = graphicsContext.aspectRatio;
+
+        let width: number = graphicsRatio.getWidth(Canvas.resolution, true);
+        let height: number = graphicsRatio.getHeight(Canvas.resolution, true);
+
+        if (width > Canvas.width) {
+            width = graphicsRatio.getWidth(Canvas.width, true);
+            height = graphicsRatio.getHeight(Canvas.width, true);
+        }
+
+        if (height > Canvas.height) {
+            width = graphicsRatio.getWidth(Canvas.height, true);
+            height = graphicsRatio.getHeight(Canvas.height, true);
+        }
+
+        return { width: width, height: height };
     }
 
     #getSaveCount(): number {

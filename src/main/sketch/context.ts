@@ -84,8 +84,8 @@ export abstract class Context {
             this.#matchContainerRatio = config.MATCH_CONTAINER_RATIO;
         }
 
-        const width: number = this.aspectRatio.getWidth(this.resolution);
-        const height: number = this.aspectRatio.getHeight(this.resolution);
+        const width: number = this.aspectRatio.getWidth(this.resolution, true);
+        const height: number = this.aspectRatio.getHeight(this.resolution, true);
         this.#coordinateMapper = new CoordinateRatioMapper(width, height, this.isWebGL);
     }
 
@@ -99,8 +99,8 @@ export abstract class Context {
 
     protected set aspectRatio(aspectRatio: AspectRatio) {
         this.#aspectRatio = aspectRatio;
-        this.coordinateMapper.width = aspectRatio.getWidth(this.resolution);
-        this.coordinateMapper.height = aspectRatio.getHeight(this.resolution);
+        this.coordinateMapper.width = aspectRatio.getWidth(this.resolution, true);
+        this.coordinateMapper.height = aspectRatio.getHeight(this.resolution, true);
     }
 
     public get coordinateMapper(): CoordinateRatioMapper {
