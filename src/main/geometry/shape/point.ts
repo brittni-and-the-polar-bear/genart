@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -17,67 +17,70 @@
 
 import P5Lib from 'p5';
 
-import { Random } from 'random';
-import { Coordinate, CoordinateMode, P5Context } from 'sketch-context';
+import { Context, Coordinate, GraphicsContext } from 'sketch';
 
 import { Geometry, GeometryConfig } from './geometry';
 
 // TODO - unit tests
 // TODO - documentation
 export interface PointConfig extends GeometryConfig {
-    readonly position?: P5Lib.Vector | { x: number; y: number; };
+    readonly POSITION?: Coordinate;
 }
 
 // TODO - unit tests
 // TODO - documentation
 export class Point extends Geometry {
-    readonly #COORDINATE: Coordinate = new Coordinate();
+    readonly #COORDINATE: Coordinate;
 
     public constructor(config: PointConfig) {
         super(config);
-
-        if (config.position) {
-            if (config.position instanceof P5Lib.Vector) {
-                this.#COORDINATE.setPosition(config.position, config.coordinateMode);
-            } else {
-                this.#COORDINATE.setX(config.position.x, config.coordinateMode);
-                this.#COORDINATE.setY(config.position.y, config.coordinateMode);
-            }
+        if (config.POSITION) {
+            this.#COORDINATE = config.POSITION.copy(config.CONTEXT);
         } else {
-            this.#COORDINATE.setX(Random.randomFloat(0, 1), CoordinateMode.RATIO);
-            this.#COORDINATE.setY(Random.randomFloat(0, 1), CoordinateMode.RATIO);
+            this.#COORDINATE = new Coordinate(config.CONTEXT);
         }
     }
 
-    public override setPosition(position: P5Lib.Vector, mode: CoordinateMode): void {
-        this.#COORDINATE.setPosition(position, mode);
+    public override get position(): P5Lib.Vector {
+        return this.#COORDINATE.position;
     }
 
-    public override getX(mode: CoordinateMode): number {
-        return this.#COORDINATE.getX(mode);
+    public override redraw(context: Context): void {
+        this.#COORDINATE.remap(context);
     }
 
-    public override setX(x: number, mode: CoordinateMode): void {
-        this.#COORDINATE.setX(x, mode);
+    public override render(context: GraphicsContext): void {
+        this.style.applyStyle(context);
+        const x: number = this.#COORDINATE.x;
+        const y: number = this.#COORDINATE.y;
+        context.GRAPHICS.point(x, y);
     }
 
-    public override getY(mode: CoordinateMode): number {
-        return this.#COORDINATE.getY(mode);
+    public override setPosition(position: P5Lib.Vector, context: Context): void {
+        this.#COORDINATE.set(position, context);
     }
 
-    public override setY(y: number, mode: CoordinateMode): void {
-        this.#COORDINATE.setY(y, mode);
+    public override setX(x: number, context: Context): void {
+        this.#COORDINATE.setX(x, context);
     }
 
-    public override canvasRedraw(): void {
-        this.#COORDINATE.remap();
+    public override setY(y: number, context: Context): void {
+        this.#COORDINATE.setY(y, context);
     }
 
-    public override draw(): void {
-        const p5: P5Lib = P5Context.p5;
-        this.style.applyStyle();
-        const x = this.#COORDINATE.getX(CoordinateMode.CANVAS);
-        const y: number = this.#COORDINATE.getY(CoordinateMode.CANVAS);
-        p5.point(x, y);
+    public override setZ(z: number, context: Context): void {
+        this.#COORDINATE.setZ(z, context);
+    }
+
+    get x(): number {
+        return this.#COORDINATE.x;
+    }
+
+    get y(): number {
+        return this.#COORDINATE.y;
+    }
+
+    get z(): number {
+        return this.#COORDINATE.z;
     }
 }

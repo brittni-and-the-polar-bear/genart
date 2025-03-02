@@ -17,19 +17,20 @@
 
 import P5Lib from 'p5';
 
-import { Context, RedrawListener } from 'sketch';
+import { Context, GraphicsContext, RedrawListener, Renderable } from 'sketch';
 
 import { GeometryStyle } from '../style';
 
 export interface GeometryConfig {
-    readonly style?: GeometryStyle;
+    readonly CONTEXT: Context;
+    readonly STYLE?: GeometryStyle;
 }
 
-export abstract class Geometry implements RedrawListener {
+export abstract class Geometry implements RedrawListener, Renderable {
     #style: GeometryStyle;
 
     protected constructor(config: GeometryConfig) {
-        this.#style = config.style ?? (new GeometryStyle());
+        this.#style = config.STYLE ?? (new GeometryStyle());
     }
 
     public abstract get position(): P5Lib.Vector;
@@ -46,11 +47,11 @@ export abstract class Geometry implements RedrawListener {
 
     public abstract get z(): number;
 
-    public abstract setZ(y: number, context: Context): void;
+    public abstract setZ(z: number, context: Context): void;
 
-    public abstract render(): void;
+    public abstract render(context: Context): void;
 
-    public abstract redraw(context: Context): void
+    public abstract redraw(context: GraphicsContext): void
 
     public get style(): GeometryStyle {
         return this.#style;

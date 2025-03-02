@@ -15,13 +15,10 @@
  * See the GNU Affero General Public License for more details.
  */
 
-export * from './aspect-ratio';
-export * from './canvas';
-export * from './coordinate';
-export * from './drawing';
-export * from './graphics';
-export * from './redraw-event';
-export * from './screen';
+import { Context } from 'sketch';
 
-export * from './context';
-export * from './render-type';
+// TODO - release notes
+// TODO - documentation
+export interface Renderable {
+    render(context: Context): void;
+}

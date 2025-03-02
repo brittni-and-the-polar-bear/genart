@@ -25,18 +25,21 @@ export class Coordinate {
     readonly #CONTEXT_POS: P5Lib.Vector;
     readonly #RATIO_POS: P5Lib.Vector;
 
+    public constructor(context: Context);
     public constructor(x: number, y: number, z: number, context: Context);
     public constructor(x: number, y: number, context: Context);
     public constructor(position: P5Lib.Vector, context: Context);
-    public constructor(arg1: P5Lib.Vector | number,
-                       arg2: number | Context,
+    public constructor(arg1: P5Lib.Vector | number | Context,
+                       arg2?: number | Context,
                        arg3?: number | Context,
                        arg4?: Context) {
         const p5: P5Lib = P5Context.p5;
         this.#CONTEXT_POS = p5.createVector();
         this.#RATIO_POS = p5.createVector();
 
-        if (arg1 instanceof P5Lib.Vector && arg2 instanceof Context) {
+        if (arg1 instanceof Context) {
+            this.#remapRatio(arg1);
+        } else if (arg1 instanceof P5Lib.Vector && arg2 instanceof Context) {
             const position: P5Lib.Vector = arg1;
             const context: Context = arg2;
             this.#CONTEXT_POS = position.copy();
