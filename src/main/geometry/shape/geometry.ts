@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -17,35 +17,40 @@
 
 import P5Lib from 'p5';
 
-import { CanvasRedrawListener, CoordinateMode } from 'sketch-context';
+import { Context, RedrawListener } from 'sketch';
 
 import { GeometryStyle } from '../style';
 
 export interface GeometryConfig {
-    readonly coordinateMode: CoordinateMode;
     readonly style?: GeometryStyle;
 }
 
-export abstract class Geometry implements CanvasRedrawListener {
+export abstract class Geometry implements RedrawListener {
     #style: GeometryStyle;
 
     protected constructor(config: GeometryConfig) {
         this.#style = config.style ?? (new GeometryStyle());
     }
 
-    public abstract setPosition(position: P5Lib.Vector, mode: CoordinateMode): void;
+    public abstract get position(): P5Lib.Vector;
 
-    public abstract getX(mode: CoordinateMode): number;
+    public abstract setPosition(position: P5Lib.Vector, context: Context): void;
 
-    public abstract setX(x: number, mode: CoordinateMode): void;
+    public abstract get x(): number;
 
-    public abstract getY(mode: CoordinateMode): number;
+    public abstract setX(x: number, context: Context): void;
 
-    public abstract setY(y: number, mode: CoordinateMode): void;
+    public abstract get y(): number;
 
-    public abstract canvasRedraw(): void;
+    public abstract setY(y: number, context: Context): void;
 
-    public abstract draw(): void;
+    public abstract get z(): number;
+
+    public abstract setZ(y: number, context: Context): void;
+
+    public abstract render(): void;
+
+    public abstract redraw(context: Context): void
 
     public get style(): GeometryStyle {
         return this.#style;

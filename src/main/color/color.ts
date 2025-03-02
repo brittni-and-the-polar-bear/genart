@@ -59,14 +59,15 @@ export class Color {
      */
     #name: string | null;
 
-    #originalLerpColor: Color;
-    #endLerpColor: Color;
-    #componentLerp: boolean;
-    #lerpPercentage: { red: number, green: number, blue: number, alpha: number };
-    #lerpSteps: number;
-    #lerpInitiated: boolean;
-    #lerpComplete: boolean;
-    #lerpPaused: boolean;
+    // TODO - color lerp functionality
+    // #originalLerpColor: Color;
+    // #endLerpColor: Color;
+    // #componentLerp: boolean;
+    // #lerpPercentage: { red: number, green: number, blue: number, alpha: number };
+    // #lerpSteps: number;
+    // #lerpInitiated: boolean;
+    // #lerpComplete: boolean;
+    // #lerpPaused: boolean;
 
     /**
      * @param color - A p5.js Color, {@link Color}, or {@link PaletteColor} object.<br/>
@@ -143,14 +144,14 @@ export class Color {
             }
         }
 
-        this.#originalLerpColor = Color.copy(this);
-        this.#endLerpColor = Color.copy(this);
-        this.#componentLerp = false;
-        this.#lerpPercentage = { red: 0, green: 0, blue: 0, alpha: 0 };
-        this.#lerpSteps = 0;
-        this.#lerpInitiated = false;
-        this.#lerpComplete = false;
-        this.#lerpPaused = false;
+        // this.#originalLerpColor = Color.copy(this);
+        // this.#endLerpColor = Color.copy(this);
+        // this.#componentLerp = false;
+        // this.#lerpPercentage = { red: 0, green: 0, blue: 0, alpha: 0 };
+        // this.#lerpSteps = 0;
+        // this.#lerpInitiated = false;
+        // this.#lerpComplete = false;
+        // this.#lerpPaused = false;
     }
 
     /**
@@ -350,29 +351,29 @@ export class Color {
         return this.getRGBHex(true);
     }
 
-    public beginLerp(finalColor: Color, steps: number, componentLerp: boolean): void {
-
-    }
-
-    public pauseLerp(): void {
-
-    }
-
-    public resumeLerp(): void {
-
-    }
-
-    public endLerp(): void {
-
-    }
-
-    public resetLerp(): void {
-
-    }
-
-    public isLerping(): boolean {
-        return false;
-    }
+    // public beginLerp(finalColor: Color, steps: number, componentLerp: boolean): void {
+    //
+    // }
+    //
+    // public pauseLerp(): void {
+    //
+    // }
+    //
+    // public resumeLerp(): void {
+    //
+    // }
+    //
+    // public endLerp(): void {
+    //
+    // }
+    //
+    // public resetLerp(): void {
+    //
+    // }
+    //
+    // public isLerping(): boolean {
+    //     return false;
+    // }
 
     /**
      * Set the color values.
@@ -404,7 +405,7 @@ export class Color {
         }
     }
 
-    #lerp(): void {
-
-    }
+    // #lerp(): void {
+    //
+    // }
 }

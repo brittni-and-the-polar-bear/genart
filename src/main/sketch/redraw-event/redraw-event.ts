@@ -19,7 +19,7 @@
 // TODO - documentation
 // TODO - unit tests
 
-import { GraphicsContext } from '../graphics';
+import {Context} from "../context";
 
 import { RedrawListener } from './redraw-listener';
 
@@ -34,7 +34,7 @@ export class RedrawEvent {
         this.#LISTENERS.add(listener);
     }
 
-    public publishRedraw(context: GraphicsContext): void {
+    public publishRedraw(context: Context): void {
         this.#LISTENERS.forEach((listener: RedrawListener): void => {
             listener.redraw(context);
         });

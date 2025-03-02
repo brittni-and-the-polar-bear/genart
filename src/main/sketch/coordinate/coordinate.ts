@@ -19,50 +19,50 @@ import P5Lib from 'p5';
 
 import { P5Context } from 'p5-context';
 
-import { GraphicsContext } from '../graphics';
+import { Context } from '../context';
 
 export class Coordinate {
     readonly #CONTEXT_POS: P5Lib.Vector;
     readonly #RATIO_POS: P5Lib.Vector;
 
-    public constructor(x: number, y: number, z: number, context: GraphicsContext);
-    public constructor(x: number, y: number, context: GraphicsContext);
-    public constructor(position: P5Lib.Vector, context: GraphicsContext);
+    public constructor(x: number, y: number, z: number, context: Context);
+    public constructor(x: number, y: number, context: Context);
+    public constructor(position: P5Lib.Vector, context: Context);
     public constructor(arg1: P5Lib.Vector | number,
-                       arg2: number | GraphicsContext,
-                       arg3?: number | GraphicsContext,
-                       arg4?: GraphicsContext) {
+                       arg2: number | Context,
+                       arg3?: number | Context,
+                       arg4?: Context) {
         const p5: P5Lib = P5Context.p5;
         this.#CONTEXT_POS = p5.createVector();
         this.#RATIO_POS = p5.createVector();
 
-        if (arg1 instanceof P5Lib.Vector && arg2 instanceof GraphicsContext) {
+        if (arg1 instanceof P5Lib.Vector && arg2 instanceof Context) {
             const position: P5Lib.Vector = arg1;
-            const context: GraphicsContext = arg2;
+            const context: Context = arg2;
             this.#CONTEXT_POS = position.copy();
             this.#remapRatio(context);
         } else if (typeof arg1 === 'number' &&
                     typeof arg2 === 'number' &&
-                    arg3 instanceof GraphicsContext) {
+                    arg3 instanceof Context) {
             const x: number = arg1;
             const y: number = arg2;
-            const context: GraphicsContext = arg3;
+            const context: Context = arg3;
             this.#CONTEXT_POS = p5.createVector(x, y);
             this.#remapRatio(context);
         } else if (typeof arg1 === 'number' &&
                     typeof arg2 === 'number' &&
                     typeof arg3 === 'number' &&
-                    arg4 instanceof GraphicsContext) {
+                    arg4 instanceof Context) {
             const x: number = arg1;
             const y: number = arg2;
             const z: number = arg3;
-            const context: GraphicsContext = arg4;
+            const context: Context = arg4;
             this.#CONTEXT_POS = p5.createVector(x, y, z);
             this.#remapRatio(context);
         }
     }
 
-    public copy(context: GraphicsContext): Coordinate {
+    public copy(context: Context): Coordinate {
         return new Coordinate(this.#CONTEXT_POS, context);
     }
 
@@ -98,107 +98,107 @@ export class Coordinate {
         return this.#RATIO_POS.copy();
     }
 
-    public setX(value: number, context: GraphicsContext): void {
+    public setX(value: number, context: Context): void {
         this.#CONTEXT_POS.x = value;
         this.#remapRatio(context);
     }
 
-    public setY(value: number, context: GraphicsContext): void {
+    public setY(value: number, context: Context): void {
         this.#CONTEXT_POS.y = value;
         this.#remapRatio(context);
     }
 
-    public setZ(value: number, context: GraphicsContext): void {
+    public setZ(value: number, context: Context): void {
         this.#CONTEXT_POS.z = value;
         this.#remapRatio(context);
     }
 
-    public set(x: number, y: number, z: number, context: GraphicsContext): void;
-    public set(x: number, y: number, context: GraphicsContext): void;
-    public set(position: P5Lib.Vector, context: GraphicsContext): void;
+    public set(x: number, y: number, z: number, context: Context): void;
+    public set(x: number, y: number, context: Context): void;
+    public set(position: P5Lib.Vector, context: Context): void;
     public set(arg1: P5Lib.Vector | number,
-               arg2?: number | GraphicsContext,
-               arg3?: number | GraphicsContext,
-               arg4?: GraphicsContext): void {
-        if (arg1 instanceof P5Lib.Vector && arg2 instanceof GraphicsContext) {
+               arg2?: number | Context,
+               arg3?: number | Context,
+               arg4?: Context): void {
+        if (arg1 instanceof P5Lib.Vector && arg2 instanceof Context) {
             const position: P5Lib.Vector = arg1;
-            const context: GraphicsContext = arg2;
+            const context: Context = arg2;
             this.#CONTEXT_POS.set(position);
             this.#remapRatio(context);
         } else if (typeof arg1 === 'number' &&
             typeof arg2 === 'number' &&
-            arg3 instanceof GraphicsContext) {
+            arg3 instanceof Context) {
             const x: number = arg1;
             const y: number = arg2;
-            const context: GraphicsContext = arg3;
+            const context: Context = arg3;
             this.#CONTEXT_POS.set(x, y);
             this.#remapRatio(context);
         } else if (typeof arg1 === 'number' &&
             typeof arg2 === 'number' &&
             typeof arg3 === 'number' &&
-            arg4 instanceof GraphicsContext) {
+            arg4 instanceof Context) {
             const x: number = arg1;
             const y: number = arg2;
             const z: number = arg3;
-            const context: GraphicsContext = arg4;
+            const context: Context = arg4;
             this.#CONTEXT_POS.set(x, y, z);
             this.#remapRatio(context);
         }
     }
 
-    public setRatioX(value: number, context: GraphicsContext): void {
+    public setRatioX(value: number, context: Context): void {
         this.#RATIO_POS.x = value;
         this.remap(context);
     }
 
-    public setRatioY(value: number, context: GraphicsContext): void {
+    public setRatioY(value: number, context: Context): void {
         this.#RATIO_POS.y = value;
         this.remap(context);
     }
 
-    public setRatioZ(value: number, context: GraphicsContext): void {
+    public setRatioZ(value: number, context: Context): void {
         this.#RATIO_POS.z = value;
         this.remap(context);
     }
 
-    public setRatio(x: number, y: number, z: number, context: GraphicsContext): void;
-    public setRatio(x: number, y: number, context: GraphicsContext): void;
-    public setRatio(position: P5Lib.Vector, context: GraphicsContext): void;
+    public setRatio(x: number, y: number, z: number, context: Context): void;
+    public setRatio(x: number, y: number, context: Context): void;
+    public setRatio(position: P5Lib.Vector, context: Context): void;
     public setRatio(arg1: P5Lib.Vector | number,
-               arg2?: number | GraphicsContext,
-               arg3?: number | GraphicsContext,
-               arg4?: GraphicsContext): void {
-        if (arg1 instanceof P5Lib.Vector && arg2 instanceof GraphicsContext) {
+               arg2?: number | Context,
+               arg3?: number | Context,
+               arg4?: Context): void {
+        if (arg1 instanceof P5Lib.Vector && arg2 instanceof Context) {
             const position: P5Lib.Vector = arg1;
-            const context: GraphicsContext = arg2;
+            const context: Context = arg2;
             this.#RATIO_POS.set(position);
             this.remap(context);
         } else if (typeof arg1 === 'number' &&
             typeof arg2 === 'number' &&
-            arg3 instanceof GraphicsContext) {
+            arg3 instanceof Context) {
             const x: number = arg1;
             const y: number = arg2;
-            const context: GraphicsContext = arg3;
+            const context: Context = arg3;
             this.#RATIO_POS.set(x, y);
             this.remap(context);
         } else if (typeof arg1 === 'number' &&
             typeof arg2 === 'number' &&
             typeof arg3 === 'number' &&
-            arg4 instanceof GraphicsContext) {
+            arg4 instanceof Context) {
             const x: number = arg1;
             const y: number = arg2;
             const z: number = arg3;
-            const context: GraphicsContext = arg4;
+            const context: Context = arg4;
             this.#RATIO_POS.set(x, y, z);
             this.remap(context);
         }
     }
 
-    public remap(context: GraphicsContext): void {
+    public remap(context: Context): void {
         this.#CONTEXT_POS.set(context.coordinateMapper.mapRatioToCoordinate(this.#RATIO_POS));
     }
 
-    #remapRatio(context: GraphicsContext): void {
+    #remapRatio(context: Context): void {
         this.#RATIO_POS.set(context.coordinateMapper.mapCoordinateToRatio(this.#CONTEXT_POS));
     }
 }

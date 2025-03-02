@@ -12,6 +12,7 @@
     "paths": {
       "color": ["./src/main/color"],
       "discriminator": ["./src/main/discriminator"],
+      "geometry": ["./src/main/geometry"],
       "map": ["./src/main/map"],
       "math": ["./src/main/math"],
       "p5-context": ["./src/main/sketch/p5-context"],

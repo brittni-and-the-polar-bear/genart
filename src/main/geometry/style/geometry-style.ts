@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -16,8 +16,10 @@
  */
 
 import { Color } from 'color';
-import { CanvasContext, P5Context } from 'sketch-context';
+import { P5Context } from 'p5-context';
+import { Context } from 'sketch';
 
+// TODO - release notes
 // TODO - documentation
 // TODO - unit tests
 export class GeometryStyle {
@@ -39,9 +41,9 @@ export class GeometryStyle {
         this.#strokeMultiplier = Math.abs(multiplier);
     }
 
-    public applyStyle(): void {
+    public applyStyle(context: Context): void {
         this.applyFill();
-        this.applyStroke();
+        this.applyStroke(context);
     }
 
     public applyFill(): void {
@@ -54,11 +56,11 @@ export class GeometryStyle {
         }
     }
 
-    public applyStroke(): void {
+    public applyStroke(context: Context): void {
         const p5: P5Lib = P5Context.p5;
 
         if (this.stroke) {
-            p5.strokeWeight(CanvasContext.defaultStroke * this.#strokeMultiplier);
+            p5.strokeWeight(context.defaultStrokeWeight * this.#strokeMultiplier);
             p5.stroke(this.stroke.color);
         } else {
             p5.noStroke();

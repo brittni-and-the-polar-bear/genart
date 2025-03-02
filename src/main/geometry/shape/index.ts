@@ -15,12 +15,4 @@
  * See the GNU Affero General Public License for more details.
  */
 
-export * from 'color';
-export * from 'discriminator';
-export * from 'geometry';
-export * from 'map';
-export * from 'math';
-export * from 'p5-context';
-export * from 'random';
-export * from 'sketch';
-export * from 'string';
+
