@@ -64,6 +64,22 @@ export abstract class CanvasScreen {
         return this.#NAME;
     }
 
+    public get minX(): number {
+        return this.GRAPHICS_HANDLER.getActiveContext().coordinateMapper.minX;
+    }
+
+    public get minY(): number {
+        return this.GRAPHICS_HANDLER.getActiveContext().coordinateMapper.minY;
+    }
+
+    public get maxX(): number {
+        return this.GRAPHICS_HANDLER.getActiveContext().coordinateMapper.maxX;
+    }
+
+    public get maxY(): number {
+        return this.GRAPHICS_HANDLER.getActiveContext().coordinateMapper.maxY;
+    }
+
     public abstract drawToGraphics(context: GraphicsContext): void;
 
     public activate(): void {
