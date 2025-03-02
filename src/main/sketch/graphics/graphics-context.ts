@@ -19,7 +19,6 @@ import P5Lib from 'p5';
 
 import { P5Context } from 'p5-context';
 
-import { AspectRatio } from '../aspect-ratio';
 import { Context, ContextConfig } from '../context';
 
 // TODO - GraphicsContext - register as CanvasUpdateListener on screen
@@ -51,11 +50,11 @@ export class GraphicsContext extends Context {
         console.log('resize');
     }
 
-    public override updateAspectRatio(aspectRatio: AspectRatio): void {
-        console.log(aspectRatio);
+    public override updateAspectRatio(): void {
+        console.warn('The aspect ratio of a graphics context cannot be changed.');
     }
 
-    public override updateResolution(resolution: number): void {
-        console.log(resolution);
+    public override updateResolution(): void {
+        console.warn('The resolution of a graphics context cannot be changed.');
     }
 }
