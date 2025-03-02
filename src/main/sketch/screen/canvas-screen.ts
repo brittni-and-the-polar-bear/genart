@@ -15,10 +15,6 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - CanvasScreenBuilder
-// TODO - - methods to build graphics contexts and screen.
-// TODO - - add a list of graphics configurations at one time.
-
 // TODO - click event handler
 // TODO - hover handler
 // TODO - keyboard event handler
@@ -54,13 +50,10 @@ export abstract class CanvasScreen {
 
     #isActive: boolean = false;
     #saveCount: number = 0;
-    //
-    // #fixToXAxis: boolean = false;
 
     protected constructor(config: CanvasScreenConfig) {
         this.#NAME = config.NAME;
         this.#GRAPHICS_HANDLER = new GraphicsContextHandler(config.ACTIVE_GRAPHICS, config.OTHER_GRAPHICS);
-        // this.#calculateFit();
     }
 
     public get isActive(): boolean {
@@ -71,7 +64,7 @@ export abstract class CanvasScreen {
         return this.#NAME;
     }
 
-    public abstract drawToGraphics(graphics: P5Lib.Graphics): void;
+    public abstract drawToGraphics(context: GraphicsContext): void;
 
     public activate(): void {
         this.#isActive = true;
@@ -109,7 +102,7 @@ export abstract class CanvasScreen {
     }
 
     public drawToActiveGraphics(): void {
-        this.drawToGraphics(this.#GRAPHICS_HANDLER.getActiveGraphics());
+        this.drawToGraphics(this.#GRAPHICS_HANDLER.getActiveContext());
     }
 
     public saveActiveGraphics(): void {
@@ -141,7 +134,6 @@ export abstract class CanvasScreen {
 
     public publishRedraw(): void {
         this.#REDRAW_EVENT.publishRedraw();
-        // this.#calculateFit();
     }
 
     public addRedrawListener(listener: RedrawListener): void {
@@ -182,7 +174,7 @@ export abstract class CanvasScreen {
     }
 
     async #saveGraphics(graphicsContext: GraphicsContext, timeout: number): Promise<string> {
-        this.drawToGraphics(graphicsContext.GRAPHICS);
+        this.drawToGraphics(graphicsContext);
         await this.#timeout(timeout);
         const filename: string = this.#buildFileName(graphicsContext);
         P5Context.p5.save(graphicsContext.GRAPHICS, filename);
