@@ -144,7 +144,7 @@ export abstract class CanvasScreen {
         return this.#GRAPHICS_HANDLER;
     }
 
-    #calculateGraphicsDimensions(): { width: number; height: number } {
+    #calculateGraphicsDimensions(): { width: number; height: number; } {
         const graphicsContext: GraphicsContext = this.#GRAPHICS_HANDLER.getActiveContext();
         const graphicsRatio: AspectRatio = graphicsContext.aspectRatio;
 

@@ -27,17 +27,17 @@ export class ScreenConfigBuilder {
     #activeGraphics: GraphicsContext | undefined;
     #otherGraphics: GraphicsContext[] | undefined;
 
-    public setName(name: string): ScreenConfigBuilder {
+    public setName(name: string): this {
         this.#name = name;
         return this;
     }
 
-    public setActiveGraphics(config: ContextConfig): ScreenConfigBuilder {
+    public setActiveGraphics(config: ContextConfig): this {
         this.#activeGraphics = new GraphicsContext(config);
         return this;
     }
 
-    public addGraphics(config: ContextConfig): ScreenConfigBuilder {
+    public addGraphics(config: ContextConfig): this {
         if (this.#otherGraphics === undefined) {
             this.#otherGraphics = [];
         }

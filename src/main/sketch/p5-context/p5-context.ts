@@ -48,11 +48,11 @@ export class P5Context {
             P5Context.#p5 = new P5Lib((p: P5Lib): void => {
                 p.setup = (): void => {
                     /* empty */
-                }
+                };
 
                 p.draw = (): void => {
                     /* empty */
-                }
+                };
             });
         }
 

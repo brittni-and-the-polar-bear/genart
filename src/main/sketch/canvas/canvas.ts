@@ -188,6 +188,6 @@ export class Canvas {
     }
 
     public static get defaultStrokeWeight(): number {
-        return Canvas.#canvasContext?.defaultStrokeWeight || 1;
+        return Canvas.#canvasContext?.defaultStrokeWeight ?? 1;
     }
 }

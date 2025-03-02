@@ -16,26 +16,25 @@
  */
 
 import P5Lib from 'p5';
-import { P5Context } from "p5-context";
-import {ASPECT_RATIOS, Canvas} from "sketch";
+
+import { P5Context } from 'p5-context';
+import { ASPECT_RATIOS, Canvas } from 'sketch';
 
 describe('Canvas tests', (): void => {
-
-
     beforeAll(async (): Promise<void> => {
         const p5: P5Lib = P5Context.p5;
         const size: number = 1080;
 
         p5.setup = (): void => {
-            Canvas.buildCanvas(ASPECT_RATIOS.SQUARE, size, p5.P2D, false, true)
-        }
+            Canvas.buildCanvas(ASPECT_RATIOS.SQUARE, size, p5.P2D, 'test-canvas', false, true);
+        };
 
         await new Promise<void>((f: (value: void | PromiseLike<void>) => void): void => {
             setTimeout(f, 3000);
         });
-    })
+    });
 
-    test('Canvas.buildCanvas', async (): Promise<void> => {
+    test('Canvas.buildCanvas', (): void => {
         expect(P5Context.p5.width).toBe(1080);
         expect(P5Context.p5.height).toBe(1080);
     });

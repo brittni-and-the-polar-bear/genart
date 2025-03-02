@@ -168,9 +168,9 @@ export class Coordinate {
     public setRatio(x: number, y: number, context: Context): void;
     public setRatio(position: P5Lib.Vector, context: Context): void;
     public setRatio(arg1: P5Lib.Vector | number,
-               arg2?: number | Context,
-               arg3?: number | Context,
-               arg4?: Context): void {
+                    arg2?: number | Context,
+                    arg3?: number | Context,
+                    arg4?: Context): void {
         if (arg1 instanceof P5Lib.Vector && arg2 instanceof Context) {
             const position: P5Lib.Vector = arg1;
             const context: Context = arg2;

@@ -41,7 +41,7 @@ export class ScreenHandler {
         if (screen) {
             this.#currentScreen?.deactivate();
             this.#currentScreen = screen;
-            this.#currentScreen?.activate();
+            this.#currentScreen.activate();
         }
     }
 

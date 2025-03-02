@@ -127,7 +127,6 @@ export class Color {
                     this.red = arg1.RGB.R;
                     this.green = arg1.RGB.G;
                     this.blue = arg1.RGB.B;
-
                 } else {
                     // TODO - unit test setting color from HEX value
                     const c: P5Lib.Color = P5Context.p5.color(arg1.HEX);

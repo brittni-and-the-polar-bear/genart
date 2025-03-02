@@ -51,7 +51,7 @@ export abstract class Geometry implements RedrawListener, Renderable {
 
     public abstract render(context: Context): void;
 
-    public abstract redraw(context: GraphicsContext): void
+    public abstract redraw(context: GraphicsContext): void;
 
     public get style(): GeometryStyle {
         return this.#style;

@@ -19,7 +19,7 @@
 // TODO - documentation
 // TODO - unit tests
 
-import {Context} from "../context";
+import { Context } from '../context';
 
 import { RedrawListener } from './redraw-listener';
 
