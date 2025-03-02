@@ -133,7 +133,7 @@ export abstract class CanvasScreen {
     }
 
     public publishRedraw(): void {
-        this.#REDRAW_EVENT.publishRedraw();
+        this.#REDRAW_EVENT.publishRedraw(this.#GRAPHICS_HANDLER.getActiveContext());
     }
 
     public addRedrawListener(listener: RedrawListener): void {

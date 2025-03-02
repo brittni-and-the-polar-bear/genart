@@ -18,10 +18,12 @@
 // TODO - unit tests
 // TODO - release notes
 // TODO - documentation
+import { GraphicsContext } from '../graphics';
+
 /**
  * @category Sketch
  * @category Sketch / Redraw Event
  */
 export interface RedrawListener {
-    redraw(): void;
+    redraw(context: GraphicsContext): void;
 }
