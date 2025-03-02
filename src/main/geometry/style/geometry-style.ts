@@ -18,7 +18,8 @@
 import P5Lib from "p5";
 
 import { Color } from 'color';
-import { GraphicsContext } from 'sketch';
+import {Context, GraphicsContext} from 'sketch';
+import {P5Context} from "p5-context";
 
 // TODO - release notes
 // TODO - documentation
@@ -45,29 +46,41 @@ export class GeometryStyle {
         this.#strokeMultiplier = Math.abs(multiplier);
     }
 
-    public applyStyle(context: GraphicsContext): void {
+    public applyStyle(context: Context): void {
         this.applyFill(context);
         this.applyStroke(context);
     }
 
-    public applyFill(context: GraphicsContext): void {
-        const graphics: P5Lib.Graphics = context.GRAPHICS;
+    public applyFill(context: Context): void {
+        let target: P5Lib | P5Lib.Graphics;
+
+        if (context instanceof GraphicsContext) {
+            target = context.GRAPHICS;
+        } else {
+            target = P5Context.p5;
+        }
 
         if (this.fill) {
-            graphics.fill(this.fill.color);
+            target.fill(this.fill.color);
         } else {
-            graphics.noFill();
+            target.noFill();
         }
     }
 
-    public applyStroke(context: GraphicsContext): void {
-        const graphics: P5Lib.Graphics = context.GRAPHICS;
+    public applyStroke(context: Context): void {
+        let target: P5Lib | P5Lib.Graphics;
+
+        if (context instanceof GraphicsContext) {
+            target = context.GRAPHICS;
+        } else {
+            target = P5Context.p5;
+        }
 
         if (this.stroke) {
-            graphics.strokeWeight(context.defaultStrokeWeight * this.#strokeMultiplier);
-            graphics.stroke(this.stroke.color);
+            target.strokeWeight(context.defaultStrokeWeight * this.#strokeMultiplier);
+            target.stroke(this.stroke.color);
         } else {
-            graphics.noStroke();
+            target.noStroke();
         }
     }
 }
