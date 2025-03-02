@@ -134,18 +134,14 @@ export abstract class CanvasScreen {
     }
 
     public saveAllGraphics(): void {
-        this.#GRAPHICS_HANDLER.getAllContexts()
-            .forEach((context: GraphicsContext): void => {
-                this.#saveGraphics(context, 1_000)
-                    .then(
-                        (filename: string): void => {
-                            console.log(`Saved file: ${filename}.`);
-                        },
-                        (error: unknown): void => {
-                            console.error(error);
-                        }
-                    );
-            });
+        this.#saveAllGraphics()
+            .then(
+                (): void => {
+                    console.log('All files saved.');
+                },
+                (error: unknown): void => {
+                    console.error(error);
+                });
     }
 
     public publishRedraw(): void {
@@ -187,6 +183,19 @@ export abstract class CanvasScreen {
     #buildFileName(graphicsContext: GraphicsContext): string {
         const saveCount: string = this.#getSaveCount().toString().padStart(3, '0');
         return `${this.#NAME}_${saveCount}_${graphicsContext.NAME}.png`;
+    }
+
+    async #saveAllGraphics(): Promise<void> {
+        for (const context of this.#GRAPHICS_HANDLER.getAllContexts()) {
+            await this.#saveGraphics(context, 1_000)
+                .then(
+                    (filename: string): void => {
+                        console.log(`Saved file: ${filename}.`);
+                    },
+                    (error: unknown): void => {
+                        console.error(error);
+                    });
+        }
     }
 
     async #saveGraphics(graphicsContext: GraphicsContext, timeout: number): Promise<string> {

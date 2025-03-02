@@ -51,7 +51,7 @@ export default tsEslint.config(
                 checkForEach: true
             }],
 
-            'no-await-in-loop': 'error',
+            'no-await-in-loop': 'off',
 
             'no-cond-assign': ['error', 'always'],
 

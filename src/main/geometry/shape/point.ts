@@ -50,6 +50,7 @@ export class Point extends Geometry {
     }
 
     public override render(context: GraphicsContext): void {
+        this.redraw(context);
         this.style.applyStyle(context);
         const x: number = this.#COORDINATE.x;
         const y: number = this.#COORDINATE.y;
