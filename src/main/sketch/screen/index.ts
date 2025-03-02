@@ -15,5 +15,6 @@
  * See the GNU Affero General Public License for more details.
  */
 
+export * from './canvas-screen-builder';
 export * from './canvas-screen';
 export * from './screen-handler';
