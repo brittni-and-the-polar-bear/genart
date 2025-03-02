@@ -15,9 +15,10 @@
  * See the GNU Affero General Public License for more details.
  */
 
+import P5Lib from "p5";
+
 import { Color } from 'color';
-import { P5Context } from 'p5-context';
-import { Context } from 'sketch';
+import { GraphicsContext } from 'sketch';
 
 // TODO - release notes
 // TODO - documentation
@@ -28,9 +29,12 @@ export class GeometryStyle {
 
     #strokeMultiplier: number = 1;
 
-    public constructor(fill?: Color | null, stroke?: Color | null) {
+    public constructor(fill?: Color | null,
+                       stroke?: Color | null,
+                       strokeMultiplier?: number) {
         this.fill = fill ?? null;
         this.stroke = stroke ?? null;
+        this.strokeMultiplier = strokeMultiplier ?? 1;
     }
 
     public get strokeMultiplier(): number {
@@ -41,29 +45,29 @@ export class GeometryStyle {
         this.#strokeMultiplier = Math.abs(multiplier);
     }
 
-    public applyStyle(context: Context): void {
-        this.applyFill();
+    public applyStyle(context: GraphicsContext): void {
+        this.applyFill(context);
         this.applyStroke(context);
     }
 
-    public applyFill(): void {
-        const p5: P5Lib = P5Context.p5;
+    public applyFill(context: GraphicsContext): void {
+        const graphics: P5Lib.Graphics = context.GRAPHICS;
 
         if (this.fill) {
-            p5.fill(this.fill.color);
+            graphics.fill(this.fill.color);
         } else {
-            p5.noFill();
+            graphics.noFill();
         }
     }
 
-    public applyStroke(context: Context): void {
-        const p5: P5Lib = P5Context.p5;
+    public applyStroke(context: GraphicsContext): void {
+        const graphics: P5Lib.Graphics = context.GRAPHICS;
 
         if (this.stroke) {
-            p5.strokeWeight(context.defaultStrokeWeight * this.#strokeMultiplier);
-            p5.stroke(this.stroke.color);
+            graphics.strokeWeight(context.defaultStrokeWeight * this.#strokeMultiplier);
+            graphics.stroke(this.stroke.color);
         } else {
-            p5.noStroke();
+            graphics.noStroke();
         }
     }
 }
