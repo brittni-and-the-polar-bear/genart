@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,9 +15,5 @@
  * See the GNU Affero General Public License for more details.
  */
 
-export * from './color-name';
-export * from './palette';
-export * from './rgb';
-
-export * from './color';
-export * from './color-selector-type';
+export * from './blue-color-selector';
+export * from './rgb-color-selector';
