@@ -15,5 +15,7 @@
  * See the GNU Affero General Public License for more details.
  */
 
+export * from './palette-colors';
+
 export * from './palette';
 export * from './palette-color';

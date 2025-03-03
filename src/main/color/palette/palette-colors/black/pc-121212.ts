@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,32 +15,33 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
+
+import { ColorNames } from "../../../color-name";
+import { PaletteColor } from "../../palette-color";
 
 import { ALL_PALETTE_COLORS, BLACK_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #000000;">
- *     <a href="https://coolors.co/000000" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block white-pass">black (#000000)</h2>
+ * <div class="color-block" style="background: #121212;">
+ *     <a href="https://coolors.co/121212" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">dark tone ink (#121212)</h2>
  *     </a>
  * </div>
  *
- * @see {@link ASEXUAL_FLAG_PALETTE}
+ * @see {@link BRITTNI_PALETTE}
  *
  * @category Palette Colors (All)
  * @category Palette Colors (Black)
  */
-export const PC_000000: PaletteColor = {
-    HEX: '#000000',
-    HSL: { H: 0, S: 0, L: 0 },
-    RGB: { R: 0, G: 0, B: 0 },
-    NAME: 'black',
+export const PC_121212: PaletteColor = {
+    HEX: '#121212',
+    RGB: { R: 18, G: 18, B: 18 },
+    HSL: { H: 0, S: 0, L: 7 },
+    NAME: 'dark tone ink',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-ALL_PALETTE_COLORS.setUndefinedKey(PC_000000.HEX, PC_000000);
-BLACK_PALETTE_COLORS.setUndefinedKey(PC_000000.HEX, PC_000000);
-ColorNameManager.addColor(PC_000000);
+ALL_PALETTE_COLORS.setUndefinedKey(PC_121212.HEX, PC_121212);
+BLACK_PALETTE_COLORS.setUndefinedKey(PC_121212.HEX, PC_121212);
+ColorNames.addColor(PC_121212);

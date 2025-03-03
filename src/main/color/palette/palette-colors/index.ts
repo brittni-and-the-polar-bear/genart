@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -16,14 +16,5 @@
  */
 
 export * from './black';
-export * from './blue';
-export * from './brown';
-export * from './gray';
-export * from './green';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './red';
-export * from './white';
 
 export * from './palette-color-maps';
