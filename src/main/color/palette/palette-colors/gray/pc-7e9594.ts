@@ -15,32 +15,32 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, GRAY_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #A3A3A3;">
- *     <a href="https://coolors.co/a3a3a3" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">dark souls (#A3A3A3)</h2>
+ * <div class="color-block" style="background: #7E9594;">
+ *     <a href="https://coolors.co/7e9594" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">green granite (#7E9594)</h2>
  *     </a>
  * </div>
  *
- * @see {@link ASEXUAL_FLAG_PALETTE}
+ * @see {@link DALLAS_COWBOYS_PALETTE}
  *
  * @category Palette Colors (All)
  * @category Palette Colors (Gray)
  */
-export const PC_A3A3A3: PaletteColor = {
-    HEX: '#A3A3A3',
-    RGB: { R: 163, G: 163, B: 163 },
-    HSL: { H: 0, S: 0, L: 64 },
-    NAME: 'dark souls',
+export const PC_7E9594: PaletteColor = {
+    HEX: '#7E9594',
+    RGB: { R: 126, G: 149, B: 148 },
+    HSL: { H: 177, S: 10, L: 54 },
+    NAME: 'green granite',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-ALL_PALETTE_COLORS.setUndefinedKey(PC_A3A3A3.HEX, PC_A3A3A3);
-GRAY_PALETTE_COLORS.setUndefinedKey(PC_A3A3A3.HEX, PC_A3A3A3);
-ColorNameManager.addColor(PC_A3A3A3);
+ALL_PALETTE_COLORS.setUndefinedKey(PC_7E9594.HEX, PC_7E9594);
+GRAY_PALETTE_COLORS.setUndefinedKey(PC_7E9594.HEX, PC_7E9594);
+ColorNames.addColor(PC_7E9594);
