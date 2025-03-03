@@ -24,13 +24,13 @@ import { RGBColorSelector } from './rgb-color-selector';
 // TODO - unit tests
 // - all color selector names should be unique
 
-export class BlueColorSelector extends RGBColorSelector {
+export class RedColorSelector extends RGBColorSelector {
     public constructor() {
         super({
-            NAME: 'blue-rgb-color-selector',
-            RED_RANGE: new Range(0, 80),
+            NAME: 'red-rgb-color-selector',
+            RED_RANGE: new Range(100, 255),
             GREEN_RANGE: new Range(0, 80),
-            BLUE_RANGE: new Range(100, 255)
+            BLUE_RANGE: new Range(0, 80)
         });
     }
 }

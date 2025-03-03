@@ -35,6 +35,10 @@ export enum ColorSelectorType {
      */
     RGB = 'RGB color selector',
 
+    HSL = 'HSL color selector',
+
+    MAPPABLE = 'mappable color selector',
+
     OTHER = 'other color selector',
 
     /**

@@ -15,5 +15,17 @@
  * See the GNU Affero General Public License for more details.
  */
 
+export * from './red-color-selector';
+export * from './green-color-selector';
 export * from './blue-color-selector';
+
+// cyan
+// magenta
+// yellow
+
+// orange
+// purple
+// teal???
+// others???
+
 export * from './rgb-color-selector';
