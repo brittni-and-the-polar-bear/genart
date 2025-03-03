@@ -15,44 +15,48 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import P5Lib from 'p5';
+// import P5Lib from 'p5';
+//
+// import { GraphicsContext } from 'sketch';
 
-import { GraphicsContext } from 'sketch';
+// import { Geometry } from './geometry';
 
-import { Geometry } from './geometry';
-
-export class Circle extends Geometry {
-    get position(): P5Lib.Vector {
-        return undefined;
-    }
-
-    redraw(context: GraphicsContext): void {
-    }
-
-    render(context: Context): void {
-    }
-
-    setPosition(position: P5Lib.Vector, context: Context): void {
-    }
-
-    setX(x: number, context: Context): void {
-    }
-
-    setY(y: number, context: Context): void {
-    }
-
-    setZ(z: number, context: Context): void {
-    }
-
-    get x(): number {
-        return 0;
-    }
-
-    get y(): number {
-        return 0;
-    }
-
-    get z(): number {
-        return 0;
-    }
+export class Circle {
+    // placeholder
 }
+
+// export class Circle extends Geometry {
+    // get position(): P5Lib.Vector {
+    //     return undefined;
+    // }
+    //
+    // redraw(context: GraphicsContext): void {
+    // }
+    //
+    // render(context: Context): void {
+    // }
+    //
+    // setPosition(position: P5Lib.Vector, context: Context): void {
+    // }
+    //
+    // setX(x: number, context: Context): void {
+    // }
+    //
+    // setY(y: number, context: Context): void {
+    // }
+    //
+    // setZ(z: number, context: Context): void {
+    // }
+    //
+    // get x(): number {
+    //     return 0;
+    // }
+    //
+    // get y(): number {
+    //     return 0;
+    // }
+    //
+    // get z(): number {
+    //     return 0;
+    // }
+// }
