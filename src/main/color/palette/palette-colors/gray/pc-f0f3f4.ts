@@ -38,6 +38,7 @@ export const PC_F0F3F4: PaletteColor = {
     RGB: { R: 240, G: 243, B: 244 },
     HSL: { H: 195, S: 15, L: 95 },
     NAME: 'zappy zebra',
+    LUMINANCE: 0.8915810279,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 

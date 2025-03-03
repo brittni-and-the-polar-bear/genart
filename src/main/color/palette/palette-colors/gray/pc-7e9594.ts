@@ -38,6 +38,7 @@ export const PC_7E9594: PaletteColor = {
     RGB: { R: 126, G: 149, B: 148 },
     HSL: { H: 177, S: 10, L: 54 },
     NAME: 'green granite',
+    LUMINANCE: 0.2806863035,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 

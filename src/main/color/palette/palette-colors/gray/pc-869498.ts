@@ -38,6 +38,7 @@ export const PC_869498: PaletteColor = {
     RGB: { R: 134, G: 148, B: 152 },
     HSL: { H: 193, S: 8, L: 56 },
     NAME: 'carrier pigeon blue',
+    LUMINANCE: 0.2851514006,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 

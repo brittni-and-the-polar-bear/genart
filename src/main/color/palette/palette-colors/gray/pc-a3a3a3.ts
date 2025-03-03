@@ -38,6 +38,7 @@ export const PC_A3A3A3: PaletteColor = {
     RGB: { R: 163, G: 163, B: 163 },
     HSL: { H: 0, S: 0, L: 64 },
     NAME: 'dark souls',
+    LUMINANCE: 0.3662525956,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
