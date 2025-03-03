@@ -15,5 +15,6 @@
  * See the GNU Affero General Public License for more details.
  */
 
+export * from './circle';
 export * from './geometry';
 export * from './point';
