@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -17,11 +17,14 @@
 
 import P5Lib from 'p5';
 
+import { Discriminators } from 'discriminator';
+import { P5Context } from 'p5-context';
 import { Random, WeightedElement } from 'random';
-import { P5Context } from 'sketch-context';
 
-import { Color } from './color';
-import { ColorSelectorType } from './color-selector-type';
+import {Color} from './color';
+import {ColorSelectorType} from './color-selector-type';
+
+// TODO - unit tests
 
 /**
  * ColorSelectors choose and return colors from some list or criteria.
@@ -33,18 +36,18 @@ export abstract class ColorSelector {
     /**
      * A list of {@link Color} objects that the selector can choose from.
      */
-    private readonly _COLOR_CHOICES: Color[] = [];
+    readonly #COLOR_CHOICES: Color[] = [];
 
     /**
      * A set of the names of the colors that can be
      * or have been chosen by the color selector.
      */
-    private readonly _COLOR_NAMES: Set<string> = new Set<string>();
+    readonly #COLOR_NAMES: Set<string> = new Set<string>();
 
     /**
      * The name of the color selector.
      */
-    private readonly _NAME: string;
+    readonly #NAME: string;
 
     /**
      * A flag that determines the color selection order
@@ -52,12 +55,12 @@ export abstract class ColorSelector {
      * When `true`, {@link selectColorFromChoices} will select colors in a random order.<br/>
      * When `false`, {@link selectColorFromChoices} will select colors in list order.
      */
-    private readonly _RANDOM_ORDER: boolean;
+    readonly #RANDOM_ORDER: boolean;
 
     /**
      * The current index of the color being chosen when colors are selected in list order.
      */
-    private _currentIndex: number = 0;
+    #currentIndex: number = 0;
 
     /**
      * @param name - The name of the color selector.
@@ -67,8 +70,8 @@ export abstract class ColorSelector {
      * When `randomOrder` is `false`, {@link selectColorFromChoices} will select colors in list order.
      */
     protected constructor(name: string, randomOrder?: boolean) {
-        this._RANDOM_ORDER = randomOrder ?? Random.randomBoolean();
-        this._NAME = name;
+        this.#RANDOM_ORDER = randomOrder ?? Random.randomBoolean();
+        this.#NAME = name;
     }
 
     /**
@@ -86,14 +89,14 @@ export abstract class ColorSelector {
      * by the color selector.
      */
     public get colorNames(): string[] {
-        return Array.from(this._COLOR_NAMES);
+        return Array.from(this.#COLOR_NAMES);
     }
 
     /**
      * @returns The name of the selector (e.g. 'blue rgb color selector').
      */
     public get name(): string {
-        return this._NAME;
+        return this.#NAME;
     }
 
     /**
@@ -118,12 +121,12 @@ export abstract class ColorSelector {
                               chanceOfColor: number): Color {
         const p5: P5Lib = P5Context.p5;
         const weightedColors: WeightedElement<Color>[] = [
-            { value: new Color(p5.color(0)), weight: chanceOfBlack },
-            { value: new Color(p5.color(255)), weight: chanceOfWhite },
-            { value: this.getColor(), weight: chanceOfColor }
+            { VALUE: new Color(p5.color(0)), WEIGHT: chanceOfBlack, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: new Color(p5.color(255)), WEIGHT: chanceOfWhite, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT },
+            { VALUE: this.getColor(), WEIGHT: chanceOfColor, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }
         ];
 
-        const selection = Random.randomWeightedElement(weightedColors) ?? (new Color());
+        const selection: Color = Random.randomWeightedElement(weightedColors) ?? (new Color());
         return Color.copy(selection);
     }
 
@@ -132,7 +135,7 @@ export abstract class ColorSelector {
      * or have been chosen by the color selector.
      */
     protected get COLOR_NAMES(): Set<string> {
-        return this._COLOR_NAMES;
+        return this.#COLOR_NAMES;
     }
 
     /**
@@ -140,7 +143,7 @@ export abstract class ColorSelector {
      * @param color -
      */
     protected addColorChoice(color: Color): void {
-        this._COLOR_CHOICES.push(Color.copy(color));
+        this.#COLOR_CHOICES.push(Color.copy(color));
     }
 
     /**
@@ -151,11 +154,11 @@ export abstract class ColorSelector {
     protected selectColorFromChoices(): Color {
         let selection: Color | undefined = new Color();
 
-        if (this._RANDOM_ORDER) {
-            selection = Random.randomElement(this._COLOR_CHOICES);
+        if (this.#RANDOM_ORDER) {
+            selection = Random.randomElement(this.#COLOR_CHOICES);
         } else {
-            if (this._currentIndex < this._COLOR_CHOICES.length) {
-                selection = this._COLOR_CHOICES[this._currentIndex];
+            if (this.#currentIndex < this.#COLOR_CHOICES.length) {
+                selection = this.#COLOR_CHOICES[this.#currentIndex];
                 this.incrementCurrentIndex();
             }
         }
@@ -172,10 +175,10 @@ export abstract class ColorSelector {
      * {@link Color} object when colors are selected in list order.
      */
     private incrementCurrentIndex(): void {
-        const length: number = this._COLOR_CHOICES.length;
+        const length: number = this.#COLOR_CHOICES.length;
 
         if (length > 0) {
-            this._currentIndex = (this._currentIndex + 1) % length;
+            this.#currentIndex = (this.#currentIndex + 1) % length;
         }
     }
 }
