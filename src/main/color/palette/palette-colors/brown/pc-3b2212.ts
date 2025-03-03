@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -39,6 +39,7 @@ export const PC_3B2212: PaletteColor = {
     RGB: { R: 59, G: 34, B: 18 },
     HSL: { H: 23, S: 53, L: 15 },
     NAME: 'délicieux au chocolat',
+    LUMINANCE: 0.021175342,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
