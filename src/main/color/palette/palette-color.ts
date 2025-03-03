@@ -18,6 +18,7 @@
 import { Discriminable, Discriminators } from 'discriminator';
 
 // TODO - unit tests
+// TODO - release notes
 
 /**
  * A color to be used in a {@link Palette}.
@@ -34,6 +35,11 @@ export interface PaletteColor extends Discriminable {
      * The name of the color.
      */
     readonly NAME: string;
+
+    /**
+     * The luminance of the color (0-1).
+     */
+    readonly LUMINANCE?: number;
 
     /**
      * The RGB (red, green, blue) components of the color.

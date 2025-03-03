@@ -39,6 +39,7 @@ export const PC_000000: PaletteColor = {
     HSL: { H: 0, S: 0, L: 0 },
     RGB: { R: 0, G: 0, B: 0 },
     NAME: 'black',
+    LUMINANCE: 0.00,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 

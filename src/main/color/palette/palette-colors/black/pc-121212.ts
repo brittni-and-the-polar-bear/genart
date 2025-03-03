@@ -39,6 +39,7 @@ export const PC_121212: PaletteColor = {
     RGB: { R: 18, G: 18, B: 18 },
     HSL: { H: 0, S: 0, L: 7 },
     NAME: 'dark tone ink',
+    LUMINANCE: 0.006048833,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
