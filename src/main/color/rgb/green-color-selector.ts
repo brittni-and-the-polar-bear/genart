@@ -28,9 +28,9 @@ export class GreenColorSelector extends RGBColorSelector {
     public constructor() {
         super({
             NAME: 'green-rgb-color-selector',
-            RED_RANGE: new Range(0, 80),
+            RED_RANGE: new Range(0, 85),
             GREEN_RANGE: new Range(100, 255),
-            BLUE_RANGE: new Range(0, 80)
+            BLUE_RANGE: new Range(0, 85)
         });
     }
 }
