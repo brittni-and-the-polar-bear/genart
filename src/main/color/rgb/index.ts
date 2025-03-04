@@ -21,7 +21,7 @@ export * from './blue-color-selector';
 
 export * from './cyan-color-selector';
 export * from './magenta-color-selector';
-// yellow
+export * from './yellow-color-selector';
 
 // orange
 // purple

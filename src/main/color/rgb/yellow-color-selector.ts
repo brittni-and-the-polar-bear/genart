@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2022-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,10 +15,22 @@
  * See the GNU Affero General Public License for more details.
  */
 
-export * from './color-name';
-export * from './palette';
-export * from './rgb';
+import { Range } from 'math';
 
-export * from './color';
-export * from './color-selector';
-export * from './color-selector-type';
+import { RGBColorSelector } from './rgb-color-selector';
+
+// TODO - release notes
+// TODO - documentation
+// TODO - unit tests
+// - all color selector names should be unique
+
+export class YellowColorSelector extends RGBColorSelector {
+    public constructor() {
+        super({
+            NAME: 'yellow-rgb-color-selector',
+            RED_RANGE: new Range(100, 255),
+            GREEN_RANGE: new Range(100, 255),
+            BLUE_RANGE: new Range(0, 85)
+        });
+    }
+}
