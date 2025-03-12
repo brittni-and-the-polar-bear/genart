@@ -15,48 +15,62 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// import P5Lib from 'p5';
-//
-// import { GraphicsContext } from 'sketch';
+import P5Lib from 'p5';
 
-// import { Geometry } from './geometry';
+import {Context, Coordinate, GraphicsContext} from 'sketch';
 
-export class Circle {
-    // placeholder
+import { Geometry, GeometryConfig } from './geometry';
+
+export interface CircleConfig extends GeometryConfig {
+    readonly POSITION_A: Coordinate;
+    readonly POSITION_B: Coordinate;
 }
 
-// export class Circle extends Geometry {
-    // get position(): P5Lib.Vector {
-    //     return undefined;
-    // }
-    //
-    // redraw(context: GraphicsContext): void {
-    // }
-    //
-    // render(context: Context): void {
-    // }
-    //
-    // setPosition(position: P5Lib.Vector, context: Context): void {
-    // }
-    //
-    // setX(x: number, context: Context): void {
-    // }
-    //
-    // setY(y: number, context: Context): void {
-    // }
-    //
-    // setZ(z: number, context: Context): void {
-    // }
-    //
-    // get x(): number {
-    //     return 0;
-    // }
-    //
-    // get y(): number {
-    //     return 0;
-    // }
-    //
-    // get z(): number {
-    //     return 0;
-    // }
-// }
+export class Circle extends Geometry {
+    #POSITION_A: Coordinate;
+    #POSITION_B: Coordinate;
+
+    public constructor(config: CircleConfig) {
+        super(config);
+    }
+
+    public override get position(): P5Lib.Vector {
+        return undefined;
+    }
+
+    public override redraw(context: GraphicsContext): void {
+        this.#POSITION_A.remap(context);
+        this.#POSITION_B.remap(context);
+    }
+
+    public override render(context: Context): void {
+    }
+
+    public override setPosition(position: P5Lib.Vector, context: Context): void {
+    }
+
+    public override setX(x: number, context: Context): void {
+    }
+
+    public override setY(y: number, context: Context): void {
+    }
+
+    public override setZ(z: number, context: Context): void {
+    }
+
+    public override get x(): number {
+        return 0;
+    }
+
+    public override get y(): number {
+        return 0;
+    }
+
+    public override get z(): number {
+        return 0;
+    }
+
+    get #center(context: Context): P5Lib.Vector {
+        const a: P5Lib.Vector = this.#POSITION_A.position;
+    }
+}
