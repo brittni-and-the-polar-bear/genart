@@ -24,7 +24,7 @@ import { Geometry, GeometryConfig } from './geometry';
 // TODO - unit tests
 // TODO - documentation
 export interface PointConfig extends GeometryConfig {
-    readonly POSITION?: Coordinate;
+    readonly COORDINATE?: Coordinate;
 }
 
 // TODO - unit tests
@@ -34,54 +34,52 @@ export class Point extends Geometry {
 
     public constructor(config: PointConfig) {
         super(config);
-        if (config.POSITION) {
-            this.#COORDINATE = config.POSITION.copy(config.CONTEXT);
+        if (config.COORDINATE) {
+            this.#COORDINATE = config.COORDINATE.clone();
         } else {
-            this.#COORDINATE = new Coordinate(config.CONTEXT);
+            this.#COORDINATE = new Coordinate();
         }
     }
 
-    public override get position(): P5Lib.Vector {
-        return this.#COORDINATE.position;
+    public override getPosition(context: Context): P5Lib.Vector {
+        return this.#COORDINATE.getPosition(context);
     }
 
-    public override redraw(context: Context): void {
-        this.#COORDINATE.remap(context);
-    }
-
-    public override render(context: GraphicsContext): void {
-        this.redraw(context);
-        this.style.applyStyle(context);
-        const x: number = this.#COORDINATE.x;
-        const y: number = this.#COORDINATE.y;
-        context.GRAPHICS.point(x, y);
-    }
-
-    public override setPosition(position: P5Lib.Vector, context: Context): void {
+    public override setPosition(position: P5Lib.Vector, context?: Context): void {
         this.#COORDINATE.set(position, context);
     }
 
-    public override setX(x: number, context: Context): void {
+    public override getX(context: Context): number {
+        return this.#COORDINATE.getX(context);
+    }
+
+    public override setX(x: number, context?: Context): void {
         this.#COORDINATE.setX(x, context);
     }
 
-    public override setY(y: number, context: Context): void {
+    public override getY(context: Context): number {
+        return this.#COORDINATE.getY(context)
+    }
+
+    public override setY(y: number, context?: Context): void {
         this.#COORDINATE.setY(y, context);
     }
 
-    public override setZ(z: number, context: Context): void {
-        this.#COORDINATE.setZ(z, context);
+    public override getZ(): number {
+        return this.#COORDINATE.getZ();
     }
 
-    get x(): number {
-        return this.#COORDINATE.x;
+    public override setZ(): void {
+        this.#COORDINATE.setZ();
     }
 
-    get y(): number {
-        return this.#COORDINATE.y;
+    public override render(context: GraphicsContext): void {
+        this.style.applyStyle(context);
+        const position: P5Lib.Vector = this.#COORDINATE.getPosition(context);
+        context.GRAPHICS.point(position.x, position.y);
     }
 
-    get z(): number {
-        return this.#COORDINATE.z;
+    public override redraw(): void {
+        /* empty */
     }
 }

@@ -33,21 +33,21 @@ export abstract class Geometry implements RedrawListener, Renderable {
         this.#style = config.STYLE ?? (new GeometryStyle());
     }
 
-    public abstract get position(): P5Lib.Vector;
+    public abstract getPosition(context: Context): P5Lib.Vector;
 
     public abstract setPosition(position: P5Lib.Vector, context: Context): void;
 
-    public abstract get x(): number;
+    public abstract getX(context: Context): number;
 
-    public abstract setX(x: number, context: Context): void;
+    public abstract setX(x: number, context?: Context): void;
 
-    public abstract get y(): number;
+    public abstract getY(context: Context): number;
 
-    public abstract setY(y: number, context: Context): void;
+    public abstract setY(y: number, context?: Context): void;
 
-    public abstract get z(): number;
+    public abstract getZ(context: Context): number;
 
-    public abstract setZ(z: number, context: Context): void;
+    public abstract setZ(z: number, context?: Context): void;
 
     public abstract render(context: Context): void;
 

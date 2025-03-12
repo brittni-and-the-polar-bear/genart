@@ -21,187 +21,149 @@ import { P5Context } from 'p5-context';
 
 import { Context } from '../context';
 
+// TODO - documentation
+// TODO - release notes
+// TODO - unit tests
+// TODO - copilot code review
 export class Coordinate {
-    readonly #CONTEXT_POS: P5Lib.Vector;
     readonly #RATIO_POS: P5Lib.Vector;
 
-    public constructor(context: Context);
-    public constructor(x: number, y: number, z: number, context: Context);
-    public constructor(x: number, y: number, context: Context);
-    public constructor(position: P5Lib.Vector, context: Context);
-    public constructor(arg1: P5Lib.Vector | number | Context,
+    public constructor();
+    public constructor(position: P5Lib.Vector, context?: Context);
+    public constructor(x: number, y: number, context?: Context);
+    public constructor(x: number, y: number, z: number, context?: Context);
+    public constructor(arg1?: P5Lib.Vector | number,
                        arg2?: number | Context,
                        arg3?: number | Context,
                        arg4?: Context) {
-        const p5: P5Lib = P5Context.p5;
-        this.#CONTEXT_POS = p5.createVector();
-        this.#RATIO_POS = p5.createVector();
-
-        if (arg1 instanceof Context) {
-            this.#remapRatio(arg1);
-        } else if (arg1 instanceof P5Lib.Vector && arg2 instanceof Context) {
-            const position: P5Lib.Vector = arg1;
-            const context: Context = arg2;
-            this.#CONTEXT_POS = position.copy();
-            this.#remapRatio(context);
-        } else if (typeof arg1 === 'number' &&
-                    typeof arg2 === 'number' &&
-                    arg3 instanceof Context) {
-            const x: number = arg1;
-            const y: number = arg2;
-            const context: Context = arg3;
-            this.#CONTEXT_POS = p5.createVector(x, y);
-            this.#remapRatio(context);
-        } else if (typeof arg1 === 'number' &&
-                    typeof arg2 === 'number' &&
-                    typeof arg3 === 'number' &&
-                    arg4 instanceof Context) {
-            const x: number = arg1;
-            const y: number = arg2;
-            const z: number = arg3;
-            const context: Context = arg4;
-            this.#CONTEXT_POS = p5.createVector(x, y, z);
-            this.#remapRatio(context);
-        }
+        this.#RATIO_POS = P5Context.p5.createVector();
+        this.#setRatio(arg1, arg2, arg3, arg4);
     }
 
-    public copy(context: Context): Coordinate {
-        return new Coordinate(this.#CONTEXT_POS, context);
+    public clone(): Coordinate {
+        return new Coordinate(this.#RATIO_POS);
     }
 
-    public get x(): number {
-        return this.#CONTEXT_POS.x;
+    public getX(context: Context): number {
+        return context.coordinateMapper.mapRatioToCoordinateX(this.#RATIO_POS.x);
     }
 
-    public get y(): number {
-        return this.#CONTEXT_POS.y;
+    public getY(context: Context): number {
+        return context.coordinateMapper.mapRatioToCoordinateY(this.#RATIO_POS.y);
     }
 
-    public get z(): number {
-        return this.#CONTEXT_POS.z;
+    // TODO - implement proper mapping on z-axis
+    public getZ(): number {
+        return 0;
     }
 
-    public get position(): P5Lib.Vector {
-        return this.#CONTEXT_POS.copy();
+    public getPosition(context: Context): P5Lib.Vector {
+        return context.coordinateMapper.mapRatioToCoordinate(this.#RATIO_POS);
     }
 
     public get ratioX(): number {
         return this.#RATIO_POS.x;
     }
 
+    public set ratioX(value: number) {
+        this.#RATIO_POS.x = value;
+    }
+
     public get ratioY(): number {
         return this.#RATIO_POS.y;
+    }
+
+    public set ratioY(value: number) {
+        this.#RATIO_POS.y = value;
     }
 
     public get ratioZ(): number {
         return this.#RATIO_POS.z;
     }
 
+    public set ratioZ(value: number) {
+        this.#RATIO_POS.z = value;
+    }
+
     public get ratio(): P5Lib.Vector {
-        return this.#RATIO_POS.copy();
+        return this.#RATIO_POS;
     }
 
-    public setX(value: number, context: Context): void {
-        this.#CONTEXT_POS.x = value;
-        this.#remapRatio(context);
+    public set ratio(value: P5Lib.Vector) {
+        this.#RATIO_POS.set(value);
     }
 
-    public setY(value: number, context: Context): void {
-        this.#CONTEXT_POS.y = value;
-        this.#remapRatio(context);
+    public equals(other: Coordinate): boolean {
+        return this.#RATIO_POS.equals(other.#RATIO_POS);
     }
 
-    public setZ(value: number, context: Context): void {
-        this.#CONTEXT_POS.z = value;
-        this.#remapRatio(context);
+    public setX(value: number, context?: Context): void {
+       if (context) {
+           this.#RATIO_POS.x = context.coordinateMapper.mapCoordinateToRatioX(value);
+       } else {
+           this.#RATIO_POS.x = value;
+       }
     }
 
-    public set(x: number, y: number, z: number, context: Context): void;
-    public set(x: number, y: number, context: Context): void;
-    public set(position: P5Lib.Vector, context: Context): void;
+    public setY(value: number, context?: Context): void {
+        if (context) {
+            this.#RATIO_POS.y = context.coordinateMapper.mapCoordinateToRatioY(value);
+        } else {
+            this.#RATIO_POS.y = value;
+        }
+    }
+
+    // TODO - implement proper mapping on z-axis
+    public setZ(): void {
+        this.#RATIO_POS.z = 0;
+    }
+
+    public set(position: P5Lib.Vector, context?: Context): void;
+    public set(x: number, y: number, context?: Context): void;
+    public set(x: number, y: number, z: number, context?: Context): void;
     public set(arg1: P5Lib.Vector | number,
                arg2?: number | Context,
                arg3?: number | Context,
                arg4?: Context): void {
-        if (arg1 instanceof P5Lib.Vector && arg2 instanceof Context) {
+        this.#setRatio(arg1, arg2, arg3, arg4);
+    }
+
+    #setRatio(arg1?: P5Lib.Vector | number,
+              arg2?: number | Context,
+              arg3?: number | Context,
+              arg4?: Context): void {
+        const p5: P5Lib = P5Context.p5;
+
+        if (arg1 instanceof P5Lib.Vector) {
             const position: P5Lib.Vector = arg1;
-            const context: Context = arg2;
-            this.#CONTEXT_POS.set(position);
-            this.#remapRatio(context);
+
+            if (arg2 && arg2 instanceof Context) {
+                const ratio: P5Lib.Vector = arg2.coordinateMapper.mapCoordinateToRatio(position);
+                this.#RATIO_POS.set(ratio);
+            } else {
+                this.#RATIO_POS.set(position);
+            }
         } else if (typeof arg1 === 'number' &&
             typeof arg2 === 'number' &&
-            arg3 instanceof Context) {
-            const x: number = arg1;
-            const y: number = arg2;
-            const context: Context = arg3;
-            this.#CONTEXT_POS.set(x, y);
-            this.#remapRatio(context);
-        } else if (typeof arg1 === 'number' &&
-            typeof arg2 === 'number' &&
-            typeof arg3 === 'number' &&
-            arg4 instanceof Context) {
-            const x: number = arg1;
-            const y: number = arg2;
-            const z: number = arg3;
-            const context: Context = arg4;
-            this.#CONTEXT_POS.set(x, y, z);
-            this.#remapRatio(context);
+            typeof arg3 === 'number') {
+            const position: P5Lib.Vector = p5.createVector(arg1, arg2, arg3);
+
+            if (arg4) {
+                const ratio: P5Lib.Vector = arg4.coordinateMapper.mapCoordinateToRatio(position);
+                this.#RATIO_POS.set(ratio);
+            } else {
+                this.#RATIO_POS.set(position);
+            }
+        } else if (typeof  arg1 === 'number' &&
+            typeof arg2 === 'number') {
+            const position: P5Lib.Vector = p5.createVector(arg1, arg2);
+
+            if (arg3 && arg3 instanceof Context) {
+                const ratio: P5Lib.Vector = arg3.coordinateMapper.mapCoordinateToRatio(position);
+                this.#RATIO_POS.set(ratio);
+            } else {
+                this.#RATIO_POS.set(position);
+            }
         }
-    }
-
-    public setRatioX(value: number, context: Context): void {
-        this.#RATIO_POS.x = value;
-        this.remap(context);
-    }
-
-    public setRatioY(value: number, context: Context): void {
-        this.#RATIO_POS.y = value;
-        this.remap(context);
-    }
-
-    public setRatioZ(value: number, context: Context): void {
-        this.#RATIO_POS.z = value;
-        this.remap(context);
-    }
-
-    public setRatio(x: number, y: number, z: number, context: Context): void;
-    public setRatio(x: number, y: number, context: Context): void;
-    public setRatio(position: P5Lib.Vector, context: Context): void;
-    public setRatio(arg1: P5Lib.Vector | number,
-                    arg2?: number | Context,
-                    arg3?: number | Context,
-                    arg4?: Context): void {
-        if (arg1 instanceof P5Lib.Vector && arg2 instanceof Context) {
-            const position: P5Lib.Vector = arg1;
-            const context: Context = arg2;
-            this.#RATIO_POS.set(position);
-            this.remap(context);
-        } else if (typeof arg1 === 'number' &&
-            typeof arg2 === 'number' &&
-            arg3 instanceof Context) {
-            const x: number = arg1;
-            const y: number = arg2;
-            const context: Context = arg3;
-            this.#RATIO_POS.set(x, y);
-            this.remap(context);
-        } else if (typeof arg1 === 'number' &&
-            typeof arg2 === 'number' &&
-            typeof arg3 === 'number' &&
-            arg4 instanceof Context) {
-            const x: number = arg1;
-            const y: number = arg2;
-            const z: number = arg3;
-            const context: Context = arg4;
-            this.#RATIO_POS.set(x, y, z);
-            this.remap(context);
-        }
-    }
-
-    public remap(context: Context): void {
-        this.#CONTEXT_POS.set(context.coordinateMapper.mapRatioToCoordinate(this.#RATIO_POS));
-    }
-
-    #remapRatio(context: Context): void {
-        this.#RATIO_POS.set(context.coordinateMapper.mapCoordinateToRatio(this.#CONTEXT_POS));
     }
 }
