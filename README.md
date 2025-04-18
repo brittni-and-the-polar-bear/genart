@@ -57,12 +57,6 @@ for creating responsive generative art projects.
 
 ----
 
-## docs coverage
-
-![Documentation Coverage](https://brittni-and-the-polar-bear.github.io/genart/doc/coverage.svg)
-
-----
-
 # getting started
 
 ## install with [npm](https://www.npmjs.com/)
