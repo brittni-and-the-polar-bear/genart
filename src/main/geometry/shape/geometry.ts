@@ -45,10 +45,6 @@ export abstract class Geometry implements RedrawListener, Renderable {
 
     public abstract setY(y: number, context?: Context): void;
 
-    public abstract getZ(context: Context): number;
-
-    public abstract setZ(z: number, context?: Context): void;
-
     public abstract render(context: Context): void;
 
     public abstract redraw(context: GraphicsContext): void;

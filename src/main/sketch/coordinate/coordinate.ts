@@ -52,11 +52,6 @@ export class Coordinate {
         return context.coordinateMapper.mapRatioToCoordinateY(this.#RATIO_POS.y);
     }
 
-    // TODO - implement proper mapping on z-axis
-    public getZ(): number {
-        return 0;
-    }
-
     public getPosition(context: Context): P5Lib.Vector {
         return context.coordinateMapper.mapRatioToCoordinate(this.#RATIO_POS);
     }
@@ -75,14 +70,6 @@ export class Coordinate {
 
     public set ratioY(value: number) {
         this.#RATIO_POS.y = value;
-    }
-
-    public get ratioZ(): number {
-        return this.#RATIO_POS.z;
-    }
-
-    public set ratioZ(value: number) {
-        this.#RATIO_POS.z = value;
     }
 
     public get ratio(): P5Lib.Vector {
@@ -111,11 +98,6 @@ export class Coordinate {
         } else {
             this.#RATIO_POS.y = value;
         }
-    }
-
-    // TODO - implement proper mapping on z-axis
-    public setZ(): void {
-        this.#RATIO_POS.z = 0;
     }
 
     public set(position: P5Lib.Vector, context?: Context): void;

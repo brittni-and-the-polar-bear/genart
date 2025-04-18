@@ -65,14 +65,6 @@ export class Point extends Geometry {
         this.#COORDINATE.setY(y, context);
     }
 
-    public override getZ(): number {
-        return this.#COORDINATE.getZ();
-    }
-
-    public override setZ(): void {
-        this.#COORDINATE.setZ();
-    }
-
     public override render(context: GraphicsContext): void {
         this.style.applyStyle(context);
         const position: P5Lib.Vector = this.#COORDINATE.getPosition(context);
