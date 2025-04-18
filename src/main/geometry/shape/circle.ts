@@ -22,6 +22,8 @@ import { Context, Coordinate, GraphicsContext } from 'sketch';
 
 import { Geometry, GeometryConfig } from './geometry';
 
+// TODO - unit tests
+// TODO - documentation
 export interface CircleConfig extends GeometryConfig {
     readonly POSITION:
         {
@@ -33,6 +35,8 @@ export interface CircleConfig extends GeometryConfig {
         }
 }
 
+// TODO - unit tests
+// TODO - documentation
 export class Circle extends Geometry {
     #POSITION_A: Coordinate;
     #POSITION_B: Coordinate;
