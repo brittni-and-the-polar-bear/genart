@@ -1,6 +1,6 @@
 {
   "name": "@batpb/genart",
-  "version": "2.0.0-rc.3-dev-19",
+  "version": "2.0.0-rc.3-dev-21",
   "description": "A TypeScript compatible library built with p5.js for creating responsive generative art projects.",
   "main": "./out/dist/batpb-genart.js",
   "module": "./out/dist/batpb-genart.mjs",
@@ -79,7 +79,7 @@
     "@types/p5": "^1.7.6",
     "cococh": "^1.2.4",
     "nearest-color": "^0.4.4",
-    "p5": "^2.0.0"
+    "p5": "^1.11.5"
   },
   "peerDependencies": {
     "color-name-list": "11.8.0"
