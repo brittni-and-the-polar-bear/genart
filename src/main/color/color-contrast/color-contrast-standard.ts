@@ -172,7 +172,6 @@ export class ColorContrastStandard {
         );
     }
 
-    // TODO - unit test - returns false if either color is not a hex string
     /**
      * Do the given colors conform to guidelines for the given standard and font size?
      *
