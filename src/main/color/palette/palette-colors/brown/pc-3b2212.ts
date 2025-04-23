@@ -30,8 +30,10 @@ import { ALL_PALETTE_COLORS, BROWN_PALETTE_COLORS } from '../palette-color-maps'
  *
  * @see {@link BLUE_LILY_PALETTE}
  *
- * @category Palette Colors (All)
- * @category Palette Colors (Brown)
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Brown
  */
 export const PC_3B2212: PaletteColor = {
     HEX: '#3B2212',

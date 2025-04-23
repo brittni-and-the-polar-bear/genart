@@ -30,8 +30,10 @@ import { ALL_PALETTE_COLORS, BLACK_PALETTE_COLORS } from '../palette-color-maps'
  *
  * @see {@link ASEXUAL_FLAG_PALETTE}
  *
- * @category Palette / Colors / All
- * @category Palette / Colors / Black
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Black
  */
 export const PC_000000: PaletteColor = {
     HEX: '#000000',
