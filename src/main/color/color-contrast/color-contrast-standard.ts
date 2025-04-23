@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -19,14 +19,17 @@ import { getContrastRatios, ResponseObject } from 'cococh';
 
 import { Color } from 'color';
 import { Discriminator } from 'discriminator';
-import { PaletteColor } from 'palette';
+import { StringValidator } from 'string';
+
+import { PaletteColor } from '../palette';
 
 /**
  * Web Content Accessibility Guidelines (WCAG) color contrast categories.<br/>
  * To learn more about WCAG, visit
  * <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">https://www.w3.org/WAI/standards-guidelines/wcag/</a>.
  *
- * @category Color Contrast
+ * @category Color
+ * @category Color / Color Contrast
  */
 export enum ContrastStandard {
     /**
@@ -43,7 +46,8 @@ export enum ContrastStandard {
 /**
  * Font size category used to evaluate the accessibility standard.
  *
- * @category Color Contrast
+ * @category Color
+ * @category Color / Color Contrast
  */
 export enum ContrastFontSize {
     /**
@@ -64,7 +68,7 @@ export enum ContrastFontSize {
  * <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">https://www.w3.org/WAI/standards-guidelines/wcag/</a>.
  *
  * @category Color
- * @category Color Contrast
+ * @category Color / Color Contrast
  */
 export class ColorContrastStandard {
     /**
@@ -168,6 +172,7 @@ export class ColorContrastStandard {
         );
     }
 
+    // TODO - unit test - returns false if either color is not a hex string
     /**
      * Do the given colors conform to guidelines for the given standard and font size?
      *
@@ -184,7 +189,11 @@ export class ColorContrastStandard {
                                          hexB: string,
                                          standard: ContrastStandard,
                                          fontSize: ContrastFontSize): boolean {
-        const ratioResults: ResponseObject = getContrastRatios(hexA, hexB);
-        return ratioResults[fontSize][standard];
+        if (StringValidator.isHex(hexA) && StringValidator.isHex(hexB)) {
+            const ratioResults: ResponseObject = getContrastRatios(hexA, hexB);
+            return ratioResults[fontSize][standard];
+        }
+
+        return false;
     }
 }

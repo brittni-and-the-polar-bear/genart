@@ -15,6 +15,7 @@
  * See the GNU Affero General Public License for more details.
  */
 
+export * from './color-contrast';
 export * from './color-name';
 export * from './palette';
 export * from './rgb';
