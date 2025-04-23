@@ -15,12 +15,11 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from "../../../color-name";
+import { PaletteColor } from "../../palette-color";
 import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
-
 /**
  * <div class="color-block" style="background: #F06090;">
  *     <a href="https://coolors.co/f06090" target="_blank" rel="noopener noreferrer">
@@ -30,8 +29,10 @@ import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
  *
  * @see {@link GLITTER_PALETTE}
  *
- * @category Palette Colors (All)
- * @category Palette Colors (Pink)
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Pink
  */
 export const PC_F06090: PaletteColor = {
     HEX: '#F06090',
@@ -43,4 +44,4 @@ export const PC_F06090: PaletteColor = {
 
 PINK_PALETTE_COLORS.setUndefinedKey(PC_F06090.HEX, PC_F06090);
 ALL_PALETTE_COLORS.setUndefinedKey(PC_F06090.HEX, PC_F06090);
-ColorNameManager.addColor(PC_F06090);
+ColorNames.addColor(PC_F06090);

@@ -15,32 +15,34 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from "../../../color-name";
+import { PaletteColor } from "../../palette-color";
 import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #EC417A;">
- *     <a href="https://coolors.co/ec417a" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">radishical (#EC417A)</h2>
+ * <div class="color-block" style="background: #F8B9CE;">
+ *     <a href="https://coolors.co/f8b9ce" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">christy's smile (#F8B9CE)</h2>
  *     </a>
  * </div>
  *
  * @see {@link GLITTER_PALETTE}
  *
- * @category Palette Colors (All)
- * @category Palette Colors (Pink)
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Pink
  */
-export const PC_EC417A: PaletteColor = {
-    HEX: '#EC417A',
-    RGB: { R: 236, G: 65, B: 122 },
-    HSL: { H: 340, S: 82, L: 59 },
-    NAME: 'radishical',
+export const PC_F8B9CE: PaletteColor = {
+    HEX: '#F8B9CE',
+    RGB: { R: 248, G: 185, B: 206 },
+    HSL: { H: 340, S: 82, L: 85 },
+    NAME: "christy's smile",
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-PINK_PALETTE_COLORS.setUndefinedKey(PC_EC417A.HEX, PC_EC417A);
-ALL_PALETTE_COLORS.setUndefinedKey(PC_EC417A.HEX, PC_EC417A);
-ColorNameManager.addColor(PC_EC417A);
+PINK_PALETTE_COLORS.setUndefinedKey(PC_F8B9CE.HEX, PC_F8B9CE);
+ALL_PALETTE_COLORS.setUndefinedKey(PC_F8B9CE.HEX, PC_F8B9CE);
+ColorNames.addColor(PC_F8B9CE);

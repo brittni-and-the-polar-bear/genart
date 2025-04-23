@@ -15,10 +15,10 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from "../../../color-name";
+import { PaletteColor } from "../../palette-color";
 import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
@@ -30,8 +30,10 @@ import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
  *
  * @see {@link BRITTNI_PALETTE}
  *
- * @category Palette Colors (All)
- * @category Palette Colors (Pink)
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Pink
  */
 export const PC_FF6BB5: PaletteColor = {
     HEX: '#FF6BB5',
@@ -43,4 +45,4 @@ export const PC_FF6BB5: PaletteColor = {
 
 PINK_PALETTE_COLORS.setUndefinedKey(PC_FF6BB5.HEX, PC_FF6BB5);
 ALL_PALETTE_COLORS.setUndefinedKey(PC_FF6BB5.HEX, PC_FF6BB5);
-ColorNameManager.addColor(PC_FF6BB5);
+ColorNames.addColor(PC_FF6BB5);

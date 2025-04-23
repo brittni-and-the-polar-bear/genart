@@ -15,32 +15,34 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from "../../../color-name";
+import { PaletteColor } from "../../palette-color";
 import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #F490B1;">
- *     <a href="https://coolors.co/f490b1" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">sachet pink (#F490B1)</h2>
+ * <div class="color-block" style="background: #FCE3EC;">
+ *     <a href="https://coolors.co/fce3ec" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">spun sugar (#FCE3EC)</h2>
  *     </a>
  * </div>
  *
  * @see {@link GLITTER_PALETTE}
  *
- * @category Palette Colors (All)
- * @category Palette Colors (Pink)
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Pink
  */
-export const PC_F490B1: PaletteColor = {
-    HEX: '#F490B1',
-    RGB: { R: 244, G: 144, B: 177 },
-    HSL: { H: 340, S: 82, L: 76 },
-    NAME: 'sachet pink',
+export const PC_FCE3EC: PaletteColor = {
+    HEX: '#FCE3EC',
+    RGB: { R: 252, G: 227, B: 236 },
+    HSL: { H: 338, S: 81, L: 94 },
+    NAME: 'spun sugar',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-PINK_PALETTE_COLORS.setUndefinedKey(PC_F490B1.HEX, PC_F490B1);
-ALL_PALETTE_COLORS.setUndefinedKey(PC_F490B1.HEX, PC_F490B1);
-ColorNameManager.addColor(PC_F490B1);
+PINK_PALETTE_COLORS.setUndefinedKey(PC_FCE3EC.HEX, PC_FCE3EC);
+ALL_PALETTE_COLORS.setUndefinedKey(PC_FCE3EC.HEX, PC_FCE3EC);
+ColorNames.addColor(PC_FCE3EC);
