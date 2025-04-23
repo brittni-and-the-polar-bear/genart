@@ -36,7 +36,6 @@ const config: JestConfigWithTsJest = {
         '^sketch$': '<rootDir>/src/main/sketch',
         '^string$': '<rootDir>/src/main/string',
         '^unit-test/shared$': '<rootDir>/src/test/shared'
-        // '^color-name-list$': '<rootDir>/node_modules/color-name-list'
     },
     testEnvironment: '@happy-dom/jest-environment',
     testRegex: './src/test/.*\\.(test|spec)?\\.(ts|tsx)$',
