@@ -16,7 +16,7 @@
 
 ## [Green Colors](./green/green-colors-by-luminance.md)
 
-## [Pink Colors](./pink/pink-colors-by-luminance.md)
+## [Pink Colors](./pink/pink-colors.md)
 
 ## [Purple Colors](./purple/purple-colors.md)
 
