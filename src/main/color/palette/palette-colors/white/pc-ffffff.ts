@@ -15,32 +15,33 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, WHITE_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #FBF9F9;">
- *     <a href="https://coolors.co/fbf9f9" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">doctor white (#FBF9F9)</h2>
+ * <div class="color-block" style="background: #FFFFFF;">
+ *     <a href="https://coolors.co/ffffff" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">white (#FFFFFF)</h2>
  *     </a>
  * </div>
  *
- * @see {@link CLASSIC_CHRISTMAS_PALETTE}
+ * @see {@link ASEXUAL_FLAG_PALETTE}
+ * @see {@link DALLAS_COWBOYS_PALETTE}
  *
  * @category Palette Colors (White)
  * @category Palette Colors (All)
  */
-export const PC_FBF9F9: PaletteColor = {
-    HEX: '#FBF9F9',
-    RGB: { R: 251, G: 249, B: 249 },
-    HSL: { H: 0, S: 20, L: 98 },
-    NAME: 'doctor white',
+export const PC_FFFFFF: PaletteColor = {
+    HEX: '#FFFFFF',
+    RGB: { R: 255, G: 255, B: 255 },
+    HSL: { H: 0, S: 0, L: 100 },
+    NAME: 'white',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-WHITE_PALETTE_COLORS.setUndefinedKey(PC_FBF9F9.HEX, PC_FBF9F9);
-ALL_PALETTE_COLORS.setUndefinedKey(PC_FBF9F9.HEX, PC_FBF9F9);
-ColorNameManager.addColor(PC_FBF9F9);
+WHITE_PALETTE_COLORS.setUndefinedKey(PC_FFFFFF.HEX, PC_FFFFFF);
+ALL_PALETTE_COLORS.setUndefinedKey(PC_FFFFFF.HEX, PC_FFFFFF);
+ColorNames.addColor(PC_FFFFFF);

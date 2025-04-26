@@ -15,33 +15,32 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, WHITE_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #FFFFFF;">
- *     <a href="https://coolors.co/ffffff" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">white (#FFFFFF)</h2>
+ * <div class="color-block" style="background: #FAFEFF;">
+ *     <a href="https://coolors.co/fafeff" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">polar bear in a blizzard (#FAFEFF)</h2>
  *     </a>
  * </div>
  *
- * @see {@link ASEXUAL_FLAG_PALETTE}
- * @see {@link DALLAS_COWBOYS_PALETTE}
+ * @see {@link BLUE_LILY_PALETTE}
  *
  * @category Palette Colors (White)
  * @category Palette Colors (All)
  */
-export const PC_FFFFFF: PaletteColor = {
-    HEX: '#FFFFFF',
-    RGB: { R: 255, G: 255, B: 255 },
-    HSL: { H: 0, S: 0, L: 100 },
-    NAME: 'white',
+export const PC_FAFEFF: PaletteColor = {
+    HEX: '#FAFEFF',
+    RGB: { R: 250, G: 254, B: 255 },
+    HSL: { H: 192, S: 100, L: 99 },
+    NAME: 'polar bear in a blizzard',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-WHITE_PALETTE_COLORS.setUndefinedKey(PC_FFFFFF.HEX, PC_FFFFFF);
-ALL_PALETTE_COLORS.setUndefinedKey(PC_FFFFFF.HEX, PC_FFFFFF);
-ColorNameManager.addColor(PC_FFFFFF);
+WHITE_PALETTE_COLORS.setUndefinedKey(PC_FAFEFF.HEX, PC_FAFEFF);
+ALL_PALETTE_COLORS.setUndefinedKey(PC_FAFEFF.HEX, PC_FAFEFF);
+ColorNames.addColor(PC_FAFEFF);

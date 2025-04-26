@@ -15,32 +15,32 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, WHITE_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #FAFEFF;">
- *     <a href="https://coolors.co/fafeff" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">polar bear in a blizzard (#FAFEFF)</h2>
+ * <div class="color-block" style="background: #FAFBEF;">
+ *     <a href="https://coolors.co/fafbef" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">enoki (#FAFBEF)</h2>
  *     </a>
  * </div>
  *
- * @see {@link BLUE_LILY_PALETTE}
+ * @see {@link WHITE_LILY_PALETTE}
  *
  * @category Palette Colors (White)
  * @category Palette Colors (All)
  */
-export const PC_FAFEFF: PaletteColor = {
-    HEX: '#FAFEFF',
-    RGB: { R: 250, G: 254, B: 255 },
-    HSL: { H: 192, S: 100, L: 99 },
-    NAME: 'polar bear in a blizzard',
+export const PC_FAFBEF: PaletteColor = {
+    HEX: '#FAFBEF',
+    RGB: { R: 250, G: 251, B: 239 },
+    HSL: { H: 65, S: 60, L: 96 },
+    NAME: 'enoki',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-WHITE_PALETTE_COLORS.setUndefinedKey(PC_FAFEFF.HEX, PC_FAFEFF);
-ALL_PALETTE_COLORS.setUndefinedKey(PC_FAFEFF.HEX, PC_FAFEFF);
-ColorNameManager.addColor(PC_FAFEFF);
+WHITE_PALETTE_COLORS.setUndefinedKey(PC_FAFBEF.HEX, PC_FAFBEF);
+ALL_PALETTE_COLORS.setUndefinedKey(PC_FAFBEF.HEX, PC_FAFBEF);
+ColorNames.addColor(PC_FAFBEF);
