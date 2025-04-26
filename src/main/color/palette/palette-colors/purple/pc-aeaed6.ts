@@ -15,32 +15,32 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, PURPLE_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #7A00F5;">
- *     <a href="https://coolors.co/7a00f5" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block white-pass">poison purple (#7A00F5)</h2>
+ * <div class="color-block" style="background: #AEAED6;">
+ *     <a href="https://coolors.co/aeaed6" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">pixie violet (#AEAED6)</h2>
  *     </a>
  * </div>
  *
- * @see {@link BRITTNI_PALETTE}
+ * @see {@link WHITE_LILY_PALETTE}
  *
  * @category Palette Colors (All)
  * @category Palette Colors (Purple)
  */
-export const PC_7A00F5: PaletteColor = {
-    HEX: '#7A00F5',
-    RGB: { R: 122, G: 0, B: 245 },
-    HSL: { H: 270, S: 100, L: 48 },
-    NAME: 'poison purple',
+export const PC_AEAED6: PaletteColor = {
+    HEX: '#AEAED6',
+    RGB: { R: 174, G: 174, B: 214 },
+    HSL: { H: 240, S: 33, L: 76 },
+    NAME: 'pixie violet',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-ALL_PALETTE_COLORS.setUndefinedKey(PC_7A00F5.HEX, PC_7A00F5);
-PURPLE_PALETTE_COLORS.setUndefinedKey(PC_7A00F5.HEX, PC_7A00F5);
-ColorNameManager.addColor(PC_7A00F5);
+ALL_PALETTE_COLORS.setUndefinedKey(PC_AEAED6.HEX, PC_AEAED6);
+PURPLE_PALETTE_COLORS.setUndefinedKey(PC_AEAED6.HEX, PC_AEAED6);
+ColorNames.addColor(PC_AEAED6);

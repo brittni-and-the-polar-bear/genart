@@ -15,10 +15,10 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, PURPLE_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
@@ -43,4 +43,4 @@ export const PC_80007F: PaletteColor = {
 
 ALL_PALETTE_COLORS.setUndefinedKey(PC_80007F.HEX, PC_80007F);
 PURPLE_PALETTE_COLORS.setUndefinedKey(PC_80007F.HEX, PC_80007F);
-ColorNameManager.addColor(PC_80007F);
+ColorNames.addColor(PC_80007F);

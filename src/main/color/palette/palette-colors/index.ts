@@ -19,5 +19,6 @@ export * from './black';
 export * from './brown';
 export * from './gray';
 export * from './pink';
+export * from './purple';
 
 export * from './palette-color-maps';
