@@ -23,6 +23,8 @@ export * from './cyan-color-selector';
 export * from './magenta-color-selector';
 export * from './yellow-color-selector';
 
+export * from './white-color-selector';
+
 // orange
 // purple
 // teal???

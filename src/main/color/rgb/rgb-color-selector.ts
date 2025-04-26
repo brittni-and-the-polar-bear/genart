@@ -49,13 +49,13 @@ export abstract class RGBColorSelector extends ColorSelector {
     }
 
     public override getColor(): Color {
-        const r: number = Random.randomFloatInRange(this.#RED_RANGE);
-        const g: number = Random.randomFloatInRange(this.#GREEN_RANGE);
-        const b: number = Random.randomFloatInRange(this.#BLUE_RANGE);
+        const r: number = Random.randomIntInRange(this.#RED_RANGE);
+        const g: number = Random.randomIntInRange(this.#GREEN_RANGE);
+        const b: number = Random.randomIntInRange(this.#BLUE_RANGE);
         let a: number = 255;
 
         if (this.#ALPHA_RANGE) {
-            a = Random.randomFloatInRange(this.#ALPHA_RANGE);
+            a = Random.randomIntInRange(this.#ALPHA_RANGE);
         }
         return new Color(r, g, b, a);
     }
