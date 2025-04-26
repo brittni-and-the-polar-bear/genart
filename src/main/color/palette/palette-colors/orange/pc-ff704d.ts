@@ -23,8 +23,11 @@
 // black-pass
 // luminance: 0.3338416291
 
-import {Discriminators} from 'discriminator';
-import {PaletteColor} from 'palette';
+import { Discriminators } from 'discriminator';
+
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
+import { ALL_PALETTE_COLORS, ORANGE_PALETTE_COLORS } from '../palette-color-maps';
 
 export const PC_FF704D: PaletteColor = {
     HEX: '#FF704D',

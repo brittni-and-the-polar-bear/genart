@@ -30,8 +30,10 @@ import { ALL_PALETTE_COLORS, PURPLE_PALETTE_COLORS } from '../palette-color-maps
  *
  * @see {@link BRITTNI_PALETTE}
  *
- * @category Palette Colors (All)
- * @category Palette Colors (Purple)
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Purple
  */
 export const PC_7A00F5: PaletteColor = {
     HEX: '#7A00F5',

@@ -15,10 +15,10 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { ColorNames } from 'color';
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
 
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, ORANGE_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
@@ -28,8 +28,10 @@ import { ALL_PALETTE_COLORS, ORANGE_PALETTE_COLORS } from '../palette-color-maps
  *     </a>
  * </div>
  *
- * @category Palette Colors (All)
- * @category Palette Colors (Orange)
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Orange
  */
 export const PC_FFA852: PaletteColor = {
     HEX: '#FFA852',
@@ -41,4 +43,4 @@ export const PC_FFA852: PaletteColor = {
 
 ALL_PALETTE_COLORS.setUndefinedKey(PC_FFA852.HEX, PC_FFA852);
 ORANGE_PALETTE_COLORS.setUndefinedKey(PC_FFA852.HEX, PC_FFA852);
-ColorNameManager.addColor(PC_FFA852);
+ColorNames.addColor(PC_FFA852);

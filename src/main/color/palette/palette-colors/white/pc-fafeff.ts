@@ -30,8 +30,10 @@ import { ALL_PALETTE_COLORS, WHITE_PALETTE_COLORS } from '../palette-color-maps'
  *
  * @see {@link BLUE_LILY_PALETTE}
  *
- * @category Palette Colors (White)
- * @category Palette Colors (All)
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / White
  */
 export const PC_FAFEFF: PaletteColor = {
     HEX: '#FAFEFF',
