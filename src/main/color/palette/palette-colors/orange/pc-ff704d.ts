@@ -15,20 +15,24 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// #ff704d
-// #FF704D
-// 12°, 100%, 65%
-// 255, 112, 77
-// often orange
-// black-pass
-// luminance: 0.3338416291
-
 import { Discriminators } from 'discriminator';
 
 import { ColorNames } from '../../../color-name';
 import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, ORANGE_PALETTE_COLORS } from '../palette-color-maps';
 
+/**
+ * <div class="color-block" style="background: #FF704D;">
+ *     <a href="https://coolors.co/ff704d" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">often orange (#FF704D)</h2>
+ *     </a>
+ * </div>
+ *
+ * @category Color
+ * @category Color / Palette
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Orange
+ */
 export const PC_FF704D: PaletteColor = {
     HEX: '#FF704D',
     RGB: { R: 255, G: 112, B: 77 },
@@ -36,3 +40,7 @@ export const PC_FF704D: PaletteColor = {
     NAME: 'often orange',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
+
+ALL_PALETTE_COLORS.setUndefinedKey(PC_FF704D.HEX, PC_FF704D);
+ORANGE_PALETTE_COLORS.setUndefinedKey(PC_FF704D.HEX, PC_FF704D);
+ColorNames.addColor(PC_FF704D);
