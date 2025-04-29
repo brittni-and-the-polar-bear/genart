@@ -79,7 +79,7 @@
     "@types/p5": "^1.7.6",
     "cococh": "^1.2.4",
     "nearest-color": "^0.4.4",
-    "p5": "^2.0.0"
+    "p5": "^2.0.1"
   },
   "peerDependencies": {
     "color-name-list": "11.8.0"
