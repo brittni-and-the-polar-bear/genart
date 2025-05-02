@@ -29,6 +29,8 @@ import { RGBColorSelector } from './rgb-color-selector';
 // TODO - unit tests
 // - all color selector names should be unique
 
+// TODO - update config for RGB Range OR GRAY Range
+
 export class WhiteColorSelector extends RGBColorSelector {
     public constructor() {
         super({
