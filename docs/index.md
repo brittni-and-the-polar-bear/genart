@@ -5,7 +5,7 @@ A
 compatible library
 built with
 <a href="https://p5js.org/" target="_blank" rel="noopener noreferrer">p5.js</a>
-for creating responsive generative art projects.
+for creating responsive algorithmic art projects.
 
 ## important notice
 
