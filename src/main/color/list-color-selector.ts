@@ -15,5 +15,23 @@
  * See the GNU Affero General Public License for more details.
  */
 
+import {ColorSelector, ColorSelectorConfig} from './color-selector';
+import {Color} from "./color";
+
+export interface ListColorSelectorConfig<ColorType> extends ColorSelectorConfig {
+    readonly COLORS: ColorType[];
+}
+
 // TODO - implement list color selector
-// Generic Type?
+export abstract class ListColorSelector<ColorType> extends ColorSelector {
+    protected constructor(config: ListColorSelectorConfig<ColorType>) {
+        super(config.NAME, config.RANDOM_ORDER);
+        this.addColorChoices(config.COLORS);
+    }
+
+    protected abstract addColorChoices(colors: ColorType[]): void;
+
+    public override getColor(): Color {
+        return this.selectColorFromChoices();
+    }
+}

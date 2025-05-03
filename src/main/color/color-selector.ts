@@ -26,6 +26,11 @@ import { ColorSelectorType } from './color-selector-type';
 
 // TODO - unit tests
 
+export interface ColorSelectorConfig {
+    readonly NAME: string,
+    readonly RANDOM_ORDER: boolean
+}
+
 /**
  * ColorSelectors choose and return colors from some list or criteria.
  *
@@ -143,7 +148,9 @@ export abstract class ColorSelector {
      * @param color -
      */
     protected addColorChoice(color: Color): void {
-        this.#COLOR_CHOICES.push(Color.copy(color));
+        const choice: Color = Color.copy(color);
+        this.#COLOR_CHOICES.push(choice);
+        this.#COLOR_NAMES.add(choice.name);
     }
 
     /**
