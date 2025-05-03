@@ -41,6 +41,10 @@ export enum ColorSelectorType {
 
     OTHER = 'other color selector',
 
+    HEX = 'hex code color selector',
+
+    LIST = 'list color selector',
+
     /**
      * Default color selector. Should only be used in {@link DefaultColorSelector}.
      */
