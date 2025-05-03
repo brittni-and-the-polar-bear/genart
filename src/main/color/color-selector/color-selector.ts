@@ -21,7 +21,7 @@ import { Discriminators } from 'discriminator';
 import { P5Context } from 'p5-context';
 import { Random, WeightedElement } from 'random';
 
-import { Color } from './color';
+import { Color } from '../color';
 import { ColorSelectorType } from './color-selector-type';
 
 // TODO - unit tests

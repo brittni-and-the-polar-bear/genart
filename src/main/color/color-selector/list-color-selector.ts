@@ -15,8 +15,8 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import {ColorSelector, ColorSelectorConfig} from './color-selector';
-import {Color} from "./color";
+import { Color } from '../color';
+import { ColorSelector, ColorSelectorConfig } from './color-selector';
 
 export interface ListColorSelectorConfig<ColorType> extends ColorSelectorConfig {
     readonly COLORS: ColorType[];
