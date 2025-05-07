@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -17,32 +17,30 @@
 
 import { Discriminators } from 'discriminator';
 
-import { ColorNames } from "../../../color-name";
-import { PaletteColor } from "../../palette-color";
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #FF6BB5;">
- *     <a href="https://coolors.co/ff6bb5" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">fen hong pink (#FF6BB5)</h2>
+ * <div class="color-block" style="background: #E13762;">
+ *     <a href="https://coolors.co/e13762" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">intense passion (#E13762)</h2>
  *     </a>
  * </div>
- *
- * @see {@link BRITTNI_PALETTE}
  *
  * @category Color
  * @category Color / Palette
  * @category Color / Palette / Colors / All
  * @category Color / Palette / Colors / Pink
  */
-export const PC_FF6BB5: PaletteColor = {
-    HEX: '#FF6BB5',
-    RGB: { R: 255, G: 107, B: 181 },
-    HSL: { H: 330, S: 100, L: 71 },
-    NAME: 'fen hong pink',
+export const PC_E13762: PaletteColor = {
+    HEX: '#E13762',
+    RGB: { R: 225, G: 55, B:  98},
+    HSL: { H: 345, S: 74, L:  55},
+    NAME: 'intense passion',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-ALL_PALETTE_COLORS.setUndefinedKey(PC_FF6BB5.HEX, PC_FF6BB5);
-PINK_PALETTE_COLORS.setUndefinedKey(PC_FF6BB5.HEX, PC_FF6BB5);
-ColorNames.addColor(PC_FF6BB5);
+ALL_PALETTE_COLORS.setUndefinedKey(PC_E13762.HEX, PC_E13762);
+PINK_PALETTE_COLORS.setUndefinedKey(PC_E13762.HEX, PC_E13762);
+ColorNames.addColor(PC_E13762);

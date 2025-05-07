@@ -16,6 +16,7 @@
  */
 
 export * from './pc-ec417a';
+export * from './pc-e13762';
 export * from './pc-f06090';
 export * from './pc-f490b1';
 export * from './pc-f8b9ce';

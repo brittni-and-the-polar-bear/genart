@@ -43,6 +43,6 @@ export const PC_EC417A: PaletteColor = {
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-PINK_PALETTE_COLORS.setUndefinedKey(PC_EC417A.HEX, PC_EC417A);
 ALL_PALETTE_COLORS.setUndefinedKey(PC_EC417A.HEX, PC_EC417A);
+PINK_PALETTE_COLORS.setUndefinedKey(PC_EC417A.HEX, PC_EC417A);
 ColorNames.addColor(PC_EC417A);
