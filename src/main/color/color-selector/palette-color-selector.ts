@@ -15,3 +15,42 @@
  * See the GNU Affero General Public License for more details.
  */
 
+import { Palette, PaletteColor } from '../palette';
+import { Color } from '../color';
+
+import { ColorSelectorConfig } from './color-selector';
+import { ColorSelectorType } from './color-selector-type';
+import { ListColorSelector } from './list-color-selector';
+
+export interface PaletteColorSelectorConfig extends ColorSelectorConfig{
+    readonly PALETTE: Palette;
+}
+
+export class PaletteColorSelector extends ListColorSelector<PaletteColor> {
+    public constructor(config: PaletteColorSelectorConfig) {
+        super({
+            NAME: PaletteColorSelector.#buildName(config.PALETTE),
+            RANDOM_ORDER: config.RANDOM_ORDER,
+            COLORS: config.PALETTE.COLORS
+        })
+    }
+
+    static #buildName(palette: Palette): string {
+        let paletteName: string = palette.NAME.toLowerCase();
+
+        if (!paletteName.endsWith(' palette')) {
+            paletteName += ' palette';
+        }
+
+        paletteName += ' color selector';
+        return paletteName;
+    }
+
+    public override get type(): ColorSelectorType {
+        return ColorSelectorType.PALETTE;
+    }
+
+    protected override convertColor(color: PaletteColor): Color {
+        return (new Color(color));
+    }
+}

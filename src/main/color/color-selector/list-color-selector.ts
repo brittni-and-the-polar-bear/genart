@@ -15,23 +15,72 @@
  * See the GNU Affero General Public License for more details.
  */
 
+import P5Lib from 'p5';
+
+import { P5Context } from 'p5-context';
+import { Random, RandomListSelector } from 'random';
+
 import { Color } from '../color';
 import { ColorSelector, ColorSelectorConfig } from './color-selector';
 
 export interface ListColorSelectorConfig<ColorType> extends ColorSelectorConfig {
     readonly COLORS: ColorType[];
+    readonly BUILD_IN_ORDER?: boolean;
+    readonly COLOR_COUNT?: number;
 }
 
-// TODO - implement list color selector
+// TODO - documentation
+// TODO - unit tests
+// TODO - release notes
 export abstract class ListColorSelector<ColorType> extends ColorSelector {
     protected constructor(config: ListColorSelectorConfig<ColorType>) {
         super(config.NAME, config.RANDOM_ORDER);
-        this.addColorChoices(config.COLORS);
+        this.#selectColors(config.COLORS, config.COLOR_COUNT, config.BUILD_IN_ORDER);
     }
 
-    protected abstract addColorChoices(colors: ColorType[]): void;
+    static get #MIN_COLOR_COUNT(): number {
+        return 2;
+    }
+
+    protected abstract convertColor(color: ColorType): Color;
 
     public override getColor(): Color {
         return this.selectColorFromChoices();
+    }
+
+    #selectColors(colors: ColorType[],
+                  colorCount?: number,
+                  buildInOrder?: boolean): void {
+        const p5: P5Lib = P5Context.p5;
+
+        colorCount = colorCount ?? Random.randomInt(ListColorSelector.#MIN_COLOR_COUNT, colors.length + 1);
+        colorCount = p5.constrain(
+            colorCount,
+            ListColorSelector.#MIN_COLOR_COUNT,
+            colors.length
+        );
+
+        buildInOrder = buildInOrder ?? Random.randomBoolean();
+
+        if (colors.length > 0) {
+            if (buildInOrder) {
+                for (let i: number = 0; i < colorCount; i++) {
+                    const choice: ColorType = colors[i];
+                    this.addColorChoice(this.convertColor(choice));
+                }
+            } else {
+                const selector: RandomListSelector<ColorType> = new RandomListSelector<ColorType>(colors);
+
+                for (let i: number = 0; i < colorCount; i++) {
+                    const choice: ColorType | undefined = selector.getRandomElementAndRemove();
+
+                    if (choice) {
+                        this.addColorChoice(this.convertColor(choice));
+                    } else {
+                        console.error('ListColorSelector.#selectColors(): choice is undefined');
+                    }
+                }
+            }
+        }
     }
 }
