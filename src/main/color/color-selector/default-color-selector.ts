@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,7 +15,7 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { Color } from './color';
+import { Color } from '../color';
 import { ColorSelector } from './color-selector';
 import { ColorSelectorType } from './color-selector-type';
 
@@ -29,7 +29,6 @@ import { ColorSelectorType } from './color-selector-type';
 export class DefaultColorSelector extends ColorSelector {
     public constructor() {
         super('default color selector', false);
-        this.COLOR_NAMES.add('black');
     }
 
     /**
