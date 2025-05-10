@@ -18,12 +18,14 @@
 import { Palette, PaletteColor } from '../palette';
 import { Color } from '../color';
 
-import { ColorSelectorConfig } from './color-selector';
 import { ColorSelectorType } from './color-selector-type';
 import { ListColorSelector } from './list-color-selector';
 
-export interface PaletteColorSelectorConfig extends ColorSelectorConfig{
+export interface PaletteColorSelectorConfig {
     readonly PALETTE: Palette;
+    readonly RANDOM_ORDER?: boolean;
+    readonly BUILD_IN_ORDER?: boolean;
+    readonly COLOR_COUNT?: number;
 }
 
 export class PaletteColorSelector extends ListColorSelector<PaletteColor> {
@@ -31,6 +33,8 @@ export class PaletteColorSelector extends ListColorSelector<PaletteColor> {
         super({
             NAME: PaletteColorSelector.#buildName(config.PALETTE),
             RANDOM_ORDER: config.RANDOM_ORDER,
+            BUILD_IN_ORDER: config.BUILD_IN_ORDER,
+            COLOR_COUNT: config.COLOR_COUNT,
             COLORS: config.PALETTE.COLORS
         })
     }

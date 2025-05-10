@@ -137,6 +137,7 @@ export class Color {
             } else if (typeof arg1 === 'string') {
                 // TODO - unit test HEX string argument
                 // TODO - unit test RGB string argument
+                // TODO - unit test HEX with RGBA argument
                 const c: P5Lib.Color = P5Context.p5.color(arg1);
                 this.#setColorValues(c);
                 this.#name = null;

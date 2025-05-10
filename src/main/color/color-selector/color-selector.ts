@@ -28,7 +28,7 @@ import { ColorSelectorType } from './color-selector-type';
 
 export interface ColorSelectorConfig {
     readonly NAME: string,
-    readonly RANDOM_ORDER: boolean
+    readonly RANDOM_ORDER?: boolean
 }
 
 /**

@@ -17,5 +17,6 @@
 
 export * from './color-selector';
 export * from './color-selector-type';
+export * from './hex-color-selector';
 export * from './list-color-selector';
 export * from './palette-color-selector';
