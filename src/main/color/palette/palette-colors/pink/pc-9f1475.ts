@@ -24,7 +24,7 @@ import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
 /**
  * <div class="color-block" style="background: #9F1475;">
  *     <a href="https://coolors.co/9f1475" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block white-pass"> (#9F1475)</h2>
+ *         <h2 class="color-block white-pass">haunted pink (#9F1475)</h2>
  *     </a>
  * </div>
  *
