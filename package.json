@@ -82,7 +82,7 @@
     "p5": "^2.0.3"
   },
   "peerDependencies": {
-    "color-name-list": "11.8.0"
+    "color-name-list": "11.23.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
