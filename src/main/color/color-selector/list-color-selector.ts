@@ -53,9 +53,9 @@ export abstract class ListColorSelector<ColorType> extends ColorSelector {
                   buildInOrder?: boolean): void {
         const p5: P5Lib = P5Context.p5;
 
-        colorCount = colorCount ?? Random.randomInt(ListColorSelector.#MIN_COLOR_COUNT, colors.length + 1);
-        colorCount = p5.constrain(
-            colorCount,
+        let count: number = colorCount ?? Random.randomInt(ListColorSelector.#MIN_COLOR_COUNT, colors.length + 1);
+        count = p5.constrain(
+            count,
             ListColorSelector.#MIN_COLOR_COUNT,
             colors.length
         );
@@ -64,14 +64,14 @@ export abstract class ListColorSelector<ColorType> extends ColorSelector {
 
         if (colors.length > 0) {
             if (buildInOrder) {
-                for (let i: number = 0; i < colorCount; i++) {
+                for (let i: number = 0; i < count; i++) {
                     const choice: ColorType = colors[i];
                     this.addColorChoice(this.convertColor(choice));
                 }
             } else {
                 const selector: RandomListSelector<ColorType> = new RandomListSelector<ColorType>(colors);
 
-                for (let i: number = 0; i < colorCount; i++) {
+                for (let i: number = 0; i < count; i++) {
                     const choice: ColorType | undefined = selector.getRandomElementAndRemove();
 
                     if (choice) {
