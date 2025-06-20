@@ -211,39 +211,39 @@ describe('StringValidator', () => {
             expect(StringValidator.isHex(hex)).toBe(true);
         });
 
-        test.each([
+        test.each(
             validHex_lowercase_noAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
-        ])('StringValidator.isHex(lowercaseHex) - $hex', ({ hex }: { hex: string }): void=> {
+        )('StringValidator.isHex(lowercaseHex) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test.each([
+        test.each(
             validHex_mixedCase_noAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
-        ])('StringValidator.isHex(mixedCaseHex) - $hex', ({ hex }: { hex: string }): void=> {
+        )('StringValidator.isHex(mixedCaseHex) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test.each([
+        test.each(
             noHashHex_noAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
-        ])('StringValidator.isHex(noHashHex) - $hex', ({ hex }: { hex: string }): void=> {
+        )('StringValidator.isHex(noHashHex) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test.each([
+        test.each(
             invalidHex_noAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
-        ])('StringValidator.isHex(invalidHex) - $hex', ({ hex }: { hex: string }): void=> {
+        )('StringValidator.isHex(invalidHex) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test.each([
+        test.each(
             validHex_withAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
-        ])('StringValidator.isHex(validHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
+        )('StringValidator.isHex(validHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test.each([
+        test.each(
             validHex_lowercase_withAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
-        ])('StringValidator.isHex(lowercaseHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
+        )('StringValidator.isHex(lowercaseHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
@@ -253,15 +253,15 @@ describe('StringValidator', () => {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test.each([
+        test.each(
             noHashHex_withAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
-        ])('StringValidator.isHex(noHashHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
+        )('StringValidator.isHex(noHashHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test.each([
+        test.each(
             invalidHex_withAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
-        ])('StringValidator.isHex(invalidHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
+        )('StringValidator.isHex(invalidHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
@@ -310,15 +310,9 @@ describe('StringValidator', () => {
     });
 
     describe('StringValidator.isHex(hex, withAlpha)', (): void => {
-        test.each([
-            { hex: '#AABBCC' },
-            { hex: '#112233' },
-            { hex: '#000000' },
-            { hex: '#FFFFFF' },
-            { hex: '#FF0000' },
-            { hex: '#00FF00' },
-            { hex: '#0000FF' }
-        ])('StringValidator.isHex(validHex, false) - $hex', ({ hex }: { hex: string }): void=> {
+        test.each(
+            validHex_noAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
+        )('StringValidator.isHex(validHex, false) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex, false)).toBe(true);
         });
     });
