@@ -90,6 +90,23 @@ describe('StringValidator', () => {
         '#00Ffff'
     ];
 
+    const validHex_mixedCase_withAlpha: string[] = [
+        '#AaBbDcDd',
+        '#ffFFffFF',
+        '#FF0000ff',
+        '#00ff00FF',
+        '#0000fFfF',
+        '#FfFf00Ff',
+        '#fF00ffff',
+        '#00ffFffF',
+        '#Ff000000',
+        '#00fF0000',
+        '#0000Ff00',
+        '#Ffff0000',
+        '#ff00Ff00',
+        '#00ffFF00'
+    ];
+
     const noHashHex_noAlpha: string[] = [
         'AABBCC',
         '112233',
@@ -120,11 +137,68 @@ describe('StringValidator', () => {
         '00Ffff'
     ];
 
+    const noHashHex_withAlpha: string[] = [
+        'AABBCCDD',
+        '11223344',
+        '00000000',
+        'FFFFFFFF',
+        'FF0000FF',
+        '00FF00FF',
+        '0000FFFF',
+        'FFFF00FF',
+        'FF00FFFF',
+        '00FFFFFF',
+        'FF000000',
+        '00FF0000',
+        '0000FF00',
+        'FFFF0000',
+        'FF00FF00',
+        '00FFFF00',
+        'aabbccdd',
+        'ffffffff',
+        'ff0000ff',
+        '00ff00ff',
+        '0000ffff',
+        'ffff00ff',
+        'ff00ffff',
+        '00ffffff',
+        'ff000000',
+        '00ff0000',
+        '0000ff00',
+        'ffff0000',
+        'ff00ff00',
+        '00ffff00',
+        'AaBbDcDd',
+        'ffFFffFF',
+        'FF0000ff',
+        '00ff00FF',
+        '0000fFfF',
+        'FfFf00Ff',
+        'fF00ffff',
+        '00ffFffF',
+        'Ff000000',
+        '00fF0000',
+        '0000Ff00',
+        'Ffff0000',
+        'ff00Ff00',
+        '00ffFF00'
+    ];
+
     const invalidHex_noAlpha: string[] = [
         '#FGFGFG',
         'FGFGFG',
         'fgfgfg',
         'fGfgFg',
+        'cat',
+        'fat cat',
+        ''
+    ];
+
+    const invalidHex_withAlpha: string[] = [
+        '#FGFGFGFG',
+        'FGFGFGFG',
+        'fgfgfgfg',
+        'fGfgFgfG',
         'cat',
         'fat cat',
         ''
@@ -174,21 +248,19 @@ describe('StringValidator', () => {
         });
 
         test.each([
-            { hex: '#AaBbCcDd' }
+            validHex_mixedCase_withAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
         ])('StringValidator.isHex(mixedCaseHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
         test.each([
-            { hex: 'AABBCCDD' },
-            { hex: '11223344' }
+            noHashHex_withAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
         ])('StringValidator.isHex(noHashHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
 
         test.each([
-            { hex: 'FGFGFGFG' },
-            { hex: '#FGFGFGFG' }
+            invalidHex_withAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
         ])('StringValidator.isHex(invalidHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
