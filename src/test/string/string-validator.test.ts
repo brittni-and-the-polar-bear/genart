@@ -18,34 +18,123 @@
 import { StringValidator } from 'string';
 
 describe('StringValidator', () => {
-    describe('StringValidator.isHex()', () => {
-        test('StringValidator.isHex(validHex)', () => {
-            expect(StringValidator.isHex('#AABBCC')).toBe(true);
-            expect(StringValidator.isHex('#112233')).toBe(true);
+    const validHex_noAlpha: string[] = [
+        '#AABBCC',
+        '#112233',
+        '#000000',
+        '#FFFFFF',
+        '#FF0000',
+        '#00FF00',
+        '#0000FF',
+        '#FFFF00',
+        '#FF00FF',
+        '#00FFFF'
+    ];
+
+    const validHex_lowercase_noAlpha: string[] = [
+        '#aabbcc',
+        '#000000',
+        '#ffffff',
+        '#ff0000',
+        '#00ff00',
+        '#0000ff',
+        '#ffff00',
+        '#ff00ff',
+        '#00ffff'
+    ];
+
+    describe('StringValidator.isHex(hex)', (): void => {
+        test.each(
+            validHex_noAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
+        )('StringValidator.isHex(validHex) - $hex', ({ hex }: { hex: string }): void => {
+            expect(StringValidator.isHex(hex)).toBe(true);
         });
 
-        test('StringValidator.isHex(invalidHex)', () => {
-            expect(StringValidator.isHex('AABBCC')).toBe(false);
-            expect(StringValidator.isHex('112233')).toBe(false);
-            expect(StringValidator.isHex('FGFGFG')).toBe(false);
-            expect(StringValidator.isHex('#FGFGFG')).toBe(false);
+        test.each([
+            validHex_lowercase_noAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
+        ])('StringValidator.isHex(lowercaseHex) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test('StringValidator.isHex(validHexWithAlpha)', () => {
-            expect(StringValidator.isHex('#AABBCCDD')).toBe(false);
-            expect(StringValidator.isHex('#11223344')).toBe(false);
+        test.each([
+            { hex: '#aaBBcc' },
+            { hex: '#aabbCc' },
+            { hex: '#AaBBCC' },
+            { hex: '#fFfFfF' },
+            { hex: '#Ff0000' },
+            { hex: '#00Ff00' },
+            { hex: '#0000fF' }
+        ])('StringValidator.isHex(mixedCaseHex) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test('StringValidator.isHex(invalidHexWithAlpha)', () => {
-            expect(StringValidator.isHex('AABBCCDD')).toBe(false);
-            expect(StringValidator.isHex('11223344')).toBe(false);
-            expect(StringValidator.isHex('FGFGFGFG')).toBe(false);
-            expect(StringValidator.isHex('#FGFGFGFG')).toBe(false);
+        test.each([
+            { hex: 'AABBCC' },
+            { hex: '112233' },
+            { hex: '000000' },
+            { hex: 'FFFFFF' },
+            { hex: 'FF0000' },
+            { hex: '00FF00' },
+            { hex: '0000FF' },
+            { hex: 'aabbcc' },
+            { hex: 'ffffff' },
+            { hex: 'ff0000' },
+            { hex: '00ff00' },
+            { hex: '0000ff' },
+            { hex: 'aaBBcc' },
+            { hex: 'aabbCc' },
+            { hex: 'AaBBCC' },
+            { hex: 'fFfFfF' },
+            { hex: 'Ff0000' },
+            { hex: '00Ff00' },
+            { hex: '0000fF' }
+        ])('StringValidator.isHex(noHashHex) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex)).toBe(false);
         });
 
-        test('StringValidator.isHex(validHex, false)', () => {
-            expect(StringValidator.isHex('#AABBCC', false)).toBe(true);
-            expect(StringValidator.isHex('#112233', false)).toBe(true);
+        test.each([
+            { hex: '#FGFGFG' },
+            { hex: 'FGFGFG' },
+            { hex: 'fgfgfg' },
+            { hex: 'fGfgFg' },
+            { hex: 'cat' },
+            { hex: 'fat cat' },
+            { hex: '' }
+        ])('StringValidator.isHex(invalidHex) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex)).toBe(false);
+        });
+
+        test.each([
+            { hex: '#AABBCCDD' },
+            { hex: '#11223344' }
+        ])('StringValidator.isHex(validHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex)).toBe(false);
+        });
+
+        test.each([
+            { hex: '#aabbccdd' }
+        ])('StringValidator.isHex(lowercaseHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex)).toBe(false);
+        });
+
+        test.each([
+            { hex: '#AaBbCcDd' }
+        ])('StringValidator.isHex(mixedCaseHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex)).toBe(false);
+        });
+
+        test.each([
+            { hex: 'AABBCCDD' },
+            { hex: '11223344' }
+        ])('StringValidator.isHex(noHashHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex)).toBe(false);
+        });
+
+        test.each([
+            { hex: 'FGFGFGFG' },
+            { hex: '#FGFGFGFG' }
+        ])('StringValidator.isHex(invalidHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex)).toBe(false);
         });
 
         test('StringValidator.isHex(invalidHex, false)', () => {
@@ -89,6 +178,20 @@ describe('StringValidator', () => {
             expect(StringValidator.isHex('11223344', true)).toBe(false);
             expect(StringValidator.isHex('FGFGFGFG', true)).toBe(false);
             expect(StringValidator.isHex('#FGFGFGFG', true)).toBe(false);
+        });
+    });
+
+    describe('StringValidator.isHex(hex, withAlpha)', (): void => {
+        test.each([
+            { hex: '#AABBCC' },
+            { hex: '#112233' },
+            { hex: '#000000' },
+            { hex: '#FFFFFF' },
+            { hex: '#FF0000' },
+            { hex: '#00FF00' },
+            { hex: '#0000FF' }
+        ])('StringValidator.isHex(validHex, false) - $hex', ({ hex }: { hex: string }): void=> {
+            expect(StringValidator.isHex(hex, false)).toBe(true);
         });
     });
 
