@@ -264,56 +264,34 @@ describe('StringValidator', () => {
         )('StringValidator.isHex(invalidHexWithAlpha) - $hex', ({ hex }: { hex: string }): void=> {
             expect(StringValidator.isHex(hex)).toBe(false);
         });
-
-        test('StringValidator.isHex(invalidHex, false)', () => {
-            expect(StringValidator.isHex('AABBCC', false)).toBe(false);
-            expect(StringValidator.isHex('112233', false)).toBe(false);
-            expect(StringValidator.isHex('FGFGFG', false)).toBe(false);
-            expect(StringValidator.isHex('#FGFGFG', false)).toBe(false);
-        });
-
-        test('StringValidator.isHex(validHexWithAlpha, false)', () => {
-            expect(StringValidator.isHex('#AABBCCDD', false)).toBe(false);
-            expect(StringValidator.isHex('#11223344', false)).toBe(false);
-        });
-
-        test('StringValidator.isHex(invalidHexWithAlpha, false)', () => {
-            expect(StringValidator.isHex('AABBCCDD', false)).toBe(false);
-            expect(StringValidator.isHex('11223344', false)).toBe(false);
-            expect(StringValidator.isHex('FGFGFGFG', false)).toBe(false);
-            expect(StringValidator.isHex('#FGFGFGFG', false)).toBe(false);
-        });
-
-        test('StringValidator.isHex(validHex, true)', () => {
-            expect(StringValidator.isHex('#AABBCC', true)).toBe(false);
-            expect(StringValidator.isHex('#112233', true)).toBe(false);
-        });
-
-        test('StringValidator.isHex(invalidHex, true)', () => {
-            expect(StringValidator.isHex('AABBCC', true)).toBe(false);
-            expect(StringValidator.isHex('112233', true)).toBe(false);
-            expect(StringValidator.isHex('FGFGFG', true)).toBe(false);
-            expect(StringValidator.isHex('#FGFGFG', true)).toBe(false);
-        });
-
-        test('StringValidator.isHex(validHexWithAlpha, true)', () => {
-            expect(StringValidator.isHex('#AABBCCDD', true)).toBe(true);
-            expect(StringValidator.isHex('#11223344', true)).toBe(true);
-        });
-
-        test('StringValidator.isHex(invalidHexWithAlpha, true)', () => {
-            expect(StringValidator.isHex('AABBCCDD', true)).toBe(false);
-            expect(StringValidator.isHex('11223344', true)).toBe(false);
-            expect(StringValidator.isHex('FGFGFGFG', true)).toBe(false);
-            expect(StringValidator.isHex('#FGFGFGFG', true)).toBe(false);
-        });
     });
 
-    describe('StringValidator.isHex(hex, withAlpha)', (): void => {
+    describe.each([
+        { name: 'validHex', inputs: validHex_noAlpha, withAlpha: true, expected: false },
+        { name: 'validHex', inputs: validHex_noAlpha, withAlpha: false, expected: true },
+        { name: 'lowercaseHex', inputs: validHex_lowercase_noAlpha, withAlpha: true, expected: false },
+        { name: 'lowercaseHex', inputs: validHex_lowercase_noAlpha, withAlpha: false, expected: false },
+        { name: 'mixedCaseHex', inputs: validHex_mixedCase_noAlpha, withAlpha: true, expected: false },
+        { name: 'mixedCaseHex', inputs: validHex_mixedCase_noAlpha, withAlpha: false, expected: false },
+        { name: 'noHashHex', inputs: noHashHex_noAlpha, withAlpha: true, expected: false },
+        { name: 'noHashHex', inputs: noHashHex_noAlpha, withAlpha: false, expected: false },
+        { name: 'invalidHex', inputs: invalidHex_noAlpha, withAlpha: true, expected: false },
+        { name: 'invalidHex', inputs: invalidHex_noAlpha, withAlpha: false, expected: false },
+        { name: 'validHexWithAlpha', inputs: validHex_withAlpha, withAlpha: true, expected: true },
+        { name: 'validHexWithAlpha', inputs: validHex_withAlpha, withAlpha: false, expected: false },
+        { name: 'lowercaseHexWithAlpha', inputs: validHex_lowercase_withAlpha, withAlpha: true, expected: false },
+        { name: 'lowercaseHexWithAlpha', inputs: validHex_lowercase_withAlpha, withAlpha: false, expected: false },
+        { name: 'mixedCaseHexWithAlpha', inputs: validHex_mixedCase_withAlpha, withAlpha: true, expected: false },
+        { name: 'mixedCaseHexWithAlpha', inputs: validHex_mixedCase_withAlpha, withAlpha: false, expected: false },
+        { name: 'noHashHexWithAlpha', inputs: noHashHex_withAlpha, withAlpha: true, expected: false },
+        { name: 'noHashHexWithAlpha', inputs: noHashHex_withAlpha, withAlpha: false, expected: false },
+        { name: 'invalidHexWithAlpha', inputs: invalidHex_withAlpha, withAlpha: true, expected: false },
+        { name: 'invalidHexWithAlpha', inputs: invalidHex_withAlpha, withAlpha: false, expected: false }
+    ])('StringValidator.isHex(hex, $withAlpha)', ({ name, inputs, withAlpha, expected }: {name: string, inputs: string[], withAlpha: boolean, expected: boolean}): void => {
         test.each(
-            validHex_noAlpha.map((hex: string): { hex: string } => ({ hex: hex }))
-        )('StringValidator.isHex(validHex, false) - $hex', ({ hex }: { hex: string }): void=> {
-            expect(StringValidator.isHex(hex, false)).toBe(true);
+            inputs.map((hex: string): { hex: string } => ({ hex: hex }))
+        )(`StringValidator.isHex(${name}, ${withAlpha}) - $hex`, ({ hex }: { hex: string }): void => {
+            expect(StringValidator.isHex(hex, withAlpha)).toBe(expected);
         });
     });
 
