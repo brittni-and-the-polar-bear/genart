@@ -34,7 +34,7 @@ export class StringMap<ValueType> {
      * If provided, all entries from the given map will be copied to this new instance.
      */
     public constructor(map?: StringMap<ValueType> | Map<string, ValueType>) {
-        if (map) {
+        if (map && (map instanceof StringMap || map instanceof Map)) {
             this.#MAP = new Map<string, ValueType>(map.entries());
         } else {
             this.#MAP = new Map<string, ValueType>();
@@ -48,29 +48,8 @@ export class StringMap<ValueType> {
      *
      * @returns A new {@link StringMap} instance containing the same key-value pairs as the given map.
      */
-    public static copy(map: StringMap<ValueType> | Map<string, ValueType>): StringMap<ValueType> {
-        return new StringMap<ValueType>(map);
-    }
-
-    /**
-     * @returns All the keys of the map.
-     */
-    public get keys(): IterableIterator<string> {
-        return this.#MAP.keys();
-    }
-
-    /**
-     * @returns All the values of the map.
-     */
-    public get values(): IterableIterator<ValueType> {
-        return this.#MAP.values();
-    }
-
-    /**
-     * @returns An iterator of key-value pairs for the map.
-     */
-    public get entries(): IterableIterator<[string, ValueType]> {
-        return this.#MAP.entries();
+    public static copy<Type>(map: StringMap<Type> | Map<string, Type>): StringMap<Type> {
+        return new StringMap<Type>(map);
     }
 
     /**
@@ -91,15 +70,6 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * Does the map contain the given key?
-     *
-     * @param key - The key to check for in the map.
-     */
-    public hasKey(key: string): boolean {
-        return this.#MAP.has(key);
-    }
-
-    /**
      * Associate the given key with the given value in the map.
      *
      * @param key - The key to associate with the value in the map.
@@ -115,6 +85,7 @@ export class StringMap<ValueType> {
      * @param key - The key to associate with the value in the map.
      * @param value - The value to store in the map.
      * @param errorMessage - Message to log if the key already has a value.
+     *
      * @returns `true` if the operation is successful, `false` if it is not.
      */
     public setIfAbsent(key: string, value: ValueType, errorMessage?: string): boolean {
@@ -132,6 +103,38 @@ export class StringMap<ValueType> {
         }
 
         return isSet;
+    }
+
+    /**
+     * Does the map contain the given key?
+     *
+     * @param key - The key to check for in the map.
+     *
+     * @returns `true` if the map contains the given key, `false` otherwise.
+     */
+    public hasKey(key: string): boolean {
+        return this.#MAP.has(key);
+    }
+
+    /**
+     * @returns All the values of the map.
+     */
+    public values(): IterableIterator<ValueType> {
+        return this.#MAP.values();
+    }
+
+    /**
+     * @returns All the keys of the map.
+     */
+    public keys(): IterableIterator<string> {
+        return this.#MAP.keys();
+    }
+
+    /**
+     * @returns An iterator of key-value pairs for the map.
+     */
+    public entries(): IterableIterator<[string, ValueType]> {
+        return this.#MAP.entries();
     }
 
     /**
