@@ -99,7 +99,7 @@ export class ColorNames {
                 }
 
                 if (match) {
-                    ColorNames.#MATCHED_COLORS.setUndefinedKey(colorHex, match);
+                    ColorNames.#MATCHED_COLORS.setIfAbsent(colorHex, match);
                 }
             } catch {
                 match = undefined;
@@ -143,11 +143,11 @@ export class ColorNames {
             const hexColor: string = ColorNames.#formatHex(color);
 
             if (StringValidator.isHex(hexColor) && name) {
-                ColorNames.#MATCHED_COLORS.setKey(hexColor, name);
+                ColorNames.#MATCHED_COLORS.set(hexColor, name);
             }
         } else if (Discriminator.isPaletteColor(color)) {
             const hex: string = ColorNames.#formatHex(color.HEX);
-            ColorNames.#MATCHED_COLORS.setKey(hex, color.NAME);
+            ColorNames.#MATCHED_COLORS.set(hex, color.NAME);
         }
     }
 

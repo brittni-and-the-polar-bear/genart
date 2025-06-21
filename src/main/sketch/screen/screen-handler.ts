@@ -46,7 +46,7 @@ export class ScreenHandler {
     }
 
     public addScreen(screen: CanvasScreen): boolean {
-        return this.#SCREENS.setUndefinedKey(screen.NAME, screen);
+        return this.#SCREENS.setIfAbsent(screen.NAME, screen);
     }
 
     public draw(): void {

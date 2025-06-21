@@ -17,6 +17,7 @@
 
 /**
  * A map of string keys to some ValueType.
+ * Provides a type-safe wrapper around the native Map class for string-based keys.
  *
  * @category Utility
  */
@@ -26,8 +27,29 @@ export class StringMap<ValueType> {
      */
     readonly #MAP: Map<string, ValueType>;
 
-    public constructor() {
-        this.#MAP = new Map<string, ValueType>();
+    /**
+     * Creates a new StringMap instance.
+     *
+     * @param map - Optional map to initialize from.
+     * If provided, all entries from the given map will be copied to this new instance.
+     */
+    public constructor(map?: StringMap<ValueType> | Map<string, ValueType>) {
+        if (map) {
+            this.#MAP = new Map<string, ValueType>(map.entries());
+        } else {
+            this.#MAP = new Map<string, ValueType>();
+        }
+    }
+
+    /**
+     * Creates a shallow copy of the given map.
+     *
+     * @param map - The map to copy.
+     *
+     * @returns A new {@link StringMap} instance containing the same key-value pairs as the given map.
+     */
+    public static copy(map: StringMap<ValueType> | Map<string, ValueType>): StringMap<ValueType> {
+        return new StringMap<ValueType>(map);
     }
 
     /**
@@ -45,6 +67,13 @@ export class StringMap<ValueType> {
     }
 
     /**
+     * @returns An iterator of key-value pairs for the map.
+     */
+    public get entries(): IterableIterator<[string, ValueType]> {
+        return this.#MAP.entries();
+    }
+
+    /**
      * @returns The size of the map.
      */
     public get size(): number {
@@ -52,9 +81,10 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * @param key - The key of the desired value in the map.
+     * Get the value associated with the given key in the map.
+     * If the given key does not exist in the map, the method will return `undefined`.
      *
-     * @returns The value associated with the given key.
+     * @param key - The key of the desired value in the map.
      */
     public get(key: string): ValueType | undefined {
         return this.#MAP.get(key);
@@ -63,10 +93,7 @@ export class StringMap<ValueType> {
     /**
      * Does the map contain the given key?
      *
-     * @param key -
-     *
-     * @returns `true` if the map contains the given key,
-     * returns `false` if it does not.
+     * @param key - The key to check for in the map.
      */
     public hasKey(key: string): boolean {
         return this.#MAP.has(key);
@@ -75,23 +102,22 @@ export class StringMap<ValueType> {
     /**
      * Associate the given key with the given value in the map.
      *
-     * @param key -
-     * @param value -
+     * @param key - The key to associate with the value in the map.
+     * @param value - The value to store in the map.
      */
-    public setKey(key: string, value: ValueType): void {
+    public set(key: string, value: ValueType): void {
         this.#MAP.set(key, value);
     }
 
     /**
-     * Associate the given key with the given value in the map
-     * only if the key has not been set in the map.
+     * Associate the given key with the given value in the map only if the key has not been set in the map.
      *
-     * @param key -
-     * @param value -
+     * @param key - The key to associate with the value in the map.
+     * @param value - The value to store in the map.
      * @param errorMessage - Message to log if the key already has a value.
      * @returns `true` if the operation is successful, `false` if it is not.
      */
-    public setUndefinedKey(key: string, value: ValueType, errorMessage?: string): boolean {
+    public setIfAbsent(key: string, value: ValueType, errorMessage?: string): boolean {
         let isSet: boolean;
 
         if (this.#MAP.has(key)) {
@@ -101,10 +127,29 @@ export class StringMap<ValueType> {
 
             isSet = false;
         } else {
-            this.setKey(key, value);
+            this.set(key, value);
             isSet = true;
         }
 
         return isSet;
+    }
+
+    /**
+     * Remove all key-value pairs from the map.
+     */
+    public clear(): void {
+        this.#MAP.clear();
+    }
+
+    /**
+     * Removes the given key from the map.
+     *
+     * @param key - The key to delete from the map.
+     *
+     * @returns `true` if the given key has been removed from the map,
+     * `false` if the element does not exist.
+     */
+    public delete(key: string): boolean {
+        return this.#MAP.delete(key);
     }
 }

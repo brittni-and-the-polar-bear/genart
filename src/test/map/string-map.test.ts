@@ -37,7 +37,7 @@ describe('StringMap tests', (): void => {
         ];
 
         for (const pair of pairs) {
-            map.setUndefinedKey(pair.key, pair.value);
+            map.setIfAbsent(pair.key, pair.value);
         }
 
         const keys: Set<string> = new Set<string>(map.keys);
@@ -56,7 +56,7 @@ describe('StringMap tests', (): void => {
         ];
 
         for (const pair of pairs) {
-            map.setUndefinedKey(pair.key, pair.value);
+            map.setIfAbsent(pair.key, pair.value);
         }
 
         const values: number[] = Array.from(map.values);
@@ -70,9 +70,9 @@ describe('StringMap tests', (): void => {
 
     test('StringMap.setKey() and StringMap.get()', (): void => {
         const map: StringMap<number> = new StringMap<number>();
-        map.setKey('molly', 10);
+        map.set('molly', 10);
         expect(map.get('molly')).toBe(10);
-        map.setKey('molly', 20);
+        map.set('molly', 20);
         expect(map.get('molly')).toBe(20);
         expect(map.get('harry')).toBeUndefined();
     });
@@ -80,9 +80,9 @@ describe('StringMap tests', (): void => {
     test('StringMap.hasKey()', (): void => {
         const map: StringMap<number> = new StringMap<number>();
         expect(map.hasKey('molly')).toBeFalsy();
-        map.setKey('molly', 10);
+        map.set('molly', 10);
         expect(map.hasKey('molly')).toBeTruthy();
-        map.setKey('molly', 20);
+        map.set('molly', 20);
         expect(map.hasKey('harry')).toBeFalsy();
     });
 
@@ -92,7 +92,7 @@ describe('StringMap tests', (): void => {
         const value: number = 10;
 
         expect(map.hasKey(key)).toBeFalsy();
-        let success: boolean = map.setUndefinedKey(key, value);
+        let success: boolean = map.setIfAbsent(key, value);
         expect(success).toBeTruthy();
         expect(map.hasKey(key)).toBeTruthy();
         expect(map.get(key)).toBe(value);
@@ -100,7 +100,7 @@ describe('StringMap tests', (): void => {
         const newValue: number = 20;
         expect(value).not.toBe(newValue);
 
-        success = map.setUndefinedKey('molly', newValue);
+        success = map.setIfAbsent('molly', newValue);
         expect(success).toBeFalsy();
         expect(map.get(key)).toBe(value);
     });
@@ -110,35 +110,35 @@ describe('StringMap tests', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
 
         const key1: string = 'red';
-        let result: boolean = map.setUndefinedKey(key1, 50);
+        let result: boolean = map.setIfAbsent(key1, 50);
         expect(result).toBeTruthy();
         expect(logSpy).not.toHaveBeenCalled();
         logSpy.mockClear();
 
-        result = map.setUndefinedKey(key1, 50);
+        result = map.setIfAbsent(key1, 50);
         expect(result).toBeFalsy();
         expect(logSpy).not.toHaveBeenCalled();
         logSpy.mockClear();
 
-        result = map.setUndefinedKey(key1, 100);
+        result = map.setIfAbsent(key1, 100);
         expect(result).toBeFalsy();
         expect(logSpy).not.toHaveBeenCalled();
         logSpy.mockClear();
 
         const key2: string = 'blue';
         const errorMessage: string = 'key already in map';
-        result = map.setUndefinedKey(key2, 50, errorMessage);
+        result = map.setIfAbsent(key2, 50, errorMessage);
         expect(result).toBeTruthy();
         expect(logSpy).not.toHaveBeenCalled();
         logSpy.mockClear();
 
-        result = map.setUndefinedKey(key2, 50, 'key already in map');
+        result = map.setIfAbsent(key2, 50, 'key already in map');
         expect(result).toBeFalsy();
         expect(logSpy).toHaveBeenCalled();
         expect(logSpy).toHaveBeenCalledWith(errorMessage);
         logSpy.mockClear();
 
-        result = map.setUndefinedKey(key2, 100, 'key already in map');
+        result = map.setIfAbsent(key2, 100, 'key already in map');
         expect(result).toBeFalsy();
         expect(logSpy).toHaveBeenCalled();
         expect(logSpy).toHaveBeenCalledWith(errorMessage);

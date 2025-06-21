@@ -66,7 +66,7 @@ export class GraphicsContextHandler {
     }
 
     public addContext(context: GraphicsContext): boolean {
-        return this.#CONTEXTS.setUndefinedKey(context.NAME, context);
+        return this.#CONTEXTS.setIfAbsent(context.NAME, context);
     }
 
     public addContexts(contexts: GraphicsContext[]): boolean {
