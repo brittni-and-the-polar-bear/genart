@@ -22,6 +22,116 @@ interface KeyValuePair {
     readonly value: number;
 }
 
+describe('StringMap', (): void => {
+    describe('constructor', (): void => {
+        test('new StringMap<Type>()', (): void => {
+            const map: StringMap<number> = new StringMap<number>();
+
+            expect(map.size).toBe(0);
+        });
+
+        test('new StringMap<Type>(Map)', (): void => {
+            const originalMap: Map<string, number> = new Map<string, number>([
+                ['mike', 1],
+                ['jane', 2],
+                ['bob', 3]
+            ]);
+
+            const map: StringMap<number> = new StringMap<number>(originalMap);
+
+            expect(map.size).toBe(originalMap.size);
+            expect(map.entries()).toEqual(originalMap.entries());
+        });
+
+        test('new StringMap<Type>(Map) - empty map', (): void => {
+            const originalMap: Map<string, number> = new Map<string, number>();
+            const map: StringMap<number> = new StringMap<number>(originalMap);
+
+            expect(map.size).toBe(0);
+            expect(map.size).toBe(originalMap.size);
+            expect(map.entries()).toEqual(originalMap.entries());
+        });
+
+        test('new StringMap<Type>(StringMap)', (): void => {
+            const originalMap: StringMap<number> = new StringMap<number>();
+            originalMap.set('alice', 1);
+            originalMap.set('charlie', 2);
+            originalMap.set('dave', 3);
+
+            const map: StringMap<number> = new StringMap<number>(originalMap);
+
+            expect(map.size).toBe(originalMap.size);
+            expect(map.entries()).toEqual(originalMap.entries());
+        });
+
+        test('new StringMap<Type>(StringMap) - empty map', (): void => {
+            const originalMap: StringMap<number> = new StringMap<number>();
+            const map: StringMap<number> = new StringMap<number>(originalMap);
+
+            expect(map.size).toBe(0);
+            expect(map.size).toBe(originalMap.size);
+            expect(map.entries()).toEqual(originalMap.entries());
+        });
+    });
+
+    describe('StringMap.copy()', (): void => {
+        test('StringMap.copy(StringMap)', (): void => {
+            const originalMap: StringMap<number> = new StringMap<number>();
+            const originalKey: string = 'alice';
+            const originalValue: number = 1;
+            const newValue: number = 10;
+            originalMap.set(originalKey, originalValue);
+            originalMap.set('bob', 2);
+            originalMap.set('charlie', 3);
+
+            const map: StringMap<number> = StringMap.copy(originalMap);
+
+            expect(map.size).toBe(originalMap.size);
+            expect(Array.from(map.entries())).toEqual(Array.from(originalMap.entries()));
+
+            // Verify independent copies
+            map.set(originalKey, newValue);
+            expect(originalMap.get(originalKey)).toBe(originalValue);
+        });
+
+        test.each([
+            { originalMap: new Map<string, number>(), originalKey: 'alice', originalValue: undefined, newValue: 10 },
+            { originalMap: new StringMap<number>(), originalKey: 'alice', originalValue: undefined, newValue: 10 },
+            { originalMap: new Map<string, string>(), originalKey: 'alice', originalValue: undefined, newValue: 'hello' },
+            { originalMap: new StringMap<string>(), originalKey: 'alice', originalValue: undefined, newValue: 'hello' },
+            { originalMap: new Map<string, (() => number)>(), originalKey: 'random', originalValue: undefined, newValue: Math.random },
+            { originalMap: new StringMap<(() => number)>(), originalKey: 'random', originalValue: undefined, newValue: Math.random }
+        ])('StringMap.copy(map) - empty map $#', ({ originalMap, originalKey, originalValue, newValue }: { originalMap: StringMap<unknown> | Map<string, unknown>; originalValue: undefined; originalKey: string; newValue: unknown}): void => {
+            const map: StringMap<unknown> = StringMap.copy(originalMap);
+
+            expect(map.size).toBe(0);
+            expect(map.size).toBe(originalMap.size);
+            expect(map.entries()).toEqual(originalMap.entries());
+
+            // Verify independent copies
+            map.set(originalKey, newValue);
+            expect(originalMap.get(originalKey)).toBe(originalValue);
+        });
+
+        test('copy populated Map', (): void => {
+            const originalMap: Map<string, number> = new Map<string, number>([
+                ['dave', 4],
+                ['eve', 5],
+                ['frank', 6]
+            ]);
+
+            const copiedMap: StringMap<number> = StringMap.copy(originalMap);
+
+            expect(copiedMap.size).toBe(originalMap.size);
+            expect(Array.from(copiedMap.entries())).toEqual(Array.from(originalMap.entries()));
+
+            // Verify independent copies
+            originalMap.set('dave', 40);
+            expect(copiedMap.get('dave')).toBe(4);
+        });
+    });
+});
+
 describe('StringMap tests', (): void => {
     test('empty map', (): void => {
         const map: StringMap<number> = new StringMap<number>();
