@@ -32,9 +32,14 @@ export class StringValidator {
     public static isHex(hex: string, withAlpha?: boolean): boolean {
         if (withAlpha) {
             return StringValidator.isHexWithAlpha(hex);
-        } else {
-            return StringValidator.#HEX_PATTERN.test(hex);
         }
+
+        if (hex) {
+            return StringValidator.#HEX_PATTERN.test(hex) ||
+                StringValidator.#HEX_PATTERN_LOWERCASE.test(hex);
+        }
+
+        return false;
     }
 
     /**
@@ -43,20 +48,39 @@ export class StringValidator {
      * @param hex - string to check for the hex color pattern.
      */
     public static isHexWithAlpha(hex: string): boolean {
-        return StringValidator.#HEX_ALPHA_PATTERN.test(hex);
+        if (hex) {
+            return StringValidator.#HEX_ALPHA_PATTERN.test(hex) ||
+                StringValidator.#HEX_ALPHA_PATTERN_LOWERCASE.test(hex);
+        }
+
+        return false;
     }
 
     /**
      * The {@link RegExp} used to match hex color strings.
      */
     static get #HEX_PATTERN(): RegExp {
-        return /^#[A-F|0-9]{6}$/;
+        return /^#[A-F0-9]{6}$/;
+    }
+
+    /**
+     * The {@link RegExp} used to match hex color strings in lowercase.
+     */
+    static get #HEX_PATTERN_LOWERCASE(): RegExp {
+        return /^#[a-f0-9]{6}$/;
     }
 
     /**
      * The {@link RegExp} used to match hex color strings with an alpha component.
      */
     static get #HEX_ALPHA_PATTERN(): RegExp {
-        return /^#[A-F|0-9]{8}$/;
+        return /^#[A-F0-9]{8}$/;
+    }
+
+    /**
+     * The {@link RegExp} used to match hex color strings with an alpha component in lowercase.
+     */
+    static get #HEX_ALPHA_PATTERN_LOWERCASE(): RegExp {
+        return /^#[a-f0-9]{8}$/;
     }
 }
