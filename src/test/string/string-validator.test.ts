@@ -191,7 +191,9 @@ describe('StringValidator', () => {
         'fGfgFg',
         'cat',
         'fat cat',
-        ''
+        '',
+        'aab|cc',
+        'AAB|CC'
     ];
 
     const invalidHex_withAlpha: string[] = [
@@ -201,7 +203,9 @@ describe('StringValidator', () => {
         'fGfgFgfG',
         'cat',
         'fat cat',
-        ''
+        '',
+        'aabbcc|d',
+        'AABBCC|D'
     ];
 
     const invalidTypes: unknown[] = [
@@ -237,7 +241,7 @@ describe('StringValidator', () => {
 
     describe.each([
         { name: 'validHex', inputs: validHex_noAlpha, expected: true },
-        { name: 'lowercaseHex', inputs: validHex_lowercase_noAlpha, expected: false },
+        { name: 'lowercaseHex', inputs: validHex_lowercase_noAlpha, expected: true },
         { name: 'mixedCaseHex', inputs: validHex_mixedCase_noAlpha, expected: false },
         { name: 'noHashHex', inputs: noHashHex_noAlpha, expected: false },
         { name: 'invalidHex', inputs: invalidHex_noAlpha, expected: false },
@@ -260,7 +264,7 @@ describe('StringValidator', () => {
         { name: 'validHex', inputs: validHex_noAlpha, withAlpha: true, expected: false },
         { name: 'validHex', inputs: validHex_noAlpha, withAlpha: false, expected: true },
         { name: 'lowercaseHex', inputs: validHex_lowercase_noAlpha, withAlpha: true, expected: false },
-        { name: 'lowercaseHex', inputs: validHex_lowercase_noAlpha, withAlpha: false, expected: false },
+        { name: 'lowercaseHex', inputs: validHex_lowercase_noAlpha, withAlpha: false, expected: true },
         { name: 'mixedCaseHex', inputs: validHex_mixedCase_noAlpha, withAlpha: true, expected: false },
         { name: 'mixedCaseHex', inputs: validHex_mixedCase_noAlpha, withAlpha: false, expected: false },
         { name: 'noHashHex', inputs: noHashHex_noAlpha, withAlpha: true, expected: false },
@@ -269,7 +273,7 @@ describe('StringValidator', () => {
         { name: 'invalidHex', inputs: invalidHex_noAlpha, withAlpha: false, expected: false },
         { name: 'validHexWithAlpha', inputs: validHex_withAlpha, withAlpha: true, expected: true },
         { name: 'validHexWithAlpha', inputs: validHex_withAlpha, withAlpha: false, expected: false },
-        { name: 'lowercaseHexWithAlpha', inputs: validHex_lowercase_withAlpha, withAlpha: true, expected: false },
+        { name: 'lowercaseHexWithAlpha', inputs: validHex_lowercase_withAlpha, withAlpha: true, expected: true },
         { name: 'lowercaseHexWithAlpha', inputs: validHex_lowercase_withAlpha, withAlpha: false, expected: false },
         { name: 'mixedCaseHexWithAlpha', inputs: validHex_mixedCase_withAlpha, withAlpha: true, expected: false },
         { name: 'mixedCaseHexWithAlpha', inputs: validHex_mixedCase_withAlpha, withAlpha: false, expected: false },
@@ -296,7 +300,7 @@ describe('StringValidator', () => {
         { name: 'noHashHex', inputs: noHashHex_noAlpha, expected: false },
         { name: 'invalidHex', inputs: invalidHex_noAlpha, expected: false },
         { name: 'validHexWithAlpha', inputs: validHex_withAlpha, expected: true },
-        { name: 'lowercaseHexWithAlpha', inputs: validHex_lowercase_withAlpha, expected: false },
+        { name: 'lowercaseHexWithAlpha', inputs: validHex_lowercase_withAlpha, expected: true },
         { name: 'mixedCaseHexWithAlpha', inputs: validHex_mixedCase_withAlpha, expected: false },
         { name: 'noHashHexWithAlpha', inputs: noHashHex_withAlpha, expected: false },
         { name: 'invalidHexWithAlpha', inputs: invalidHex_withAlpha, expected: false },
