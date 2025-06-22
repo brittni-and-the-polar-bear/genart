@@ -22,68 +22,103 @@ interface KeyValuePair {
     readonly value: number;
 }
 
-function verifyEmptyMap(map: StringMap<unknown>, originalMap: StringMap<unknown> | Map<string, unknown>): void {
+function verifyEmptyMap<Type>(map: StringMap<Type>, originalMap: StringMap<Type> | Map<string, Type>): void {
     expect(map.size).toBe(0);
     verifyMapEntries(map, originalMap);
 }
 
-function verifyMapEntries(map: StringMap<unknown>, originalMap: StringMap<unknown> | Map<string, unknown>): void {
+function verifyMapEntries<Type>(map: StringMap<Type>, originalMap: StringMap<Type> | Map<string, Type>): void {
     expect(map.size).toBe(originalMap.size);
     expect(Array.from(map.entries())).toEqual(Array.from(originalMap.entries()));
 }
 
+function verifyIndependentMaps<Type>(map: StringMap<Type>,
+                                     originalMap: StringMap<Type> | Map<string, Type>,
+                                     originalKey: string,
+                                     originalValue: Type,
+                                     newValue: Type): void {
+    map.set(originalKey, newValue);
+    expect(originalMap.get(originalKey)).toBe(originalValue);
+}
+
+function buildMap<Type>(pairs: [string, Type][]): Map<string, Type> {
+    return new Map<string, Type>(pairs);
+}
+
+function buildStringMap<Type>(pairs: [string, Type][]): StringMap<Type> {
+    const map: StringMap<Type> = new StringMap<Type>();
+    pairs.forEach((pair: [string, Type]): void => map.set(pair[0], pair[1]));
+    return map;
+}
+
 describe('StringMap', (): void => {
+    const numberPairs: [string, number][] = [
+        ['alice', 1],
+        ['bob', 2],
+        ['dave', 3],
+        ['jane', 4]
+    ];
+
+    const stringPairs: [string, string][] = [
+        ['alice', 'dog'],
+        ['bob', 'cat'],
+        ['dave', 'bird'],
+        ['jane', 'ferret']
+    ];
+
+    const emptyMapTestCases = [
+        { originalMap: new Map<string, number>(), originalKey: 'alice', originalValue: undefined, newValue: 10 },
+        { originalMap: new StringMap<number>(), originalKey: 'alice', originalValue: undefined, newValue: 10 },
+        { originalMap: new Map<string, string>(), originalKey: 'alice', originalValue: undefined, newValue: 'hello' },
+        { originalMap: new StringMap<string>(), originalKey: 'alice', originalValue: undefined, newValue: 'hello' },
+        { originalMap: new Map<string, (() => number)>(), originalKey: 'random', originalValue: undefined, newValue: Math.random },
+        { originalMap: new StringMap<(() => number)>(), originalKey: 'random', originalValue: undefined, newValue: Math.random }
+    ];
+
+    const mapTestCases = [
+        { originalMap: buildMap(numberPairs), originalKey: 'charlie', originalValue: 5, newValue: 50 },
+        { originalMap: buildStringMap(numberPairs), originalKey: 'charlie', originalValue: 5, newValue: 50 },
+        { originalMap: buildMap(stringPairs), originalKey: 'charlie', originalValue: 'dog', newValue: 'chinchilla'},
+        { originalMap: buildStringMap(stringPairs), originalKey: 'charlie', originalValue: 'dog', newValue: 'chinchilla'}
+    ];
+
+    const keyValueTestCasesWithNewValue = [
+        { key: 'alice', value: 10, newValue: 100 },
+        { key: 'bob', value: 'blue', newValue: 'red' },
+        { key: 'random', value: ((): number => {return 3;}), newValue: ((): number => {return 17})},
+        { key: 'isHot', value: false, newValue: true },
+        { key: 'alice', value: undefined, newValue: 50 },
+        { key: 'alice', value: 10, newValue: undefined }
+    ];
+
     describe('constructor', (): void => {
-        test('new StringMap<ValueType>()', (): void => {
+        test('new StringMap<ValueType>();', (): void => {
             const map: StringMap<number> = new StringMap<number>();
             expect(map.size).toBe(0);
         });
 
-        test('new StringMap<ValueType>(Map)', (): void => {
-            const originalMap: Map<string, number> = new Map<string, number>([
-                ['mike', 1],
-                ['jane', 2],
-                ['bob', 3]
-            ]);
+        test.each(
+            mapTestCases
+        )('new StringMap<ValueType>(map); $#', ({ originalMap, originalKey, originalValue, newValue }: { originalMap: StringMap<unknown> | Map<string, unknown>; originalValue: unknown; originalKey: string; newValue: unknown}): void => {
+            originalMap.set(originalKey, originalValue);
+            const map: StringMap<unknown> = new StringMap<unknown>(originalMap);
 
-            const map: StringMap<number> = new StringMap<number>(originalMap);
-
-            expect(map.size).toBe(originalMap.size);
-            expect(map.entries()).toEqual(originalMap.entries());
+            verifyMapEntries(map, originalMap);
+            verifyIndependentMaps(map, originalMap, originalKey, originalValue, newValue);
         });
 
-        test('new StringMap<Type>(StringMap)', (): void => {
-            const originalMap: StringMap<number> = new StringMap<number>();
-            originalMap.set('alice', 1);
-            originalMap.set('charlie', 2);
-            originalMap.set('dave', 3);
-
-            const map: StringMap<number> = new StringMap<number>(originalMap);
-
-            expect(map.size).toBe(originalMap.size);
-            expect(map.entries()).toEqual(originalMap.entries());
-        });
-
-        test.each([
-            { originalMap: new Map<string, number>(), originalKey: 'alice', originalValue: undefined, newValue: 10 },
-            { originalMap: new StringMap<number>(), originalKey: 'alice', originalValue: undefined, newValue: 10 },
-            { originalMap: new Map<string, string>(), originalKey: 'alice', originalValue: undefined, newValue: 'hello' },
-            { originalMap: new StringMap<string>(), originalKey: 'alice', originalValue: undefined, newValue: 'hello' },
-            { originalMap: new Map<string, (() => number)>(), originalKey: 'random', originalValue: undefined, newValue: Math.random },
-            { originalMap: new StringMap<(() => number)>(), originalKey: 'random', originalValue: undefined, newValue: Math.random }
-        ])('new StringMap<Type>(StringMap) - empty map $#', ({ originalMap, originalKey, originalValue, newValue }: { originalMap: StringMap<unknown> | Map<string, unknown>; originalValue: undefined; originalKey: string; newValue: unknown}): void => {
+        test.each(
+            emptyMapTestCases
+        )('new StringMap<ValueType>(StringMap); - empty map $#', ({ originalMap, originalKey, originalValue, newValue }: { originalMap: StringMap<unknown> | Map<string, unknown>; originalValue: undefined; originalKey: string; newValue: unknown}): void => {
             const map: StringMap<unknown> = new StringMap<unknown>(originalMap);
 
             verifyEmptyMap(map, originalMap);
-
-            // Verify independent copies
-            map.set(originalKey, newValue);
-            expect(originalMap.get(originalKey)).toBe(originalValue);
+            verifyIndependentMaps(map, originalMap, originalKey, originalValue, newValue);
         });
     });
 
-    describe('StringMap.copy()', (): void => {
-        test('StringMap.copy(StringMap)', (): void => {
+    describe('StringMap.copy();', (): void => {
+        test('StringMap.copy(StringMap);', (): void => {
             const originalMap: StringMap<number> = new StringMap<number>();
             const originalKey: string = 'alice';
             const originalValue: number = 1;
@@ -102,38 +137,122 @@ describe('StringMap', (): void => {
             expect(originalMap.get(originalKey)).toBe(originalValue);
         });
 
-        test.each([
-            { originalMap: new Map<string, number>(), originalKey: 'alice', originalValue: undefined, newValue: 10 },
-            { originalMap: new StringMap<number>(), originalKey: 'alice', originalValue: undefined, newValue: 10 },
-            { originalMap: new Map<string, string>(), originalKey: 'alice', originalValue: undefined, newValue: 'hello' },
-            { originalMap: new StringMap<string>(), originalKey: 'alice', originalValue: undefined, newValue: 'hello' },
-            { originalMap: new Map<string, (() => number)>(), originalKey: 'random', originalValue: undefined, newValue: Math.random },
-            { originalMap: new StringMap<(() => number)>(), originalKey: 'random', originalValue: undefined, newValue: Math.random }
-        ])('StringMap.copy(map) - empty map $#', ({ originalMap, originalKey, originalValue, newValue }: { originalMap: StringMap<unknown> | Map<string, unknown>; originalValue: undefined; originalKey: string; newValue: unknown}): void => {
+        test.each(
+            emptyMapTestCases
+        )('StringMap.copy(map); - empty map $#', ({ originalMap, originalKey, originalValue, newValue }: { originalMap: StringMap<unknown> | Map<string, unknown>; originalValue: undefined; originalKey: string; newValue: unknown}): void => {
             const map: StringMap<unknown> = StringMap.copy(originalMap);
 
             verifyEmptyMap(map, originalMap);
-
-            // Verify independent copies
-            map.set(originalKey, newValue);
-            expect(originalMap.get(originalKey)).toBe(originalValue);
+            verifyIndependentMaps(map, originalMap, originalKey, originalValue, newValue);
         });
 
-        test('copy populated Map', (): void => {
-            const originalMap: Map<string, number> = new Map<string, number>([
-                ['dave', 4],
-                ['eve', 5],
-                ['frank', 6]
-            ]);
+        test.each(
+            mapTestCases
+        )('StringMap.copy(map); $#', ({ originalMap, originalKey, originalValue, newValue }: { originalMap: StringMap<unknown> | Map<string, unknown>; originalValue: unknown; originalKey: string; newValue: unknown}): void => {
+            originalMap.set(originalKey, originalValue);
+            const map: StringMap<unknown> = StringMap.copy(originalMap);
 
-            const copiedMap: StringMap<number> = StringMap.copy(originalMap);
+            verifyMapEntries(map, originalMap);
+            verifyIndependentMaps(map, originalMap, originalKey, originalValue, newValue);
+        });
+    });
 
-            expect(copiedMap.size).toBe(originalMap.size);
-            expect(Array.from(copiedMap.entries())).toEqual(Array.from(originalMap.entries()));
+    describe('StringMap.get();', (): void => {
+        test.each([
+            { key: 'alice', value: 10 },
+            { key: 'bob', value: 'blue' },
+            { key: 'random', value: ((): number => {return 3;})},
+            { key: 'isHot', value: false }
+        ])('StringMap.get(key) $#', ( {key, value }: { key: string; value: unknown }): void => {
+            const map: StringMap<unknown> = new StringMap<unknown>();
+            map.set(key, value);
+            expect(map.get(key)).toEqual(value);
+        });
+    });
 
-            // Verify independent copies
-            originalMap.set('dave', 40);
-            expect(copiedMap.get('dave')).toBe(4);
+    describe('StringMap.set()', (): void => {
+        test.each(
+            keyValueTestCasesWithNewValue
+        )('StringMap.set($key, $value); StringMap.set($key, $newValue);', ({key, value, newValue }: { key: string, value: unknown, newValue: unknown }): void => {
+            expect(value).not.toEqual(newValue);
+
+            const map: StringMap<unknown> = new StringMap<unknown>();
+            map.set(key, value);
+
+            expect(map.get(key)).toEqual(value);
+
+            map.set(key, newValue);
+
+            expect(map.get(key)).toEqual(newValue);
+        });
+    });
+
+    describe('StringMap.setIfAbsent()', (): void => {
+        test.each(
+            keyValueTestCasesWithNewValue
+        )('StringMap.setIfAbsent($key, $value); StringMap.setIfAbsent($key, $newValue);', ({key, value, newValue }: { key: string, value: unknown, newValue: unknown }): void => {
+            expect(value).not.toEqual(newValue);
+
+            const map: StringMap<unknown> = new StringMap<unknown>();
+            let success: boolean = map.setIfAbsent(key, value);
+
+            expect(success).toBeTruthy();
+            expect(map.get(key)).toEqual(value);
+
+            success = map.setIfAbsent(key, newValue);
+
+            expect(success).toBeFalsy();
+            expect(map.get(key)).toEqual(value);
+        });
+
+        test.each(
+            keyValueTestCasesWithNewValue
+        )('StringMap.set($key, $value); StringMap.setIfAbsent($key, $newValue); StringMap.delete($key); StringMap.setIfAbsent($key, $newValue);', ({key, value, newValue }: { key: string, value: unknown, newValue: unknown }): void => {
+            expect(value).not.toEqual(newValue);
+
+            const map: StringMap<unknown> = new StringMap<unknown>();
+            map.set(key, value);
+
+            expect(map.get(key)).toEqual(value);
+
+            let success: boolean = map.setIfAbsent(key, newValue);
+
+            expect(success).toBeFalsy();
+            expect(map.get(key)).toEqual(value);
+
+            success = map.delete(key);
+
+            expect(success).toBeTruthy();
+
+            success = map.setIfAbsent(key, newValue);
+
+            expect(success).toBeTruthy();
+            expect(map.get(key)).toEqual(newValue);
+        });
+
+        test.each(
+            keyValueTestCasesWithNewValue
+        )('StringMap.setIfAbsent($key, $value); StringMap.setIfAbsent($key, $newValue); - console warnings', ({key, value, newValue }: { key: string, value: unknown, newValue: unknown }): void => {
+            const logSpy = jest.spyOn(global.console, 'warn');
+            const message: string = 'warning: key already present in map';
+            expect(value).not.toEqual(newValue);
+
+            const map: StringMap<unknown> = new StringMap<unknown>();
+            let success: boolean = map.setIfAbsent(key, value, message);
+
+            expect(success).toBeTruthy();
+            expect(map.get(key)).toEqual(value);
+            expect(logSpy).not.toHaveBeenCalled();
+            logSpy.mockClear();
+
+            success = map.setIfAbsent(key, newValue, message);
+
+            expect(success).toBeFalsy();
+            expect(map.get(key)).toEqual(value);
+            expect(logSpy).toHaveBeenCalled();
+            expect(logSpy).toHaveBeenCalledWith(message);
+            logSpy.mockClear();
+            logSpy.mockRestore();
         });
     });
 });
@@ -179,15 +298,6 @@ describe('StringMap tests', (): void => {
         }
     });
 
-    test('StringMap.setKey() and StringMap.get()', (): void => {
-        const map: StringMap<number> = new StringMap<number>();
-        map.set('molly', 10);
-        expect(map.get('molly')).toBe(10);
-        map.set('molly', 20);
-        expect(map.get('molly')).toBe(20);
-        expect(map.get('harry')).toBeUndefined();
-    });
-
     test('StringMap.hasKey()', (): void => {
         const map: StringMap<number> = new StringMap<number>();
         expect(map.hasKey('molly')).toBeFalsy();
@@ -195,67 +305,5 @@ describe('StringMap tests', (): void => {
         expect(map.hasKey('molly')).toBeTruthy();
         map.set('molly', 20);
         expect(map.hasKey('harry')).toBeFalsy();
-    });
-
-    test('StringMap.setUndefinedKey() - test map values', (): void => {
-        const map: StringMap<number> = new StringMap<number>();
-        const key: string = 'molly';
-        const value: number = 10;
-
-        expect(map.hasKey(key)).toBeFalsy();
-        let success: boolean = map.setIfAbsent(key, value);
-        expect(success).toBeTruthy();
-        expect(map.hasKey(key)).toBeTruthy();
-        expect(map.get(key)).toBe(value);
-
-        const newValue: number = 20;
-        expect(value).not.toBe(newValue);
-
-        success = map.setIfAbsent('molly', newValue);
-        expect(success).toBeFalsy();
-        expect(map.get(key)).toBe(value);
-    });
-
-    test('StringMap.setUndefinedKey() - test error messages', (): void => {
-        const map: StringMap<number> = new StringMap<number>();
-        const logSpy = jest.spyOn(global.console, 'warn');
-
-        const key1: string = 'red';
-        let result: boolean = map.setIfAbsent(key1, 50);
-        expect(result).toBeTruthy();
-        expect(logSpy).not.toHaveBeenCalled();
-        logSpy.mockClear();
-
-        result = map.setIfAbsent(key1, 50);
-        expect(result).toBeFalsy();
-        expect(logSpy).not.toHaveBeenCalled();
-        logSpy.mockClear();
-
-        result = map.setIfAbsent(key1, 100);
-        expect(result).toBeFalsy();
-        expect(logSpy).not.toHaveBeenCalled();
-        logSpy.mockClear();
-
-        const key2: string = 'blue';
-        const errorMessage: string = 'key already in map';
-        result = map.setIfAbsent(key2, 50, errorMessage);
-        expect(result).toBeTruthy();
-        expect(logSpy).not.toHaveBeenCalled();
-        logSpy.mockClear();
-
-        result = map.setIfAbsent(key2, 50, 'key already in map');
-        expect(result).toBeFalsy();
-        expect(logSpy).toHaveBeenCalled();
-        expect(logSpy).toHaveBeenCalledWith(errorMessage);
-        logSpy.mockClear();
-
-        result = map.setIfAbsent(key2, 100, 'key already in map');
-        expect(result).toBeFalsy();
-        expect(logSpy).toHaveBeenCalled();
-        expect(logSpy).toHaveBeenCalledWith(errorMessage);
-        logSpy.mockClear();
-
-        expect(map.size).toBe(2);
-        logSpy.mockRestore();
     });
 });
