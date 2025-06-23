@@ -122,5 +122,6 @@ describe('Discriminator', (): void => {
         });
     });
 
+    // TODO - add tests for Discriminator.isAspectRatioConfig()
     test.todo('Discriminators.isAspectRatioConfig() tests');
 });
