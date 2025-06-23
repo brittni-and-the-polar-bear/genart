@@ -37,6 +37,10 @@ export interface WeightedElement<Type> extends Discriminable {
     /**
      * The weight associated with this element.
      * The greater the weight, the more likely the element will be selected.
+     * This value must be between 0 and 1, inclusive.
+     *
+     * @minimum 0
+     * @maximum 1
      *
      * @since 2.0.0
      */
