@@ -18,6 +18,11 @@
 import { StringMap } from 'map';
 
 describe('StringMap', (): void => {
+    const invalidKeys: { key: unknown }[] = [
+        { key: undefined },
+        { key: null }
+    ];
+
     const numberPairs: [string, number][] = [
         ['alice', 1],
         ['bob', 2],
@@ -54,7 +59,9 @@ describe('StringMap', (): void => {
         { key: 'alice', value: 10 },
         { key: 'bob', value: 'blue' },
         { key: 'random', value: ((): number => {return 3;})},
-        { key: 'isHot', value: false }
+        { key: 'isHot', value: false },
+        { key: 'alice', value: undefined },
+        { key: 'alice', value: null }
     ];
 
     const keyValueTestCasesWithNewValue = [
@@ -63,7 +70,9 @@ describe('StringMap', (): void => {
         { key: 'random', value: ((): number => {return 3;}), newValue: ((): number => {return 17})},
         { key: 'isHot', value: false, newValue: true },
         { key: 'alice', value: undefined, newValue: 50 },
-        { key: 'alice', value: 10, newValue: undefined }
+        { key: 'alice', value: 10, newValue: undefined },
+        { key: 'alice', value: null, newValue: 50 },
+        { key: 'alice', value: 50, newValue: null }
     ];
 
     function verifyEmptyMap<Type>(map: StringMap<Type>): void {
@@ -129,6 +138,20 @@ describe('StringMap', (): void => {
             verifyMapEntries(map, originalMap)
             verifyIndependentMaps(map, originalMap, originalKey, originalValue, newValue);
         });
+
+        test('constructor - invalid argument', (): void => {
+            //@ts-expect-error
+            let map = new StringMap<unknown>(null);
+            expect(map.size).toBe(0);
+
+            //@ts-expect-error
+            map = new StringMap<unknown>(undefined);
+            expect(map.size).toBe(0);
+
+            //@ts-expect-error
+            map = new StringMap<unknown>({});
+            expect(map.size).toBe(0);
+        });
     });
 
     describe('StringMap.copy();', (): void => {
@@ -161,6 +184,13 @@ describe('StringMap', (): void => {
             map.set(key, value);
             expect(map.get(key)).toEqual(value);
         });
+
+        test.each(
+            invalidKeys
+        )('StringMap.get($key); - invalid key', ({ key }: { key: unknown }): void => {
+            const map: StringMap<unknown> = new StringMap<unknown>();
+            expect(map.get(key)).toBeUndefined();
+        });
     });
 
     describe('StringMap.set();', (): void => {
@@ -177,6 +207,15 @@ describe('StringMap', (): void => {
             map.set(key, newValue);
 
             expect(map.get(key)).toEqual(newValue);
+        });
+
+        test.each(
+            invalidKeys
+        )('StringMap.set($key, 100); - invalid keys', ({ key }: { key: unknown }): void => {
+            const map: StringMap<unknown> = new StringMap<unknown>();
+            // map.set(key, 100);
+            // expect(map.get(key)).toBeUndefined();
+            expect(() => {map.set(key, 100);}).toThrow(TypeError);
         });
     });
 
@@ -258,6 +297,14 @@ describe('StringMap', (): void => {
             expect(map.hasKey(key)).toBeTruthy();
             expect(map.hasKey('not a key')).toBeFalsy();
         });
+
+        test.each(
+            invalidKeys
+        )('StringMap.hasKey($key); - invalid keys', ({ key }: { key: unknown }): void => {
+            const map: StringMap<unknown> = new StringMap<unknown>();
+            expect(() => {map.set(key, 100);}).toThrow(TypeError);
+            expect(map.hasKey(key)).toBeFalsy();
+        });
     });
 
     describe('StringMap.values();', (): void => {
@@ -338,6 +385,14 @@ describe('StringMap', (): void => {
             success = map.delete(key);
             expect(success).toBeTruthy();
             expect(map.get(key)).toBeUndefined();
+        });
+
+        test.each(
+            invalidKeys
+        )('StringMap.delete($key); - invalid keys', ({ key }: { key: unknown }): void => {
+            const map: StringMap<unknown> = new StringMap<unknown>();
+            expect(() => {map.set(key, 100);}).toThrow(TypeError);
+            expect(map.delete(key)).toBeFalsy();
         });
     });
 });

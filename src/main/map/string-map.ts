@@ -76,6 +76,10 @@ export class StringMap<ValueType> {
      * @param value - The value to store in the map.
      */
     public set(key: string, value: ValueType): void {
+        if (typeof key !== 'string') {
+            throw new TypeError(`key must be a string, received ${typeof key}`);
+        }
+
         this.#MAP.set(key, value);
     }
 
