@@ -17,8 +17,8 @@
 
 export * from './color-contrast';
 export * from './color-name';
-export * from './color-selector';
+// export * from './color-selector';
 export * from './palette';
-export * from './rgb';
+// export * from './rgb';
 
-export * from './color';
+// export * from './color';
