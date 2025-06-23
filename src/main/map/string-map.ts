@@ -74,6 +74,8 @@ export class StringMap<ValueType> {
      *
      * @param key - The key to associate with the value in the map.
      * @param value - The value to store in the map.
+     *
+     * @throws {@link TypeError} If the key is not a string.
      */
     public set(key: string, value: ValueType): void {
         if (typeof key !== 'string') {
