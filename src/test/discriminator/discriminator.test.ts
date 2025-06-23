@@ -15,68 +15,26 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { Palette, PaletteColor } from 'color';
+import { Palette, PC_E13762 } from 'color';
 import { Discriminator, Discriminators } from 'discriminator';
 import { WeightedElement } from 'random';
 
-describe('discriminator tests', (): void => {
-    describe('Discriminator.isPaletteColor() tests', (): void => {
-        test('Discriminator.isPaletteColor(null)', (): void => {
-            expect(Discriminator.isPaletteColor(null)).toBeFalsy();
-        });
-
-        test('Discriminator.isPaletteColor(undefined)', (): void => {
-            expect(Discriminator.isPaletteColor(undefined)).toBeFalsy();
-        });
-
-        test('Discriminator.isPaletteColor(number)', (): void => {
-            expect(Discriminator.isPaletteColor(10)).toBeFalsy();
-        });
-
-        test('Discriminator.isPaletteColor(string)', (): void => {
-            expect(Discriminator.isPaletteColor('my test string')).toBeFalsy();
-        });
-
-        test('Discriminator.isPaletteColor(boolean)', (): void => {
-            expect(Discriminator.isPaletteColor(true)).toBeFalsy();
-        });
-
-        test('Discriminator.isPaletteColor(other object)', (): void => {
-            const myObject: { KEY: string; } = {
-                KEY: 'the key'
-            };
-
-            expect(Discriminator.isPaletteColor(myObject)).toBeFalsy();
-        });
-
-        test('Discriminator.isPaletteColor() - other object with discriminator', (): void => {
-            const myObject: { KEY: string; DISCRIMINATOR: 'other'; } = {
-                KEY: 'the key',
-                DISCRIMINATOR: 'other'
-            };
-
-            expect(Discriminator.isPaletteColor(myObject)).toBeFalsy();
-        });
-
-        test('Discriminator.isPaletteColor() - other object with Palette discriminator', (): void => {
-            const myObject: { KEY: string; DISCRIMINATOR: string; } = {
-                KEY: 'the key',
-                DISCRIMINATOR: Discriminators.PALETTE
-            };
-
-            expect(Discriminator.isPaletteColor(myObject)).toBeFalsy();
-        });
-
-        test.todo('Discriminator.isPaletteColor() - existing palette color');
-
-        test('Discriminator.isPaletteColor() - new palette color', (): void => {
-            const fakeColor: PaletteColor = {
-                HEX: '#000000',
-                NAME: 'test fake color',
-                DISCRIMINATOR: Discriminators.PALETTE_COLOR
-            };
-
-            expect(Discriminator.isPaletteColor(fakeColor)).toBeTruthy();
+// TODO - complete unit tests
+describe('Discriminator', (): void => {
+    describe('Discriminator.isPaletteColor()', (): void => {
+        test.each([
+            { object: null, expected: false },
+            { object: undefined, expected: false },
+            { object: 10, expected: false },
+            { object: 'my test string', expected: false },
+            { object: true, expected: false },
+            { object: { KEY: 'the key' }, expected: false },
+            { object: { KEY: 'the key', DISCRIMINATOR: 'other' }, expected: false },
+            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.PALETTE }, expected: false },
+            { object: { HEX: '#000000', NAME: 'test fake color', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: true},
+            { object: PC_E13762, expected: true }
+        ])('Discriminator.isPaletteColor($object)', ({ object, expected }: { object: unknown, expected: boolean}): void => {
+            expect(Discriminator.isPaletteColor(object)).toBe(expected);
         });
     });
 

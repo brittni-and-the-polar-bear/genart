@@ -17,7 +17,7 @@
 
 import { Discriminators } from 'discriminator';
 
-describe('Discriminators tests', (): void => {
+describe('Discriminators', (): void => {
     test('all discriminators are unique', (): void => {
         const valuesSet: Set<string> = new Set<string>(Object.values(Discriminators));
         expect(valuesSet.size).toBe(Object.values(Discriminators).length);
