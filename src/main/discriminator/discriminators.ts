@@ -15,31 +15,40 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// TODO - release notes
 /**
  * The collection of discriminator values for library interfaces.
  * All values should be unique.
  *
- * @category Discriminator
+ * @since 2.0.0
+ *
+ * @category Utility / Discriminator
  */
 export enum Discriminators {
     /**
      * Discriminator for the {@link AspectRatioConfig} interface.
+     *
+     * @since 2.0.0
      */
     ASPECT_RATIO_CONFIG = 'I_ASPECT-RATIO-CONFIG',
 
     /**
      * Discriminator for the {@link Palette} interface.
+     *
+     * @since 2.0.0
      */
     PALETTE = 'I_PALETTE',
 
     /**
      * Discriminator for the {@link PaletteColor} interface.
+     *
+     * @since 2.0.0
      */
     PALETTE_COLOR = 'I_PALETTE-COLOR',
 
     /**
      * Discriminator for the {@link WeightedElement} interface.
+     *
+     * @since 2.0.0
      */
     WEIGHTED_ELEMENT = 'I_WEIGHTED-ELEMENT'
 }

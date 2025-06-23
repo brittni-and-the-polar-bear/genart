@@ -21,7 +21,9 @@ import { Discriminators } from './discriminators';
  * Interface for objects that can be categorized by a discriminator value
  * and the {@link Discriminator} class.
  *
- * @category Discriminator
+ * @since 2.0.0
+ *
+ * @category Utility / Discriminator
  */
 export interface Discriminable {
     /**

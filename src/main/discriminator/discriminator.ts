@@ -22,87 +22,78 @@ import { AspectRatioConfig } from 'sketch';
 import { Discriminable } from './discriminable';
 import { Discriminators } from './discriminators';
 
-// TODO - release notes
 // TODO - unit tests
 /**
- * Methods for evaluating if objects implement various interfaces.
+ * Static class methods for evaluating if objects implement various interfaces.
  *
- * @category Discriminator
+ * @since 2.0.0
+ *
+ * @category Utility / Discriminator
  */
 export class Discriminator {
     /**
-     * Determines if the given object is an {@link AspectRatioConfig}.
-     * (i.e. implements the AspectRatioConfig interface).
+     * Does the given object implement the {@link AspectRatioConfig} inferface?
      *
-     * @param object
+     * @param object - The object to check
      *
-     * @returns `true` if the given object implements
-     * the {@link AspectRatioConfig} interface, `false` if it does not.
+     * @returns `true` if the given object implements the {@link AspectRatioConfig} interface, `false` if it does not.
+     *
+     * @since 2.0.0
      */
     public static isAspectRatioConfig(object: unknown): object is AspectRatioConfig {
-        let hasMatch: boolean = false;
-
-        if (object && typeof object === 'object') {
-            hasMatch = (object as Discriminable).DISCRIMINATOR === Discriminators.ASPECT_RATIO_CONFIG;
-        }
-
-        return hasMatch;
+        return Discriminator.#hasDiscriminatorMatch(object, Discriminators.ASPECT_RATIO_CONFIG);
     }
 
     /**
-     * Determines if the given object is a {@link PaletteColor}
-     * (i.e. implements the PaletteColor interface).
+     * Does the given object implement the {@link PaletteColor} interface?
      *
-     * @param object
+     * @param object - The object to check
      *
-     * @returns `true` if the given object implements
-     * the {@link PaletteColor} interface, `false` if it does not.
+     * @returns `true` if the given object implements the {@link PaletteColor} interface, `false` if it does not.
+     *
+     * @since 2.0.0
      */
     public static isPaletteColor(object: unknown): object is PaletteColor {
-        let hasMatch: boolean = false;
-
-        if (object && typeof object === 'object') {
-            hasMatch = (object as Discriminable).DISCRIMINATOR === Discriminators.PALETTE_COLOR;
-        }
-
-        return hasMatch;
+        return Discriminator.#hasDiscriminatorMatch(object, Discriminators.PALETTE_COLOR);
     }
 
     /**
-     * Determines if the given object is a {@link Palette}
-     * (i.e. implements the Palette interface).
+     * Does the given object implement the {@link Palette} interface?
      *
-     * @param object
+     * @param object - The object to check
      *
-     * @returns `true` if the given object implements
-     * the {@link Palette} interface, `false` if it does not.
+     * @returns `true` if the given object implements the {@link Palette} interface, `false` if it does not.
+     *
+     * @since 2.0.0
      */
     public static isPalette(object: unknown): object is Palette {
-        let hasMatch: boolean = false;
-
-        if (object && typeof object === 'object') {
-            hasMatch = (object as Discriminable).DISCRIMINATOR === Discriminators.PALETTE;
-        }
-
-        return hasMatch;
+        return Discriminator.#hasDiscriminatorMatch(object, Discriminators.PALETTE);
     }
 
     /**
-     * Determines if the given object is a {@link WeightedElement}
-     * (i.e. implements the WeightedElement interface).
+     * Does the given object implement the {@link WeightedElement} interface?
      *
-     * @param object
+     * @param object - The object to check
      *
-     * @returns `true` if the given object implements
-     * the {@link WeightedElement} interface, `false` if it does not.
+     * @returns `true` if the given object implements the {@link WeightedElement} interface, `false` if it does not.
+     *
+     * @since 2.0.0
      */
     public static isWeightedElement(object: unknown): object is WeightedElement<unknown> {
-        let hasMatch: boolean = false;
+        return Discriminator.#hasDiscriminatorMatch(object, Discriminators.WEIGHTED_ELEMENT);
+    }
 
+    /**
+     * Does the given object implement the {@link Discriminable} interface, and does the object's {@link Discriminable.DISCRIMINATOR DISCRIMINATOR} value match the given discriminator?
+     *
+     * @param object - The object to check
+     * @param discriminator - The discriminator value to check against
+     */
+    static #hasDiscriminatorMatch(object: unknown, discriminator: Discriminators): boolean {
         if (object && typeof object === 'object') {
-            hasMatch = (object as Discriminable).DISCRIMINATOR === Discriminators.WEIGHTED_ELEMENT;
+            return (object as Discriminable).DISCRIMINATOR === discriminator;
         }
 
-        return hasMatch;
+        return false;
     }
 }
