@@ -19,6 +19,8 @@
  * StringValidator provides static methods that can be used
  * to verify that strings contain specified patterns.
  *
+ * @since 2.0.0
+ *
  * @category Utility
  */
 export class StringValidator {
@@ -28,6 +30,8 @@ export class StringValidator {
      * @param hex - string to check for the hex color pattern
      * @param withAlpha - When `true` the string will be checked for a `#RRGGBBAA` pattern.
      * When `false`, the given string will be checked for a `#RRGGBB` pattern.
+     *
+     * @since 2.0.0
      */
     public static isHex(hex: string, withAlpha?: boolean): boolean {
         if (withAlpha) {
@@ -46,6 +50,8 @@ export class StringValidator {
      * Is the given string a hex color string with an alpha component (`#RRGGBBAA`)?
      *
      * @param hex - string to check for the hex color pattern.
+     *
+     * @since 2.0.0
      */
     public static isHexWithAlpha(hex: string): boolean {
         if (hex) {
