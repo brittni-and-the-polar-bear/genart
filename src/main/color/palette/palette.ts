@@ -22,31 +22,44 @@ import { PaletteColor } from './palette-color';
 /**
  * A collection of {@link PaletteColor} objects.
  *
- * @category Palette
+ * @since 2.0.0
+ *
+ * @category Color
+ * @category Color / Palette
  */
 export interface Palette extends Discriminable {
     /**
      * The name of the palette.
+     *
+     * @since 2.0.0
      */
     readonly NAME: string;
 
     /**
      * The source of the palette.
+     *
+     * @since 2.0.0
      */
     readonly SOURCE?: string;
 
     /**
      * The source URL of the palette.
+     *
+     * @since 2.0.0
      */
     readonly SOURCE_URL?: string;
 
     /**
      * A flag indicating if the palette is a gradient.
+     *
+     * @since 2.0.0
      */
     readonly IS_GRADIENT: boolean;
 
     /**
      * The list of {@link PaletteColor} objects that compose the palette.
+     *
+     * @since 2.0.0
      */
     readonly COLORS: PaletteColor[];
 
@@ -56,12 +69,16 @@ export interface Palette extends Discriminable {
      * with normal and large size text when compared to the key.<br/>
      * The only colors listed in this map should be the colors of the
      * palette, black (#000000), and white (#FFFFFF).
+     *
+     * @since 2.0.0
      */
     readonly CONTRAST_MAP?: {
         /**
          * The colors in the palette that pass the WCAG AA standard when
          * compared to black (#000000). This list should NOT contain
          * white (#FFFFFF) unless it is a color listed in the palette.
+         *
+         * @since 2.0.0
          */
         readonly '#000000': string[];
 
@@ -69,9 +86,17 @@ export interface Palette extends Discriminable {
          * The colors in the palette that pass the WCAG AA standard when
          * compared to white (#FFFFFF). This list should NOT contain
          * black (#000000) unless it is a color listed in the palette.
+         *
+         * @since 2.0.0
          */
         readonly '#FFFFFF': string[];
 
+        /**
+         * The colors in the palette that pass the WCAG AA standard when
+         * compared to any other color in the palette.
+         *
+         * @since 2.0.0
+         */
         readonly [HEX: string]: string[];
     };
 
