@@ -22,17 +22,23 @@ import { Discriminable, Discriminators } from 'discriminator';
  * when selecting elements in an uneven distribution.
  * The greater the weight, the more likely the element will be chosen.
  *
+ * @since 2.0.0
+ *
  * @category Random
  */
 export interface WeightedElement<Type> extends Discriminable {
     /**
      * The value returned if this element is selected.
+     *
+     * @since 2.0.0
      */
     readonly VALUE: Type;
 
     /**
      * The weight associated with this element.
      * The greater the weight, the more likely the element will be selected.
+     *
+     * @since 2.0.0
      */
     readonly WEIGHT: number;
 
