@@ -144,7 +144,6 @@ describe('StringMap', (): void => {
             let map = new StringMap<unknown>(null);
             expect(map.size).toBe(0);
 
-            //@ts-expect-error
             map = new StringMap<unknown>(undefined);
             expect(map.size).toBe(0);
 
@@ -189,6 +188,8 @@ describe('StringMap', (): void => {
             invalidKeys
         )('StringMap.get($key); - invalid key', ({ key }: { key: unknown }): void => {
             const map: StringMap<unknown> = new StringMap<unknown>();
+
+            //@ts-expect-error
             expect(map.get(key)).toBeUndefined();
         });
     });
@@ -213,8 +214,8 @@ describe('StringMap', (): void => {
             invalidKeys
         )('StringMap.set($key, 100); - invalid keys', ({ key }: { key: unknown }): void => {
             const map: StringMap<unknown> = new StringMap<unknown>();
-            // map.set(key, 100);
-            // expect(map.get(key)).toBeUndefined();
+
+            //@ts-expect-error
             expect(() => {map.set(key, 100);}).toThrow(TypeError);
         });
     });
@@ -302,7 +303,10 @@ describe('StringMap', (): void => {
             invalidKeys
         )('StringMap.hasKey($key); - invalid keys', ({ key }: { key: unknown }): void => {
             const map: StringMap<unknown> = new StringMap<unknown>();
+
+            //@ts-expect-error
             expect(() => {map.set(key, 100);}).toThrow(TypeError);
+            //@ts-expect-error
             expect(map.hasKey(key)).toBeFalsy();
         });
     });
@@ -391,7 +395,10 @@ describe('StringMap', (): void => {
             invalidKeys
         )('StringMap.delete($key); - invalid keys', ({ key }: { key: unknown }): void => {
             const map: StringMap<unknown> = new StringMap<unknown>();
+
+            //@ts-expect-error
             expect(() => {map.set(key, 100);}).toThrow(TypeError);
+            //@ts-expect-error
             expect(map.delete(key)).toBeFalsy();
         });
     });
