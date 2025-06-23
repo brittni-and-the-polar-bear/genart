@@ -19,6 +19,8 @@
  * A map of string keys to some ValueType.
  * Provides a type-safe wrapper around the native Map class for string-based keys.
  *
+ * @since 2.0.0
+ *
  * @category Utility
  */
 export class StringMap<ValueType> {
@@ -32,6 +34,8 @@ export class StringMap<ValueType> {
      *
      * @param map - Optional map to initialize from.
      * If provided, all entries from the given map will be copied to this new instance.
+     *
+     * @since 2.0.0
      */
     public constructor(map?: StringMap<ValueType> | Map<string, ValueType>) {
         if (map && (map instanceof StringMap || map instanceof Map)) {
@@ -47,6 +51,8 @@ export class StringMap<ValueType> {
      * @param map - The map to copy.
      *
      * @returns A new {@link StringMap} instance containing the same key-value pairs as the given map.
+     *
+     * @since 2.0.0
      */
     public static copy<Type>(map: StringMap<Type> | Map<string, Type>): StringMap<Type> {
         return new StringMap<Type>(map);
@@ -54,6 +60,8 @@ export class StringMap<ValueType> {
 
     /**
      * @returns The size of the map.
+     *
+     * @since 2.0.0
      */
     public get size(): number {
         return this.#MAP.size;
@@ -64,6 +72,8 @@ export class StringMap<ValueType> {
      * If the given key does not exist in the map, the method will return `undefined`.
      *
      * @param key - The key of the desired value in the map.
+     *
+     * @since 2.0.0
      */
     public get(key: string): ValueType | undefined {
         return this.#MAP.get(key);
@@ -76,6 +86,8 @@ export class StringMap<ValueType> {
      * @param value - The value to store in the map.
      *
      * @throws {@link TypeError} If the key is not a string.
+     *
+     * @since 2.0.0
      */
     public set(key: string, value: ValueType): void {
         if (typeof key !== 'string') {
@@ -93,6 +105,8 @@ export class StringMap<ValueType> {
      * @param errorMessage - Message to log if the key already has a value.
      *
      * @returns `true` if the operation is successful, `false` if it is not.
+     *
+     * @since 2.0.0
      */
     public setIfAbsent(key: string, value: ValueType, errorMessage?: string): boolean {
         let isSet: boolean;
@@ -117,6 +131,8 @@ export class StringMap<ValueType> {
      * @param key - The key to check for in the map.
      *
      * @returns `true` if the map contains the given key, `false` otherwise.
+     *
+     * @since 2.0.0
      */
     public hasKey(key: string): boolean {
         return this.#MAP.has(key);
@@ -124,6 +140,8 @@ export class StringMap<ValueType> {
 
     /**
      * @returns All the values of the map.
+     *
+     * @since 2.0.0
      */
     public values(): IterableIterator<ValueType> {
         return this.#MAP.values();
@@ -131,6 +149,8 @@ export class StringMap<ValueType> {
 
     /**
      * @returns All the keys of the map.
+     *
+     * @since 2.0.0
      */
     public keys(): IterableIterator<string> {
         return this.#MAP.keys();
@@ -138,6 +158,8 @@ export class StringMap<ValueType> {
 
     /**
      * @returns An iterator of key-value pairs for the map.
+     *
+     * @since 2.0.0
      */
     public entries(): IterableIterator<[string, ValueType]> {
         return this.#MAP.entries();
@@ -145,6 +167,8 @@ export class StringMap<ValueType> {
 
     /**
      * Remove all key-value pairs from the map.
+     *
+     * @since 2.0.0
      */
     public clear(): void {
         this.#MAP.clear();
@@ -157,6 +181,8 @@ export class StringMap<ValueType> {
      *
      * @returns `true` if the given key has been removed from the map,
      * `false` if the element does not exist.
+     *
+     * @since 2.0.0
      */
     public delete(key: string): boolean {
         return this.#MAP.delete(key);
