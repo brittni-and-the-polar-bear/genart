@@ -76,9 +76,10 @@
   "homepage": "https://brittni-and-the-polar-bear.github.io/genart/",
   "dependencies": {
     "@types/nearest-color": "^0.4.1",
+    "@types/p5": "^1.7.6",
     "cococh": "^1.2.4",
     "nearest-color": "^0.4.4",
-    "p5": "^2.0.3"
+    "p5": "^1.11.8"
   },
   "peerDependencies": {
     "color-name-list": "11.23.0"
