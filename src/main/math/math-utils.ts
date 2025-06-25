@@ -16,31 +16,26 @@
  */
 
 /**
+ * Converts a two-dimensional row and column index into a single-dimension index.
+ *
  * @param row - Current row number. Rows are zero-indexed; the first row is row 0.
  * @param column - Current column number. Columns are zero-indexed; the first column is column 0.
  * @param totalRows - Total number of rows.
  * @param totalColumns - Total number of columns.
  *
- * @return The index in a single-dimension structure of the
- * given row and column in a two-dimensional structure.<br/>
+ * @return The index in a single-dimension structure of the given row and column in a two-dimensional structure.<br/>
  * If `row` or `column` are negative, the function will return undefined.<br/>
  * If `row` is greater than or equal to `totalRows`, the function will return undefined.<br/>
  * If `column` is greater than or equal to `totalColumns`, the function will return undefined.
  *
+ * @since 2.0.0
+ *
  * @category Utility
  */
-export function getSingleDimensionIndex(row: number,
-                                        column: number,
-                                        totalRows: number,
-                                        totalColumns: number): number | undefined {
-    let index: number | undefined = undefined;
-
-    if ((row >= 0) &&
-        (column >= 0) &&
-        (row < totalRows) &&
-        (column < totalColumns)) {
-        index = (row * totalColumns) + column;
+export function getSingleDimensionIndex(row: number, column: number, totalRows: number, totalColumns: number): number | undefined {
+    if ((row >= 0) && (column >= 0) && (row < totalRows) && (column < totalColumns)) {
+        return ((row * totalColumns) + column);
     }
 
-    return index;
+    return undefined;
 }
