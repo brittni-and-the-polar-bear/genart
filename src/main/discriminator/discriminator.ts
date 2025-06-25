@@ -22,7 +22,6 @@ import { AspectRatioConfig } from 'sketch';
 import { Discriminable } from './discriminable';
 import { Discriminators } from './discriminators';
 
-// TODO - unit tests
 /**
  * Static class methods for evaluating if objects implement various interfaces.
  *
