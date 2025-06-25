@@ -17,7 +17,7 @@
 
 import { getSingleDimensionIndex } from 'math';
 
-describe('math utility tests', (): void => {
+describe('math-utility', (): void => {
     test.each([
         { row: 0, column: 0, totalRows: 1, totalColumns: 1, expected: 0 },
         { row: 0, column: 0, totalRows: 0, totalColumns: 1, expected: undefined },
@@ -40,12 +40,8 @@ describe('math utility tests', (): void => {
         { row: Number.MIN_SAFE_INTEGER, column: 0, totalRows: Number.MIN_SAFE_INTEGER + 1, totalColumns: 1, expected: undefined },
         { row: 0, column: Number.MIN_SAFE_INTEGER, totalRows: 1, totalColumns: Number.MIN_SAFE_INTEGER + 1, expected: undefined },
         { row: Number.MIN_SAFE_INTEGER, column: Number.MIN_SAFE_INTEGER, totalRows: Number.MIN_SAFE_INTEGER + 1, totalColumns: Number.MIN_SAFE_INTEGER + 1, expected: undefined }
-    ])('$# getSingleDimensionIndex($row, $column, $totalRows, $totalColumns)',
-        ({ row,
-            column,
-            totalRows,
-            totalColumns,
-            expected }): void => {
+    ])('getSingleDimensionIndex($row, $column, $totalRows, $totalColumns);',
+        ({ row, column, totalRows, totalColumns, expected }: { row: number, column: number, totalRows: number, totalColumns: number, expected: number | undefined }): void => {
             expect(getSingleDimensionIndex(row, column, totalRows, totalColumns)).toBe(expected);
         });
 });
