@@ -16,8 +16,9 @@
  */
 
 /**
- * Structure to handle a range of values,
- * where the range has a minimum value and a maximum value.
+ * Structure to handle a range of number values, where the range has a minimum value and a maximum value.
+ *
+ * @since 2.0.0
  *
  * @category Random
  * @category Utility
@@ -27,8 +28,10 @@ export class Range {
     #maximum: number;
 
     /**
-     * @param min - The minimum value of the Range.
-     * @param max - The maximum value of the Range.
+     * @param min - The minimum value of the Range object.
+     * @param max - The maximum value of the Range object.
+     *
+     * @since 2.0.0
      */
     public constructor(min: number, max: number) {
         this.#minimum = min;
@@ -42,21 +45,23 @@ export class Range {
     }
 
     /**
-     * @returns The maximum value of the Range.
+     * @returns The maximum value of the Range object.
+     *
+     * @since 2.0.0
      */
     public get max(): number {
         return this.#maximum;
     }
 
     /**
-     * If the given maximum is less than the current minimum,
-     * the fields `min` and `max` will be set so that `min` is less than `max`.
+     * @param max - The new maximum value of the Range object.
+     * If the given max is less than the current min, the fields `min` and `max` will be updated so that `min` is less than `max`.
      *
-     * @param max - The new maximum value of the Range.
+     * @since 2.0.0
      */
     public set max(max: number) {
         if (max < this.#minimum) {
-            console.warn(`max (${max.toString()}) is less than current min (${this.#minimum.toString()}). object fields will be set so that min is less than max.`);
+            console.warn(`max (${max.toString()}) is less than current min (${this.#minimum.toString()}). object fields will be updated so that min is less than max.`);
             this.#maximum = this.#minimum;
             this.#minimum = max;
         } else {
@@ -65,21 +70,23 @@ export class Range {
     }
 
     /**
-     * @returns The minimum value of the Range.
+     * @returns The minimum value of the Range object.
+     *
+     * @since 2.0.0
      */
     public get min(): number {
         return this.#minimum;
     }
 
     /**
-     * If the given minimum is greater than the current maximum,
-     * the fields `min` and `max` will be set so that `min` is less than `max`.
+     * @param min - The new minimum value of the Range object.
+     * If the given min is greater than the current max, the fields `min` and `max` will be updated so that `min` is less than `max`.
      *
-     * @param min - The new minimum value of the Range.
+     * @since 2.0.0
      */
     public set min(min: number) {
         if (min > this.#maximum) {
-            console.warn(`min (${min.toString()}) is greater than current max (${this.#maximum.toString()}). object fields will be set so that min is less than max.`);
+            console.warn(`min (${min.toString()}) is greater than current max (${this.#maximum.toString()}). object fields will be updated so that min is less than max.`);
             this.#minimum = this.#maximum;
             this.#maximum = min;
         } else {
