@@ -15,113 +15,210 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { PC_E13762 } from 'color';
+import { Palette, PaletteColor, PC_E13762 } from 'color';
 import { Discriminator, Discriminators } from 'discriminator';
 import { WeightedElement } from 'random';
+import { AspectRatioConfig } from 'sketch';
 
 // TODO - complete unit tests
 describe('Discriminator', (): void => {
-    describe('Discriminator.isPaletteColor()', (): void => {
+    const testAspectRatioConfig: AspectRatioConfig = {
+        WIDTH_RATIO: 3,
+        HEIGHT_RATIO: 4,
+        DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG
+    };
+
+    const testPalette: Palette = {
+        NAME: 'test fake palette',
+        COLORS: [],
+        IS_GRADIENT: false,
+        DISCRIMINATOR: Discriminators.PALETTE
+    };
+
+    const testPaletteColor: PaletteColor = {
+        HEX: '#ABCDEF',
+        NAME: 'test palette color',
+        DISCRIMINATOR: Discriminators.PALETTE_COLOR
+    }
+
+    const testWeightedElement: WeightedElement<number> = {
+        WEIGHT: 1,
+        VALUE: 50,
+        DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT
+    };
+
+    describe('Discriminator.isAspectRatioConfig();', (): void => {
         test.each([
+            // value types
             { object: null, expected: false },
             { object: undefined, expected: false },
             { object: 10, expected: false },
             { object: 'my test string', expected: false },
             { object: true, expected: false },
+            { object: (): 5 => { return 5; }, expected: false },
+
+            // generic objects
             { object: { KEY: 'the key' }, expected: false },
-            { object: { KEY: 'the key', DISCRIMINATOR: 'other' }, expected: false },
-            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.PALETTE }, expected: false },
-            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
+
+            // discriminators only
+            { object: { DISCRIMINATOR: 'other' }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: true },
+            { object: { DISCRIMINATOR: Discriminators.PALETTE }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
+
+            // aspect ratio config
+            { object: { WIDTH_RATIO: 4, HEIGHT_RATIO: 5, DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: true },
+            { object: { NAME: '4:5', WIDTH_RATIO: 4, HEIGHT_RATIO: 5, DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: true },
+            { object: testAspectRatioConfig, expected: true },
+
+            // palette
             { object: { NAME: 'test fake palette', COLORS: [], IS_GRADIENT: false, DISCRIMINATOR: Discriminators.PALETTE }, expected: false },
-            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: true },
-            { object: { HEX: '#000000', NAME: 'test fake color', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: true},
-            { object: PC_E13762, expected: true }
-        ])('Discriminator.isPaletteColor($object)', ({ object, expected }: { object: unknown, expected: boolean}): void => {
-            expect(Discriminator.isPaletteColor(object)).toBe(expected);
+            { object: testPalette, expected: false },
+
+            // palette color
+            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false },
+            { object: { HEX: '#000000', NAME: 'test fake color', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false },
+            { object: testPaletteColor, expected: false },
+            { object: PC_E13762, expected: false },
+
+            // weighted element
+            { object: { WEIGHT: 0.5, VALUE: 45, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
+            { object: testWeightedElement, expected: false }
+        ])('Discriminator.isAspectRatioConfig($object)', ({ object, expected }: { object: unknown, expected: boolean}): void => {
+            expect(Discriminator.isAspectRatioConfig(object)).toBe(expected);
         });
     });
 
-    describe('Discriminator.isPalette()', (): void => {
+    describe('Discriminator.isPalette();', (): void => {
         test.each([
+            // value types
             { object: null, expected: false },
             { object: undefined, expected: false },
             { object: 10, expected: false },
             { object: 'my test string', expected: false },
             { object: true, expected: false },
+            { object: (): 5 => { return 5; }, expected: false },
+
+            // generic objects
             { object: { KEY: 'the key' }, expected: false },
-            { object: { KEY: 'the key', DISCRIMINATOR: 'other' }, expected: false },
-            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
-            { object: { HEX: '#000000', NAME: 'test fake color', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false},
+
+            // discriminators only
+            { object: { DISCRIMINATOR: 'other' }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.PALETTE }, expected: true },
+            { object: { DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
+
+            // aspect ratio config
+            { object: { WIDTH_RATIO: 4, HEIGHT_RATIO: 5, DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: false },
+            { object: { NAME: '4:5', WIDTH_RATIO: 4, HEIGHT_RATIO: 5, DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: false },
+            { object: testAspectRatioConfig, expected: false },
+
+            // palette
+            { object: { NAME: 'test fake palette', COLORS: [], IS_GRADIENT: false, DISCRIMINATOR: Discriminators.PALETTE }, expected: true },
+            { object: testPalette, expected: true },
+
+            // palette color
+            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false },
+            { object: { HEX: '#000000', NAME: 'test fake color', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false },
+            { object: testPaletteColor, expected: false },
             { object: PC_E13762, expected: false },
-            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.PALETTE }, expected: true },
-            { object: { NAME: 'test fake palette', COLORS: [], IS_GRADIENT: false, DISCRIMINATOR: Discriminators.PALETTE }, expected: true }
-        ])('Discriminator.isPaletteColor($object)', ({ object, expected }: { object: unknown, expected: boolean}): void => {
+
+            // weighted element
+            { object: { WEIGHT: 0.5, VALUE: 45, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
+            { object: testWeightedElement, expected: false }
+        ])('Discriminator.isPalette($object)', ({ object, expected }: { object: unknown, expected: boolean}): void => {
             expect(Discriminator.isPalette(object)).toBe(expected);
         });
 
         // TODO - add test for existing palette
-        test.todo('Discriminator.isPalette() - existing palette');
+        test.todo('Discriminator.isPalette(); - existing palette');
     });
 
-    // TODO - reformat WeightedElement tests
-    describe('Discriminator.isWeightedElement() tests', (): void => {
-        test('Discriminator.isWeightedElement(null)', (): void => {
-            expect(Discriminator.isWeightedElement(null)).toBeFalsy();
-        });
+    describe('Discriminator.isPaletteColor();', (): void => {
+        test.each([
+            // value types
+            { object: null, expected: false },
+            { object: undefined, expected: false },
+            { object: 10, expected: false },
+            { object: 'my test string', expected: false },
+            { object: true, expected: false },
+            { object: (): 5 => { return 5; }, expected: false },
 
-        test('Discriminator.isWeightedElement(undefined)', (): void => {
-            expect(Discriminator.isWeightedElement(undefined)).toBeFalsy();
-        });
+            // generic objects
+            { object: { KEY: 'the key' }, expected: false },
 
-        test('Discriminator.isWeightedElement(number)', (): void => {
-            expect(Discriminator.isWeightedElement(439)).toBeFalsy();
-        });
+            // discriminators only
+            { object: { DISCRIMINATOR: 'other' }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.PALETTE }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: true },
+            { object: { DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
 
-        test('Discriminator.isWeightedElement(string)', (): void => {
-            expect(Discriminator.isWeightedElement('weighted element test string')).toBeFalsy();
-        });
+            // aspect ratio config
+            { object: { WIDTH_RATIO: 4, HEIGHT_RATIO: 5, DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: false },
+            { object: { NAME: '4:5', WIDTH_RATIO: 4, HEIGHT_RATIO: 5, DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: false },
+            { object: testAspectRatioConfig, expected: false },
 
-        test('Discriminator.isWeightedElement(boolean)', (): void => {
-            expect(Discriminator.isWeightedElement(true)).toBeFalsy();
-        });
+            // palette
+            { object: { NAME: 'test fake palette', COLORS: [], IS_GRADIENT: false, DISCRIMINATOR: Discriminators.PALETTE }, expected: false },
+            { object: testPalette, expected: false },
 
-        test('Discriminator.isWeightedElement(other object)', (): void => {
-            const myObject: { KEY: string; } = {
-                KEY: 'the key'
-            };
+            // palette color
+            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: true },
+            { object: { HEX: '#000000', NAME: 'test fake color', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: true },
+            { object: testPaletteColor, expected: true },
+            { object: PC_E13762, expected: true },
 
-            expect(Discriminator.isWeightedElement(myObject)).toBeFalsy();
-        });
-
-        test('Discriminator.isWeightedElement() - other object with discriminator', (): void => {
-            const myObject: { KEY: string; DISCRIMINATOR: 'other'; } = {
-                KEY: 'the key',
-                DISCRIMINATOR: 'other'
-            };
-
-            expect(Discriminator.isWeightedElement(myObject)).toBeFalsy();
-        });
-
-        test('Discriminator.isWeightedElement() - other object with PaletteColor discriminator', (): void => {
-            const myObject: { KEY: string; DISCRIMINATOR: string; } = {
-                KEY: 'the key',
-                DISCRIMINATOR: Discriminators.PALETTE_COLOR
-            };
-
-            expect(Discriminator.isWeightedElement(myObject)).toBeFalsy();
-        });
-
-        test('Discriminator.isWeightedElement() - new weighted element', (): void => {
-            const fakeColor: WeightedElement<number> = {
-                WEIGHT: 0.5,
-                VALUE: 45,
-                DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT
-            };
-
-            expect(Discriminator.isWeightedElement(fakeColor)).toBeTruthy();
+            // weighted element
+            { object: { WEIGHT: 0.5, VALUE: 45, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
+            { object: testWeightedElement, expected: false }
+        ])('Discriminator.isPaletteColor($object);', ({ object, expected }: { object: unknown, expected: boolean}): void => {
+            expect(Discriminator.isPaletteColor(object)).toBe(expected);
         });
     });
 
-    // TODO - add tests for Discriminator.isAspectRatioConfig()
-    test.todo('Discriminators.isAspectRatioConfig() tests');
+    describe('Discriminator.isWeightedElement();', (): void => {
+        test.each([
+            // value types
+            { object: null, expected: false },
+            { object: undefined, expected: false },
+            { object: 10, expected: false },
+            { object: 'my test string', expected: false },
+            { object: true, expected: false },
+            { object: (): 5 => { return 5; }, expected: false },
+
+            // generic objects
+            { object: { KEY: 'the key' }, expected: false },
+
+            // discriminators only
+            { object: { DISCRIMINATOR: 'other' }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.PALETTE }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false },
+            { object: { DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: true },
+
+            // aspect ratio config
+            { object: { WIDTH_RATIO: 4, HEIGHT_RATIO: 5, DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: false },
+            { object: { NAME: '4:5', WIDTH_RATIO: 4, HEIGHT_RATIO: 5, DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG }, expected: false },
+            { object: testAspectRatioConfig, expected: false },
+
+            // palette
+            { object: { NAME: 'test fake palette', COLORS: [], IS_GRADIENT: false, DISCRIMINATOR: Discriminators.PALETTE }, expected: false },
+            { object: testPalette, expected: false },
+
+            // palette color
+            { object: { KEY: 'the key', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false },
+            { object: { HEX: '#000000', NAME: 'test fake color', DISCRIMINATOR: Discriminators.PALETTE_COLOR }, expected: false },
+            { object: testPaletteColor, expected: false },
+            { object: PC_E13762, expected: false },
+
+            // weighted element
+            { object: { WEIGHT: 0.5, VALUE: 45, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: true },
+            { object: testWeightedElement, expected: true }
+        ])('Discriminator.isWeightedElement($object);', ({ object, expected }: { object: unknown, expected: boolean}): void => {
+            expect(Discriminator.isWeightedElement(object)).toBe(expected);
+        });
+    });
 });
