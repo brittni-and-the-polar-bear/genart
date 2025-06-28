@@ -37,9 +37,10 @@ export class Range {
         this.#minimum = min;
         this.#maximum = max;
 
-        if (max < min) {
-            const temp: number = max;
-            this.#maximum = min;
+        if (this.#maximum < this.#minimum) {
+            console.warn(`max (${this.#maximum.toString()}) is less than min (${this.#minimum.toString()}). Object fields will be updated so that min is less than max.`);
+            const temp: number = this.#maximum;
+            this.#maximum = this.#minimum;
             this.#minimum = temp;
         }
     }

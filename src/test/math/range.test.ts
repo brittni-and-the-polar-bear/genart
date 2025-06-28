@@ -17,7 +17,40 @@
 
 import { Range } from 'math';
 
+describe('Range', (): void => {
+    describe('constructor', (): void => {
+        test.each([
+            { min: 10, max: 100, expectedMin: 10, expectedMax: 100, warning: false },
+            { min: 100, max: 10, expectedMin: 10, expectedMax: 100, warning: true },
+            { min: 10, max: 10, expectedMin: 10, expectedMax: 10, warning: false },
+            { min: 0, max: 100, expectedMin: 0, expectedMax: 100, warning: false },
+            { min: 100, max: 0, expectedMin: 0, expectedMax: 100, warning: true },
+            { min: 0, max: 0, expectedMin: 0, expectedMax: 0, warning: false }
+        ])('new Range($min, $max);', ({ min, max, expectedMin, expectedMax, warning }: { min: unknown, max: unknown, expectedMin: unknown, expectedMax: unknown, warning: boolean }): void => {
+            const logSpy = jest.spyOn(global.console, 'warn');
+            const range: Range = new Range(min as number, max as number);
+            expect(range.min).toBe(expectedMin);
+            expect(range.max).toBe(expectedMax);
+
+            if (warning) {
+                expect(logSpy).toHaveBeenCalled();
+            } else {
+                expect(logSpy).not.toHaveBeenCalled();
+            }
+
+            logSpy.mockRestore();
+        });
+    });
+});
+
 describe('Range tests', (): void => {
+    // todo - test each
+    // - 10, 100
+    // - 100, 10
+    // - 10, 10
+    // - undefined, undefined
+    // - null, null
+    // - string, string
     test('new Range(min, max)', (): void => {
         const min: number = 10;
         const max: number = 100;
@@ -28,6 +61,8 @@ describe('Range tests', (): void => {
         expect(range.min).toBe(expectedMin);
         expect(range.max).toBe(expectedMax);
     });
+
+
 
     test('new Range(min, max) with bad min and max', (): void => {
         const min: number = 100;
