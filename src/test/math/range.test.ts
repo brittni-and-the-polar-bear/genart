@@ -51,6 +51,7 @@ describe('Range', (): void => {
     });
 
     describe('Range.min', (): void => {
+        // TODO - complete test cases for Range.min setter
         test.each([
             { originalMin: 10, originalMax: 100, newMin: 0, expectedMin: 0, expectedMax: 100, warning: false, warningCount: 0 },
             { originalMin: 10, originalMax: 100, newMin: 200, expectedMin: 100, expectedMax: 200, warning: true, warningCount: 1 },
@@ -106,6 +107,7 @@ describe('Range', (): void => {
 });
 
 describe('Range tests', (): void => {
+    // TODO - complete test cases for Range.max getter
     test('Range.max setter', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const min: number = 10;
