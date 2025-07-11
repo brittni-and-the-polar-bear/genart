@@ -25,7 +25,15 @@ describe('Range', (): void => {
             { min: 10, max: 10, expectedMin: 10, expectedMax: 10, warning: false },
             { min: 0, max: 100, expectedMin: 0, expectedMax: 100, warning: false },
             { min: 100, max: 0, expectedMin: 0, expectedMax: 100, warning: true },
-            { min: 0, max: 0, expectedMin: 0, expectedMax: 0, warning: false }
+            { min: 0, max: 0, expectedMin: 0, expectedMax: 0, warning: false },
+            { min: Number.MIN_SAFE_INTEGER, max: Number.MAX_SAFE_INTEGER, expectedMin: Number.MIN_SAFE_INTEGER, expectedMax: Number.MAX_SAFE_INTEGER, warning: false },
+            { min: Number.MAX_SAFE_INTEGER, max: Number.MIN_SAFE_INTEGER, expectedMin: Number.MIN_SAFE_INTEGER, expectedMax: Number.MAX_SAFE_INTEGER, warning: true },
+            { min: -Infinity, max: Infinity, expectedMin: -Infinity, expectedMax: Infinity, warning: false },
+            { min: Infinity, max: -Infinity, expectedMin: -Infinity, expectedMax: Infinity, warning: true },
+            { min: -20, max: 20, expectedMin: -20, expectedMax: 20, warning: false },
+            { min: 20, max: -20, expectedMin: -20, expectedMax: 20, warning: true },
+            { min: -20, max: 0, expectedMin: -20, expectedMax: 0, warning: false },
+            { min: 0, max: -20, expectedMin: -20, expectedMax: 0, warning: true }
         ])('new Range($min, $max);', ({ min, max, expectedMin, expectedMax, warning }: { min: unknown, max: unknown, expectedMin: unknown, expectedMax: unknown, warning: boolean }): void => {
             const logSpy = jest.spyOn(global.console, 'warn');
             const range: Range = new Range(min as number, max as number);
@@ -41,72 +49,63 @@ describe('Range', (): void => {
             logSpy.mockRestore();
         });
     });
+
+    describe('Range.min', (): void => {
+        test.each([
+            { originalMin: 10, originalMax: 100, newMin: 0, expectedMin: 0, expectedMax: 100, warning: false, warningCount: 0 },
+            { originalMin: 10, originalMax: 100, newMin: 200, expectedMin: 100, expectedMax: 200, warning: true, warningCount: 1 },
+            { originalMin: 10, originalMax: 100, newMin: 100, expectedMin: 100, expectedMax: 100, warning: false, warningCount: 0 },
+            { originalMin: 10, originalMax: 100, newMin: -100, expectedMin: -100, expectedMax: 100, warning: false, warningCount: 0 },
+            { originalMin: 10, originalMax: 100, newMin: -Infinity, expectedMin: -Infinity, expectedMax: 100, warning: false, warningCount: 0 },
+            { originalMin: 10, originalMax: 100, newMin: Infinity, expectedMin: 100, expectedMax: Infinity, warning: true, warningCount: 1 },
+            { originalMin: 10, originalMax: 100, newMin: Number.MIN_SAFE_INTEGER, expectedMin: Number.MIN_SAFE_INTEGER, expectedMax: 100, warning: false, warningCount: 0 },
+            { originalMin: 10, originalMax: 100, newMin: Number.MAX_SAFE_INTEGER, expectedMin: 100, expectedMax: Number.MAX_SAFE_INTEGER, warning: true, warningCount: 1 },
+            { originalMin: 100, originalMax: 10, newMin: 0, expectedMin: 0, expectedMax: 100, warning: true, warningCount: 1 },
+            { originalMin: 100, originalMax: 10, newMin: 200, expectedMin: 100, expectedMax: 200, warning: true, warningCount: 2 },
+            { originalMin: 100, originalMax: 10, newMin: 100, expectedMin: 100, expectedMax: 100, warning: true, warningCount: 1 },
+            { originalMin: 10, originalMax: 10, newMin: 0, expectedMin: 0, expectedMax: 10, warning: true, warningCount: 1 },
+            { originalMin: 10, originalMax: 10, newMin: 200, expectedMin: 100, expectedMax: 200, warning: true, warningCount: 2 },
+            { originalMin: 100, originalMax: 10, newMin: 100, expectedMin: 100, expectedMax: 100, warning: true, warningCount: 1 },
+        ])('new Range($originalMin, $originalMax); range.min = $newMin;', (
+            {
+                originalMin,
+                originalMax,
+                newMin,
+                expectedMin,
+                expectedMax,
+                warning,
+                warningCount
+            }: {
+                originalMin: number,
+                originalMax: number,
+                newMin: number,
+                expectedMin: number,
+                expectedMax: number,
+                warning: boolean,
+                warningCount: number
+            }): void => {
+                const logSpy = jest.spyOn(global.console, 'warn');
+                const range: Range = new Range(originalMin, originalMax);
+
+                range.min = newMin;
+
+                expect(range.min).toBe(expectedMin);
+                expect(range.max).toBe(expectedMax);
+
+                if (warning) {
+                    expect(logSpy).toHaveBeenCalled();
+                    expect(logSpy).toHaveBeenCalledTimes(warningCount);
+                } else {
+                    expect(logSpy).not.toHaveBeenCalled();
+                }
+
+                logSpy.mockRestore();
+            }
+        );
+    });
 });
 
 describe('Range tests', (): void => {
-    // todo - test each
-    // - 10, 100
-    // - 100, 10
-    // - 10, 10
-    // - undefined, undefined
-    // - null, null
-    // - string, string
-    test('new Range(min, max)', (): void => {
-        const min: number = 10;
-        const max: number = 100;
-        const expectedMin: number = min;
-        const expectedMax: number = max;
-        const range: Range = new Range(min, max);
-
-        expect(range.min).toBe(expectedMin);
-        expect(range.max).toBe(expectedMax);
-    });
-
-
-
-    test('new Range(min, max) with bad min and max', (): void => {
-        const min: number = 100;
-        const max: number = 10;
-        const expectedMin: number = max;
-        const expectedMax: number = min;
-        const range: Range = new Range(min, max);
-
-        expect(range.min).toBe(expectedMin);
-        expect(range.max).toBe(expectedMax);
-    });
-
-    test('Range.min setter', (): void => {
-        const logSpy = jest.spyOn(global.console, 'warn');
-        const min: number = 10;
-        const max: number = 100;
-        const newMin: number = 0;
-        const range: Range = new Range(min, max);
-
-        range.min = newMin;
-
-        expect(range.min).toBe(newMin);
-        expect(range.max).toBe(max);
-
-        expect(logSpy).not.toHaveBeenCalled();
-        logSpy.mockRestore();
-    });
-
-    test('Range.min setter with bad value', (): void => {
-        const logSpy = jest.spyOn(global.console, 'warn');
-        const min: number = 10;
-        const max: number = 100;
-        const newMin: number = 200;
-        const range: Range = new Range(min, max);
-
-        range.min = newMin;
-
-        expect(range.min).toBe(max);
-        expect(range.max).toBe(newMin);
-
-        expect(logSpy).toHaveBeenCalled();
-        logSpy.mockRestore();
-    });
-
     test('Range.max setter', (): void => {
         const logSpy = jest.spyOn(global.console, 'warn');
         const min: number = 10;
