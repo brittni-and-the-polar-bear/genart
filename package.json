@@ -85,21 +85,21 @@
     "color-name-list": "11.23.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.31.0",
+    "@eslint/js": "^9.32.0",
     "@happy-dom/jest-environment": "^18.0.1",
-    "@stylistic/eslint-plugin": "^5.2.0",
+    "@stylistic/eslint-plugin": "^5.2.2",
     "@types/jest": "^30.0.0",
-    "eslint": "^9.31.0",
+    "eslint": "^9.32.0",
     "eslint-plugin-es-x": "^9.0.0",
-    "eslint-plugin-n": "^17.21.0",
+    "eslint-plugin-n": "^17.21.2",
     "eslint-plugin-security": "^3.0.1",
-    "jest": "^30.0.4",
+    "jest": "^30.0.5",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "tsup": "^8.5.0",
-    "typedoc": "^0.28.7",
+    "typedoc": "^0.28.8",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.37.0"
+    "typescript-eslint": "^8.38.0"
   }
 }
