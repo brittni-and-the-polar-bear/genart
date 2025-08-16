@@ -14,22 +14,13 @@ for creating responsive, generative, algorithmic art projects.
 This project is currently in alpha development.
 There may be breaking changes in future releases, and the documentation is still being written.
 
-## > [package stats](./package-stats.md)
-
-<a href="https://www.npmjs.com/package/@batpb/genart" target="_blank" rel="noopener noreferrer">![NPM Version](https://img.shields.io/npm/v/%40batpb%2Fgenart)
-![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/brittni-and-the-polar-bear/genart)
-![GitHub License](https://img.shields.io/github/license/brittni-and-the-polar-bear/genart)
-![NPM Downloads](https://img.shields.io/npm/dw/%40batpb%2Fgenart)</a>
-
-----
-
 ## > [getting started](./getting-started.md)
-
-----
 
 ## > [documentation](./doc/index.html)
 
-----
+## > [library colors](./colors/all-colors.md)
+
+## > [library palettes](./palettes/all-palettes_one-page.md)
 
 ## > experiments (coming soon!)
 
@@ -47,6 +38,9 @@ The full text of the license is included with the package source code.
 
 ----
 
-## > [library colors](./colors/all-colors.md)
+## > [package stats](./package-stats.md)
 
-## > [library palettes](./palettes/all-palettes_one-page.md)
+<a href="https://www.npmjs.com/package/@batpb/genart">![NPM Version](https://img.shields.io/npm/v/%40batpb%2Fgenart)
+![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/brittni-and-the-polar-bear/genart)
+![GitHub License](https://img.shields.io/github/license/brittni-and-the-polar-bear/genart)
+![NPM Downloads](https://img.shields.io/npm/dw/%40batpb%2Fgenart)</a>
