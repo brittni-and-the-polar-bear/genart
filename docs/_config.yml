@@ -8,6 +8,14 @@ plugins:
 minima:
   skin: auto
   hide_site_feed_link: true
+  show_excerpts: false
+  social_links:
+    - title: "GitHub Pages"
+      icon: github-alt
+      url: "https://brittni-and-the-polar-bear.github.io/"
+    - title: "GitHub"
+      icon: github
+      url: "https://github.com/brittni-and-the-polar-bear"
 
 title: "@batpb/genart - generative art library"
 description: "A TypeScript compatible library built on p5.js for creating responsive, generative, algorithmic art projects."
