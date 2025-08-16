@@ -16,6 +16,9 @@ minima:
     - title: "GitHub"
       icon: github
       url: "https://github.com/brittni-and-the-polar-bear"
+  nav_pages:
+    - index.md
+    - getting-started.md
 
 title: "@batpb/genart - generative art library"
 description: "A TypeScript compatible library built on p5.js for creating responsive, generative, algorithmic art projects."
