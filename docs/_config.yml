@@ -25,12 +25,15 @@ description: "A TypeScript compatible library built on p5.js for creating respon
 logo: "https://brittni-and-the-polar-bear.github.io/assets/img/logo.png"
 show_downloads: true
 
-include:
-  - "_*.html"
-
 collections_dir: "./collections"
 
 collections:
   palette_colors:
     output: true
     sort_by: luminance
+
+include:
+  - "_*.html"
+
+exclude:
+  - Gemfile
