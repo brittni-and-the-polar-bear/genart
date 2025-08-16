@@ -1,0 +1,31 @@
+<!--
+  ~ Copyright (C) 2025 brittni and the polar bear LLC.
+  ~
+  ~ This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
+  ~ which is released under the GNU Affero General Public License, Version 3.0.
+  ~ You may not use this file except in compliance with the license.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. See LICENSE or go to
+  ~ https://www.gnu.org/licenses/agpl-3.0.en.html for full license details.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  ~ See the GNU Affero General Public License for more details.
+  -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- seo -%}
+    <link id="main-stylesheet" rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
+    {%- feed_meta -%}
+    {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+    {%- endif -%}
+
+    {%- include custom-head.html -%}
+</head>
