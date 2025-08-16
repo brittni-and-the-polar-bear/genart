@@ -1,5 +1,5 @@
 ---
-title: "@batpb/genart"
+title: "home"
 layout: base
 ---
 
