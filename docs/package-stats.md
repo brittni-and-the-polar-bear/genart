@@ -1,3 +1,8 @@
+---
+title: "package stats"
+layout: base
+---
+
 # package stats
 
 ## actions
