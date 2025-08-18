@@ -5,23 +5,25 @@ layout: base
 
 # colors
 
-## [black](./black/black-colors.md)
+## > [black](./black/black-colors.md)
 
-## [blue](./blue/blue-colors.md)
+## > [blue](./blue/blue-colors.md)
 
-## [brown](./brown/brown-colors.md)
+## > [brown](./brown/brown-colors.md)
 
-## [gray](./gray/gray-colors.md)
+## > [gray](./gray/gray-colors.md)
 
-## [green](./green/green-colors-by-luminance.md)
+## > [green](./green/green-colors.md)
 
-## [pink](./pink/pink-colors.md)
+## > [orange](./orange/orange-colors.md)
 
-## [purple](./purple/purple-colors.md)
+## > [pink](./pink/pink-colors.md)
 
-## [red](./red/red-colors-by-luminance.md)
+## > [purple](./purple/purple-colors.md)
 
-## [white](./white/white-colors.md)
+## > [red](./red/red-colors.md)
+
+## > [white](./white/white-colors.md)
 
 ----
 
