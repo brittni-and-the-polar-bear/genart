@@ -34,7 +34,7 @@ describe('Range', (): void => {
             { min: 20, max: -20, expectedMin: -20, expectedMax: 20, warning: true },
             { min: -20, max: 0, expectedMin: -20, expectedMax: 0, warning: false },
             { min: 0, max: -20, expectedMin: -20, expectedMax: 0, warning: true }
-        ])('new Range($min, $max);', ({ min, max, expectedMin, expectedMax, warning }: { min: unknown, max: unknown, expectedMin: unknown, expectedMax: unknown, warning: boolean }): void => {
+        ])('new Range($min, $max);', ({ min, max, expectedMin, expectedMax, warning }: { min: unknown; max: unknown; expectedMin: unknown; expectedMax: unknown; warning: boolean; }): void => {
             const logSpy = jest.spyOn(global.console, 'warn');
             const range: Range = new Range(min as number, max as number);
             expect(range.min).toBe(expectedMin);
@@ -66,7 +66,7 @@ describe('Range', (): void => {
             { originalMin: 100, originalMax: 10, newMin: 100, expectedMin: 100, expectedMax: 100, warning: true, warningCount: 1 },
             { originalMin: 10, originalMax: 10, newMin: 0, expectedMin: 0, expectedMax: 10, warning: true, warningCount: 1 },
             { originalMin: 10, originalMax: 10, newMin: 200, expectedMin: 100, expectedMax: 200, warning: true, warningCount: 2 },
-            { originalMin: 100, originalMax: 10, newMin: 100, expectedMin: 100, expectedMax: 100, warning: true, warningCount: 1 },
+            { originalMin: 100, originalMax: 10, newMin: 100, expectedMin: 100, expectedMax: 100, warning: true, warningCount: 1 }
         ])('new Range($originalMin, $originalMax); range.min = $newMin;', (
             {
                 originalMin,
@@ -77,32 +77,31 @@ describe('Range', (): void => {
                 warning,
                 warningCount
             }: {
-                originalMin: number,
-                originalMax: number,
-                newMin: number,
-                expectedMin: number,
-                expectedMax: number,
-                warning: boolean,
-                warningCount: number
+                originalMin: number;
+                originalMax: number;
+                newMin: number;
+                expectedMin: number;
+                expectedMax: number;
+                warning: boolean;
+                warningCount: number;
             }): void => {
-                const logSpy = jest.spyOn(global.console, 'warn');
-                const range: Range = new Range(originalMin, originalMax);
+            const logSpy = jest.spyOn(global.console, 'warn');
+            const range: Range = new Range(originalMin, originalMax);
 
-                range.min = newMin;
+            range.min = newMin;
 
-                expect(range.min).toBe(expectedMin);
-                expect(range.max).toBe(expectedMax);
+            expect(range.min).toBe(expectedMin);
+            expect(range.max).toBe(expectedMax);
 
-                if (warning) {
-                    expect(logSpy).toHaveBeenCalled();
-                    expect(logSpy).toHaveBeenCalledTimes(warningCount);
-                } else {
-                    expect(logSpy).not.toHaveBeenCalled();
-                }
-
-                logSpy.mockRestore();
+            if (warning) {
+                expect(logSpy).toHaveBeenCalled();
+                expect(logSpy).toHaveBeenCalledTimes(warningCount);
+            } else {
+                expect(logSpy).not.toHaveBeenCalled();
             }
-        );
+
+            logSpy.mockRestore();
+        });
     });
 });
 

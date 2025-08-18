@@ -36,7 +36,7 @@ export class PaletteColorSelector extends ListColorSelector<PaletteColor> {
             BUILD_IN_ORDER: config.BUILD_IN_ORDER,
             COLOR_COUNT: config.COLOR_COUNT,
             COLORS: config.PALETTE.COLORS
-        })
+        });
     }
 
     static #buildName(palette: Palette): string {

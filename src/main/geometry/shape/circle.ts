@@ -32,7 +32,7 @@ export interface CircleConfig extends GeometryConfig {
         } | {
             CENTER: Coordinate;
             DIAMETER: number;
-        }
+        };
 }
 
 // TODO - unit tests

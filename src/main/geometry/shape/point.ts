@@ -58,7 +58,7 @@ export class Point extends Geometry {
     }
 
     public override getY(context: Context): number {
-        return this.#COORDINATE.getY(context)
+        return this.#COORDINATE.getY(context);
     }
 
     public override setY(y: number, context?: Context): void {

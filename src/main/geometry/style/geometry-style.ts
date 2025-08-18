@@ -15,11 +15,11 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import P5Lib from "p5";
+import P5Lib from 'p5';
 
 import { Color } from 'color';
-import {Context, GraphicsContext} from 'sketch';
-import {P5Context} from "p5-context";
+import { Context, GraphicsContext } from 'sketch';
+import { P5Context } from 'p5-context';
 
 // TODO - release notes
 // TODO - documentation

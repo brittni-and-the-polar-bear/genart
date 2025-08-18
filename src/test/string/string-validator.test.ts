@@ -218,7 +218,7 @@ describe('StringValidator', () => {
         [],
         {},
         new Date(),
-        BigInt(12345678901234567890n)
+        12345678901234567890n
     ];
 
     const invalidLengths: string[] = [
@@ -226,7 +226,7 @@ describe('StringValidator', () => {
         '#123',
         '#12345',
         '#1234567',
-        '#123456789',
+        '#123456789'
     ];
 
     const specialCharacters: string[] = [
@@ -252,10 +252,10 @@ describe('StringValidator', () => {
         { name: 'invalidHexWithAlpha', inputs: invalidHex_withAlpha, expected: false },
         { name: 'specialCharacters', inputs: specialCharacters, expected: false },
         { name: 'invalidLength', inputs: invalidLengths, expected: false }
-    ])('StringValidator.isHex(hex)', ({ name, inputs, expected }: {name: string, inputs: string[], expected: boolean}): void => {
+    ])('StringValidator.isHex(hex)', ({ name, inputs, expected }: { name: string; inputs: string[]; expected: boolean; }): void => {
         test.each(
-            inputs.map((hex: string): { hex: string } => ({ hex: hex }))
-        )(`StringValidator.isHex(${name}) - $hex`, ({ hex }: { hex: string }): void => {
+            inputs.map((hex: string): { hex: string; } => ({ hex: hex }))
+        )(`StringValidator.isHex(${name}) - $hex`, ({ hex }: { hex: string; }): void => {
             expect(StringValidator.isHex(hex)).toBe(expected);
         });
     });
@@ -285,10 +285,10 @@ describe('StringValidator', () => {
         { name: 'specialCharacters', inputs: specialCharacters, withAlpha: false, expected: false },
         { name: 'invalidLength', inputs: invalidLengths, withAlpha: true, expected: false },
         { name: 'invalidLength', inputs: invalidLengths, withAlpha: false, expected: false }
-    ])('StringValidator.isHex(hex, $withAlpha)', ({ name, inputs, withAlpha, expected }: {name: string, inputs: string[], withAlpha: boolean, expected: boolean}): void => {
+    ])('StringValidator.isHex(hex, $withAlpha)', ({ name, inputs, withAlpha, expected }: { name: string; inputs: string[]; withAlpha: boolean; expected: boolean; }): void => {
         test.each(
-            inputs.map((hex: string): { hex: string } => ({ hex: hex }))
-        )(`StringValidator.isHex(${name}, ${withAlpha}) - $hex`, ({ hex }: { hex: string }): void => {
+            inputs.map((hex: string): { hex: string; } => ({ hex: hex }))
+        )(`StringValidator.isHex(${name}, ${withAlpha}) - $hex`, ({ hex }: { hex: string; }): void => {
             expect(StringValidator.isHex(hex, withAlpha)).toBe(expected);
         });
     });
@@ -306,22 +306,29 @@ describe('StringValidator', () => {
         { name: 'invalidHexWithAlpha', inputs: invalidHex_withAlpha, expected: false },
         { name: 'specialCharacters', inputs: specialCharacters, expected: false },
         { name: 'invalidLength', inputs: invalidLengths, expected: false }
-    ])('StringValidator.isHexWithAlpha(hex)', ({ name, inputs, expected }: {name: string, inputs: string[], expected: boolean}): void => {
+    ])('StringValidator.isHexWithAlpha(hex)', ({ name, inputs, expected }: { name: string; inputs: string[]; expected: boolean; }): void => {
         test.each(
-            inputs.map((hex: string): { hex: string } => ({ hex: hex }))
-        )(`StringValidator.isHexWithAlpha(${name}) - $hex`, ({ hex }: { hex: string }): void => {
+            inputs.map((hex: string): { hex: string; } => ({ hex: hex }))
+        )(`StringValidator.isHexWithAlpha(${name}) - $hex`, ({ hex }: { hex: string; }): void => {
             expect(StringValidator.isHexWithAlpha(hex)).toBe(expected);
         });
     });
 
     describe('StringValidator.isHex() - error cases', (): void => {
         test.each(
-            invalidTypes.map((input: unknown): { input: unknown } => ({ input: input }))
-        )(`StringValidator.isHex(invalidType) - $input`, ({ input }: { input: unknown }): void => {
-            expect(StringValidator.isHex(input as any)).toBe(false);
-            expect(StringValidator.isHex((input as any), true)).toBe(false);
-            expect(StringValidator.isHex((input as any), false)).toBe(false);
-            expect(StringValidator.isHexWithAlpha(input as any)).toBe(false);
+            invalidTypes.map((input: unknown): { input: unknown; } => ({ input: input }))
+        )(`StringValidator.isHex(invalidType) - $input`, ({ input }: { input: unknown; }): void => {
+            // @ts-expect-error Testing invalid argument types
+            expect(StringValidator.isHex(input)).toBe(false);
+
+            // @ts-expect-error Testing invalid argument types
+            expect(StringValidator.isHex((input), true)).toBe(false);
+
+            // @ts-expect-error Testing invalid argument types
+            expect(StringValidator.isHex((input), false)).toBe(false);
+
+            // @ts-expect-error Testing invalid argument types
+            expect(StringValidator.isHexWithAlpha(input)).toBe(false);
         });
     });
 });

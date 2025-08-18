@@ -35,8 +35,8 @@ import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
  */
 export const PC_E13762: PaletteColor = {
     HEX: '#E13762',
-    RGB: { R: 225, G: 55, B:  98},
-    HSL: { H: 345, S: 74, L:  55},
+    RGB: { R: 225, G: 55, B: 98 },
+    HSL: { H: 345, S: 74, L: 55 },
     NAME: 'intense passion',
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };

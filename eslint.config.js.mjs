@@ -30,7 +30,7 @@ export default [
     es_x.configs['flat/restrict-to-es2022'],
     node.configs['flat/recommended'],
     security.configs.recommended,
-    stylistic.configs['recommended-flat'],
+    stylistic.configs['recommended'],
     {
         languageOptions: {
             ecmaVersion: 2022,
@@ -135,7 +135,7 @@ export default [
                 'single',
                 {
                     avoidEscape: true,
-                    allowTemplateLiterals: true
+                    allowTemplateLiterals: 'always'
                 }
             ],
 

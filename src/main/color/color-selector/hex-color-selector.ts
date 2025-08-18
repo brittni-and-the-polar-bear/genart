@@ -21,12 +21,8 @@ import { Color } from '../color';
 import { ListColorSelector, ListColorSelectorConfig } from './list-color-selector';
 import { ColorSelectorType } from './color-selector-type';
 
-export interface HexColorSelectorConfig extends ListColorSelectorConfig<string> {
-    /* empty */
-}
-
 export class HexColorSelector extends ListColorSelector<string> {
-    public constructor(config: HexColorSelectorConfig) {
+    public constructor(config: ListColorSelectorConfig<string>) {
         super(config);
     }
 

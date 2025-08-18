@@ -39,7 +39,7 @@ describe('Discriminator', (): void => {
         HEX: '#ABCDEF',
         NAME: 'test palette color',
         DISCRIMINATOR: Discriminators.PALETTE_COLOR
-    }
+    };
 
     const testWeightedElement: WeightedElement<number> = {
         WEIGHT: 1,
@@ -55,7 +55,12 @@ describe('Discriminator', (): void => {
             { object: 10, expected: false },
             { object: 'my test string', expected: false },
             { object: true, expected: false },
-            { object: (): 5 => { return 5; }, expected: false },
+            {
+                object: (): 5 => {
+                    return 5;
+                },
+                expected: false
+            },
 
             // generic objects
             { object: { KEY: 'the key' }, expected: false },
@@ -85,7 +90,7 @@ describe('Discriminator', (): void => {
             // weighted element
             { object: { WEIGHT: 0.5, VALUE: 45, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
             { object: testWeightedElement, expected: false }
-        ])('Discriminator.isAspectRatioConfig($object)', ({ object, expected }: { object: unknown, expected: boolean}): void => {
+        ])('Discriminator.isAspectRatioConfig($object)', ({ object, expected }: { object: unknown; expected: boolean; }): void => {
             expect(Discriminator.isAspectRatioConfig(object)).toBe(expected);
         });
     });
@@ -98,7 +103,12 @@ describe('Discriminator', (): void => {
             { object: 10, expected: false },
             { object: 'my test string', expected: false },
             { object: true, expected: false },
-            { object: (): 5 => { return 5; }, expected: false },
+            {
+                object: (): 5 => {
+                    return 5;
+                },
+                expected: false
+            },
 
             // generic objects
             { object: { KEY: 'the key' }, expected: false },
@@ -128,7 +138,7 @@ describe('Discriminator', (): void => {
             // weighted element
             { object: { WEIGHT: 0.5, VALUE: 45, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
             { object: testWeightedElement, expected: false }
-        ])('Discriminator.isPalette($object)', ({ object, expected }: { object: unknown, expected: boolean}): void => {
+        ])('Discriminator.isPalette($object)', ({ object, expected }: { object: unknown; expected: boolean; }): void => {
             expect(Discriminator.isPalette(object)).toBe(expected);
         });
 
@@ -144,7 +154,12 @@ describe('Discriminator', (): void => {
             { object: 10, expected: false },
             { object: 'my test string', expected: false },
             { object: true, expected: false },
-            { object: (): 5 => { return 5; }, expected: false },
+            {
+                object: (): 5 => {
+                    return 5;
+                },
+                expected: false
+            },
 
             // generic objects
             { object: { KEY: 'the key' }, expected: false },
@@ -174,7 +189,7 @@ describe('Discriminator', (): void => {
             // weighted element
             { object: { WEIGHT: 0.5, VALUE: 45, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: false },
             { object: testWeightedElement, expected: false }
-        ])('Discriminator.isPaletteColor($object);', ({ object, expected }: { object: unknown, expected: boolean}): void => {
+        ])('Discriminator.isPaletteColor($object);', ({ object, expected }: { object: unknown; expected: boolean; }): void => {
             expect(Discriminator.isPaletteColor(object)).toBe(expected);
         });
     });
@@ -187,7 +202,12 @@ describe('Discriminator', (): void => {
             { object: 10, expected: false },
             { object: 'my test string', expected: false },
             { object: true, expected: false },
-            { object: (): 5 => { return 5; }, expected: false },
+            {
+                object: (): 5 => {
+                    return 5;
+                },
+                expected: false
+            },
 
             // generic objects
             { object: { KEY: 'the key' }, expected: false },
@@ -217,7 +237,7 @@ describe('Discriminator', (): void => {
             // weighted element
             { object: { WEIGHT: 0.5, VALUE: 45, DISCRIMINATOR: Discriminators.WEIGHTED_ELEMENT }, expected: true },
             { object: testWeightedElement, expected: true }
-        ])('Discriminator.isWeightedElement($object);', ({ object, expected }: { object: unknown, expected: boolean}): void => {
+        ])('Discriminator.isWeightedElement($object);', ({ object, expected }: { object: unknown; expected: boolean; }): void => {
             expect(Discriminator.isWeightedElement(object)).toBe(expected);
         });
     });

@@ -17,7 +17,7 @@
 
 import P5Lib from 'p5';
 
-import { Color, ColorContrastStandard, ContrastFontSize, ContrastStandard , PC_121212 } from 'color';
+import { Color, ColorContrastStandard, ContrastFontSize, ContrastStandard, PC_121212 } from 'color';
 // import { PC_0437F1, PC_0FFF4F, PC_121212, PC_FF6BB5 } from 'color';
 import { P5Context } from 'p5-context';
 

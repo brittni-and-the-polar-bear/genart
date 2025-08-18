@@ -28,8 +28,7 @@ import { Context } from '../context';
 export class Coordinate {
     readonly #RATIO_POS: P5Lib.Vector;
 
-    public constructor();
-    public constructor(position: P5Lib.Vector, context?: Context);
+    public constructor(position?: P5Lib.Vector, context?: Context);
     public constructor(x: number, y: number, context?: Context);
     public constructor(x: number, y: number, z: number, context?: Context);
     public constructor(arg1?: P5Lib.Vector | number,
@@ -85,11 +84,11 @@ export class Coordinate {
     }
 
     public setX(value: number, context?: Context): void {
-       if (context) {
-           this.#RATIO_POS.x = context.coordinateMapper.mapCoordinateToRatioX(value);
-       } else {
-           this.#RATIO_POS.x = value;
-       }
+        if (context) {
+            this.#RATIO_POS.x = context.coordinateMapper.mapCoordinateToRatioX(value);
+        } else {
+            this.#RATIO_POS.x = value;
+        }
     }
 
     public setY(value: number, context?: Context): void {
@@ -136,7 +135,7 @@ export class Coordinate {
             } else {
                 this.#RATIO_POS.set(position);
             }
-        } else if (typeof  arg1 === 'number' &&
+        } else if (typeof arg1 === 'number' &&
             typeof arg2 === 'number') {
             const position: P5Lib.Vector = p5.createVector(arg1, arg2);
 

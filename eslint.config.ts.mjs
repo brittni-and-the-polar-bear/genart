@@ -32,7 +32,7 @@ export default tsEslint.config(
     es_x.configs['flat/restrict-to-es2022'],
     node.configs['flat/recommended'],
     security.configs.recommended,
-    stylistic.configs['recommended-flat'],
+    stylistic.configs['recommended'],
     ...tsEslint.configs.recommendedTypeChecked,
     ...tsEslint.configs.strictTypeChecked,
     ...tsEslint.configs.stylisticTypeChecked,
@@ -143,7 +143,7 @@ export default tsEslint.config(
                 'single',
                 {
                     avoidEscape: true,
-                    allowTemplateLiterals: true
+                    allowTemplateLiterals: 'always'
                 }
             ],
 
@@ -160,9 +160,7 @@ export default tsEslint.config(
             /* typescript-eslint */
 
             'dot-notation': 'off',
-            '@typescript-eslint/dot-notation': ['error', {
-                allowKeywords: false
-            }],
+            '@typescript-eslint/dot-notation': 'error',
 
             'no-array-constructor': 'off',
             '@typescript-eslint/no-array-constructor': 'error',

@@ -17,8 +17,8 @@
 
 import { Discriminators } from 'discriminator';
 
-import { ColorNames } from "../../../color-name";
-import { PaletteColor } from "../../palette-color";
+import { ColorNames } from '../../../color-name';
+import { PaletteColor } from '../../palette-color';
 import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
 
 /**

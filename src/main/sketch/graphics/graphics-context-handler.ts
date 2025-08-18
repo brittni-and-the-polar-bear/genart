@@ -36,7 +36,7 @@ export class GraphicsContextHandler {
     }
 
     public get NAMES(): string[] {
-        return Array.from(this.#CONTEXTS.keys);
+        return Array.from(this.#CONTEXTS.keys());
     }
 
     public getActiveContext(): GraphicsContext {
@@ -54,7 +54,7 @@ export class GraphicsContextHandler {
     }
 
     public getAllContexts(): GraphicsContext[] {
-        return Array.from(this.#CONTEXTS.values);
+        return Array.from(this.#CONTEXTS.values());
     }
 
     public getActiveGraphics(): P5Lib.Graphics {

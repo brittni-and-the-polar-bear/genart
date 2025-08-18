@@ -15,15 +15,13 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// import P5Lib from 'p5';
+import P5Lib from 'p5';
 
 import { Discriminator } from 'discriminator';
 import { P5Context } from 'p5-context';
 
 import { ColorNames } from './color-name';
 import { PaletteColor } from './palette';
-
-import * as P5Lib from 'p5';
 
 // TODO - documentation
 // TODO - release notes
@@ -175,14 +173,14 @@ export class Color {
      * by the given {@link h}{@link s}{@link l}{@link a} values.
      */
     public static getHSLColor(h: number, s: number, l: number, a?: number): P5Lib.Color {
-        // const p5: P5Lib = P5Context.p5;
+        const p5: P5Lib = P5Context.p5;
         let color: P5Lib.Color;
         h = Math.floor(p5.constrain(h, 0, 360));
         s = Math.floor(p5.constrain(s, 0, 100));
         l = Math.floor(p5.constrain(l, 0, 100));
 
         if (a) {
-            a = P5Lib.constrain(a, 0, 1);
+            a = p5.constrain(a, 0, 1);
             color = p5.color(`hsla(${h.toString()}, ${s.toString()}%, ${l.toString()}%, ${a.toString()})`);
         } else {
             color = p5.color(`hsl(${h.toString()}, ${s.toString()}%, ${l.toString()}%)`);

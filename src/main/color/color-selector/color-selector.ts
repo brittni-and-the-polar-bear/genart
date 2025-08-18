@@ -27,8 +27,8 @@ import { ColorSelectorType } from './color-selector-type';
 // TODO - unit tests
 
 export interface ColorSelectorConfig {
-    readonly NAME: string,
-    readonly RANDOM_ORDER?: boolean
+    readonly NAME: string;
+    readonly RANDOM_ORDER?: boolean;
 }
 
 /**
@@ -170,9 +170,7 @@ export abstract class ColorSelector {
             }
         }
 
-        if (!selection) {
-            selection = new Color();
-        }
+        selection ??= new Color();
 
         return Color.copy(selection);
     }

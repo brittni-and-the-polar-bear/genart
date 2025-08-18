@@ -41,7 +41,7 @@ describe('math-utility', (): void => {
         { row: 0, column: Number.MIN_SAFE_INTEGER, totalRows: 1, totalColumns: Number.MIN_SAFE_INTEGER + 1, expected: undefined },
         { row: Number.MIN_SAFE_INTEGER, column: Number.MIN_SAFE_INTEGER, totalRows: Number.MIN_SAFE_INTEGER + 1, totalColumns: Number.MIN_SAFE_INTEGER + 1, expected: undefined }
     ])('getSingleDimensionIndex($row, $column, $totalRows, $totalColumns);',
-        ({ row, column, totalRows, totalColumns, expected }: { row: number, column: number, totalRows: number, totalColumns: number, expected: number | undefined }): void => {
+        ({ row, column, totalRows, totalColumns, expected }: { row: number; column: number; totalRows: number; totalColumns: number; expected: number | undefined; }): void => {
             expect(getSingleDimensionIndex(row, column, totalRows, totalColumns)).toBe(expected);
         });
 });

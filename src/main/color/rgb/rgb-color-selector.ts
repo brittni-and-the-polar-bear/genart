@@ -23,8 +23,7 @@ import { Range } from 'math';
 import { Random } from 'random';
 
 import { Color } from '../color';
-import { ColorSelector } from '../color-selector';
-import {ColorSelectorType} from "../color-selector-type";
+import { ColorSelector, ColorSelectorType } from '../color-selector';
 
 export interface RGBColorSelectorConfig {
     readonly NAME: string;

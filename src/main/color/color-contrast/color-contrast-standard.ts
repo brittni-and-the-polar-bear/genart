@@ -17,10 +17,10 @@
 
 import { getContrastRatios, ResponseObject } from 'cococh';
 
-import { Color } from 'color';
 import { Discriminator } from 'discriminator';
 import { StringValidator } from 'string';
 
+import { Color } from '../color';
 import { PaletteColor } from '../palette';
 
 /**
@@ -185,9 +185,9 @@ export class ColorContrastStandard {
      * `false` if they do not have an acceptable ratio.
      */
     static #hasAppropriateContrastRatio(hexA: string,
-                                         hexB: string,
-                                         standard: ContrastStandard,
-                                         fontSize: ContrastFontSize): boolean {
+                                        hexB: string,
+                                        standard: ContrastStandard,
+                                        fontSize: ContrastFontSize): boolean {
         if (StringValidator.isHex(hexA) && StringValidator.isHex(hexB)) {
             const ratioResults: ResponseObject = getContrastRatios(hexA, hexB);
             return ratioResults[fontSize][standard];
