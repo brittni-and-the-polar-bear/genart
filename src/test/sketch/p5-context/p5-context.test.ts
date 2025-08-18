@@ -43,7 +43,7 @@ describe('P5Context tests', (): void => {
         p5.setup = (): void => {
             p5.createCanvas(250, 250);
             p5.noLoop();
-        }
+        };
 
         expect(P5Context.p5).toBe(p5);
         expect(P5Context.p5.color(255, 255, 0)).toBeTruthy();
@@ -55,7 +55,7 @@ describe('P5Context tests', (): void => {
         p5.setup = (): void => {
             p5.createCanvas(250, 250);
             p5.noLoop();
-        }
+        };
 
         expect(P5Context.p5).toBe(p5);
         expect(P5Context.p5.color(255, 0, 255)).toBeTruthy();
@@ -66,7 +66,7 @@ describe('P5Context tests', (): void => {
         otherP5.setup = (): void => {
             otherP5.createCanvas(250, 250);
             otherP5.noLoop();
-        }
+        };
 
         expect(P5Context.p5).toBe(otherP5);
         expect(P5Context.p5).not.toBe(p5);

@@ -106,36 +106,36 @@ describe('Range', (): void => {
 });
 
 // describe('Range tests', (): void => {
-    // TODO - complete test cases for Range.max getter
-    // test('Range.max setter', (): void => {
-    //     const logSpy = jest.spyOn(global.console, 'warn');
-    //     const min: number = 10;
-    //     const max: number = 100;
-    //     const newMax: number = 200;
-    //     const range: Range = new Range(min, max);
-    //
-    //     range.max = newMax;
-    //
-    //     expect(range.min).toBe(min);
-    //     expect(range.max).toBe(newMax);
-    //
-    //     expect(logSpy).not.toHaveBeenCalled();
-    //     logSpy.mockRestore();
-    // });
+// TODO - complete test cases for Range.max getter
+// test('Range.max setter', (): void => {
+//     const logSpy = jest.spyOn(global.console, 'warn');
+//     const min: number = 10;
+//     const max: number = 100;
+//     const newMax: number = 200;
+//     const range: Range = new Range(min, max);
+//
+//     range.max = newMax;
+//
+//     expect(range.min).toBe(min);
+//     expect(range.max).toBe(newMax);
+//
+//     expect(logSpy).not.toHaveBeenCalled();
+//     logSpy.mockRestore();
+// });
 
-    // test('Range.max setter with bad value', (): void => {
-    //     const logSpy = jest.spyOn(global.console, 'warn');
-    //     const min: number = 10;
-    //     const max: number = 100;
-    //     const newMax: number = 0;
-    //     const range: Range = new Range(min, max);
-    //
-    //     range.max = newMax;
-    //
-    //     expect(range.min).toBe(newMax);
-    //     expect(range.max).toBe(min);
-    //
-    //     expect(logSpy).toHaveBeenCalled();
-    //     logSpy.mockRestore();
-    // });
+// test('Range.max setter with bad value', (): void => {
+//     const logSpy = jest.spyOn(global.console, 'warn');
+//     const min: number = 10;
+//     const max: number = 100;
+//     const newMax: number = 0;
+//     const range: Range = new Range(min, max);
+//
+//     range.max = newMax;
+//
+//     expect(range.min).toBe(newMax);
+//     expect(range.max).toBe(min);
+//
+//     expect(logSpy).toHaveBeenCalled();
+//     logSpy.mockRestore();
+// });
 // });
