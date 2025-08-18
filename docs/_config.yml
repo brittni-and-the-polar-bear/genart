@@ -19,6 +19,7 @@ minima:
   nav_pages:
     - index.md
     - getting-started.md
+    - colors/all-colors.md
 
 title: "@batpb/genart - generative art library"
 description: "A TypeScript compatible library built on p5.js for creating responsive, generative, algorithmic art projects."
