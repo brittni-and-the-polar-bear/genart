@@ -1,6 +1,11 @@
+---
+title: "getting started"
+layout: base
+---
+
 # getting started
 
-## install with <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">npm</a>
+## install with [npm](https://www.npmjs.com/)
 
 ```shell
 npm install @batpb/genart

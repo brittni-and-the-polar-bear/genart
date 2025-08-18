@@ -1,31 +1,30 @@
-# All Colors
+---
+title: colors
+layout: base
+---
 
-[How to Add a New Color to the Library (Developer Instructions)](./add-new-color.md)
+# colors
 
-[Fin.](#fin)
+## > [black](./black/black-colors.md)
+
+## > [blue](./blue/blue-colors.md)
+
+## > [brown](./brown/brown-colors.md)
+
+## > [gray](./gray/gray-colors.md)
+
+## > [green](./green/green-colors.md)
+
+## > [orange](./orange/orange-colors.md)
+
+## > [pink](./pink/pink-colors.md)
+
+## > [purple](./purple/purple-colors.md)
+
+## > [red](./red/red-colors.md)
+
+## > [white](./white/white-colors.md)
 
 ----
 
-## [Black Colors](./black/black-colors.md)
-
-## [Blue Colors](./blue/blue-colors-by-luminance.md)
-
-## [Brown Colors](./brown/brown-colors.md)
-
-## [Gray Colors](./gray/gray-colors.md)
-
-## [Green Colors](./green/green-colors-by-luminance.md)
-
-## [Pink Colors](./pink/pink-colors-by-luminance.md)
-
-## [Purple Colors](./purple/purple-colors.md)
-
-## [Red Colors](./red/red-colors-by-luminance.md)
-
-## [White Colors](./white/white-colors.md)
-
-----
-
-### Fin.
-
-[Top](#all-colors)
+[How to Add a New Color to the Library (Contributor Instructions)](./add-new-color.md)

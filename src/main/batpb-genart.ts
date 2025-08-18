@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,4 +15,12 @@
  * See the GNU Affero General Public License for more details.
  */
 
-console.log('Hello, World!');
+export * from 'color';
+export * from 'discriminator';
+export * from 'geometry';
+export * from 'map';
+export * from 'math';
+export * from 'p5-context';
+export * from 'random';
+export * from 'sketch';
+export * from 'string';

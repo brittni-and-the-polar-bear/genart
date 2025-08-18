@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2024 brittni and the polar bear LLC.
+ * Copyright (C) 2023-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -24,24 +24,33 @@ const config: JestConfigWithTsJest = {
     errorOnDeprecated: true,
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'mjs', 'cjs', 'json', 'node'],
     moduleNameMapper: {
-        // '^color$': '<rootDir>/src/main/color'
-        // '^discriminator$': '<rootDir>/src/main/discriminator',
-        // '^map$': '<rootDir>/src/main/map',
-        // '^math$': '<rootDir>/src/main/math',
+        '^color$': '<rootDir>/src/main/color',
+        '^discriminator$': '<rootDir>/src/main/discriminator',
+        '^map$': '<rootDir>/src/main/map',
+        '^math$': '<rootDir>/src/main/math',
+        '^p5-context$': '<rootDir>/src/main/sketch/p5-context',
         // '^palette$': '<rootDir>/src/main/color/palette',
         // '^palette-colors$': '<rootDir>/src/main/color/palette/palette-colors',
         // '^palettes$': '<rootDir>/src/main/color/palette/palettes',
-        // '^random$': '<rootDir>/src/main/random',
-        // '^screen$': '<rootDir>/src/main/screen',
-        // '^string$': '<rootDir>/src/main/string',
-        // '^sketch-context$': '<rootDir>/src/main/sketch',
-        // '^unit-test/shared$': '<rootDir>/src/test/shared',
-        // '^color-name-list$': '<rootDir>/node_modules/color-name-list'
+        '^random$': '<rootDir>/src/main/random',
+        '^sketch$': '<rootDir>/src/main/sketch',
+        '^string$': '<rootDir>/src/main/string',
+        '^unit-test/shared$': '<rootDir>/src/test/shared'
     },
     testEnvironment: '@happy-dom/jest-environment',
     testRegex: './src/test/.*\\.(test|spec)?\\.(ts|tsx)$',
     transform: { '^.+\\.(ts|tsx)$': 'ts-jest' },
-    verbose: true
+    verbose: true,
+    testEnvironmentOptions: {
+        url: 'http://localhost',
+        width: 1920,
+        height: 1080,
+        settings: {
+            navigator: {
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+            }
+        }
+    }
 };
 
 export default config;

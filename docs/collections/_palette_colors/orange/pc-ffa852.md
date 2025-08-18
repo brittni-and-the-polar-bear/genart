@@ -9,7 +9,7 @@ color_category: "orange"
 ---
 
 ```typescript
-import { PC_{{ page.hex }} } from 'palette-colors';
+import { PC_{{ page.hex }} } from '@batpb/genart';
 
 let name: string = PC_{{ page.hex }}.NAME;
 ```

@@ -1,56 +1,55 @@
-# Resources
+---
+title: resources and references
+layout: base
+---
 
-# Color
-
-## Color Names
-
-<a href="https://colornamer.robertcooper.me/" target="_blank" rel="noopener noreferrer">Color Namer</a>
-
-## Color Palettes
-
-<a href="https://www.color-hex.com/" target="_blank" rel="noopener noreferrer">color-hex</a>
-
-<a href="https://coolors.co/" target="_blank" rel="noopener noreferrer">coolors</a>
-
-<a href="https://culrs.com/" target="_blank" rel="noopener noreferrer">culrs</a>
+# resources and references
 
 ----
 
-# Languages
+## > color
 
-<a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">TypeScript</a>
+### >> color names
 
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">
-JavaScript</a>
+* [Color Namer](https://colornamer.robertcooper.me/)
+
+### >> color palettes
+
+* [Alex Cristache](https://x.com/AlexCristache)
+* [color-hex](https://www.color-hex.com/)
+* [coolors](https://coolors.co/)
+* [culrs](https://culrs.com/)
 
 ----
 
-# Packages
+## > languages
 
-## Art and Color
+* [TypeScript](https://www.typescriptlang.org/)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-<a href="https://p5js.org/" target="_blank" rel="noopener noreferrer">p5.js</a>
+----
 
-<a href="https://www.npmjs.com/package/cococh" target="_blank" rel="noopener noreferrer">Color Contrast Checker (cococh)</a>
+## > packages
 
-<a href="https://www.npmjs.com/package/nearest-color" target="_blank" rel="noopener noreferrer">nearest-color</a>
+### >> art and color
 
-## Bundling
+* [p5.js](https://p5js.org/)
+* [cococh: color contrast checker](https://www.npmjs.com/package/cococh)
+* [nearest-color](https://www.npmjs.com/package/nearest-color)
 
-<a href="https://tsup.egoist.dev/" target="_blank" rel="noopener noreferrer">tsup</a>
+### >> bundling
+* [tsup](https://tsup.egoist.dev/)
 
-## Documentation
+### >> documentation
 
-<a href="https://typedoc.org/" target="_blank" rel="noopener noreferrer">typedoc</a>
+* [typedoc](https://typedoc.org/)
 
-## Linting
+### >> Linting
 
-<a href="https://eslint.org/" target="_blank" rel="noopener noreferrer">ESLint</a>
+* [ESLint](https://eslint.org/)
+* [ESLint Stylistic](https://eslint.style/)
+* [typescript-eslint](https://typescript-eslint.io/)
 
-<a href="https://eslint.style/" target="_blank" rel="noopener noreferrer">ESLint Stylistic</a>
+### >> Testing
 
-<a href="https://typescript-eslint.io/" target="_blank" rel="noopener noreferrer">typescript-eslint</a>
-
-## Testing
-
-<a href="https://jestjs.io/" target="_blank" rel="noopener noreferrer">jest</a>
+* [jest](https://jestjs.io/)

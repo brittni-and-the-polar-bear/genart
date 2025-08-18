@@ -18,7 +18,7 @@ colors:
 <script data-id="08264250835324647">new CoolorsPaletteWidget("08264250835324647", ["000000","a3a3a3","ffffff","80007f"],"asexual flag"); </script>
 
 ```typescript
-import { {{ page.const }} } from 'palettes';
+import { {{ page.const }} } from '@batpb/genart';
 
 let name: string = {{ page.const }}.NAME;
 ```

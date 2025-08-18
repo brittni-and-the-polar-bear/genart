@@ -1,53 +1,46 @@
-# <a href="https://www.npmjs.com/package/@batpb/genart" target="_blank" rel="noopener noreferrer">@batpb/genart</a>
+---
+title: "home"
+layout: base
+---
+
+# [@batpb/genart](https://www.npmjs.com/package/@batpb/genart)
 
 A
-<a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">TypeScript</a>
-compatible library
-built with
-<a href="https://p5js.org/" target="_blank" rel="noopener noreferrer">p5.js</a>
-for creating responsive generative art projects.
+[TypeScript](https://www.typescriptlang.org/)
+compatible library built with
+[p5.js](https://p5js.org/)
+for creating responsive, generative, algorithmic art projects.
 
-## important notice
+This project is currently in alpha development.
+There may be breaking changes in future releases, and the documentation is still being written.
 
-This project is currently in active development.
+## > [getting started](./getting-started.md)
 
-## [package stats](./package-stats.md)
+## > [documentation](./doc/index.html)
 
-<a href="https://www.npmjs.com/package/@batpb/genart" target="_blank" rel="noopener noreferrer">![NPM Version](https://img.shields.io/npm/v/%40batpb%2Fgenart)
-![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/brittni-and-the-polar-bear/genart)
-![GitHub License](https://img.shields.io/github/license/brittni-and-the-polar-bear/genart)
-![NPM Downloads](https://img.shields.io/npm/dw/%40batpb%2Fgenart)</a>
+## > [library colors](./colors/all-colors.md)
 
-----
+## > [library palettes](./palettes/all-palettes_one-page.md)
 
-# [getting started](./getting-started.md)
+## > experiments (coming soon!)
 
 ----
 
-# [documentation](./doc/index.html)
-
-----
-
-# experiments (coming soon!)
-
-----
-
-# meet the team (coming soon!)
-
-----
-
-# LICENSE
+## > LICENSE
 
 The source code of this project is licensed under the 
-<a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank" rel="noopener noreferrer">GNU Affero General Public Version 3.0 License</a>.
+[GNU Affero General Public Version 3.0 License](https://www.gnu.org/licenses/agpl-3.0.en.html).
 The full text of the license is included with the package source code.
 
 ----
 
-## [development resources](./resources.md)
+## > [development resources](./resources.md)
 
 ----
 
-## [library colors](./colors/all-colors.md)
+## > [package stats](./package-stats.md)
 
-## [library palettes](./palettes/all-palettes_one-page.md)
+<a href="https://www.npmjs.com/package/@batpb/genart">![NPM Version](https://img.shields.io/npm/v/%40batpb%2Fgenart)
+![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/brittni-and-the-polar-bear/genart)
+![GitHub License](https://img.shields.io/github/license/brittni-and-the-polar-bear/genart)
+![NPM Downloads](https://img.shields.io/npm/dw/%40batpb%2Fgenart)</a>
