@@ -56,7 +56,7 @@ layout: base
     {%- if color.color_category == page.color_category -%}
     {%- assign lowercase_hex = color.hex | downcase -%}
     <div class="color-block" style="background: #{{ color.hex }};">
-        <a href="https://brittni-and-the-polar-bear.github.io/genart{{ color.url }}">
+        <a href="{{ color.url | relative_url }}">
             <h2 class="color-block {{ color.contrast }}">{{ color.name }} (#{{ color.hex }})</h2>
         </a>
     </div>

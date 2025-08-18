@@ -7,7 +7,7 @@ layout: base
 
 ## [black](./black/black-colors.md)
 
-## [blue](./blue/blue-colors-by-luminance.md)
+## [blue](./blue/blue-colors.md)
 
 ## [brown](./brown/brown-colors.md)
 
