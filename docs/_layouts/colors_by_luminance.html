@@ -52,20 +52,6 @@ layout: base
     Color blocks link to individual color pages.
 </p>
 
-<p>
-    <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/all-colors.html">
-        All Colors
-    </a>
-</p>
-
-<p>
-    <a href="#fin">
-        Fin.
-    </a>
-</p>
-
-<hr/>
-
 {% for color in site.palette_colors %}
     {%- if color.color_category == page.color_category -%}
     {%- assign lowercase_hex = color.hex | downcase -%}
@@ -76,11 +62,3 @@ layout: base
     </div>
     {%- endif -%}
 {% endfor %}
-
-<br/>
-
-<hr/>
-
-<h3 id="fin">Fin.</h3>
-
-<a href="#top">Top</a>
