@@ -1,4 +1,10 @@
+---
+layout: base
+---
+
 # How to Add a New Color to the Library (Developer Instructions)
+
+----
 
 # Table of Contents
 
@@ -34,8 +40,10 @@ Valid Categories:
 
 * black
 * blue
+* brown
 * gray
 * green
+* orange
 * pink
 * purple
 * red
