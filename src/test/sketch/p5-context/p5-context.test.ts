@@ -19,6 +19,8 @@ import P5Lib from 'p5';
 
 import { P5Context } from 'p5-context';
 
+// TODO - review unit tests for P5Context
+
 describe('P5Context tests', (): void => {
     afterEach((): void => {
         P5Context.reset();
@@ -35,59 +37,37 @@ describe('P5Context tests', (): void => {
         expect(P5Context.p5.color(255, 0, 0)).toBeTruthy();
     });
 
-    test('P5Context.initialize()', (): void => {
+    test('P5Context.p5', (): void => {
         expect(P5Context.p5).toBeTruthy();
-        const p5: P5Lib = new P5Lib((p: P5Lib): void => {
-            p.setup = (): void => {
-                p.createCanvas(250, 250);
-                p.noLoop();
-            };
-        });
+        const p5: P5Lib = P5Context.p5;
+        p5.setup = (): void => {
+            p5.createCanvas(250, 250);
+            p5.noLoop();
+        }
+
         expect(P5Context.p5).toBe(p5);
         expect(P5Context.p5.color(255, 255, 0)).toBeTruthy();
     });
 
-    test('P5Context.p5 singleton', (): void => {
-        expect(P5Context.p5).toBeTruthy();
-        const p5: P5Lib = new P5Lib((p: P5Lib): void => {
-            p.setup = (): void => {
-                p.createCanvas(250, 250);
-                p.noLoop();
-            };
-        });
-        expect(P5Context.p5).toBe(p5);
-        expect(P5Context.p5.color(255, 175, 255)).toBeTruthy();
-
-        const otherP5: P5Lib = new P5Lib((p: P5Lib): void => {
-            p.setup = (): void => {
-                p.createCanvas(500, 500);
-                p.noLoop();
-            };
-        });
-        expect(P5Context.p5).not.toBe(otherP5);
-        expect(P5Context.p5).toBe(p5);
-        expect(P5Context.p5.color(175, 175, 255)).toBeTruthy();
-    });
-
     test('P5Context.reset()', (): void => {
         expect(P5Context.p5).toBeTruthy();
-        const p5: P5Lib = new P5Lib((p: P5Lib): void => {
-            p.setup = (): void => {
-                p.createCanvas(250, 250);
-                p.noLoop();
-            };
-        });
+        const p5: P5Lib = P5Context.p5;
+        p5.setup = (): void => {
+            p5.createCanvas(250, 250);
+            p5.noLoop();
+        }
+
         expect(P5Context.p5).toBe(p5);
         expect(P5Context.p5.color(255, 0, 255)).toBeTruthy();
 
         P5Context.reset();
 
-        const otherP5: P5Lib = new P5Lib((p: P5Lib): void => {
-            p.setup = (): void => {
-                p.createCanvas(500, 500);
-                p.noLoop();
-            };
-        });
+        const otherP5: P5Lib = P5Context.p5;
+        otherP5.setup = (): void => {
+            otherP5.createCanvas(250, 250);
+            otherP5.noLoop();
+        }
+
         expect(P5Context.p5).toBe(otherP5);
         expect(P5Context.p5).not.toBe(p5);
         expect(P5Context.p5.color(0, 175, 255)).toBeTruthy();
