@@ -28,8 +28,6 @@ layout: base
 
 [Step 9: Add the New Color to the Palette Colors Jekyll Collection](#step-9-add-the-new-color-to-the-palette-colors-jekyll-collection)
 
-[Step 10: Add Color to the Release Notes](#step-10-add-color-to-the-release-notes)
-
 [Full `PaletteColor` File Example](#full-palettecolor-file-example)
 
 ----
@@ -204,41 +202,6 @@ import { PC_{{ page.hex }} } from 'palette-colors';
 
 let name: string = PC_{{ page.hex }}.NAME;
 ```
-````
-
-[Table of Contents](#table-of-contents)
-
-# Step 10: Add Color to the Release Notes
-
-Add the color as a new constant to the release notes draft markdown file.
-
-## Release Notes Entry Example
-
-````markdown
-## `PC_BC010A` (bird's eye) [red]
-
-<div class="color-block" style="background: #BC010A;">
-  <a href="https://coolors.co/bc010a" target="_blank" rel="noopener noreferrer">
-    <h2 class="color-block white-pass">bird's eye (#BC010A)</h2>
-  </a>
-</div>
-<br/>
-
-```typescript
-/**
- * <div class="color-block" style="background: #BC010A;">
- *     <a href="https://coolors.co/bc010a" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block white-pass">bird's eye (#BC010A)</h2>
- *     </a>
- * </div>
- *
- * @category Palette Colors (All)
- * @category Palette Colors (Red)
- */
-declare const PC_BC010A: PaletteColor;
-```
-
-[Table of Contents](#table-of-contents)
 ````
 
 [Table of Contents](#table-of-contents)
