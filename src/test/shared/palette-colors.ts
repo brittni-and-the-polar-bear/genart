@@ -24,6 +24,7 @@ export const BLACK_HEXES: HexCollection = [
 
 export const BLUE_HEXES: HexCollection = [
     { hexString: '#041E43' },
+    { hexString: '#1E1A75' },
     { hexString: '#003494' },
     { hexString: '#0437F1' },
     { hexString: '#1D90AF' },
@@ -50,10 +51,13 @@ export const GREEN_HEXES: HexCollection = [
 ];
 
 export const ORANGE_HEXES: HexCollection = [
+    { hexString: '#FF704D' },
     { hexString: '#FFA852' }
 ];
 
 export const PINK_HEXES: HexCollection = [
+    { hexString: '#9F1475' },
+    { hexString: '#E13762' },
     { hexString: '#EC417A' },
     { hexString: '#F06090' },
     { hexString: '#FF6BB5' },

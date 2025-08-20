@@ -19,8 +19,18 @@ import { PaletteColor } from 'color';
 import { Discriminators } from 'discriminator';
 import { StringValidator } from 'string';
 
-import { ColorComponents } from './color';
+import { ColorComponents, COLOR_TOLERANCE } from './color';
 import { checkNumberWithinAmount } from './math';
+
+const MIN_COLOR_COMPONENT = 0;
+const MAX_COLOR_COMPONENT = 255;
+
+const MAX_HUE = 360;
+const MAX_SATURATION = 100;
+const MAX_LIGHTNESS = 100;
+
+const MIN_LUMINANCE = 0;
+const MAX_LUMINANCE = 1;
 
 export function checkForValidPaletteColor(pc: PaletteColor): void {
     expect(pc.HEX).toBeTruthy();
@@ -33,34 +43,34 @@ export function checkForValidPaletteColor(pc: PaletteColor): void {
     expect(pc.DISCRIMINATOR).toBe(Discriminators.PALETTE_COLOR);
 
     if (pc.LUMINANCE) {
-        expect(pc.LUMINANCE).toBeGreaterThanOrEqual(0);
-        expect(pc.LUMINANCE).toBeLessThanOrEqual(1);
+        expect(pc.LUMINANCE).toBeGreaterThanOrEqual(MIN_LUMINANCE);
+        expect(pc.LUMINANCE).toBeLessThanOrEqual(MAX_LUMINANCE);
     }
 
     if (pc.RGB) {
-        expect(pc.RGB.R).toBeGreaterThanOrEqual(0);
-        expect(pc.RGB.R).toBeLessThanOrEqual(255);
-        expect(pc.RGB.G).toBeGreaterThanOrEqual(0);
-        expect(pc.RGB.G).toBeLessThanOrEqual(255);
-        expect(pc.RGB.B).toBeGreaterThanOrEqual(0);
-        expect(pc.RGB.B).toBeLessThanOrEqual(255);
+        expect(pc.RGB.R).toBeGreaterThanOrEqual(MIN_COLOR_COMPONENT);
+        expect(pc.RGB.R).toBeLessThanOrEqual(MAX_COLOR_COMPONENT);
+        expect(pc.RGB.G).toBeGreaterThanOrEqual(MIN_COLOR_COMPONENT);
+        expect(pc.RGB.G).toBeLessThanOrEqual(MAX_COLOR_COMPONENT);
+        expect(pc.RGB.B).toBeGreaterThanOrEqual(MIN_COLOR_COMPONENT);
+        expect(pc.RGB.B).toBeLessThanOrEqual(MAX_COLOR_COMPONENT);
     }
 
     if (pc.HSL) {
-        expect(pc.HSL.H).toBeGreaterThanOrEqual(0);
-        expect(pc.HSL.H).toBeLessThan(360);
-        expect(pc.HSL.S).toBeGreaterThanOrEqual(0);
-        expect(pc.HSL.S).toBeLessThanOrEqual(100);
-        expect(pc.HSL.L).toBeGreaterThanOrEqual(0);
-        expect(pc.HSL.L).toBeLessThanOrEqual(100);
+        expect(pc.HSL.H).toBeGreaterThanOrEqual(MIN_COLOR_COMPONENT);
+        expect(pc.HSL.H).toBeLessThan(MAX_HUE);
+        expect(pc.HSL.S).toBeGreaterThanOrEqual(MIN_COLOR_COMPONENT);
+        expect(pc.HSL.S).toBeLessThanOrEqual(MAX_SATURATION);
+        expect(pc.HSL.L).toBeGreaterThanOrEqual(MIN_COLOR_COMPONENT);
+        expect(pc.HSL.L).toBeLessThanOrEqual(MAX_LIGHTNESS);
     }
 }
 
-export function checkComponents(components: ColorComponents, pc: PaletteColor): void {
+export function checkRGBComponents(components: ColorComponents, pc: PaletteColor): void {
     if (pc.RGB) {
-        checkNumberWithinAmount(components.r, pc.RGB.R, 1);
-        checkNumberWithinAmount(components.g, pc.RGB.G, 1);
-        checkNumberWithinAmount(components.b, pc.RGB.B, 1);
+        checkNumberWithinAmount(components.r, pc.RGB.R, COLOR_TOLERANCE);
+        checkNumberWithinAmount(components.g, pc.RGB.G, COLOR_TOLERANCE);
+        checkNumberWithinAmount(components.b, pc.RGB.B, COLOR_TOLERANCE);
     } else {
         fail('PaletteColor does not have RGB components');
     }

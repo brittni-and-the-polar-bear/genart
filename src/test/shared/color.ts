@@ -22,12 +22,13 @@ import { P5Context } from 'p5-context';
 
 import { checkNumberWithinAmount } from './math';
 
-export const red: Color = new Color(P5Context.p5.color(255, 0, 0));
-export const green: Color = new Color(P5Context.p5.color(0, 255, 0));
-export const blue: Color = new Color(P5Context.p5.color(0, 0, 255));
-export const cyan: Color = new Color(P5Context.p5.color(0, 255, 255));
-export const magenta: Color = new Color(P5Context.p5.color(255, 0, 255));
-export const yellow: Color = new Color(P5Context.p5.color(255, 255, 0));
+export const RED: Color = new Color(P5Context.p5.color(255, 0, 0));
+export const GREEN: Color = new Color(P5Context.p5.color(0, 255, 0));
+export const BLUE: Color = new Color(P5Context.p5.color(0, 0, 255));
+export const CYAN: Color = new Color(P5Context.p5.color(0, 255, 255));
+export const MAGENTA: Color = new Color(P5Context.p5.color(255, 0, 255));
+export const YELLOW: Color = new Color(P5Context.p5.color(255, 255, 0));
+export const COLOR_TOLERANCE: number = 1;
 
 export interface ColorComponents {
     readonly r: number;
@@ -42,10 +43,6 @@ export class SampleSelector extends ColorSelector {
         for (const c of colors) {
             this.addColorChoice(c);
         }
-
-        this.COLOR_NAMES.add('name1');
-        this.COLOR_NAMES.add('name2');
-        this.COLOR_NAMES.add('name3');
     }
 
     getColor(): Color {
@@ -72,7 +69,7 @@ export function p5ColorToColorComponents(color: P5Lib.Color): ColorComponents {
 }
 
 export function checkForEquivalentComponents(actual: ColorComponents, expected: ColorComponents): void {
-    checkNumberWithinAmount(actual.r, expected.r, 1);
-    checkNumberWithinAmount(actual.g, expected.g, 1);
-    checkNumberWithinAmount(actual.b, expected.b, 1);
+    checkNumberWithinAmount(actual.r, expected.r, COLOR_TOLERANCE);
+    checkNumberWithinAmount(actual.g, expected.g, COLOR_TOLERANCE);
+    checkNumberWithinAmount(actual.b, expected.b, COLOR_TOLERANCE);
 }
