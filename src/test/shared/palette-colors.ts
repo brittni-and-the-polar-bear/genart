@@ -16,7 +16,7 @@
 //  */
 
 import { Discriminators } from 'discriminator';
-import { PaletteColor } from 'palette';
+import { PaletteColor } from 'color';
 
 import { checkForValidHexColorString } from './color';
 
