@@ -1,30 +1,26 @@
-// /*
-//  * Copyright (C) 2024 brittni and the polar bear LLC.
-//  *
-//  * This file is a part of brittni and the polar bear's generative art library,
-//  * which is released under the GNU Affero General Public License, Version 3.0.
-//  * You may not use this file except in compliance with the license.
-//  *
-//  * You should have received a copy of the GNU Affero General Public License
-//  * along with this program. See LICENSE or go to
-//  * https://www.gnu.org/licenses/agpl-3.0.en.html for full license details.
-//  *
-//  * This program is distributed in the hope that it will be useful,
-//  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-//  * See the GNU Affero General Public License for more details.
-//  */
+/*
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ *
+ * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
+ * which is released under the GNU Affero General Public License, Version 3.0.
+ * You may not use this file except in compliance with the license.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. See LICENSE or go to
+ * https://www.gnu.org/licenses/agpl-3.0.en.html for full license details.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Affero General Public License for more details.
+ */
 
 import P5Lib from 'p5';
 
 import { Color, ColorSelector, ColorSelectorType } from 'color';
-import { P5Context } from 'sketch-context';
+import { P5Context } from 'p5-context';
 
 import { checkNumberWithinAmount } from './math';
-
-// TODO - replace with StringValidator
-const hexPattern: RegExp = /^#[A-F|0-9]{6}$/;
-const hexWithAlphaPattern: RegExp = /^#[A-F|0-9]{8}$/;
 
 export const red: Color = new Color(P5Context.p5.color(255, 0, 0));
 export const green: Color = new Color(P5Context.p5.color(0, 255, 0));
@@ -73,16 +69,6 @@ export function p5ColorToColorComponents(color: P5Lib.Color): ColorComponents {
         b: Math.floor(p5.blue(color)),
         a: Math.floor(p5.alpha(color))
     };
-}
-
-export function checkForValidHexColorString(hex: string): void {
-    const isValid: boolean = hexPattern.test(hex);
-    expect(isValid).toBeTruthy();
-}
-
-export function checkForValidHexColorStringWithAlpha(hex: string): void {
-    const isValid: boolean = hexWithAlphaPattern.test(hex);
-    expect(isValid).toBeTruthy();
 }
 
 export function checkForEquivalentComponents(actual: ColorComponents, expected: ColorComponents): void {
