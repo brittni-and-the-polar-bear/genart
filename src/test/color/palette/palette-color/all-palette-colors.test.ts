@@ -34,11 +34,11 @@ import {
     checkComponents,
     checkForValidStringMap,
     p5ColorToColorComponents,
-    checkForValidHexColorString,
     checkForEquivalentComponents,
     checkForValidPaletteColor
 } from 'unit-test/shared';
 import {P5Context} from "p5-context";
+import {StringValidator} from "string";
 
 const ALL_HEXES: { hexString: string; }[] = [];
 ALL_HEXES.push(
@@ -80,7 +80,7 @@ describe('all palette colors', (): void => {
     )('$# - successful addition of color: $hexString',
         ({ hexString }): void => {
             expect(hexString).toBeTruthy();
-            checkForValidHexColorString(hexString);
+            expect(StringValidator.isHex(hexString)).toBeTruthy();
 
             const pc: PaletteColor | undefined = ALL_PALETTE_COLORS.get(hexString);
             expect(pc).toBeTruthy();
@@ -96,7 +96,7 @@ describe('all palette colors', (): void => {
     )('$# - valid color: $hexString',
         ({ hexString }): void => {
             expect(hexString).toBeTruthy();
-            checkForValidHexColorString(hexString);
+            expect(StringValidator.isHex(hexString)).toBeTruthy();
 
             const pc: PaletteColor | undefined = ALL_PALETTE_COLORS.get(hexString);
             expect(pc).toBeTruthy();
@@ -113,22 +113,26 @@ describe('all palette colors', (): void => {
         const rgbValues: Set<string> = new Set<string>();
         const names: Set<string> = new Set<string>();
 
-        for (const c of ALL_PALETTE_COLORS.values) {
+        for (const c of ALL_PALETTE_COLORS.values()) {
             const hex: string = c.HEX.toLowerCase();
             expect(hexValues).not.toContain(hex);
             hexValues.add(hex);
 
-            const hsl: string = makeHSLKey(c.HSL);
-            expect(hslValues).not.toContain(hsl);
-            hslValues.add(hsl);
-
-            const rgb: string = makeRGBKey(c.RGB);
-            expect(rgbValues).not.toContain(rgb);
-            rgbValues.add(rgb);
-
             const name: string = c.NAME.toLowerCase();
             expect(names).not.toContain(name);
             names.add(name);
+
+            if (c.HSL) {
+                const hsl: string = makeHSLKey(c.HSL);
+                expect(hslValues).not.toContain(hsl);
+                hslValues.add(hsl);
+            }
+
+            if (c.RGB) {
+                const rgb: string = makeRGBKey(c.RGB);
+                expect(rgbValues).not.toContain(rgb);
+                rgbValues.add(rgb);
+            }
         }
     });
 
@@ -141,21 +145,34 @@ describe('all palette colors', (): void => {
             expect(c).toBeTruthy();
 
             if (c) {
-                const hsl: P5Lib.Color = Color.getHSLColor(c.HSL.H, c.HSL.S, c.HSL.L);
-                const hslComponents: ColorComponents = p5ColorToColorComponents(hsl);
-                checkComponents(hslComponents, c);
+                let hslComponents: ColorComponents | undefined;
+                let rgbComponents: ColorComponents | undefined;
 
                 const hex: P5Lib.Color = p5.color(c.HEX);
                 const hexComponents: ColorComponents = p5ColorToColorComponents(hex);
                 checkComponents(hexComponents, c);
 
-                const rgb: P5Lib.Color = p5.color(c.RGB.R, c.RGB.G, c.RGB.B);
-                const rgbComponents: ColorComponents = p5ColorToColorComponents(rgb);
-                checkComponents(rgbComponents, c);
+                if (c.HSL) {
+                    const hsl: P5Lib.Color = Color.getHSLColor(c.HSL.H, c.HSL.S, c.HSL.L);
+                    hslComponents = p5ColorToColorComponents(hsl);
+                    checkComponents(hslComponents, c);
+                    checkForEquivalentComponents(hslComponents, hexComponents);
+                }
 
-                checkForEquivalentComponents(hslComponents, hexComponents);
-                checkForEquivalentComponents(hslComponents, rgbComponents);
-                checkForEquivalentComponents(rgbComponents, hexComponents);
+                if (c.RGB) {
+                    const rgb: P5Lib.Color = p5.color(c.RGB.R, c.RGB.G, c.RGB.B);
+                    rgbComponents = p5ColorToColorComponents(rgb);
+                    checkComponents(rgbComponents, c);
+                    checkForEquivalentComponents(rgbComponents, hexComponents);
+                }
+
+                if (c.HSL && c.RGB) {
+                    if (hslComponents && rgbComponents) {
+                        checkForEquivalentComponents(hslComponents, rgbComponents);
+                    } else {
+                        throw new Error('HSL or RGB components are undefined');
+                    }
+                }
             }
         }
     );
