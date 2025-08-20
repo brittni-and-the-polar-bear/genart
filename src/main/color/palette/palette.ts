@@ -17,7 +17,7 @@
 
 import { Discriminable, Discriminators } from 'discriminator';
 
-import { PaletteColor } from './palette-color';
+import { PaletteColor } from './palette-color/palette-color';
 
 /**
  * A collection of {@link PaletteColor} objects.
