@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -22,26 +22,24 @@ import { PaletteColor } from '../palette-color';
 import { ALL_PALETTE_COLORS, BROWN_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #3B2212;">
- *     <a href="https://coolors.co/3b2212" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block white-pass">délicieux au chocolat (#3B2212)</h2>
+ * <div class="color-block" style="background: #938F80;">
+ *     <a href="https://coolors.co/938f80" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">muted sage (#938F80)</h2>
  *     </a>
  * </div>
- *
- * @see {@link BLUE_LILY_PALETTE}
  *
  * @category Color / Palette / Colors / All
  * @category Color / Palette / Colors / Brown
  */
-export const PC_3B2212: PaletteColor = {
-    HEX: '#3B2212',
-    RGB: { R: 59, G: 34, B: 18 },
-    HSL: { H: 23, S: 53, L: 15 },
-    NAME: 'délicieux au chocolat',
-    LUMINANCE: 0.021175342,
+export const PC_938F80: PaletteColor = {
+    HEX: '#938F80',
+    RGB: { R: 147, G: 143, B: 128 },
+    HSL: { H: 47, S: 8, L: 54 },
+    NAME: 'muted sage',
+    LUMINANCE: 0.2740647818,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-BROWN_PALETTE_COLORS.setIfAbsent(PC_3B2212.HEX, PC_3B2212);
-ALL_PALETTE_COLORS.setIfAbsent(PC_3B2212.HEX, PC_3B2212);
-ColorNames.addColor(PC_3B2212);
+ALL_PALETTE_COLORS.setIfAbsent(PC_938F80.HEX, PC_938F80);
+BROWN_PALETTE_COLORS.setIfAbsent(PC_938F80.HEX, PC_938F80);
+ColorNames.addColor(PC_938F80);

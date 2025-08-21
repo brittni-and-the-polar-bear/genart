@@ -32,7 +32,8 @@ export const BLUE_HEXES: HexCollection = [
 ];
 
 export const BROWN_HEXES: HexCollection = [
-    { hexString: '#3B2212' }
+    { hexString: '#3B2212' },
+    { hexString: '#938F80' }
 ];
 
 export const GRAY_HEXES: HexCollection = [

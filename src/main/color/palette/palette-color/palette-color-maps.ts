@@ -57,8 +57,8 @@ export const BLUE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Palett
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/brown/brown-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (Brown)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Brown
  */
 export const BROWN_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
@@ -68,8 +68,8 @@ export const BROWN_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Palet
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/gray/gray-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (Gray)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Gray
  */
 export const GRAY_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
