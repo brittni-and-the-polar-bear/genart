@@ -30,8 +30,6 @@ import { ALL_PALETTE_COLORS, GRAY_PALETTE_COLORS } from '../palette-color-maps';
  *
  * @see {@link BLUE_LILY_PALETTE}
  *
- * @category Color
- * @category Color / Palette
  * @category Color / Palette / Colors / All
  * @category Color / Palette / Colors / Gray
  */
