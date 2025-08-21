@@ -38,7 +38,7 @@ export const PC_3A3E40: PaletteColor = {
     NAME: 'seaplane gray',
     LUMINANCE: 0.0471495495,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
-}
+};
 
 ALL_PALETTE_COLORS.setIfAbsent(PC_3A3E40.HEX, PC_3A3E40);
 GRAY_PALETTE_COLORS.setIfAbsent(PC_3A3E40.HEX, PC_3A3E40);

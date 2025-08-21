@@ -15,13 +15,6 @@
  * See the GNU Affero General Public License for more details.
  */
 
-// #d2d3d5
-// 220°, 3%, 83%
-// 210, 211, 213
-// rapunzel silver
-// black-pass
-// luminance: 0.6509426552
-
 import { Discriminators } from 'discriminator';
 
 import { ColorNames } from '../../../color-name';
@@ -45,7 +38,7 @@ export const PC_D2D3D5: PaletteColor = {
     NAME: 'rapunzel silver',
     LUMINANCE: 0.6509426552,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
-}
+};
 
 ALL_PALETTE_COLORS.setIfAbsent(PC_D2D3D5.HEX, PC_D2D3D5);
 GRAY_PALETTE_COLORS.setIfAbsent(PC_D2D3D5.HEX, PC_D2D3D5);

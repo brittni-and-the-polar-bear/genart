@@ -29,6 +29,7 @@ import {
     WHITE_PALETTE_COLORS
 } from 'color';
 import { StringMap } from 'map';
+import { StringValidator } from 'string';
 
 import {
     HexCollection,
@@ -45,7 +46,6 @@ import {
     RED_HEXES,
     WHITE_HEXES
 } from 'unit-test/shared';
-import {StringValidator} from "string";
 
 const COLOR_CATEGORIES: { category: string; colorsMap: StringMap<PaletteColor>; hexes: HexCollection; }[] =
     [
