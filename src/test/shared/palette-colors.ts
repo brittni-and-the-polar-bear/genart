@@ -40,6 +40,7 @@ export const GRAY_HEXES: HexCollection = [
     { hexString: '#7E9594' },
     { hexString: '#869498' },
     { hexString: '#A3A3A3' },
+    { hexString: '#D2D3D5' },
     { hexString: '#F0F3F4' }
 ];
 
