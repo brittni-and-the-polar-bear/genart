@@ -32,15 +32,11 @@ export const BLUE_HEXES: HexCollection = [
 ];
 
 export const BROWN_HEXES: HexCollection = [
-    { hexString: '#3B2212' },
-    { hexString: '#938F80' }
+    { hexString: '#3B2212' }
 ];
 
 export const GRAY_HEXES: HexCollection = [
     { hexString: '#3A3E40' },
-    { hexString: '#857B7A' },
-    { hexString: '#7E9594' },
-    { hexString: '#869498' },
     { hexString: '#A3A3A3' },
     { hexString: '#D2D3D5' },
     { hexString: '#F0F3F4' }
@@ -52,6 +48,14 @@ export const GREEN_HEXES: HexCollection = [
     { hexString: '#5F8661' },
     { hexString: '#B1C69F' },
     { hexString: '#0FFF4F' }
+];
+
+export const NEUTRAL_HEXES: HexCollection = [
+    { hexString: '#334A57' },
+    { hexString: '#857B7A' },
+    { hexString: '#938F80' },
+    { hexString: '#7E9594' },
+    { hexString: '#869498' }
 ];
 
 export const ORANGE_HEXES: HexCollection = [

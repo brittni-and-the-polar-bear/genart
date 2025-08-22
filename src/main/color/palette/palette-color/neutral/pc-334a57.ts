@@ -19,27 +19,26 @@ import { Discriminators } from 'discriminator';
 
 import { ColorNames } from '../../../color-name';
 import { PaletteColor } from '../palette-color';
-import { ALL_PALETTE_COLORS, GRAY_PALETTE_COLORS } from '../palette-color-maps';
+import { ALL_PALETTE_COLORS, NEUTRAL_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #857B7A;">
- *     <a href="https://coolors.co/857b7a" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">eastlake lavender (#857B7A)</h2>
+ * <div class="color-block" style="background: #334A57;">
+ *     <a href="https://coolors.co/334a57" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">sailor’s coat (#334A57)</h2>
  *     </a>
  * </div>
  *
  * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Gray
+ * @category Color / Palette / Colors / Neutral
  */
-export const PC_857B7A: PaletteColor = {
-    HEX: '#857B7A',
-    RGB: { R: 133, G: 123, B: 122 },
-    HSL: { H: 5, S: 4, L: 50 },
-    NAME: 'eastlake lavender',
-    LUMINANCE: 0.2055760385,
+export const PC_334A57: PaletteColor = {
+    HEX: '#334A57',
+    RGB: { R: 51, G: 74, B: 87 },
+    HSL: { H: 202, S: 26, L: 27 },
+    NAME: "sailor’s coat",
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-ALL_PALETTE_COLORS.setIfAbsent(PC_857B7A.HEX, PC_857B7A);
-GRAY_PALETTE_COLORS.setIfAbsent(PC_857B7A.HEX, PC_857B7A);
-ColorNames.addColor(PC_857B7A);
+ALL_PALETTE_COLORS.setIfAbsent(PC_334A57.HEX, PC_334A57);
+NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_334A57.HEX, PC_334A57);
+ColorNames.addColor(PC_334A57);

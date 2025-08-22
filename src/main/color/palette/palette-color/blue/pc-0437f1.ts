@@ -30,8 +30,8 @@ import { ALL_PALETTE_COLORS, BLUE_PALETTE_COLORS } from '../palette-color-maps';
  *
  * @see {@link BRITTNI_PALETTE}
  *
- * @category Palette Colors (Blue)
- * @category Palette Colors (All)
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Blue
  */
 export const PC_0437F1: PaletteColor = {
     HEX: '#0437F1',

@@ -24,8 +24,8 @@ import { PaletteColor } from './palette-color';
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/all-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (All)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / All
  */
 export const ALL_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
@@ -35,8 +35,8 @@ export const ALL_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Palette
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/black/black-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (Black)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Black
  */
 export const BLACK_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
@@ -46,8 +46,8 @@ export const BLACK_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Palet
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/blue/blue-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (Blue)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Blue
  */
 export const BLUE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
@@ -79,10 +79,21 @@ export const GRAY_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Palett
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/green/green-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (Green)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Green
  */
 export const GREEN_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
+
+/**
+ * A map of hex values to {@link PaletteColor} objects for all
+ * neutral palette colors.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/green/green-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
+ *
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Neutral
+ */
+export const NEUTRAL_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
 /**
  * A map of hex values to {@link PaletteColor} objects for all
@@ -90,8 +101,8 @@ export const GREEN_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Palet
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/green/orange-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (Orange)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Orange
  */
 export const ORANGE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
@@ -101,8 +112,8 @@ export const ORANGE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Pale
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/pink/pink-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (Pink)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Pink
  */
 export const PINK_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
@@ -112,8 +123,8 @@ export const PINK_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Palett
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/purple/purple-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (Purple)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Purple
  */
 export const PURPLE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
@@ -123,8 +134,8 @@ export const PURPLE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Pale
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/red/red-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (Red)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / Red
  */
 export const RED_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
 
@@ -134,7 +145,7 @@ export const RED_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<Palette
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/white/white-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
- * @category Palette Color Collections
- * @category Palette Colors (White)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Colors / White
  */
 export const WHITE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();

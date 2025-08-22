@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -19,29 +19,27 @@ import { Discriminators } from 'discriminator';
 
 import { ColorNames } from '../../../color-name';
 import { PaletteColor } from '../palette-color';
-import { ALL_PALETTE_COLORS, GRAY_PALETTE_COLORS } from '../palette-color-maps';
+import { ALL_PALETTE_COLORS, NEUTRAL_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #869498;">
- *     <a href="https://coolors.co/869498" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">carrier pigeon blue (#869498)</h2>
+ * <div class="color-block" style="background: #857B7A;">
+ *     <a href="https://coolors.co/857b7a" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">eastlake lavender (#857B7A)</h2>
  *     </a>
  * </div>
  *
- * @see {@link DALLAS_COWBOYS_PALETTE}
- *
  * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Gray
+ * @category Color / Palette / Colors / Neutral
  */
-export const PC_869498: PaletteColor = {
-    HEX: '#869498',
-    RGB: { R: 134, G: 148, B: 152 },
-    HSL: { H: 193, S: 8, L: 56 },
-    NAME: 'carrier pigeon blue',
-    LUMINANCE: 0.2851514006,
+export const PC_857B7A: PaletteColor = {
+    HEX: '#857B7A',
+    RGB: { R: 133, G: 123, B: 122 },
+    HSL: { H: 5, S: 4, L: 50 },
+    NAME: 'eastlake lavender',
+    LUMINANCE: 0.2055760385,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-ALL_PALETTE_COLORS.setIfAbsent(PC_869498.HEX, PC_869498);
-GRAY_PALETTE_COLORS.setIfAbsent(PC_869498.HEX, PC_869498);
-ColorNames.addColor(PC_869498);
+ALL_PALETTE_COLORS.setIfAbsent(PC_857B7A.HEX, PC_857B7A);
+NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_857B7A.HEX, PC_857B7A);
+ColorNames.addColor(PC_857B7A);

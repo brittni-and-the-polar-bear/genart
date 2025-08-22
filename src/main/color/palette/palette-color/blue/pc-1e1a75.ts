@@ -28,8 +28,8 @@ import { ALL_PALETTE_COLORS, BLUE_PALETTE_COLORS } from '../palette-color-maps';
  *     </a>
  * </div>
  *
- * @category Palette Colors (Blue)
- * @category Palette Colors (All)
+ * @category Color / Palette / Colors / All
+ * @category Color / Palette / Colors / Blue
  */
 export const PC_1E1A75: PaletteColor = {
     HEX: '#1E1A75',

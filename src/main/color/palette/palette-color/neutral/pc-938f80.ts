@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -19,28 +19,27 @@ import { Discriminators } from 'discriminator';
 
 import { ColorNames } from '../../../color-name';
 import { PaletteColor } from '../palette-color';
-import { ALL_PALETTE_COLORS, BLUE_PALETTE_COLORS } from '../palette-color-maps';
+import { ALL_PALETTE_COLORS, NEUTRAL_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
- * <div class="color-block" style="background: #003494;">
- *     <a href="https://coolors.co/003494" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block white-pass">smalt (#003494)</h2>
+ * <div class="color-block" style="background: #938F80;">
+ *     <a href="https://coolors.co/938f80" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">muted sage (#938F80)</h2>
  *     </a>
  * </div>
  *
- * @see {@link DALLAS_COWBOYS_PALETTE}
- *
  * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Blue
+ * @category Color / Palette / Colors / Neutral
  */
-export const PC_003494: PaletteColor = {
-    HEX: '#003494',
-    RGB: { R: 0, G: 52, B: 148 },
-    HSL: { H: 219, S: 100, L: 29 },
-    NAME: 'smalt',
+export const PC_938F80: PaletteColor = {
+    HEX: '#938F80',
+    RGB: { R: 147, G: 143, B: 128 },
+    HSL: { H: 47, S: 8, L: 54 },
+    NAME: 'muted sage',
+    LUMINANCE: 0.2740647818,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-ALL_PALETTE_COLORS.setIfAbsent(PC_003494.HEX, PC_003494);
-BLUE_PALETTE_COLORS.setIfAbsent(PC_003494.HEX, PC_003494);
-ColorNames.addColor(PC_003494);
+ALL_PALETTE_COLORS.setIfAbsent(PC_938F80.HEX, PC_938F80);
+NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_938F80.HEX, PC_938F80);
+ColorNames.addColor(PC_938F80);

@@ -41,6 +41,7 @@ Valid Categories:
 * brown
 * gray
 * green
+* neutral
 * orange
 * pink
 * purple

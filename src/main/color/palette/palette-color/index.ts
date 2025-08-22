@@ -20,6 +20,7 @@ export * from './blue';
 export * from './brown';
 export * from './gray';
 export * from './green';
+export * from './neutral';
 export * from './orange';
 export * from './pink';
 export * from './purple';

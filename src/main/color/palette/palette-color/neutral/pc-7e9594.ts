@@ -19,7 +19,7 @@ import { Discriminators } from 'discriminator';
 
 import { ColorNames } from '../../../color-name';
 import { PaletteColor } from '../palette-color';
-import { ALL_PALETTE_COLORS, GRAY_PALETTE_COLORS } from '../palette-color-maps';
+import { ALL_PALETTE_COLORS, NEUTRAL_PALETTE_COLORS } from '../palette-color-maps';
 
 /**
  * <div class="color-block" style="background: #7E9594;">
@@ -31,7 +31,7 @@ import { ALL_PALETTE_COLORS, GRAY_PALETTE_COLORS } from '../palette-color-maps';
  * @see {@link DALLAS_COWBOYS_PALETTE}
  *
  * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Gray
+ * @category Color / Palette / Colors / Neutral
  */
 export const PC_7E9594: PaletteColor = {
     HEX: '#7E9594',
@@ -43,5 +43,5 @@ export const PC_7E9594: PaletteColor = {
 };
 
 ALL_PALETTE_COLORS.setIfAbsent(PC_7E9594.HEX, PC_7E9594);
-GRAY_PALETTE_COLORS.setIfAbsent(PC_7E9594.HEX, PC_7E9594);
+NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_7E9594.HEX, PC_7E9594);
 ColorNames.addColor(PC_7E9594);

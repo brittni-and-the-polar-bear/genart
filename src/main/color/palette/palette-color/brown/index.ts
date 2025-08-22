@@ -16,4 +16,3 @@
  */
 
 export * from './pc-3b2212';
-export * from './pc-938f80';
