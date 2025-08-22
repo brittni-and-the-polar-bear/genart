@@ -25,9 +25,9 @@ import { Palette } from '../../../palette';
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/generative-art-library/palettes/holiday/valentines-day/valentines-day-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes</a>
  *
- * @category Color / Palette / Collections
- * @category Color / Palette / Palettes / All
- * @category Color / Palette / Palettes / Holidays
- * @category Color / Palette / Palettes / Holidays / Valentine's Day
+ * @category Color/Palette/Palettes/Collections
+ * @category Color/Palette/Palettes/All
+ * @category Color/Palette/Palettes/Holidays
+ * @category Color/Palette/Palettes/Holidays/Valentine's Day
  */
 export const VALENTINES_PALETTES: StringMap<Palette> = new StringMap<Palette>();

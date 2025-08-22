@@ -25,8 +25,8 @@ import { Palette } from '../palette';
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/generative-art-library/palettes/all-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes</a>
  *
- * @category Color / Palette / Collections
- * @category Color / Palette / Palettes / All
+ * @category Color/Palette/Palettes/Collections
+ * @category Color/Palette/Palettes/All
  */
 export const ALL_PALETTES: StringMap<Palette> = new StringMap<Palette>();
 
@@ -36,7 +36,7 @@ export const ALL_PALETTES: StringMap<Palette> = new StringMap<Palette>();
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/generative-art-library/palettes/gradient-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes</a>
  *
- * @category Color / Palette / Collections
- * @category Color / Palette / Palettes / Gradient
+ * @category Color/Palette/Palettes/Collections
+ * @category Color/Palette/Palettes/Gradient
  */
 export const GRADIENT_PALETTES: StringMap<Palette> = new StringMap<Palette>();
