@@ -6,6 +6,8 @@ hex: "BC010A"
 luminance: 0.10734989
 contrast: "white-pass"
 color_category: "red"
+palettes:
+  - "classic christmas"
 ---
 
 ```typescript

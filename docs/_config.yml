@@ -32,6 +32,9 @@ collections:
   palette_colors:
     output: true
     sort_by: luminance
+  palettes:
+    output: true
+    sort_by: name
 
 include:
   - "_*.html"

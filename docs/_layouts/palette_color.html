@@ -51,3 +51,20 @@ layout: base
 <br/>
 
 {{ content }}
+
+<hr/>
+
+<h2>palettes</h2>
+
+<ul>
+{% for palette in site.palettes %}
+  {%- for palette_name in page.palettes -%}
+    {%- if palette.name == palette_name -%}
+    <li>
+        <h3><a href="{{ palette.url | relative_url }}">{{ palette.name }}</a></h3>
+    </li>
+    {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{% endfor %}
+</ul>
