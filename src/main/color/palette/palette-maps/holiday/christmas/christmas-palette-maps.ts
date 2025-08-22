@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -16,15 +16,18 @@
  */
 
 import { StringMap } from 'map';
-import { Palette } from 'palette';
 
+import { Palette } from '../../../palette';
+
+// TODO - FIX LINK
 /**
- * A map of palette names to {@link Palette} objects for all Valentine's Day palettes.
+ * A map of palette names to {@link Palette} objects for all Christmas palettes.
  *
- * <a href="https://brittni-and-the-polar-bear.github.io/generative-art-library/palettes/holiday/valentines-day/valentines-day-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes</a>
+ * <a href="https://brittni-and-the-polar-bear.github.io/generative-art-library/palettes/holiday/christmas/christmas-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes</a>
  *
- * @category Palette Collections
- * @category Palettes (Holidays/Valentine's Day)
- * @category Palettes (Holidays)
+ * @category Color / Palette / Collections
+ * @category Color / Palette / Palettes / All
+ * @category Color / Palette / Palettes / Holidays
+ * @category Color / Palette / Palettes / Holidays / Christmas
  */
-export const VALENTINES_PALETTES: StringMap<Palette> = new StringMap<Palette>();
+export const CHRISTMAS_PALETTES: StringMap<Palette> = new StringMap<Palette>();

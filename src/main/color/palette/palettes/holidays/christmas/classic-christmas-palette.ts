@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -16,9 +16,9 @@
  */
 
 import { Discriminators } from 'discriminator';
-import { Palette } from 'palette';
-import { PC_007058, PC_23856D, PC_BC010A, PC_D01625, PC_FBF9F9 } from 'palette-colors';
 
+import { Palette } from "../../../palette";
+import { PC_007058, PC_23856D, PC_BC010A, PC_D01625, PC_FBF9F9 } from "../../../palette-color";
 import { ALL_PALETTES, CHRISTMAS_PALETTES, HOLIDAYS_PALETTES } from '../../../palette-maps';
 
 /**
@@ -32,9 +32,9 @@ import { ALL_PALETTES, CHRISTMAS_PALETTES, HOLIDAYS_PALETTES } from '../../../pa
  * @see {@link PC_23856D}
  * @see {@link PC_FBF9F9}
  *
- * @category Palettes (Holidays/Christmas)
- * @category Palettes (Holidays)
- * @category Palettes (All)
+ * @category Color / Palette / Palettes / All
+ * @category Color / Palette / Palettes / Holidays
+ * @category Color / Palette / Palettes / Holidays / Christmas
  */
 export const CLASSIC_CHRISTMAS_PALETTE: Palette = {
     NAME: 'classic christmas',
@@ -91,6 +91,6 @@ export const CLASSIC_CHRISTMAS_PALETTE: Palette = {
     DISCRIMINATOR: Discriminators.PALETTE
 };
 
-CHRISTMAS_PALETTES.setUndefinedKey(CLASSIC_CHRISTMAS_PALETTE.NAME, CLASSIC_CHRISTMAS_PALETTE);
-HOLIDAYS_PALETTES.setUndefinedKey(CLASSIC_CHRISTMAS_PALETTE.NAME, CLASSIC_CHRISTMAS_PALETTE);
-ALL_PALETTES.setUndefinedKey(CLASSIC_CHRISTMAS_PALETTE.NAME, CLASSIC_CHRISTMAS_PALETTE);
+ALL_PALETTES.setIfAbsent(CLASSIC_CHRISTMAS_PALETTE.NAME, CLASSIC_CHRISTMAS_PALETTE);
+HOLIDAYS_PALETTES.setIfAbsent(CLASSIC_CHRISTMAS_PALETTE.NAME, CLASSIC_CHRISTMAS_PALETTE);
+CHRISTMAS_PALETTES.setIfAbsent(CLASSIC_CHRISTMAS_PALETTE.NAME, CLASSIC_CHRISTMAS_PALETTE);

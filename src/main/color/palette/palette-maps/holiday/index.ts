@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * This file is a part of brittni and the polar bear's @batpb/genart algorithmic art library,
  * which is released under the GNU Affero General Public License, Version 3.0.
@@ -15,16 +15,7 @@
  * See the GNU Affero General Public License for more details.
  */
 
-import { StringMap } from 'map';
-import { Palette } from 'palette';
+export * from './christmas';
+export * from './valentines-day';
 
-/**
- * A map of palette names to {@link Palette} objects for all Christmas palettes.
- *
- * <a href="https://brittni-and-the-polar-bear.github.io/generative-art-library/palettes/holiday/christmas/christmas-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes</a>
- *
- * @category Palette Collections
- * @category Palettes (Holidays/Christmas)
- * @category Palettes (Holidays)
- */
-export const CHRISTMAS_PALETTES: StringMap<Palette> = new StringMap<Palette>();
+export * from './holidays-palette-maps';

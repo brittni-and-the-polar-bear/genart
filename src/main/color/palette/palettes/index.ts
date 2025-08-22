@@ -15,8 +15,4 @@
  * See the GNU Affero General Public License for more details.
  */
 
-export * from './palette-color';
-export * from './palette-maps';
-export * from './palettes';
-
-export * from './palette';
+export * from './holidays';
