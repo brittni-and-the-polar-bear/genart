@@ -38,6 +38,7 @@ export const BROWN_HEXES: HexCollection = [
 
 export const GRAY_HEXES: HexCollection = [
     { hexString: '#3A3E40' },
+    { hexString: '#857B7A' },
     { hexString: '#7E9594' },
     { hexString: '#869498' },
     { hexString: '#A3A3A3' },
