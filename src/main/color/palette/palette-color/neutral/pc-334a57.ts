@@ -24,7 +24,7 @@ import { ALL_PALETTE_COLORS, NEUTRAL_PALETTE_COLORS } from '../palette-color-map
 /**
  * <div class="color-block" style="background: #334A57;">
  *     <a href="https://coolors.co/334a57" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block white-pass">sailor’s coat (#334A57)</h2>
+ *         <h2 class="color-block white-pass">sailor's coat (#334A57)</h2>
  *     </a>
  * </div>
  *
@@ -35,7 +35,7 @@ export const PC_334A57: PaletteColor = {
     HEX: '#334A57',
     RGB: { R: 51, G: 74, B: 87 },
     HSL: { H: 202, S: 26, L: 27 },
-    NAME: "sailor’s coat",
+    NAME: "sailor's coat",
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
