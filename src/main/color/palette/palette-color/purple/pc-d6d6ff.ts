@@ -30,10 +30,8 @@ import { ALL_PALETTE_COLORS, PURPLE_PALETTE_COLORS } from '../palette-color-maps
  *
  * @see {@link WHITE_LILY_PALETTE}
  *
- * @category Color
- * @category Color / Palette
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Purple
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Purple
  */
 export const PC_D6D6FF: PaletteColor = {
     HEX: '#D6D6FF',

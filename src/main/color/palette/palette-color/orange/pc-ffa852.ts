@@ -28,10 +28,8 @@ import { ALL_PALETTE_COLORS, ORANGE_PALETTE_COLORS } from '../palette-color-maps
  *     </a>
  * </div>
  *
- * @category Color
- * @category Color / Palette
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Orange
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Orange
  */
 export const PC_FFA852: PaletteColor = {
     HEX: '#FFA852',

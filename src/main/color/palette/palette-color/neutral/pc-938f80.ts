@@ -28,8 +28,8 @@ import { ALL_PALETTE_COLORS, NEUTRAL_PALETTE_COLORS } from '../palette-color-map
  *     </a>
  * </div>
  *
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Neutral
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Neutral
  */
 export const PC_938F80: PaletteColor = {
     HEX: '#938F80',

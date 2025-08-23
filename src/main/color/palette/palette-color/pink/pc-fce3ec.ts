@@ -30,10 +30,8 @@ import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
  *
  * @see {@link GLITTER_PALETTE}
  *
- * @category Color
- * @category Color / Palette
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Pink
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Pink
  */
 export const PC_FCE3EC: PaletteColor = {
     HEX: '#FCE3EC',

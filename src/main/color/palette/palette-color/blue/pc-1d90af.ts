@@ -30,8 +30,8 @@ import { ALL_PALETTE_COLORS, BLUE_PALETTE_COLORS } from '../palette-color-maps';
  *
  * @see {@link BLUE_LILY_PALETTE}
  *
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Blue
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Blue
  */
 export const PC_1D90AF: PaletteColor = {
     HEX: '#1D90AF',

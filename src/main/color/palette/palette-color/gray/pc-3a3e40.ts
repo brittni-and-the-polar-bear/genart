@@ -28,8 +28,8 @@ import { ALL_PALETTE_COLORS, GRAY_PALETTE_COLORS } from '../palette-color-maps';
  *     </a>
  * </div>
  *
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Gray
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Gray
  */
 export const PC_3A3E40: PaletteColor = {
     HEX: '#3A3E40',

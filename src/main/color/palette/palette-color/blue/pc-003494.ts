@@ -30,8 +30,8 @@ import { ALL_PALETTE_COLORS, BLUE_PALETTE_COLORS } from '../palette-color-maps';
  *
  * @see {@link DALLAS_COWBOYS_PALETTE}
  *
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Blue
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Blue
  */
 export const PC_003494: PaletteColor = {
     HEX: '#003494',

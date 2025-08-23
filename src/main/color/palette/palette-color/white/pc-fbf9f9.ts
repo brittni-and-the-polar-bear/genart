@@ -30,10 +30,8 @@ import { ALL_PALETTE_COLORS, WHITE_PALETTE_COLORS } from '../palette-color-maps'
  *
  * @see {@link CLASSIC_CHRISTMAS_PALETTE}
  *
- * @category Color
- * @category Color / Palette
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / White
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/White
  */
 export const PC_FBF9F9: PaletteColor = {
     HEX: '#FBF9F9',

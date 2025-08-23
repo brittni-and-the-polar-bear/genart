@@ -28,10 +28,8 @@ import { ALL_PALETTE_COLORS, PINK_PALETTE_COLORS } from '../palette-color-maps';
  *     </a>
  * </div>
  *
- * @category Color
- * @category Color / Palette
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Pink
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Pink
  */
 export const PC_E13762: PaletteColor = {
     HEX: '#E13762',

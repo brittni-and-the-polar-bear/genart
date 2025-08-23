@@ -30,8 +30,8 @@ import { ALL_PALETTE_COLORS, NEUTRAL_PALETTE_COLORS } from '../palette-color-map
  *
  * @see {@link DALLAS_COWBOYS_PALETTE}
  *
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Neutral
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Neutral
  */
 export const PC_7E9594: PaletteColor = {
     HEX: '#7E9594',

@@ -30,8 +30,8 @@ import { ALL_PALETTE_COLORS, GREEN_PALETTE_COLORS } from '../palette-color-maps'
  *
  * @see {@link WHITE_LILY_PALETTE}
  *
- * @category Palette Colors (Green)
- * @category Palette Colors (All)
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Green
  */
 export const PC_5F8661: PaletteColor = {
     HEX: '#5F8661',
