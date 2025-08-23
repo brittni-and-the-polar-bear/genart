@@ -17,7 +17,8 @@
 
 import P5Lib from 'p5';
 
-import { Color, ColorContrastStandard, ContrastFontSize, ContrastStandard, PC_121212 } from 'color';
+import { Color, ColorContrastStandard, ContrastFontSize, ContrastStandard } from 'color';
+import { PaletteColors } from 'color';
 // import { PC_0437F1, PC_0FFF4F, PC_121212, PC_FF6BB5 } from 'color';
 import { P5Context } from 'p5-context';
 
@@ -193,8 +194,8 @@ describe('ColorContrastStandard tests', (): void => {
         //     AAA_large: true
         // },
         {
-            colorA: PC_121212,
-            colorB: PC_121212,
+            colorA: PaletteColors.PC_121212,
+            colorB: PaletteColors.PC_121212,
             AA_normal: false,
             AA_large: false,
             AAA_normal: false,

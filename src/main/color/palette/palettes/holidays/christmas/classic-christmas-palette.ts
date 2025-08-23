@@ -18,7 +18,8 @@
 import { Discriminators } from 'discriminator';
 
 import { Palette } from '../../../palette';
-import { PC_007058, PC_23856D, PC_BC010A, PC_D01625, PC_FBF9F9 } from '../../../palette-color';
+import { PC_BC010A, PC_D01625 } from "../../../palette-color";
+import { PC_007058, PC_23856D, PC_FBF9F9 } from '../../../palette-color';
 import { ALL_PALETTES, CHRISTMAS_PALETTES, HOLIDAYS_PALETTES } from '../../../palette-maps';
 
 /**
