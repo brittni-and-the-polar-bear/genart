@@ -6,9 +6,11 @@
   },
 
   "entryPoints": [
-    "./src/main/batpb-genart.ts"
+    "./src/main/color/index.ts"
   ],
+
   "out": "./out/doc",
+
   "customCss": "./typedoc/typedoc.css",
 
   "plugin": [
@@ -21,14 +23,13 @@
   "navigationLinks": {
     "GitHub Pages": "https://brittni-and-the-polar-bear.github.io/genart/"
   },
-  "sidebarLinks": {
 
-  },
   "navigation": {
     "includeCategories": true,
     "includeGroups": true,
     "includeFolders": true
   },
+
   "visibilityFilters": {
     "private": true,
     "protected": true,
@@ -46,6 +47,8 @@
     "invalidLink": true,
     "notDocumented": true
   },
+
   "treatWarningsAsErrors": false,
+
   "customFooterHtml": "<br/>Copyright &copy; 2023-2025 <a href=\"https://brittni-and-the-polar-bear.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">brittni and the polar bear LLC</a>."
 }
