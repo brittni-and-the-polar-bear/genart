@@ -19,4 +19,26 @@ layout: base
   ~ See the GNU Affero General Public License for more details.
   -->
 
+<script src="https://coolors.co/palette-widget/widget.js"></script>
+
 <h1>{{ page.title }}</h1>
+
+<h2>palette source: <a href="{{ page.source_url }}" target="_blank" rel="noopener noreferrer">{{ page.source }}</a></h2>
+
+{{ content }}
+
+<hr/>
+
+<h2>colors</h2>
+
+<ul>
+{% for color_hex in page.colors %}
+  {%- for color in site.palette_colors -%}
+  {%- if color.hex == color_hex -%}
+  <li>
+    <h3><a href="{{ color.url | relative_url }}">{{ color.title }}</a></h3>
+  </li>
+  {%- endif -%}
+  {%- endfor -%}
+{% endfor %}
+</ul>

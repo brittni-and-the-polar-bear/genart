@@ -30,8 +30,8 @@ import { ALL_PALETTE_COLORS, RED_PALETTE_COLORS } from '../palette-color-maps';
  *
  * @see {@link CLASSIC_CHRISTMAS_PALETTE}
  *
- * @category Palette Colors (All)
- * @category Palette Colors (Red)
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Red
  */
 export const PC_BC010A: PaletteColor = {
     HEX: '#BC010A',

@@ -30,10 +30,8 @@ import { ALL_PALETTE_COLORS, BLACK_PALETTE_COLORS } from '../palette-color-maps'
  *
  * @see {@link BRITTNI_PALETTE}
  *
- * @category Color
- * @category Color / Palette
- * @category Color / Palette / Colors / All
- * @category Color / Palette / Colors / Black
+ * @category Color/Palette/Colors/All
+ * @category Color/Palette/Colors/Black
  */
 export const PC_121212: PaletteColor = {
     HEX: '#121212',
