@@ -6,6 +6,8 @@ hex: "FBF9F9"
 luminance: 0.9510014633
 contrast: "black-pass"
 color_category: "white"
+palettes:
+  - "classic christmas"
 ---
 
 ```typescript
