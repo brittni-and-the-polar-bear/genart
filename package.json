@@ -60,6 +60,7 @@
   "scripts": {
     "build": "tsup",
     "docs": "typedoc",
+    "lint:js": "eslint -c eslint.config.js.mjs ./eslint.config.js.mjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepack": "npm run build"
   },
