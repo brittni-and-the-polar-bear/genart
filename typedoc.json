@@ -1,0 +1,55 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+
+  "compilerOptions": {
+    "skipLibCheck": true
+  },
+
+  "entryPoints": [
+    "./src/string/index.ts"
+  ],
+
+  "out": "./doc",
+
+  "customCss": "./style/typedoc.css",
+
+  "plugin": [
+    "typedoc-plugin-coverage"
+  ],
+
+  "includeVersion": true,
+
+  "json": "./doc/json",
+
+  "navigationLinks": {
+    "GitHub Pages": "https://brittni-and-the-polar-bear.github.io/genart/"
+  },
+
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true,
+    "includeFolders": true
+  },
+
+  "visibilityFilters": {
+    "private": true,
+    "protected": true,
+    "inherited": true,
+    "external": true,
+    "@alpha": true,
+    "@beta": true,
+    "@deprecated": true
+  },
+
+  "sort": ["kind", "visibility", "static-first", "alphabetical", "enum-value-ascending"],
+
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": true
+  },
+
+  "treatWarningsAsErrors": true,
+
+  "customFooterHtml": "<br/>Copyright &copy; 2022-2025 <a href=\"https://brittni-and-the-polar-bear.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">brittni and the polar bear LLC</a>."
+}
