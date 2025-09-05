@@ -23,3 +23,5 @@ The source code of this project is licensed under the
 The full text of the license is included with the package source code.
 
 ## > [releases](./releases.md)
+
+## > [resources](./resources.md)
