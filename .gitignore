@@ -5,17 +5,3 @@
 
 # Visual Studio Code
 .vscode/
-
-# node and npm
-node_modules/
-
-# Ruby
-Gemfile.lock
-
-# Jekyll
-_site/
-.jekyll-cache/
-.sass-cache/
-
-# bundling, testing, and coverage output
-out/
