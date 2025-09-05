@@ -19,6 +19,8 @@ node_modules/
 # TypeScript
 _compiled/
 
-
 # typedoc
 _doc/
+
+# tsup
+_dist/
