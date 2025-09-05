@@ -1,142 +1,123 @@
-# @batpb/genart - TypeScript Generative Art Library
+# @batpb/genart - Algorithmic Generative Art Library
 
 **Always reference these instructions first** and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
-This is a TypeScript library for creating generative art with p5.js, distributed as an npm package. The project is in active development and uses modern tooling including TypeScript, Jest, ESLint, and tsup for building.
+This is a TypeScript-compatible library for creating algorithmic generative art with p5.js, distributed as an npm package. The project is currently in alpha development with minimal package structure.
 
 ## Working Effectively
 
 ### Initial Setup and Dependencies
-1. **CRITICAL**: Use Node.js v22.12.0 (check `.node-version` file for exact version)
-   - Install via nvm: `nvm install 22.12.0 && nvm use 22.12.0`
-   - Verify: `node --version` should show `v22.12.0`
+1. **CRITICAL**: Use Node.js v22.19.0 (check `.node-version` file for exact version)
+   - Install via nvm: `nvm install 22.19.0 && nvm use 22.19.0`
+   - Verify: `node --version` should show `v22.19.0`
 
-2. **Install dependencies**: `npm ci` (takes ~20 seconds, NEVER CANCEL)
-   - Uses `npm ci` instead of `npm install` for consistent builds
-   - May show deprecation warnings for `inflight` and `glob` - these are normal
+2. **Install dependencies**: `npm install`
+   - The project currently has minimal dependencies
+   - Main branch contains only package structure for distribution
 
-### Development Workflow
-The main development happens on the `development` branch, NOT `main`. Always work from `development` branch.
+### Development Status
+**IMPORTANT**: This project is in alpha development. Work is done on the main branch which contains the minimal package structure for releases.
 
-3. **Linting** (ALWAYS run both before commits):
-   - `npm run lint:js` - JavaScript/config files (~1 second)
-   - `npm run lint:ts` - TypeScript source files (~3 seconds)
-
-4. **Build the library**: `npm run build` (~2 seconds, NEVER CANCEL)
-   - Uses `tsup` to create CommonJS, ES modules, and TypeScript declarations
-   - Output goes to `./out/dist/` directory
-   - Creates: `batpb-genart.js`, `batpb-genart.mjs`, `batpb-genart.d.ts`, and source maps
-
-5. **Run tests**: `npm test` (~4 seconds, NEVER CANCEL)
-   - Uses Jest with ts-jest for TypeScript support
-   - Currently has placeholder tests
-   - Generates coverage report
-
-6. **Generate documentation**: `npm run docs` (~2 seconds)
-   - Uses TypeDoc to generate API documentation
-   - Output goes to `./out/doc/` directory
-
-### Validation Scenarios
-**ALWAYS perform these validation steps after making changes**:
-- Build succeeds: `npm run build` completes without errors
-- Linting passes: Both `npm run lint:js` and `npm run lint:ts` pass
-- Tests pass: `npm test` completes successfully
-- Documentation builds: `npm run docs` generates without errors
+3. **Testing**: `npm test`
+   - Currently returns "Error: no test specified" and exits with code 1
+   - No test framework is set up yet in the main branch
 
 ## Project Structure
 
-### Repository Branches
-- `main` - Minimal package structure for releases
-- `development` - **Active development branch with full source code**
-- Other feature branches: `palettes`, `unit-tests`, `v2.0.0-rc.3`, etc.
+### Repository Structure
+- `main` - **Primary branch** with minimal package structure for releases
+- All development branches have been removed; work directly on main
 
 ### Key Directories and Files
 ```
 /
-├── src/                          # TypeScript source code
-│   ├── main/batpb-genart.ts     # Main library entry point
-│   └── test/batpb-genart.test.ts # Jest tests
-├── out/                         # Build output (generated)
-│   ├── dist/                    # Compiled library files
-│   ├── doc/                     # TypeDoc generated docs
-│   └── tests-coverage/          # Test coverage reports
-├── docs/                        # Jekyll documentation site
-├── OLD_BKUP/                    # Legacy code backup
-├── .github/workflows/           # CI/CD pipelines
-├── eslint.config.js.mjs         # ESLint config for JS files
-├── eslint.config.ts.mjs         # ESLint config for TypeScript
-├── jest.config.ts               # Jest test configuration
-├── tsconfig.json                # TypeScript compiler config
-├── tsup.config.ts               # Build tool configuration
-└── typedoc.json                 # Documentation generator config
+├── .github/                     # GitHub configuration
+│   ├── CODEOWNERS              # Code ownership rules
+│   ├── dependabot.yml          # Dependency updates config
+│   └── copilot-instructions.md # This file
+├── docs/                       # Jekyll documentation site
+│   ├── Gemfile                 # Ruby dependencies for Jekyll
+│   ├── _config.yml             # Jekyll site configuration
+│   ├── _includes/              # Jekyll include files
+│   └── index.md                # Main documentation page
+├── .gitignore                  # Git ignore rules
+├── .node-version               # Node.js version specification (v22.19.0)
+├── LICENSE                     # MIT License
+├── README.md                   # Project overview
+├── package.json                # NPM package configuration
+├── package-lock.json           # NPM dependency lock file
+└── velocity-copyright-template.txt  # Copyright template
 ```
 
-### Build Artifacts
-After running `npm run build`:
-- `out/dist/batpb-genart.js` - CommonJS build
-- `out/dist/batpb-genart.mjs` - ES module build  
-- `out/dist/batpb-genart.d.ts` - TypeScript declarations
-- Source maps for debugging
-
-## Common Issues and Workarounds
-
-### Node.js Version
-- **DO NOT** use Node.js versions other than specified in `.node-version`
-- If build fails, first check: `node --version` matches `.node-version`
-
-### Build Process
-- Build may fail if `./out` directory has permission issues
-- The build script runs `rm -r ./out` which may show "No such file or directory" on first run - this is normal
-
-### Dependencies
-- The project has security vulnerabilities in dev dependencies (6 vulnerabilities: 3 low, 3 moderate)
-- These are in development tools, not the final package - DO NOT run `npm audit fix` unless specifically requested
-
-### Documentation
-- Jekyll documentation in `docs/` uses a different structure than main branch
-- TypeDoc API docs are generated to `out/doc/` and require a successful build first
-
-## CI/CD Pipeline
-
-### GitHub Actions Workflow (.github/workflows/node-js.yml)
-Runs on: push to main, PRs to main, manual trigger
-- Matrix build: Node.js 18.x, 20.x, 22.x
-- Steps: checkout → setup node → `npm ci` → lint JS → lint TS → build → test
-- **Timeout expectations**: Each step takes <30 seconds in CI
-
-### Before Committing
-**MANDATORY checks** (CI will fail if these don't pass):
-1. `npm run lint:js` - Must pass
-2. `npm run lint:ts` - Must pass  
-3. `npm run build` - Must complete successfully
-4. `npm test` - All tests must pass
+### Documentation Site
+The project includes a Jekyll-based documentation site in the `docs/` directory:
+- Hosted at: https://brittni-and-the-polar-bear.github.io/genart/
+- Uses Jekyll with custom configuration
+- Main content in `index.md`
 
 ## Package Information
 - **Name**: @batpb/genart
-- **Current Version**: 2.0.0-rc.3 (alpha development)
-- **Dependencies**: p5.js, nearest-color, cococh, @types/p5, @types/nearest-color
-- **Peer Dependencies**: color-name-list@11.0.0
-- **License**: AGPL-3.0 (development branch) / MIT (main branch)
+- **Current Version**: 2.0.0-rc.3-alpha.0
+- **Description**: A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects
+- **License**: MIT
+- **Homepage**: https://brittni-and-the-polar-bear.github.io/genart/
+- **Repository**: https://github.com/brittni-and-the-polar-bear/genart
+- **Keywords**: algorithmic art, code art, genart, generative art, p5, p5.js, p5-js, p5.js library, typescript
+
+### Contributors
+- **brittni and the polar bear** (primary author)
+- brittni watkins (https://blwatkins.github.io/)
+- azurepolarbear (https://azurepolarbear.github.io/)
+
+## Current Limitations
+
+### Alpha Development Status
+- Project is in early alpha stage
+- No build tools or TypeScript compilation set up yet
+- No testing framework configured
+- Documentation is still being written
+- May have breaking changes in future releases
+
+### Available Scripts
+Currently only one npm script is available:
+- `npm test` - Shows "Error: no test specified" (no tests implemented yet)
+
+## Development Guidelines
+
+### Node.js Version
+- **CRITICAL**: Always use Node.js v22.19.0 as specified in `.node-version`
+- Check version before working: `node --version`
+
+### Working with the Project
+Since this is an alpha project with minimal structure:
+- Main development happens on the main branch
+- No build process exists yet
+- No linting or testing tools configured
+- Focus is on package distribution structure
+
+### Documentation Updates
+- Jekyll site documentation in `docs/` directory
+- Update `docs/index.md` for main documentation changes
+- Jekyll configuration in `docs/_config.yml`
 
 ## Quick Reference Commands
 
 **Setup new environment:**
 ```bash
-nvm use 22.12.0  # Use correct Node.js version
-npm ci           # Install dependencies (20s)
+nvm use 22.19.0  # Use correct Node.js version
+npm install      # Install minimal dependencies
 ```
 
-**Development cycle:**
+**Basic validation:**
 ```bash
-npm run lint:js && npm run lint:ts  # Lint code (4s total)
-npm run build                       # Build library (2s)
-npm test                           # Run tests (4s)
-npm run docs                       # Generate docs (2s)
+node --version   # Verify Node.js version (should be v22.19.0)
+npm test         # Will show "no test specified" error (expected)
 ```
 
-**Full validation (run before committing):**
+**Work with documentation:**
 ```bash
-npm run lint:js && npm run lint:ts && npm run build && npm test
+cd docs/         # Navigate to Jekyll site
+# Jekyll commands would go here if Jekyll is set up locally
 ```
 
-All timing estimates include a safety buffer - actual times may be faster.
+This project is in early development stages. Most typical development tooling (build, test, lint) is not yet configured.
