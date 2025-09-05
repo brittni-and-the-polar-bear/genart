@@ -1,3 +1,8 @@
+---
+title: "home"
+layout: base
+---
+
 # [@batpb/genart](https://www.npmjs.com/package/@batpb/genart) - algorithmic generative art library
 
 A
