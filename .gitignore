@@ -15,3 +15,6 @@ _site/
 
 # Node.js
 node_modules/
+
+# TypeScript
+compiled/
