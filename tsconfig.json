@@ -16,7 +16,7 @@
     "resolvePackageJsonImports": false,
 
     /* Emit */
-    "outDir": "./compiled",
+    "outDir": "./_compiled",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,

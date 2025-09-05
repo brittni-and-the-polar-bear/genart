@@ -9,7 +9,7 @@
     "./src/string/index.ts"
   ],
 
-  "out": "./doc",
+  "out": "./_doc",
 
   "customCss": "./style/typedoc.css",
 
@@ -19,7 +19,7 @@
 
   "includeVersion": true,
 
-  "json": "./doc/json",
+  "json": "./_doc/json",
 
   "navigationLinks": {
     "GitHub Pages": "https://brittni-and-the-polar-bear.github.io/genart/"

@@ -17,8 +17,8 @@ _site/
 node_modules/
 
 # TypeScript
-compiled/
+_compiled/
 
 
 # typedoc
-/doc/
+_doc/
