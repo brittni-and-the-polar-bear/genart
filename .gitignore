@@ -18,3 +18,7 @@ node_modules/
 
 # TypeScript
 compiled/
+
+
+# typedoc
+doc/
