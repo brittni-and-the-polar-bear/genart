@@ -40,6 +40,8 @@
     }
   ],
   "devDependencies": {
+    "typedoc": "^0.28.12",
+    "typedoc-plugin-coverage": "^4.0.1",
     "typescript": "^5.9.2"
   }
 }
