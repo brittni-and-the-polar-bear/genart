@@ -8,3 +8,7 @@
 
 # Ruby
 Gemfile.lock
+
+# Jekyll
+_site/
+.jekyll-cache/
