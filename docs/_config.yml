@@ -1,0 +1,23 @@
+# Minima theme configuration
+remote_theme: jekyll/minima
+plugins:
+  - jekyll-remote-theme
+
+# valid social icon names can be found at https://fontawesome.com/search?ic=brands
+
+minima:
+  skin: auto
+  hide_site_feed_link: true
+  show_excerpts: false
+  social_links:
+  nav_pages:
+
+title: "@batpb/genart - algorithmic generative art library"
+description: "A TypeScript compatible library built on p5.js for creating responsive, generative, algorithmic art projects."
+show_downloads: true
+
+include:
+  - "_*.html"
+
+exclude:
+  - Gemfile
