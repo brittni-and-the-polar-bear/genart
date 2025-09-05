@@ -3,6 +3,7 @@
   "version": "2.0.0-rc.3-alpha.0",
   "description": "A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects.",
   "scripts": {
+    "docs": "typedoc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",
