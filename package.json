@@ -2,10 +2,28 @@
   "name": "@batpb/genart",
   "version": "2.0.0-rc.3-alpha.0",
   "description": "A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects.",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "license": "MIT",
+  "types": "./_dist/index.d.ts",
+  "module": "./_dist/index.mjs",
+  "main": "./_dist/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./_dist/index.d.mts",
+        "default": "./_dist/index.mjs"
+      },
+      "require": {
+        "types": "./_dist/index.d.ts",
+        "default": "./_dist/index.js"
+      }
+    }
+  },
+  "files": [
+    "./_dist",
+    "./LICENSE",
+    "./package.json",
+    "./README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git@https://github.com/brittni-and-the-polar-bear/genart.git"
@@ -14,17 +32,6 @@
     "url": "https://github.com/brittni-and-the-polar-bear/genart/issues"
   },
   "homepage": "https://brittni-and-the-polar-bear.github.io/genart/",
-  "keywords": [
-    "algorithmic art",
-    "code art",
-    "genart",
-    "generative art",
-    "p5",
-    "p5.js",
-    "p5-js",
-    "p5.js library",
-    "typescript"
-  ],
   "author": {
     "name": "brittni and the polar bear",
     "url": "https://brittni-and-the-polar-bear.github.io/"
@@ -38,5 +45,38 @@
       "name": "azurepolarbear",
       "url": "https://azurepolarbear.github.io/"
     }
-  ]
+  ],
+  "keywords": [
+    "algorithmic art",
+    "code art",
+    "genart",
+    "generative art",
+    "p5",
+    "p5.js",
+    "p5-js",
+    "p5.js library",
+    "typescript"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "docs": "typedoc",
+    "lint:js": "eslint -c eslint.config.js.mjs ./eslint.config.js.mjs ./eslint.config.ts.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "@stylistic/eslint-plugin": "^5.3.1",
+    "eslint": "^9.35.0",
+    "eslint-plugin-es-x": "^9.1.0",
+    "eslint-plugin-n": "^17.21.3",
+    "eslint-plugin-security": "^3.0.1",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "tsup": "^8.5.0",
+    "typedoc": "^0.28.12",
+    "typedoc-plugin-coverage": "^4.0.1",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.42.0"
+  }
 }

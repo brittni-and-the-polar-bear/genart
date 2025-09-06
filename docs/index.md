@@ -14,6 +14,14 @@ for creating responsive, generative, algorithmic art projects.
 This project is currently in alpha development.
 There may be breaking changes in future releases, and the documentation is still being written.
 
+## > [documentation](./doc/index.html)
+
+## > license
+
 The source code of this project is licensed under the
 [MIT License](https://opensource.org/license/mit).
 The full text of the license is included with the package source code.
+
+## > [releases](./releases.md)
+
+## > [resources](./resources.md)
