@@ -61,13 +61,18 @@
     "build": "tsup",
     "docs": "typedoc",
     "lint:js": "eslint -c eslint.config.js.mjs ./eslint.config.js.mjs ./eslint.config.ts.mjs",
-    "lint:ts": "eslint -c eslint.config.ts.mjs ./src tsup.config.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:ts": "eslint -c eslint.config.ts.mjs ./src tsup.config.ts vitest.config.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
     "prepack": "npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "@stylistic/eslint-plugin": "^5.3.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
     "eslint": "^9.35.0",
     "eslint-plugin-es-x": "^9.1.0",
     "eslint-plugin-n": "^17.21.3",
@@ -78,6 +83,7 @@
     "typedoc": "^0.28.12",
     "typedoc-plugin-coverage": "^4.0.1",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.42.0"
+    "typescript-eslint": "^8.42.0",
+    "vitest": "^3.2.4"
   }
 }

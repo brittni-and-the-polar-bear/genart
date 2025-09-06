@@ -24,3 +24,6 @@ _doc/
 
 # tsup
 _dist/
+
+# Vitest coverage
+coverage/
