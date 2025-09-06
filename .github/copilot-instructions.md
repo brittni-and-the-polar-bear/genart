@@ -22,8 +22,11 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
    - `npm run build` - Compiles TypeScript to multiple formats using tsup
    - `npm run docs` - Generates documentation using typedoc  
    - `npm run lint:js` - Lints JavaScript configuration files with ESLint
-   - `npm run lint:ts` - Lints TypeScript source files with ESLint
-   - `npm test` - Still returns "Error: no test specified" (no tests implemented yet)
+   - `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsup.config.ts and vitest.config.ts)
+   - `npm test` - Runs vitest unit tests
+   - `npm run test:watch` - Runs vitest in watch mode
+   - `npm run test:ui` - Runs vitest with UI interface
+   - `npm run test:coverage` - Runs vitest with coverage reporting
 
 ## Project Structure
 
@@ -33,7 +36,11 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 ├── .github/                       # GitHub configuration
 │   ├── CODEOWNERS                # Code ownership rules
 │   ├── dependabot.yml            # Dependency updates config
-│   └── copilot-instructions.md   # This file
+│   ├── copilot-instructions.md   # This file
+│   └── workflows/                # GitHub Actions workflows
+│       ├── codeql.yml            # CodeQL security scanning
+│       ├── npm-build-test.yml    # CI/CD build and test verification
+│       └── npm-publish.yml       # NPM package publishing
 ├── docs/                         # Jekyll documentation site
 │   ├── Gemfile                   # Ruby dependencies for Jekyll
 │   ├── _config.yml               # Jekyll site configuration
@@ -49,9 +56,12 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   ├── index.ts              # Module exports
 │   │   └── string-validator.ts   # StringValidator class
 │   └── index.ts                  # Main library exports
+├── tests/                        # Vitest unit tests
+│   └── string/                   # String module tests
+│       └── string-validator.test.ts # StringValidator unit tests
 ├── style/                        # Styling files
 │   └── typedoc.css               # Custom TypeDoc styling
-├── .gitignore                    # Git ignore rules (includes build outputs)
+├── .gitignore                    # Git ignore rules (includes build outputs and coverage)
 ├── .node-version                 # Node.js version specification (v22.19.0)
 ├── eslint.config.js.mjs          # ESLint configuration for JavaScript files
 ├── eslint.config.ts.mjs          # ESLint configuration for TypeScript files
@@ -62,7 +72,8 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 ├── tsconfig.json                 # TypeScript compiler configuration
 ├── tsup.config.ts                # Build tool configuration
 ├── typedoc.json                  # Documentation generator configuration
-└── velocity-copyright-template.txt  # Copyright template
+├── velocity-copyright-template.txt  # Copyright template
+└── vitest.config.ts              # Vitest testing configuration
 ```
 
 ### Documentation Site
@@ -101,6 +112,11 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - **typedoc** - TypeScript documentation generator
 - **typedoc-plugin-coverage** - Coverage reporting for documentation
 
+### Testing
+- **vitest** - Fast unit testing framework
+- **@vitest/coverage-v8** - Coverage reporting with v8 provider
+- **@vitest/ui** - Web UI for vitest testing
+
 ### Linting and Code Quality  
 - **@eslint/js** - ESLint JavaScript configurations
 - **eslint** - Core ESLint linting engine
@@ -116,6 +132,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - `typedoc.json` - Documentation generation settings with custom styling
 - `eslint.config.js.mjs` - ESLint rules for JavaScript configuration files
 - `eslint.config.ts.mjs` - ESLint rules for TypeScript source code
+- `vitest.config.ts` - Testing configuration with coverage settings
 
 ## Current Limitations
 
@@ -123,14 +140,15 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - Project is in early alpha stage
 - TypeScript compilation, build tools, and linting are set up and functional
 - Documentation generation is configured with typedoc
-- No testing framework configured yet
-- GitHub Actions workflows for CI/CD are not yet implemented (codeql.yml and npm-build-test.yml mentioned in PR #305 are not present)
-- Build outputs (`_compiled/`, `_doc/`, `_dist/`) are ignored by `.gitignore`
+- Vitest testing framework is configured and functional with comprehensive test coverage
+- GitHub Actions workflows for CI/CD are implemented (codeql.yml, npm-build-test.yml, npm-publish.yml)
+- Build outputs (`_compiled/`, `_doc/`, `_dist/`) and test coverage (`_coverage/`) are ignored by `.gitignore`
 - May have breaking changes in future releases
 
 ### Library Content
 - Currently includes `string` module with `StringValidator` class for hex color validation
 - Supports `#RRGGBB`, `#RRGGBBAA`, `#rrggbb`, and `#rrggbbaa` hex color patterns
+- StringValidator class only accepts hex codes where all letters are in the same case (by design for consistency)
 - More modules and utilities will be added in future releases
 
 ### Available Scripts
@@ -138,9 +156,12 @@ The following npm scripts are available:
 - `npm run build` - Compiles TypeScript using tsup (outputs to `_dist/`)
 - `npm run docs` - Generates API documentation using typedoc (outputs to `_doc/`)
 - `npm run lint:js` - Lints JavaScript configuration files with ESLint
-- `npm run lint:ts` - Lints TypeScript source files with ESLint
+- `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsup.config.ts and vitest.config.ts)
 - `npm run prepack` - Runs build automatically before packaging
-- `npm test` - Shows "Error: no test specified" (no tests implemented yet)
+- `npm test` - Runs vitest unit tests
+- `npm run test:watch` - Runs vitest in watch mode for development
+- `npm run test:ui` - Runs vitest with web UI interface
+- `npm run test:coverage` - Runs vitest with coverage reporting (outputs to `_coverage/`)
 
 ## Development Guidelines
 
@@ -155,6 +176,8 @@ This project now has full TypeScript development infrastructure:
 - ESLint setup for both JavaScript config files and TypeScript source
 - Build process generates multiple formats (ESM, CJS, IIFE) with type definitions
 - Documentation generation creates comprehensive API docs
+- Vitest testing framework with comprehensive coverage and multiple test modes
+- GitHub Actions workflows for CI/CD, security scanning, and publishing
 - Code is organized in modules (currently `string` module with more to come)
 
 ### Documentation Updates
@@ -168,6 +191,8 @@ This project now has full TypeScript development infrastructure:
 - **tsup**: Build tool that creates multiple output formats in `_dist/`
 - **typedoc**: Documentation generator with coverage plugin, outputs to `_doc/`
 - **ESLint**: Separate configurations for JS and TS files with comprehensive rules
+- **vitest**: Fast unit testing framework with coverage reporting, outputs to `_coverage/`
+- **GitHub Actions**: Automated CI/CD workflows for testing, security scanning, and publishing
 - **Package exports**: Configured for proper module resolution in different environments
 
 ## Quick Reference Commands
@@ -184,6 +209,8 @@ npm run build          # Build the library
 npm run docs           # Generate documentation
 npm run lint:js        # Lint JavaScript configuration files  
 npm run lint:ts        # Lint TypeScript source files
+npm test               # Run unit tests
+npm run test:coverage  # Run tests with coverage reporting
 ```
 
 **Basic validation:**
@@ -191,7 +218,7 @@ npm run lint:ts        # Lint TypeScript source files
 node --version         # Verify Node.js version (should be v22.19.0)
 npm run build          # Should build successfully
 npm run docs           # Should generate docs
-npm test               # Will show "no test specified" error (expected)
+npm test               # Should run vitest tests and pass
 ```
 
 **Work with documentation:**
@@ -200,4 +227,4 @@ cd docs/               # Navigate to Jekyll site
 # Jekyll commands would go here if Jekyll is set up locally
 ```
 
-This project now has comprehensive TypeScript development tooling including compilation, documentation generation, and linting. The build outputs are ignored by git but the development infrastructure is fully functional.
+This project now has comprehensive TypeScript development tooling including compilation, documentation generation, linting, and unit testing with vitest. GitHub Actions workflows provide automated CI/CD, security scanning, and npm publishing. The build outputs are ignored by git but the development infrastructure is fully functional.
