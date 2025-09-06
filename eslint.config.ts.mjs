@@ -207,7 +207,10 @@ export default tsEslint.config(
             '@typescript-eslint/restrict-template-expressions': ['error', {
                 allowNumber: true,
                 allowBoolean: true
-            }]
+            }],
+
+            /* eslint-plugin-n overrides for TypeScript */
+            'n/no-missing-import': 'off' // TypeScript compiler handles module resolution
         }
     }
 );
