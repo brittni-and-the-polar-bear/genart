@@ -16,7 +16,7 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
    - Main branch contains the full development structure and build tooling
 
 ### Development Status
-**IMPORTANT**: This project is in alpha development. Work is done on the main branch which now includes full TypeScript development infrastructure.
+**IMPORTANT**: This project is in alpha development.
 
 3. **Build & Test**: Multiple scripts available
    - `npm run build` - Compiles TypeScript to multiple formats using tsup
@@ -26,10 +26,6 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
    - `npm test` - Still returns "Error: no test specified" (no tests implemented yet)
 
 ## Project Structure
-
-### Repository Structure
-- `main` - **Primary branch** with minimal package structure for releases
-- All development branches have been removed; work directly on main
 
 ### Key Directories and Files
 ```
@@ -165,7 +161,6 @@ This project now has full TypeScript development infrastructure:
 - Jekyll site documentation in `docs/` directory  
 - Update `docs/index.md` for main documentation changes
 - Jekyll configuration in `docs/_config.yml`
-- TypeDoc generates API documentation in `docs/doc/`
 - Release documentation organized in `docs/releases/`
 
 ### Build and Development Tools
@@ -202,7 +197,6 @@ npm test               # Will show "no test specified" error (expected)
 **Work with documentation:**
 ```bash
 cd docs/               # Navigate to Jekyll site
-npm run docs           # Generate TypeDoc documentation
 # Jekyll commands would go here if Jekyll is set up locally
 ```
 

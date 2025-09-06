@@ -154,7 +154,7 @@ export default tsEslint.config(
 
             '@stylistic/semi': ['error', 'always'],
 
-            /* typescript-eslint */
+            /* @typescript-eslint */
 
             'dot-notation': 'off',
             '@typescript-eslint/dot-notation': 'error',
@@ -209,8 +209,8 @@ export default tsEslint.config(
                 allowBoolean: true
             }],
 
-            /* eslint-plugin-n overrides for TypeScript */
-            'n/no-missing-import': 'off' // TypeScript compiler handles module resolution
+            /* eslint-plugin-n */
+            'n/no-missing-import': 'off'
         }
     }
 );

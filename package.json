@@ -61,7 +61,7 @@
     "build": "tsup",
     "docs": "typedoc",
     "lint:js": "eslint -c eslint.config.js.mjs ./eslint.config.js.mjs ./eslint.config.ts.mjs",
-    "lint:ts": "eslint -c eslint.config.ts.mjs ./src",
+    "lint:ts": "eslint -c eslint.config.ts.mjs ./src tsup.config.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepack": "npm run build"
   },
