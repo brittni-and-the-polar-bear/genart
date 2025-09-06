@@ -21,7 +21,10 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import { StringValidator } from '../../src/string/string-validator';
+
+import { string } from '../../src';
+
+const { StringValidator } = string;
 
 describe('StringValidator', () => {
     const validHex_noAlpha: string[] = [
@@ -339,7 +342,7 @@ describe('StringValidator', () => {
     });
 
     describe('StringValidator constructor', (): void => {
-        test('should throw an error when trying to instantiate', (): void => {
+        test('new StringValidator()', (): void => {
             expect(() => new StringValidator()).toThrow('StringValidator is a static class and cannot be instantiated.');
         });
     });
