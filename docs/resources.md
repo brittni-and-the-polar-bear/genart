@@ -22,3 +22,9 @@ layout: base
 ### >> documentation
 
 * [typedoc](https://typedoc.org/)
+
+### >> linting
+
+* [ESLint](https://eslint.org/)
+* [ESLint Stylistic](https://eslint.style/)
+* [typescript-eslint](https://typescript-eslint.io/)
