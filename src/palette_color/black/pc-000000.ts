@@ -20,11 +20,24 @@
  * SOFTWARE.
  */
 
-export * from './black'
+import { Discriminators } from '../../discriminator';
+
+import { PaletteColor } from '../palette-color';
 
 /**
- * @category Namespace
+ * <div class="color-block" style="background: #000000;">
+ *     <a href="https://coolors.co/000000" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">black (#000000)</h2>
+ *     </a>
+ * </div>
+ *
+ * @category Black
  */
-export * as black from './black'
-
-export * from './palette-color';
+export const PC_000000: PaletteColor = {
+    HEX: '#000000',
+    HSL: { H: 0, S: 0, L: 0 },
+    RGB: { R: 0, G: 0, B: 0 },
+    NAME: 'black',
+    LUMINANCE: 0.00,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
