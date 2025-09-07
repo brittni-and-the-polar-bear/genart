@@ -17,6 +17,13 @@ title: "@batpb/genart - algorithmic generative art library"
 description: "A TypeScript compatible library built on p5.js for creating responsive, generative, algorithmic art projects."
 show_downloads: true
 
+collections_dir: "./_collections"
+
+collections:
+  palette_colors:
+    output: true
+    sort_by: luminance
+
 include:
   - "_*.html"
 
