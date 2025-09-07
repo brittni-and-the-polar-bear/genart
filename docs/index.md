@@ -16,12 +16,14 @@ There may be breaking changes in future releases, and the documentation is still
 
 ## > [documentation](./doc/index.html)
 
+## > [library colors](./colors/colors.md)
+
+## > [releases](./releases.md)
+
+## > [resources](./resources.md)
+
 ## > license
 
 The source code of this project is licensed under the
 [MIT License](https://opensource.org/license/mit).
 The full text of the license is included with the package source code.
-
-## > [releases](./releases.md)
-
-## > [resources](./resources.md)
