@@ -22,10 +22,10 @@
 
 import { Discriminators } from '../../discriminator';
 
-import { ALL_PALETTE_COLORS } from '../index';
+import { ALL_PALETTE_COLORS } from '../all-colors';
 import { PaletteColor } from '../palette-color';
 
-import { BLACK_PALETTE_COLORS } from './index';
+import { BLACK_PALETTE_COLORS } from './black-colors';
 
 /**
  * <div class="color-block" style="background: #000000;">

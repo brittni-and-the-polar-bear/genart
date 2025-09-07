@@ -19,15 +19,3 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-export * from './black';
-
-export * from './all-colors';
-export * from './palette-color';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as black from './black';
