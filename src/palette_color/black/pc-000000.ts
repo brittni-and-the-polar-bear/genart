@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 
+import { ColorNames } from '../../color';
 import { Discriminators } from '../../discriminator';
 
 import { ALL_PALETTE_COLORS } from '../all-colors';
@@ -49,3 +50,4 @@ export const PC_000000: PaletteColor = {
 
 ALL_PALETTE_COLORS.setIfAbsent(PC_000000.HEX, PC_000000);
 BLACK_PALETTE_COLORS.setIfAbsent(PC_000000.HEX, PC_000000);
+ColorNames.addColor(PC_000000);
