@@ -35,6 +35,8 @@ import { Discriminators } from './discriminators';
 export class Discriminator {
     /**
      * @throws {Error} - Discriminator is a static class and cannot be instantiated.
+     *
+     * @since 2.0.0
      */
     public constructor() {
         throw new Error('Discriminator is a static class and cannot be instantiated.');

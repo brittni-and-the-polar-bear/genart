@@ -24,6 +24,8 @@ export * from './black';
 
 /**
  * @category Namespace
+ *
+ * @since 2.0.0
  */
 export * as black from './black';
 

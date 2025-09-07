@@ -31,6 +31,8 @@ import { PaletteColor } from '../palette-color';
  *     </a>
  * </div>
  *
+ * @since 2.0.0
+ *
  * @category Black
  */
 export const PC_000000: PaletteColor = {
