@@ -22,7 +22,10 @@
 
 import { Discriminators } from '../../discriminator';
 
+import { ALL_PALETTE_COLORS } from '../index';
 import { PaletteColor } from '../palette-color';
+
+import { BLACK_PALETTE_COLORS } from './index';
 
 /**
  * <div class="color-block" style="background: #000000;">
@@ -43,3 +46,6 @@ export const PC_000000: PaletteColor = {
     LUMINANCE: 0.00,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
+
+ALL_PALETTE_COLORS.setIfAbsent(PC_000000.HEX, PC_000000);
+BLACK_PALETTE_COLORS.setIfAbsent(PC_000000.HEX, PC_000000);
