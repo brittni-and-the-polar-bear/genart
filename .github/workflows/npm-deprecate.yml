@@ -1,0 +1,23 @@
+# This workflow will deprecate a version of the @batpb/genart package
+
+name: npm Package Deprecate
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deprecate'
+        required: true
+
+jobs:
+  deprecate-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          registry-url: https://registry.npmjs.org/
+      - run: npm deprecate @batpb/genart@${{ github.event.inputs.version }} "version ${{ github.event.inputs.version }} is no longer supported"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
