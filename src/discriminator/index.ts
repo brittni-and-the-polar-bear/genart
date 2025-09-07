@@ -21,4 +21,5 @@
  */
 
 export * from './discriminable';
+export * from './discriminator';
 export * from './discriminators';
