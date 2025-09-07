@@ -68,6 +68,13 @@
     "test:coverage": "vitest run --coverage",
     "prepack": "npm run build"
   },
+  "dependencies": {
+    "@types/nearest-color": "^0.4.1",
+    "nearest-color": "^0.4.4"
+  },
+  "peerDependencies": {
+    "color-name-list": "^11.24.2"
+  },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "@stylistic/eslint-plugin": "^5.3.1",
