@@ -48,3 +48,15 @@ updates:
           - "major"
           - "minor"
           - "patch"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    target-branch: "main"
+    commit-message:
+      prefix: "dependabot github-actions update"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github actions"
