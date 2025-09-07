@@ -20,12 +20,15 @@
  * SOFTWARE.
  */
 
-export * from './black';
+import { StringMap } from '../map';
+
+import { PaletteColor } from "./palette-color";
 
 /**
- * @category Namespace
+ * A map of hex values to {@link PaletteColor} objects for all palette colors.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
+ *
+ * @category PaletteColor Collections
  */
-export * as black from './black';
-
-export * from './palette-color';
-export * from './palette-color-maps';
+export const ALL_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();

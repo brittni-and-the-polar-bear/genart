@@ -25,7 +25,7 @@ import { Discriminable, Discriminators } from '../discriminator';
 /**
  * A color to be used in a Palette.
  *
- * @category Palette Color
+ * @category PaletteColor
  */
 export interface PaletteColor extends Discriminable {
     /**
