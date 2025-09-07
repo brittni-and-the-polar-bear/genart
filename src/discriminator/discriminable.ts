@@ -20,5 +20,19 @@
  * SOFTWARE.
  */
 
-export * from './discriminable';
-export * from './discriminators';
+import { Discriminators } from './discriminators';
+
+/**
+ * Interface for objects that can be categorized by a discriminator value
+ * and the {@link Discriminator} class.
+ *
+ * @since 2.0.0
+ *
+ * @category Discriminator
+ */
+export interface Discriminable {
+    /**
+     * Discriminator value for the implementing interface.
+     */
+    readonly DISCRIMINATOR: Discriminators;
+}
