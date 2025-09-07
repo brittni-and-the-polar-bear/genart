@@ -30,14 +30,14 @@
  */
 export enum Discriminators {
     /**
-     * Discriminator for the {@link Palette} interface.
+     * Discriminator for the Palette interface.
      *
      * @since 2.0.0
      */
     PALETTE = 'I_PALETTE',
 
     /**
-     * Discriminator for the {@link PaletteColor} interface.
+     * Discriminator for the PaletteColor interface.
      *
      * @since 2.0.0
      */

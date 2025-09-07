@@ -23,7 +23,7 @@
 import { Discriminable, Discriminators } from '../discriminator';
 
 /**
- * A color to be used in a {@link Palette}.
+ * A color to be used in a Palette.
  *
  * @category Palette Color
  */
