@@ -20,11 +20,11 @@
  * SOFTWARE.
  */
 
-export * from './black'
+export * from './black';
 
 /**
  * @category Namespace
  */
-export * as black from './black'
+export * as black from './black';
 
 export * from './palette-color';
