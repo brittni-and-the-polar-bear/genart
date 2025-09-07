@@ -29,6 +29,20 @@ import { PaletteColor } from "./palette-color";
  *
  * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
  *
+ * @since 2.0.0
+ *
  * @category PaletteColor Collections
  */
 export const ALL_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
+
+/**
+ * A map of hex values to {@link PaletteColor} objects for all black palette colors.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/black/black-colors.html" target="_blank" rel="noopener noreferrer">See the Colors</a>
+ *
+ * @since 2.0.0
+ *
+ * @category PaletteColor Collections
+ * @category Black
+ */
+export const BLACK_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
