@@ -53,7 +53,6 @@ export class Discriminator {
         return Discriminator.#hasDiscriminatorMatch(object, Discriminators.PALETTE_COLOR);
     }
 
-
     /**
      * Does the given object implement the {@link Discriminable} interface, and does the object's {@link Discriminable.DISCRIMINATOR} value match the given discriminator?
      *
