@@ -43,40 +43,6 @@ const MAX_LIGHTNESS = 100;
 const MIN_LUMINANCE = 0;
 const MAX_LUMINANCE = 1;
 
-export function testPaletteColorMap(map: StringMap<PaletteColor>, mapName: string, hexes: HexCollection): void {
-    test(`testStringMap(${mapName})`, () => {
-        testStringMap(map, hexes.length)
-    })
-
-    test.each(
-        hexes
-    )(`${mapName}.get($hexString)`, ({hexString}: { hexString: string }): void => {
-        expect(hexString).toBeTruthy();
-        expect(StringValidator.isHex(hexString)).toBeTruthy();
-
-        const pc: PaletteColor | undefined = map.get(hexString);
-        expect(pc).toBeTruthy();
-
-        if (pc) {
-            expect(pc.HEX).toBe(hexString);
-        }
-    });
-
-    test.each(
-        hexes
-    )(`testPaletteColor(${mapName}.get($hexString))`, ({hexString}: {hexString: string}): void =>{
-        expect(hexString).toBeTruthy();
-        expect(StringValidator.isHex(hexString)).toBeTruthy();
-
-        const pc: PaletteColor | undefined = map.get(hexString);
-        expect(pc).toBeTruthy();
-
-        if (pc) {
-            testPaletteColor(pc);
-        }
-    });
-}
-
 export function testPaletteColor(pc: PaletteColor): void {
     expect(pc).toBeTruthy();
     expect(pc.HEX).toBeTruthy();
@@ -111,4 +77,38 @@ export function testPaletteColor(pc: PaletteColor): void {
         expect(pc.HSL.L).toBeGreaterThanOrEqual(MIN_COLOR_COMPONENT);
         expect(pc.HSL.L).toBeLessThanOrEqual(MAX_LIGHTNESS);
     }
+}
+
+export function testPaletteColorMap(map: StringMap<PaletteColor>, mapName: string, hexes: HexCollection): void {
+    test(`testStringMap(${mapName})`, () => {
+        testStringMap(map, hexes.length)
+    })
+
+    test.each(
+        hexes
+    )(`${mapName}.get($hexString)`, ({hexString}: { hexString: string }): void => {
+        expect(hexString).toBeTruthy();
+        expect(StringValidator.isHex(hexString)).toBeTruthy();
+
+        const pc: PaletteColor | undefined = map.get(hexString);
+        expect(pc).toBeTruthy();
+
+        if (pc) {
+            expect(pc.HEX).toBe(hexString);
+        }
+    });
+
+    test.each(
+        hexes
+    )(`testPaletteColor(${mapName}.get($hexString))`, ({hexString}: {hexString: string}): void =>{
+        expect(hexString).toBeTruthy();
+        expect(StringValidator.isHex(hexString)).toBeTruthy();
+
+        const pc: PaletteColor | undefined = map.get(hexString);
+        expect(pc).toBeTruthy();
+
+        if (pc) {
+            testPaletteColor(pc);
+        }
+    });
 }
