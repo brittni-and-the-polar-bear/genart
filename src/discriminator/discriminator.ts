@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import { PaletteColor } from '../palette-color';
+import { PaletteColor } from '../palette_color';
 
 import { Discriminable } from './discriminable';
 import { Discriminators } from './discriminators';

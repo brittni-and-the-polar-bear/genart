@@ -22,5 +22,5 @@
 
 export * as discriminator from './discriminator';
 export * as palette from './palette';
-export * as palette_color from './palette-color';
+export * as palette_color from './palette_color';
 export * as string from './string';
