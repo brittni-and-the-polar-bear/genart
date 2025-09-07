@@ -1,6 +1,6 @@
 {
   "name": "@batpb/genart",
-  "version": "2.0.0-rc.3-alpha.0",
+  "version": "2.0.0-rc.3-alpha.1",
   "description": "A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects.",
   "license": "MIT",
   "types": "./_dist/index.d.ts",
