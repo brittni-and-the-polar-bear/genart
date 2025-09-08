@@ -21,6 +21,7 @@
  */
 
 export * from './black';
+export * from './gray';
 
 export * from './all-colors';
 export * from './palette-color';
@@ -31,3 +32,10 @@ export * from './palette-color';
  * @since 2.0.0
  */
 export * as black from './black';
+
+/**
+ * @category Namespace
+ *
+ * @since 2.0.0
+ */
+export * as gray from './gray';

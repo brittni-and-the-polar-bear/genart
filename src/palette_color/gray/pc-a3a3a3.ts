@@ -20,41 +20,37 @@
  * SOFTWARE.
  */
 
+import { ColorNames } from '../../color';
 import { Discriminators } from '../../discriminator';
-import { PC_000000, PC_A3A3A3 } from '../../palette_color';
+import { ASEXUAL_PRIDE_PALETTE } from '../../palette';
 
-import { Palette } from '../palette';
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { GRAY_PALETTE_COLORS } from './gray-colors';
 
 /**
- * <!-- Coolors Palette Widget -->
- * <script src="https://coolors.co/palette-widget/widget.js"></script>
- * <script data-id="08264250835324647">new CoolorsPaletteWidget("08264250835324647", ["000000","a3a3a3","ffffff","80007f"],"asexual pride"); </script>
+ * <div class="color-block" style="background: #A3A3A3;">
+ *     <a href="https://coolors.co/a3a3a3" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">dark souls (#A3A3A3)</h2>
+ *     </a>
+ * </div>
  *
- * @see {@link PC_000000}
- * @see {@link PC_A3A3A3}
+ * @see {@link ASEXUAL_PRIDE_PALETTE}
  *
  * @since 2.0.0
  *
- * @category Pride
+ * @category Gray
  */
-export const ASEXUAL_PRIDE_PALETTE: Palette = {
-    NAME: 'asexual pride',
-    SOURCE: 'flagcolorcodes: Asexual Flag Color Codes',
-    SOURCE_URL: 'https://www.flagcolorcodes.com/asexual',
-    IS_GRADIENT: false,
-    DISCRIMINATOR: Discriminators.PALETTE,
-
-    COLORS: [
-        PC_000000,
-        PC_A3A3A3
-        // #FFFFFF
-        // #80007F
-    ],
-
-    CONTRAST_MAP: {
-        '#000000': ['#A3A3A3', '#FFFFFF'],
-        '#A3A3A3': ['#000000'],
-        '#FFFFFF': ['#000000', '#80007F'],
-        '#80007F': ['#FFFFFF']
-    }
+export const PC_A3A3A3: PaletteColor = {
+    HEX: '#A3A3A3',
+    RGB: { R: 163, G: 163, B: 163 },
+    HSL: { H: 0, S: 0, L: 64 },
+    NAME: 'dark souls',
+    LUMINANCE: 0.3662525956,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
+
+ALL_PALETTE_COLORS.setIfAbsent(PC_A3A3A3.HEX, PC_A3A3A3);
+GRAY_PALETTE_COLORS.setIfAbsent(PC_A3A3A3.HEX, PC_A3A3A3);
+ColorNames.addColor(PC_A3A3A3);
