@@ -3,7 +3,7 @@ layout: base
 ---
 
 <!--
-  ~ Copyright (C) 2024-2025 brittni and the polar bear LLC.
+  ~ Copyright (C) 2025 brittni and the polar bear LLC.
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -24,54 +24,34 @@ layout: base
   ~ SOFTWARE.
   -->
 
-<style>
-    div.color-block {
-        text-align: center;
-    }
+<script src="https://coolors.co/palette-widget/widget.js"></script>
 
-    .color-block {
-        width: 100%;
-        margin: 0;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-    }
+<h1>{{ page.title }}</h1>
 
-    .black-pass {
-        color: black;
-    }
-
-    .white-pass {
-        color: white;
-    }
-</style>
-
-<h1>{{ page.name }} (#{{ page.hex }})</h1>
-
-{%- assign lowercase_hex = page.hex | downcase -%}
-
-<div class="color-block" style="background: #{{ page.hex }};">
-    <a href="https://coolors.co/{{ lowercase_hex }}" target="_blank" rel="noopener noreferrer">
-        <h2 class="color-block {{ page.contrast }}">{{ page.name }} (#{{ page.hex }})</h2>
-    </a>
-</div>
+<h2>palette source: <a href="{{ page.source_url }}" target="_blank" rel="noopener noreferrer">{{ page.source }}</a></h2>
 
 <hr/>
 
-<h2>palettes</h2>
+<h2>coolors widget</h2>
 
-<ul>
-    {% for palette in site.palettes %}
-        {%- for palette_name in page.palettes -%}
-            {%- if palette.name == palette_name -%}
-            <li>
-                <h3><a href="{{ palette.url | relative_url }}">{{ palette.name }}</a></h3>
-            </li>
-            {%- break -%}
-            {%- endif -%}
-        {%- endfor -%}
-    {% endfor %}
-</ul>
+<p>{{ page.coolors_script }}</p>
 
 <hr/>
 
 {{ content }}
+
+<hr/>
+
+<h2>colors</h2>
+
+<ul>
+    {% for color_hex in page.colors %}
+        {%- for color in site.palette_colors -%}
+            {%- if color.hex == color_hex -%}
+            <li>
+                <h3><a href="{{ color.url | relative_url }}">{{ color.title }}</a></h3>
+            </li>
+            {%- endif -%}
+        {%- endfor -%}
+    {% endfor %}
+</ul>

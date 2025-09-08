@@ -6,9 +6,13 @@ hex: "A3A3A3"
 luminance: 0.3662525956
 contrast: "black-pass"
 color_category: "gray"
+palettes:
+  - "asexual pride"
 ---
 
-## `palette_color` module example
+## examples
+
+### `palette_color` module example
 
 ```typescript
 import { palette_color } from '@batpb/genart';
@@ -18,7 +22,7 @@ const { PC_{{ page.hex }} } = palette_color;
 const name: string = PC_{{ page.hex }}.NAME;
 ```
 
-## `{{ page.color_category }}` namespace example
+### `{{ page.color_category }}` namespace example
 
 ````typescript
 import { palette_color } from '@batpb/genart';

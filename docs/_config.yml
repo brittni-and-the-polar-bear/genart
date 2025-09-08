@@ -12,6 +12,8 @@ minima:
   social_links:
   nav_pages:
     - index.md
+    - colors/colors.md
+    - palettes/palettes.md
 
 title: "@batpb/genart - algorithmic generative art library"
 description: "A TypeScript compatible library built on p5.js for creating responsive, generative, algorithmic art projects."
@@ -23,6 +25,9 @@ collections:
   palette_colors:
     output: true
     sort_by: luminance
+  palettes:
+    output: true
+    sort_by: name
 
 include:
   - "_*.html"

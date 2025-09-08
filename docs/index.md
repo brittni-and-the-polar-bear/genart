@@ -18,6 +18,8 @@ There may be breaking changes in future releases, and the documentation is still
 
 ## > [library colors](./colors/colors.md)
 
+## > [library palettes](./palettes/palettes.md)
+
 ## > [releases](./releases.md)
 
 ## > [resources](./resources.md)
