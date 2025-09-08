@@ -28,6 +28,6 @@ import { BLACK_HEXES, testPaletteColorMap } from '../../test_utils';
 
 const { BLACK_PALETTE_COLORS } = palette_color;
 
-describe('BLACK_PALETTE_COLORS', () => {
+describe('BLACK_PALETTE_COLORS', (): void => {
     testPaletteColorMap(BLACK_PALETTE_COLORS, 'BLACK_PALETTE_COLORS', BLACK_HEXES);
 });

@@ -20,12 +20,14 @@
  * SOFTWARE.
  */
 
-export type HexCollection = { hexString: string; }[];
+import {describe} from "vitest";
 
-export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' }
-];
+import { palette_color } from '../../../src';
 
-export const GRAY_HEXES: HexCollection = [
-    { hexString: '#A3A3A3' }
-];
+import { GRAY_HEXES, testPaletteColorMap} from "../../test_utils";
+
+const { GRAY_PALETTE_COLORS } = palette_color;
+
+describe('GRAY_PALETTE_COLORS', (): void => {
+    testPaletteColorMap(GRAY_PALETTE_COLORS, 'GRAY_PALETTE_COLORS', GRAY_HEXES);
+});
