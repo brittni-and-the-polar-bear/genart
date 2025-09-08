@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 
+import { Palette } from '../palette';
 import { PaletteColor } from '../palette_color';
 
 import { Discriminable } from './discriminable';
@@ -40,6 +41,19 @@ export class Discriminator {
      */
     public constructor() {
         throw new Error('Discriminator is a static class and cannot be instantiated.');
+    }
+
+    /**
+     * Does the given object implement the {@link Palette} interface?
+     *
+     * @param object - The object to check
+     *
+     * @returns `true` if the given object implements the {@link Palette} interface, `false` if it does not.
+     *
+     * @since 2.0.0
+     */
+    public static isPalette(object: unknown): object is Palette {
+        return Discriminator.#hasDiscriminatorMatch(object, Discriminators.PALETTE);
     }
 
     /**
