@@ -20,6 +20,9 @@
  * SOFTWARE.
  */
 
+import { Palette } from '../palette';
+import { PaletteColor } from '../palette_color';
+
 /**
  * Discriminator values for library interfaces.
  * All values should be unique.
@@ -30,14 +33,14 @@
  */
 export enum Discriminators {
     /**
-     * Discriminator for the Palette interface.
+     * Discriminator for the {@link Palette} interface.
      *
      * @since 2.0.0
      */
     PALETTE = 'I_PALETTE',
 
     /**
-     * Discriminator for the PaletteColor interface.
+     * Discriminator for the {@link PaletteColor} interface.
      *
      * @since 2.0.0
      */
