@@ -6,3 +6,5 @@ layout: base
 # colors
 
 ## > [black](./black/black-colors.md)
+
+## > [gray](./gray/gray-colors.md)
