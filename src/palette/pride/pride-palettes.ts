@@ -20,8 +20,15 @@
  * SOFTWARE.
  */
 
-export * from './pride';
+import { StringMap } from '../../map';
 
-export * from './all-palettes';
+import { Palette } from '../palette';
 
-export * from './palette';
+// TODO - add documentation link to GitHub pages.
+/**
+ * A map of palette names to {@link Palette} objects for pride palettes.
+ *
+ * @category Palette Collections
+ * @category Pride
+ */
+export const PRIDE_PALETTES: StringMap<Palette> = new StringMap<Palette>();

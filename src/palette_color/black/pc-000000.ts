@@ -22,6 +22,7 @@
 
 import { ColorNames } from '../../color';
 import { Discriminators } from '../../discriminator';
+import { ASEXUAL_PRIDE_PALETTE } from '../../palette';
 
 import { ALL_PALETTE_COLORS } from '../all-colors';
 import { PaletteColor } from '../palette-color';
@@ -34,6 +35,8 @@ import { BLACK_PALETTE_COLORS } from './black-colors';
  *         <h2 class="color-block white-pass">black (#000000)</h2>
  *     </a>
  * </div>
+ *
+ * @see {@link ASEXUAL_PRIDE_PALETTE}
  *
  * @since 2.0.0
  *

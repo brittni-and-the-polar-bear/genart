@@ -20,8 +20,6 @@
  * SOFTWARE.
  */
 
-export * from './pride';
+export * from './pride-palettes';
 
-export * from './all-palettes';
-
-export * from './palette';
+export * from './asexual-pride-palette';

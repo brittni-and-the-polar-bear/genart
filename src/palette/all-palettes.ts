@@ -20,8 +20,22 @@
  * SOFTWARE.
  */
 
-export * from './pride';
+import { StringMap } from '../map';
+import { Palette } from './palette';
 
-export * from './all-palettes';
+// TODO - add documentation link to GitHub pages.
+/**
+ * A map of palette names to {@link Palette} objects for all palettes.
+ *
+ * @category Palette Collections
+ */
+export const ALL_PALETTES: StringMap<Palette> = new StringMap<Palette>();
 
-export * from './palette';
+// TODO - add documentation link to GitHub pages.
+/**
+ * A map of palette names to {@link Palette} objects for gradient palettes.
+ *
+ * @category Palette Collections
+ * @category Gradient
+ */
+export const GRADIENT_PALETTES: StringMap<Palette> = new StringMap<Palette>();
