@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import { describe } from 'vitest';
+import { describe, test, expect } from 'vitest';
 
 import { palette_color } from '../../../src';
 
@@ -30,4 +30,8 @@ const { BLACK_PALETTE_COLORS } = palette_color;
 
 describe('BLACK_PALETTE_COLORS', (): void => {
     testPaletteColorMap(BLACK_PALETTE_COLORS, 'BLACK_PALETTE_COLORS', BLACK_HEXES);
+
+    test('expect(palette_color.black.BLACK_PALETTE_COLORS).toEqual(palette_color.BLACK_PALETTE_COLORS);', (): void => {
+        expect(palette_color.black.BLACK_PALETTE_COLORS).toBe(palette_color.BLACK_PALETTE_COLORS);
+    });
 });

@@ -12,6 +12,7 @@ palette_categories:
 colors:
   - "000000"
   - "A3A3A3"
+  - "FFFFFF"
 ---
 
 ## example

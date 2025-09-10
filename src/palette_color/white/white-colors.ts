@@ -20,18 +20,18 @@
  * SOFTWARE.
  */
 
-import { describe, expect, test } from 'vitest';
+import { StringMap } from '../../map';
 
-import { palette_color } from '../../../src';
+import { PaletteColor } from '../palette-color';
 
-import { GRAY_HEXES, testPaletteColorMap } from '../../test_utils';
-
-const { GRAY_PALETTE_COLORS } = palette_color;
-
-describe('GRAY_PALETTE_COLORS', (): void => {
-    testPaletteColorMap(GRAY_PALETTE_COLORS, 'GRAY_PALETTE_COLORS', GRAY_HEXES);
-
-    test('expect(palette_color.gray.GRAY_PALETTE_COLORS).toBe(palette_color.GRAY_PALETTE_COLORS);', (): void => {
-        expect(palette_color.gray.GRAY_PALETTE_COLORS).toBe(palette_color.GRAY_PALETTE_COLORS);
-    });
-});
+/**
+ * A map of hex values to {@link PaletteColor} objects for all white palette colors.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/white/white-colors.html" target="_blank" rel="noopener noreferrer">See the Colors.</a>
+ *
+ * @since 2.0.0
+ *
+ * @category PaletteColor Collections
+ * @category White
+ */
+export const WHITE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();

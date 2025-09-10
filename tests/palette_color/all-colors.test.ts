@@ -22,11 +22,14 @@
 
 import { describe, test, expect } from 'vitest';
 
-import { BLACK_HEXES, GRAY_HEXES, HexCollection, testPaletteColorMap } from '../test_utils';
-import {ALL_PALETTE_COLORS} from "../../src/palette_color";
+import { palette_color } from '../../src';
+
+import { BLACK_HEXES, GRAY_HEXES, HexCollection, testPaletteColorMap, WHITE_HEXES } from '../test_utils';
+
+const { ALL_PALETTE_COLORS } = palette_color;
 
 const ALL_HEXES: HexCollection = [];
-ALL_HEXES.push(...BLACK_HEXES, ...GRAY_HEXES);
+ALL_HEXES.push(...BLACK_HEXES, ...GRAY_HEXES, ...WHITE_HEXES);
 
 function makeHSLKey(HSL: { H: number; S: number; L: number; }): string {
     let key: string = '';

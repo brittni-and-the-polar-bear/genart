@@ -20,18 +20,36 @@
  * SOFTWARE.
  */
 
-import { describe, expect, test } from 'vitest';
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
+import { ASEXUAL_PRIDE_PALETTE } from '../../palette';
 
-import { palette_color } from '../../../src';
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
 
-import { GRAY_HEXES, testPaletteColorMap } from '../../test_utils';
+import { WHITE_PALETTE_COLORS } from './white-colors';
 
-const { GRAY_PALETTE_COLORS } = palette_color;
+/**
+ * <div class="color-block" style="background: #FFFFFF;">
+ *     <a href="https://coolors.co/ffffff" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">white (#FFFFFF)</h2>
+ *     </a>
+ * </div>
+ *
+ * @see {@link ASEXUAL_PRIDE_PALETTE}
+ *
+ * @since 2.0.0
+ *
+ * @category White
+ */
+export const PC_FFFFFF: PaletteColor = {
+    HEX: '#FFFFFF',
+    RGB: { R: 255, G: 255, B: 255 },
+    HSL: { H: 0, S: 0, L: 100 },
+    NAME: 'white',
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-describe('GRAY_PALETTE_COLORS', (): void => {
-    testPaletteColorMap(GRAY_PALETTE_COLORS, 'GRAY_PALETTE_COLORS', GRAY_HEXES);
-
-    test('expect(palette_color.gray.GRAY_PALETTE_COLORS).toBe(palette_color.GRAY_PALETTE_COLORS);', (): void => {
-        expect(palette_color.gray.GRAY_PALETTE_COLORS).toBe(palette_color.GRAY_PALETTE_COLORS);
-    });
-});
+ALL_PALETTE_COLORS.setIfAbsent(PC_FFFFFF.HEX, PC_FFFFFF);
+WHITE_PALETTE_COLORS.setIfAbsent(PC_FFFFFF.HEX, PC_FFFFFF);
+ColorNames.addColor(PC_FFFFFF);

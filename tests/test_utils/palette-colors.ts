@@ -29,3 +29,7 @@ export const BLACK_HEXES: HexCollection = [
 export const GRAY_HEXES: HexCollection = [
     { hexString: '#A3A3A3' }
 ];
+
+export const WHITE_HEXES: HexCollection = [
+    { hexString: '#FFFFFF' }
+];

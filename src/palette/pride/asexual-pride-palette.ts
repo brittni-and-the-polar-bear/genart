@@ -21,7 +21,7 @@
  */
 
 import { Discriminators } from '../../discriminator';
-import { PC_000000, PC_A3A3A3 } from '../../palette_color';
+import { PC_000000, PC_A3A3A3, PC_FFFFFF } from '../../palette_color';
 
 import { Palette } from '../palette';
 
@@ -32,6 +32,7 @@ import { Palette } from '../palette';
  *
  * @see {@link PC_000000}
  * @see {@link PC_A3A3A3}
+ * @see {@link PC_FFFFFF}
  *
  * @since 2.0.0
  *
@@ -46,8 +47,8 @@ export const ASEXUAL_PRIDE_PALETTE: Palette = {
 
     COLORS: [
         PC_000000,
-        PC_A3A3A3
-        // #FFFFFF
+        PC_A3A3A3,
+        PC_FFFFFF
         // #80007F
     ],
 

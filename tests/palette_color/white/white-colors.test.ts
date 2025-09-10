@@ -24,14 +24,14 @@ import { describe, expect, test } from 'vitest';
 
 import { palette_color } from '../../../src';
 
-import { GRAY_HEXES, testPaletteColorMap } from '../../test_utils';
+import { WHITE_HEXES, testPaletteColorMap } from '../../test_utils';
 
-const { GRAY_PALETTE_COLORS } = palette_color;
+const { WHITE_PALETTE_COLORS } = palette_color;
 
-describe('GRAY_PALETTE_COLORS', (): void => {
-    testPaletteColorMap(GRAY_PALETTE_COLORS, 'GRAY_PALETTE_COLORS', GRAY_HEXES);
+describe('WHITE_PALETTE_COLORS', (): void => {
+    testPaletteColorMap(WHITE_PALETTE_COLORS, 'WHITE_PALETTE_COLORS', WHITE_HEXES);
 
-    test('expect(palette_color.gray.GRAY_PALETTE_COLORS).toBe(palette_color.GRAY_PALETTE_COLORS);', (): void => {
-        expect(palette_color.gray.GRAY_PALETTE_COLORS).toBe(palette_color.GRAY_PALETTE_COLORS);
+    test('expect(palette_color.white.WHITE_PALETTE_COLORS).toBe(palette_color.WHITE_PALETTE_COLORS);', (): void => {
+        expect(palette_color.white.WHITE_PALETTE_COLORS).toBe(palette_color.WHITE_PALETTE_COLORS);
     });
 });
