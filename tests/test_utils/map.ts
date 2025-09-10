@@ -22,32 +22,32 @@
 
 import { expect } from 'vitest';
 
-import { map } from "../../src";
+import { map } from '../../src';
 
-export function testStringMap<Type>(map: map.StringMap<Type>, expectedSize?: number): void {
-    expect(map).toBeTruthy();
+export function testStringMap<Type>(stringMap: map.StringMap<Type>, expectedSize?: number): void {
+    expect(stringMap).toBeTruthy();
 
-    const keys: string[] = Array.from(map.keys());
-    const values: Type[] = Array.from(map.values());
+    const keys: string[] = Array.from(stringMap.keys());
+    const values: Type[] = Array.from(stringMap.values());
 
     expect(values.length).toBe(keys.length);
-    expect(keys.length).toBe(map.size);
+    expect(keys.length).toBe(stringMap.size);
 
     if (expectedSize !== undefined) {
         if (expectedSize === 0) {
             expect(keys.length).toBe(0);
             expect(values.length).toBe(0);
-            expect(map.size).toBe(0);
+            expect(stringMap.size).toBe(0);
         } else if (expectedSize > 0) {
             expect(keys.length).toBe(expectedSize);
             expect(values.length).toBe(expectedSize);
-            expect(map.size).toBe(expectedSize);
+            expect(stringMap.size).toBe(expectedSize);
         } else if (expectedSize < 0) {
             throw new Error(`Expected size cannot be negative: ${expectedSize}`);
         }
     } else {
         expect(keys.length).toBeGreaterThan(0);
         expect(values.length).toBeGreaterThan(0);
-        expect(map.size).toBeGreaterThan(0);
+        expect(stringMap.size).toBeGreaterThan(0);
     }
 }
