@@ -20,21 +20,6 @@
  * SOFTWARE.
  */
 
-div.color-block {
-    text-align: center;
-}
+export * from './purple-colors';
 
-.color-block {
-    width: 100%;
-    margin: 0;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-}
-
-.black-pass {
-    color: black;
-}
-
-.white-pass {
-    color: white;
-}
+export * from './pc-80007f';

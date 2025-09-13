@@ -47,6 +47,7 @@ export const PC_FFFFFF: PaletteColor = {
     RGB: { R: 255, G: 255, B: 255 },
     HSL: { H: 0, S: 0, L: 100 },
     NAME: 'white',
+    LUMINANCE: 1.00,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 

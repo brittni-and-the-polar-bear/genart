@@ -20,21 +20,18 @@
  * SOFTWARE.
  */
 
-div.color-block {
-    text-align: center;
-}
+import { StringMap } from '../../map';
 
-.color-block {
-    width: 100%;
-    margin: 0;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-}
+import { PaletteColor } from '../palette-color';
 
-.black-pass {
-    color: black;
-}
-
-.white-pass {
-    color: white;
-}
+/**
+ * A map of hex values to {@link PaletteColor} objects for all purple palette colors.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/purple/purple-colors.html" target="_blank" rel="noopener noreferrer">See the Colors.</a>
+ *
+ * @since 2.0.0
+ *
+ * @category PaletteColor Collections
+ * @category Purple
+ */
+export const PURPLE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();

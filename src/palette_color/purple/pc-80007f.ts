@@ -20,21 +20,37 @@
  * SOFTWARE.
  */
 
-div.color-block {
-    text-align: center;
-}
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
+import { ASEXUAL_PRIDE_PALETTE } from '../../palette';
 
-.color-block {
-    width: 100%;
-    margin: 0;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-}
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
 
-.black-pass {
-    color: black;
-}
+import { PURPLE_PALETTE_COLORS } from './purple-colors';
 
-.white-pass {
-    color: white;
-}
+/**
+ * <div class="color-block" style="background: #80007F;">
+ *     <a href="https://coolors.co/80007f" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">philippine violet (#80007F)</h2>
+ *     </a>
+ * </div>
+ *
+ * @see {@link ASEXUAL_PRIDE_PALETTE}
+ *
+ * @since 2.0.0
+ *
+ * @category Purple
+ */
+export const PC_80007F: PaletteColor = {
+    HEX: '#80007F',
+    HSL: { H: 300, S: 100, L: 25 },
+    RGB: { R: 128, G: 0, B: 127 },
+    NAME: 'philippine violet',
+    LUMINANCE: 0.061215003,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
+
+ALL_PALETTE_COLORS.setIfAbsent(PC_80007F.HEX, PC_80007F);
+PURPLE_PALETTE_COLORS.setIfAbsent(PC_80007F.HEX, PC_80007F);
+ColorNames.addColor(PC_80007F);

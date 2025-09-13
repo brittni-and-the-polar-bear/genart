@@ -13,6 +13,7 @@ colors:
   - "000000"
   - "A3A3A3"
   - "FFFFFF"
+  - "80007F"
 ---
 
 ## example
