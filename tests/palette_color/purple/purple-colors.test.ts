@@ -20,20 +20,18 @@
  * SOFTWARE.
  */
 
-export type HexCollection = { hexString: string; }[];
+import { describe, expect, test } from 'vitest';
 
-export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' }
-];
+import { palette_color } from '../../../src';
 
-export const GRAY_HEXES: HexCollection = [
-    { hexString: '#A3A3A3' }
-];
+import { PURPLE_HEXES, testPaletteColorMap } from '../../test_utils';
 
-export const PURPLE_HEXES: HexCollection = [
-    { hexString: '#80007F' }
-];
+const { PURPLE_PALETTE_COLORS } = palette_color;
 
-export const WHITE_HEXES: HexCollection = [
-    { hexString: '#FFFFFF' }
-];
+describe('PURPLE_PALETTE_COLORS', (): void => {
+    testPaletteColorMap(PURPLE_PALETTE_COLORS, 'PURPLE_PALETTE_COLORS', PURPLE_HEXES);
+
+    test('expect(palette_color.purple.PURPLE_PALETTE_COLORS).toBe(palette_color.PURPLE_PALETTE_COLORS);', (): void => {
+        expect(palette_color.purple.PURPLE_PALETTE_COLORS).toBe(palette_color.PURPLE_PALETTE_COLORS);
+    });
+});
