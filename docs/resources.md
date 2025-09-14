@@ -34,6 +34,11 @@ layout: base
 ### >> bundling
 * [tsup](https://tsup.egoist.dev/)
 
+### >> colors
+
+* [nearest-color](https://www.npmjs.com/package/nearest-color)
+* [color-name-list](https://www.npmjs.com/package/color-name-list)
+
 ### >> documentation
 
 * [typedoc](https://typedoc.org/)
