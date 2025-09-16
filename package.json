@@ -75,15 +75,15 @@
     "@vitest/ui": "^3.2.4",
     "eslint": "^9.35.0",
     "eslint-plugin-es-x": "^9.1.0",
-    "eslint-plugin-n": "^17.21.3",
+    "eslint-plugin-n": "^17.22.0",
     "eslint-plugin-security": "^3.0.1",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "tsup": "^8.5.0",
-    "typedoc": "^0.28.12",
+    "typedoc": "^0.28.13",
     "typedoc-plugin-coverage": "^4.0.1",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.42.0",
+    "typescript-eslint": "^8.43.0",
     "vitest": "^3.2.4"
   }
 }
