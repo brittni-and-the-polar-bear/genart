@@ -25,7 +25,7 @@ import { describe, test } from 'vitest';
 describe('P5Context', (): void => {
     describe('P5Context constructor', (): void => {
         test.todo('P5Context constructor');
-    })
+    });
 
     describe('P5Context.instance', (): void => {
         test.todo('P5Context.instance');
