@@ -22,7 +22,7 @@
 
 import { describe, test, expect, beforeAll } from 'vitest';
 
-// @ts-ignore colornames import works as of color-name-list@11.24.2
+// @ts-expect-error colornames import works as of color-name-list@11.24.2
 import { colornames } from 'color-name-list';
 
 import { color, discriminator, palette_color } from '../../../src';
