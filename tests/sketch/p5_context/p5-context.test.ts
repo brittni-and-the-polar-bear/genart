@@ -227,8 +227,8 @@ describe('P5Context', (): void => {
             expect(P5Context.instance.height).toBe(expectedHeight);
             expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
 
-            let width: number = 1080;
-            let height: number = 2160;
+            const width: number = 1080;
+            const height: number = 2160;
 
             const testInstance = new p5((p: p5): void => {
                 p.setup = (): void => {
