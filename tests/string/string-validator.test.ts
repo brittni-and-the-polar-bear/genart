@@ -22,11 +22,9 @@
 
 import { describe, test, expect } from 'vitest';
 
-import { string } from '../../src';
+import { StringValidator } from '../../src';
 
-const { StringValidator } = string;
-
-describe('StringValidator', () => {
+describe('StringValidator', (): void => {
     const validHex_noAlpha: string[] = [
         '#AABBCC',
         '#112233',
@@ -254,7 +252,7 @@ describe('StringValidator', () => {
         });
     });
 
-    describe('StringValidator.isHex()', () => {
+    describe('StringValidator.isHex()', (): void => {
         describe.each([
             { name: 'validHex', inputs: validHex_noAlpha, expected: true },
             { name: 'lowercaseHex', inputs: validHex_lowercase_noAlpha, expected: true },
@@ -328,7 +326,7 @@ describe('StringValidator', () => {
         });
     });
 
-    describe('StringValidator.isHexWithAlpha()', () => {
+    describe('StringValidator.isHexWithAlpha()', (): void => {
         describe.each([
             { name: 'validHex', inputs: validHex_noAlpha, expected: false },
             { name: 'lowercaseHex', inputs: validHex_lowercase_noAlpha, expected: false },
