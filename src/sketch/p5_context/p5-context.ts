@@ -76,7 +76,7 @@ export class P5Context {
      */
     public static init(p5Instance: p5, replace: boolean = false): boolean {
         if (replace) {
-            P5Context.reset(true);
+            P5Context.reset();
             P5Context.#p5Instance = p5Instance;
             return true;
         } else if (!P5Context.hasInstance()) {
@@ -107,13 +107,7 @@ export class P5Context {
      *
      * @since 2.0.0
      */
-    public static reset(silent?: boolean): void {
-        if (!silent) {
-            console.warn('P5Context.reset() removes the p5.js context. ' +
-                'This may cause unexpected behavior. ' +
-                'You will lose access to the current context and the current canvas.');
-        }
-
+    public static reset(): void {
         P5Context.#p5Instance?.remove();
         P5Context.#p5Instance = null;
     }

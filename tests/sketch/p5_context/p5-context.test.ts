@@ -28,11 +28,11 @@ import { P5Context } from '../../../src';
 
 describe('P5Context', (): void => {
     afterEach((): void => {
-        P5Context.reset(true);
+        P5Context.reset();
     });
 
     afterAll((): void => {
-        P5Context.reset(true);
+        P5Context.reset();
     });
 
     describe('P5Context constructor', (): void => {
@@ -167,10 +167,93 @@ describe('P5Context', (): void => {
     });
 
     describe('P5Context.hasInstance()', (): void => {
-        test.todo('P5Context.hasInstance()');
+        test('P5Context.hasInstance() - default context', (): void => {
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.hasInstance()).toBeTruthy();
+        });
+
+        test('P5Context.hasInstance() - no existing context', (): void => {
+            expect(P5Context.hasInstance()).toBeFalsy();
+        });
+
+        test('P5Context.hasInstance() - after reset', (): void => {
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.hasInstance()).toBeTruthy();
+
+            P5Context.reset();
+
+            expect(P5Context.hasInstance()).toBeFalsy();
+        });
     });
 
     describe('P5Context.reset()', (): void => {
-        test.todo('P5Context.reset()');
+        test('P5Context.reset()', (): void => {
+            let expectedWidth: number = 1080;
+            let expectedHeight: number = 2160;
+
+            const testInstance = new p5((p: p5): void => {
+                p.setup = (): void => {
+                    p.createCanvas(expectedWidth, expectedHeight);
+                    p.noLoop();
+                };
+            });
+
+            P5Context.init(testInstance, true);
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance).toBe(testInstance);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
+
+            P5Context.reset();
+
+            expect(P5Context.hasInstance()).toBeFalsy();
+
+            expectedHeight = 0;
+            expectedWidth = 0;
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance).not.toBe(testInstance);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
+        });
+
+        test('P5Context.reset() with P5Context.init(new p5(), replace = false)', (): void => {
+            let expectedHeight: number = 0;
+            let expectedWidth: number = 0;
+
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
+
+            let width: number = 1080;
+            let height: number = 2160;
+
+            const testInstance = new p5((p: p5): void => {
+                p.setup = (): void => {
+                    p.createCanvas(width, height);
+                    p.noLoop();
+                };
+            });
+
+            P5Context.init(testInstance, false);
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance).not.toBe(testInstance);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+
+            P5Context.reset();
+            P5Context.init(testInstance, false);
+
+            expectedWidth = width;
+            expectedHeight = height;
+
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance).toBe(testInstance);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
+        });
     });
 });
