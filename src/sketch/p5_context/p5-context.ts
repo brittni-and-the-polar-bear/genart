@@ -21,7 +21,12 @@
  */
 
 /**
+ * P5Context provides static access to the p5.js context.
+ * This context allows access to all methods and variables of the p5.js library.
+ *
  * @category P5Context
+ *
+ * @since 2.0.0
  */
 export class P5Context {
 
