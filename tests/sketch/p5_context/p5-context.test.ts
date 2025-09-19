@@ -74,7 +74,8 @@ describe('P5Context', (): void => {
                 };
             });
 
-            P5Context.init(testInstance);
+            const result: boolean = P5Context.init(testInstance);
+            expect(result).toBeTruthy();
             expect(P5Context.instance).toBeTruthy();
             expect(P5Context.instance).toBe(testInstance);
             expect(P5Context.instance.width).toBe(expectedWidth);
@@ -93,7 +94,8 @@ describe('P5Context', (): void => {
                 };
             });
 
-            P5Context.init(testInstance, true);
+            const result: boolean = P5Context.init(testInstance, true);
+            expect(result).toBeTruthy();
             expect(P5Context.instance).toBeTruthy();
             expect(P5Context.instance).toBe(testInstance);
             expect(P5Context.instance.width).toBe(expectedWidth);
@@ -112,7 +114,8 @@ describe('P5Context', (): void => {
                 };
             });
 
-            P5Context.init(testInstance, false);
+            const result: boolean = P5Context.init(testInstance, false);
+            expect(result).toBeTruthy();
             expect(P5Context.instance).toBeTruthy();
             expect(P5Context.instance).toBe(testInstance);
             expect(P5Context.instance.width).toBe(expectedWidth);
@@ -133,7 +136,8 @@ describe('P5Context', (): void => {
                 };
             });
 
-            P5Context.init(testInstance, true);
+            const result: boolean = P5Context.init(testInstance, true);
+            expect(result).toBeTruthy();
             expect(P5Context.instance).toBeTruthy();
             expect(P5Context.instance).toBe(testInstance);
             expect(P5Context.instance.width).toBe(expectedWidth);
@@ -157,7 +161,8 @@ describe('P5Context', (): void => {
                 };
             });
 
-            P5Context.init(testInstance, false);
+            const result: boolean = P5Context.init(testInstance, false);
+            expect(result).toBeFalsy();
             expect(P5Context.instance).toBeTruthy();
             expect(P5Context.instance).not.toBe(testInstance);
             expect(P5Context.instance.width).toBe(expectedWidth);

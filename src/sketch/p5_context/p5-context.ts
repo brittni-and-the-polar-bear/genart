@@ -69,6 +69,7 @@ export class P5Context {
      * @param p5Instance - The p5.js context instance to use.
      * @param replace - If true, the current context will be replaced.
      * If false, the given p5Instance will only be used if no context has been initialized.
+     * This parameter defaults to false.
      *
      * @returns True if the given p5Instance was successfully applied, false otherwise.
      *
