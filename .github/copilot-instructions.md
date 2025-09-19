@@ -22,7 +22,7 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
    - `npm run build` - Compiles TypeScript to multiple formats using tsup
    - `npm run docs` - Generates documentation using typedoc  
    - `npm run lint:js` - Lints JavaScript configuration files with ESLint
-   - `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsup.config.ts and vitest.config.ts)
+   - `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsup.config.ts, vitest.config.ts, and tests directory)
    - `npm test` - Runs vitest unit tests
    - `npm run test:watch` - Runs vitest in watch mode
    - `npm run test:ui` - Runs vitest with UI interface
@@ -43,22 +43,88 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │       └── npm-publish.yml       # NPM package publishing
 ├── docs/                         # Jekyll documentation site
 │   ├── Gemfile                   # Ruby dependencies for Jekyll
-│   ├── _config.yml               # Jekyll site configuration
+│   ├── _config.yml               # Jekyll site configuration (includes collections)
 │   ├── _includes/                # Jekyll include files
+│   ├── _layouts/                 # Jekyll layout files
+│   │   ├── colors_by_luminance.html  # Layout for color category pages
+│   │   ├── palette_color.html    # Layout for individual palette color pages
+│   │   ├── palettes_by_name.html # Layout for palette category pages
+│   │   └── palette.html          # Layout for individual palette pages
+│   ├── _collections/             # Jekyll collections
+│   │   ├── _palette_colors/      # Palette color collection files
+│   │   │   ├── pc-000000.md      # PC_000000 color page
+│   │   │   ├── pc-a3a3a3.md      # PC_A3A3A3 color page
+│   │   │   ├── pc-ffffff.md      # PC_FFFFFF color page
+│   │   │   └── pc_80007f.md      # PC_80007F color page
+│   │   └── _palettes/            # Palette collection files
+│   │       └── asexual-pride-palette.md # ASEXUAL_PRIDE_PALETTE page
+│   ├── colors/                   # Color documentation pages
+│   │   ├── colors.md             # Main colors page
+│   │   ├── black/                # Black color category
+│   │   │   └── black-colors.md   # Black colors display page
+│   │   ├── gray/                 # Gray color category
+│   │   │   └── gray-colors.md    # Gray colors display page
+│   │   ├── purple/               # Purple color category
+│   │   │   └── purple-colors.md  # Purple colors display page
+│   │   └── white/                # White color category
+│   │       └── white-colors.md   # White colors display page
+│   ├── palettes/                 # Palette documentation pages
+│   │   ├── palettes.md           # Main palettes page
+│   │   ├── all-palettes.md       # All palettes display page
+│   │   └── pride/                # Pride palette category
+│   │       └── pride-palettes.md # Pride palettes display page
 │   ├── doc/                      # TypeDoc generated documentation
 │   ├── releases/                 # Release documentation structure
 │   │   └── v2.x/                 # v2.0.0 release documentation
+│   │       └── v2.0.x/           # v2.0.x release documentation
+│   │           └── v2.0.0-rc.x/  # v2.0.0-rc.x release documentation
+│   │               └── v2.0.0-rc.3-alpha.x/ # v2.0.0-rc.3-alpha.x documentation
+│   │                   └── v2.0.0-rc.3-alpha.1/ # v2.0.0-rc.3-alpha.1 docs
 │   ├── index.md                  # Main documentation page
 │   ├── releases.md               # Release documentation index
 │   └── resources.md              # Development tools and resources
 ├── src/                          # TypeScript source code
+│   ├── color/                    # Color utilities module
+│   │   └── color_name/           # Color name functionality
+│   │       └── color-names.ts    # ColorNames class
+│   ├── discriminator/            # Type discrimination utilities
+│   │   ├── discriminable.ts      # Discriminable interface
+│   │   ├── discriminator.ts      # Discriminator class
+│   │   └── discriminators.ts     # Discriminators enum
+│   ├── map/                      # Map data structures
+│   │   └── string-map.ts         # StringMap class
+│   ├── palette/                  # Color palette definitions
+│   │   ├── palette.ts            # Palette interface
+│   │   ├── all-palettes.ts       # ALL_PALETTES map
+│   │   └── pride/                # Pride palette collections
+│   │       └── asexual-pride-palette.ts # ASEXUAL_PRIDE_PALETTE
+│   ├── palette_color/            # Palette color definitions
+│   │   ├── palette-color.ts      # PaletteColor interface
+│   │   ├── all-colors.ts         # ALL_PALETTE_COLORS map
+│   │   ├── black/                # Black color collection
+│   │   ├── gray/                 # Gray color collection
+│   │   ├── purple/               # Purple color collection
+│   │   └── white/                # White color collection
 │   ├── string/                   # String utility module
 │   │   ├── index.ts              # Module exports
 │   │   └── string-validator.ts   # StringValidator class
 │   └── index.ts                  # Main library exports
 ├── tests/                        # Vitest unit tests
-│   └── string/                   # String module tests
-│       └── string-validator.test.ts # StringValidator unit tests
+│   ├── color/                    # Color module tests
+│   │   └── color_name/           # Color name tests
+│   ├── discriminator/            # Discriminator module tests
+│   ├── palette_color/            # Palette color module tests
+│   │   ├── all-colors.test.ts    # ALL_PALETTE_COLORS map tests
+│   │   ├── black/                # Black colors tests
+│   │   ├── gray/                 # Gray colors tests
+│   │   ├── purple/               # Purple colors tests
+│   │   └── white/                # White colors tests
+│   ├── string/                   # String module tests
+│   │   └── string-validator.test.ts # StringValidator unit tests
+│   └── test_utils/               # Testing utilities
+│       ├── map.ts                # StringMap testing utilities
+│       ├── palette-color.ts      # PaletteColor testing utilities
+│       └── palette-colors.ts     # Palette color collection utilities
 ├── style/                        # Styling files
 │   └── typedoc.css               # Custom TypeDoc styling
 ├── .gitignore                    # Git ignore rules (includes build outputs and coverage)
@@ -85,10 +151,14 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - `releases/` contains organized release documentation
 - `releases.md` provides release documentation index
 - `resources.md` lists development tools and dependencies
+- **Jekyll Collections**: Configured with palette colors and palettes collections
+- **Color Pages**: Organized color documentation with luminance-based layouts
+- **Palette Pages**: Organized palette documentation with name-based layouts
+- **Custom Layouts**: Specialized layouts for displaying color and palette collections
 
 ## Package Information
 - **Name**: @batpb/genart
-- **Current Version**: 2.0.0-rc.3-alpha.0
+- **Current Version**: 2.0.0-rc.3-alpha.1
 - **Description**: A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects
 - **License**: MIT
 - **Homepage**: https://brittni-and-the-polar-bear.github.io/genart/
@@ -107,15 +177,21 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - **tsup** - Build tool for TypeScript packages  
 - **ts-node** - TypeScript execution environment
 - **tslib** - TypeScript runtime library
+- **nearest-color** - Find the nearest named color from a given hex color
+- **color-name-list** - A list of color names and their hex values (peer dependency)
 
 ### Documentation
 - **typedoc** - TypeScript documentation generator
 - **typedoc-plugin-coverage** - Coverage reporting for documentation
 
-### Testing
-- **vitest** - Fast unit testing framework
-- **@vitest/coverage-v8** - Coverage reporting with v8 provider
-- **@vitest/ui** - Web UI for vitest testing
+### Testing Infrastructure
+- **vitest**: Fast unit testing framework with coverage reporting, outputs to `_coverage/`
+- **@vitest/coverage-v8**: Coverage reporting with v8 provider
+- **@vitest/ui**: Web UI for vitest testing
+- **test_utils module**: Comprehensive testing utilities
+  - `map.ts`: Testing utilities for StringMap class
+  - `palette-color.ts`: Testing utilities for PaletteColor objects and collections
+  - `palette-colors.ts`: Collection utilities for palette color testing
 
 ### Linting and Code Quality  
 - **@eslint/js** - ESLint JavaScript configurations
@@ -129,9 +205,9 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 ### Configuration Files
 - `tsconfig.json` - TypeScript compiler configuration with strict settings
 - `tsup.config.ts` - Build configuration for multiple output formats
-- `typedoc.json` - Documentation generation settings with custom styling
+- `typedoc.json` - Documentation generation settings with custom styling (includes all modules: color, discriminator, map, palette, palette_color, string)
 - `eslint.config.js.mjs` - ESLint rules for JavaScript configuration files
-- `eslint.config.ts.mjs` - ESLint rules for TypeScript source code
+- `eslint.config.ts.mjs` - ESLint rules for TypeScript source code (updated to support imports for typedoc documentation links)
 - `vitest.config.ts` - Testing configuration with coverage settings
 
 ## Current Limitations
@@ -146,17 +222,37 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - May have breaking changes in future releases
 
 ### Library Content
-- Currently includes `string` module with `StringValidator` class for hex color validation
-- Supports `#RRGGBB`, `#RRGGBBAA`, `#rrggbb`, and `#rrggbbaa` hex color patterns
-- StringValidator class only accepts hex codes where all letters are in the same case (by design for consistency)
-- More modules and utilities will be added in future releases
+- **`string` module**: StringValidator class for hex color validation
+  - Supports `#RRGGBB`, `#RRGGBBAA`, `#rrggbb`, and `#rrggbbaa` hex color patterns
+  - StringValidator class only accepts hex codes where all letters are in the same case (by design for consistency)
+- **`color` module**: Color utility functionality
+  - ColorNames class for color name operations
+- **`discriminator` module**: Type discrimination utilities
+  - Discriminators enum with PaletteColor and Palette discriminator values
+  - Discriminable interface for objects that can be categorized by discriminator values
+  - Discriminator class (static) for checking Discriminable objects to verify interface types
+- **`map` module**: Data structure utilities
+  - StringMap class for string-keyed maps
+- **`palette` module**: Color palette definitions and collections
+  - Palette interface for color palette objects
+  - ASEXUAL_PRIDE_PALETTE - Asexual pride flag color palette
+  - PRIDE_PALETTES map - Collection of pride flag palettes
+  - ALL_PALETTES map - Collection of all available palettes
+- **`palette_color` module**: Individual color definitions and collections
+  - PaletteColor interface for individual color objects
+  - Individual colors: PC_000000, PC_A3A3A3, PC_FFFFFF, PC_80007F
+  - ALL_PALETTE_COLORS map - Collection of all palette colors
+  - BLACK_PALETTE_COLORS map - Collection of black palette colors
+  - GRAY_PALETTE_COLORS map - Collection of gray palette colors
+  - PURPLE_PALETTE_COLORS map - Collection of purple palette colors
+  - WHITE_PALETTE_COLORS map - Collection of white palette colors
 
 ### Available Scripts
 The following npm scripts are available:
 - `npm run build` - Compiles TypeScript using tsup (outputs to `_dist/`)
 - `npm run docs` - Generates API documentation using typedoc (outputs to `_doc/`)
 - `npm run lint:js` - Lints JavaScript configuration files with ESLint
-- `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsup.config.ts and vitest.config.ts)
+- `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsup.config.ts, vitest.config.ts, and tests directory)
 - `npm run prepack` - Runs build automatically before packaging
 - `npm test` - Runs vitest unit tests
 - `npm run test:watch` - Runs vitest in watch mode for development
@@ -170,15 +266,18 @@ The following npm scripts are available:
 - Check version before working: `node --version`
 
 ### Working with the Project
-This project now has full TypeScript development infrastructure:
+This project now has comprehensive TypeScript development infrastructure:
 - Main development happens on the main branch
 - TypeScript compilation configured with strict settings
-- ESLint setup for both JavaScript config files and TypeScript source
+- ESLint setup for both JavaScript config files and TypeScript source (supports imports for documentation links)
 - Build process generates multiple formats (ESM, CJS, IIFE) with type definitions
-- Documentation generation creates comprehensive API docs
+- Documentation generation creates comprehensive API docs for all modules
 - Vitest testing framework with comprehensive coverage and multiple test modes
 - GitHub Actions workflows for CI/CD, security scanning, and publishing
-- Code is organized in modules (currently `string` module with more to come)
+- Code is organized in modules: `color`, `discriminator`, `map`, `palette`, `palette_color`, `string`
+- Comprehensive color and palette system with discriminator-based type safety
+- Jekyll-based documentation site with collections for colors and palettes
+- Testing utilities in `test_utils` module for comprehensive unit testing
 
 ### Documentation Updates
 - Jekyll site documentation in `docs/` directory  
@@ -227,4 +326,4 @@ cd docs/               # Navigate to Jekyll site
 # Jekyll commands would go here if Jekyll is set up locally
 ```
 
-This project now has comprehensive TypeScript development tooling including compilation, documentation generation, linting, and unit testing with vitest. GitHub Actions workflows provide automated CI/CD, security scanning, and npm publishing. The build outputs are ignored by git but the development infrastructure is fully functional.
+This project now has comprehensive TypeScript development tooling including compilation, documentation generation, linting, and unit testing with vitest. GitHub Actions workflows provide automated CI/CD, security scanning, and npm publishing. The library includes a full color and palette system with type-safe discriminators, comprehensive testing utilities, and Jekyll-based documentation with color and palette collections. The build outputs are ignored by git but the development infrastructure is fully functional.
