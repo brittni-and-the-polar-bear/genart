@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2023-2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,23 +20,4 @@
  * SOFTWARE.
  */
 
-export * from './color';
-export * as color from './color';
-
-export * from './discriminator';
-export * as discriminator from './discriminator';
-
-export * from './map';
-export * as map from './map';
-
-export * from './p5_context';
-export * as p5_context from './p5_context';
-
-export * from './palette';
-export * as palette from './palette';
-
-export * from './palette_color';
-export * as palette_color from './palette_color';
-
-export * from './string';
-export * as string from './string';
+export * from './p5-context';
