@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import { test, expect } from 'vitest';
+import { describe, test, expect } from 'vitest';
 
 import { discriminator, map, palette_color, string } from '../../src';
 
@@ -80,35 +80,41 @@ export function testPaletteColor(pc: PaletteColor): void {
 }
 
 export function testPaletteColorMap(colorMap: StringMap<PaletteColor>, mapName: string, hexes: HexCollection): void {
-    test(`testStringMap(${mapName})`, () => {
-        testStringMap(colorMap, hexes.length);
-    });
+    describe(`testPaletteColorMap() - ${mapName}`, () => {
+        test(`testStringMap(${mapName})`, () => {
+            testStringMap(colorMap, hexes.length);
+        });
 
-    test.each(
-        hexes
-    )(`${mapName}.get($hexString)`, ({ hexString }: { hexString: string; }): void => {
-        expect(hexString).toBeTruthy();
-        expect(StringValidator.isHex(hexString)).toBeTruthy();
+        describe(`${mapName}.get()`, () => {
+            test.each(
+                hexes
+            )(`${mapName}.get($hexString)`, ({ hexString }: { hexString: string; }): void => {
+                expect(hexString).toBeTruthy();
+                expect(StringValidator.isHex(hexString)).toBeTruthy();
 
-        const pc: PaletteColor | undefined = colorMap.get(hexString);
-        expect(pc).toBeTruthy();
+                const pc: PaletteColor | undefined = colorMap.get(hexString);
+                expect(pc).toBeTruthy();
 
-        if (pc) {
-            expect(pc.HEX).toBe(hexString);
-        }
-    });
+                if (pc) {
+                    expect(pc.HEX).toBe(hexString);
+                }
+            });
+        });
 
-    test.each(
-        hexes
-    )(`testPaletteColor(${mapName}.get($hexString))`, ({ hexString }: { hexString: string; }): void => {
-        expect(hexString).toBeTruthy();
-        expect(StringValidator.isHex(hexString)).toBeTruthy();
+        describe(`testPaletteColor() - ${mapName}`, () => {
+            test.each(
+                hexes
+            )(`testPaletteColor(${mapName}.get($hexString))`, ({ hexString }: { hexString: string; }): void => {
+                expect(hexString).toBeTruthy();
+                expect(StringValidator.isHex(hexString)).toBeTruthy();
 
-        const pc: PaletteColor | undefined = colorMap.get(hexString);
-        expect(pc).toBeTruthy();
+                const pc: PaletteColor | undefined = colorMap.get(hexString);
+                expect(pc).toBeTruthy();
 
-        if (pc) {
-            testPaletteColor(pc);
-        }
+                if (pc) {
+                    testPaletteColor(pc);
+                }
+            });
+        });
     });
 }
