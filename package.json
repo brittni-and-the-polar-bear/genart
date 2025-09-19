@@ -1,6 +1,6 @@
 {
   "name": "@batpb/genart",
-  "version": "2.0.0-rc.3-alpha.1",
+  "version": "2.0.0-rc.3-alpha.2",
   "description": "A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects.",
   "license": "MIT",
   "types": "./_dist/index.d.ts",
@@ -70,7 +70,9 @@
   },
   "dependencies": {
     "@types/nearest-color": "^0.4.1",
-    "nearest-color": "^0.4.4"
+    "@types/p5": "^1.7.6",
+    "nearest-color": "^0.4.4",
+    "p5": "^1.11.10"
   },
   "peerDependencies": {
     "color-name-list": "^11.24.2"
@@ -80,10 +82,12 @@
     "@stylistic/eslint-plugin": "^5.3.1",
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
+    "canvas": "^3.2.0",
     "eslint": "^9.35.0",
     "eslint-plugin-es-x": "^9.1.0",
     "eslint-plugin-n": "^17.22.0",
     "eslint-plugin-security": "^3.0.1",
+    "jsdom": "^27.0.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "tsup": "^8.5.0",

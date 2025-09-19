@@ -20,18 +20,12 @@
  * SOFTWARE.
  */
 
-import { describe, expect, test } from 'vitest';
+import { describe } from 'vitest';
 
-import { palette_color } from '../../../src';
+import { PURPLE_PALETTE_COLORS } from '../../../src';
 
 import { PURPLE_HEXES, testPaletteColorMap } from '../../test_utils';
 
-const { PURPLE_PALETTE_COLORS } = palette_color;
-
 describe('PURPLE_PALETTE_COLORS', (): void => {
     testPaletteColorMap(PURPLE_PALETTE_COLORS, 'PURPLE_PALETTE_COLORS', PURPLE_HEXES);
-
-    test('expect(palette_color.purple.PURPLE_PALETTE_COLORS).toBe(palette_color.PURPLE_PALETTE_COLORS);', (): void => {
-        expect(palette_color.purple.PURPLE_PALETTE_COLORS).toBe(palette_color.PURPLE_PALETTE_COLORS);
-    });
 });

@@ -22,9 +22,7 @@
 
 import { describe, test, expect } from 'vitest';
 
-import { discriminator } from '../../src';
-
-const { Discriminators } = discriminator;
+import { Discriminators } from '../../src';
 
 describe('Discriminators', (): void => {
     test('all discriminators are unique', (): void => {

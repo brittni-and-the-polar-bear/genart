@@ -20,18 +20,12 @@
  * SOFTWARE.
  */
 
-import { describe, expect, test } from 'vitest';
+import { describe } from 'vitest';
 
-import { palette_color } from '../../../src';
+import { WHITE_PALETTE_COLORS } from '../../../src';
 
 import { WHITE_HEXES, testPaletteColorMap } from '../../test_utils';
 
-const { WHITE_PALETTE_COLORS } = palette_color;
-
 describe('WHITE_PALETTE_COLORS', (): void => {
     testPaletteColorMap(WHITE_PALETTE_COLORS, 'WHITE_PALETTE_COLORS', WHITE_HEXES);
-
-    test('expect(palette_color.white.WHITE_PALETTE_COLORS).toBe(palette_color.WHITE_PALETTE_COLORS);', (): void => {
-        expect(palette_color.white.WHITE_PALETTE_COLORS).toBe(palette_color.WHITE_PALETTE_COLORS);
-    });
 });

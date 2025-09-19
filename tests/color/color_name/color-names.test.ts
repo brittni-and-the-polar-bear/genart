@@ -25,11 +25,7 @@ import { describe, test, expect, beforeAll } from 'vitest';
 // @ts-expect-error colornames import works as of color-name-list@11.24.2
 import { colornames } from 'color-name-list';
 
-import { color, discriminator, palette_color } from '../../../src';
-
-const { ColorNames } = color;
-const { ALL_PALETTE_COLORS } = palette_color;
-const { Discriminators } = discriminator;
+import { ColorNames, Discriminators, PaletteColor, ALL_PALETTE_COLORS } from '../../../src';
 
 describe('ColorNames', (): void => {
     beforeAll((): void => {
@@ -68,7 +64,7 @@ describe('ColorNames', (): void => {
         });
 
         test.each(
-            Array.from(ALL_PALETTE_COLORS.values()).map((pc: palette_color.PaletteColor): { hex: string; expected: string; } => {
+            Array.from(ALL_PALETTE_COLORS.values()).map((pc: PaletteColor): { hex: string; expected: string; } => {
                 return { hex: pc.HEX, expected: pc.NAME };
             })
         )('ColorNames.getColorName($hex)', ({ hex, expected }: { hex: string; expected: string; }): void => {
@@ -78,7 +74,7 @@ describe('ColorNames', (): void => {
 
     describe('ColorNames.addColor()', () => {
         test('ColorNames.addColor()', (): void => {
-            const fakeColor: palette_color.PaletteColor = {
+            const fakeColor: PaletteColor = {
                 RGB: { R: 0, G: 0, B: 0 },
                 HSL: { H: 0, S: 0, L: 0 },
                 HEX: '#000000',

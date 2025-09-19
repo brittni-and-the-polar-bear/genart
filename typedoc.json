@@ -11,12 +11,13 @@
     "./src/map/index.ts",
     "./src/palette/index.ts",
     "./src/palette_color/index.ts",
+    "./src/sketch/index.ts",
     "./src/string/index.ts"
   ],
 
   "out": "./_doc",
 
-  "customCss": "./style/typedoc.css",
+  "customCss": "./typedoc/style.css",
 
   "plugin": [
     "typedoc-plugin-coverage"

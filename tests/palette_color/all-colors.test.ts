@@ -22,11 +22,9 @@
 
 import { describe, test, expect } from 'vitest';
 
-import { palette_color } from '../../src';
+import { ALL_PALETTE_COLORS } from '../../src';
 
-import { BLACK_HEXES, GRAY_HEXES, HexCollection, PURPLE_HEXES, testPaletteColorMap, WHITE_HEXES } from '../test_utils';
-
-const { ALL_PALETTE_COLORS } = palette_color;
+import { BLACK_HEXES, GRAY_HEXES, PURPLE_HEXES, WHITE_HEXES, HexCollection, testPaletteColorMap } from '../test_utils';
 
 const ALL_HEXES: HexCollection = [];
 ALL_HEXES.push(...BLACK_HEXES, ...GRAY_HEXES, ...PURPLE_HEXES, ...WHITE_HEXES);

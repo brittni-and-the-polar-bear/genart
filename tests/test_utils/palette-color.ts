@@ -22,16 +22,10 @@
 
 import { describe, test, expect } from 'vitest';
 
-import { discriminator, map, palette_color, string } from '../../src';
+import { Discriminator, Discriminators, PaletteColor, StringMap, StringValidator } from '../../src';
 
 import { testStringMap } from './map';
 import { HexCollection } from './palette-colors';
-
-const { Discriminator, Discriminators } = discriminator;
-const { StringValidator } = string;
-
-type StringMap<Type> = map.StringMap<Type>;
-type PaletteColor = palette_color.PaletteColor;
 
 const MIN_COLOR_COMPONENT = 0;
 const MAX_COLOR_COMPONENT = 255;

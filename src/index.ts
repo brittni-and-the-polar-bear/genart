@@ -29,6 +29,9 @@ export * as discriminator from './discriminator';
 export * from './map';
 export * as map from './map';
 
+export * from './sketch';
+export * as sketch from './sketch';
+
 export * from './palette';
 export * as palette from './palette';
 
