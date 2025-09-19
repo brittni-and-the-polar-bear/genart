@@ -20,6 +20,8 @@
  * SOFTWARE.
  */
 
+import p5 from 'p5';
+
 /**
  * P5Context provides static access to the p5.js context.
  * This context allows access to all methods and variables of the p5.js library.
@@ -29,5 +31,86 @@
  * @since 2.0.0
  */
 export class P5Context {
+    static #p5Instance: p5 | null = null;
 
+    /**
+     * @throws {Error} - P5Context is a static class and cannot be instantiated.
+     *
+     * @since 2.0.0
+     */
+    public constructor() {
+        throw new Error('P5Context is a static class and cannot be instantiated');
+    }
+
+    /**
+     * @returns The p5.js context instance.
+     * If no context has been initialized, a default context will be created.
+     *
+     * @since 2.0.0
+     */
+    public static get instance(): p5 {
+        if (!P5Context.#p5Instance) {
+            P5Context.#p5Instance = new p5((p: p5): void => {
+                p.setup = (): void => {
+                    p.noLoop();
+                };
+            });
+        }
+
+        return P5Context.#p5Instance;
+    }
+
+    /**
+     * Set the p5.js context.
+     * This will reset the current context with
+     * {@link P5Context.reset}.
+     *
+     * @param p5Instance - The p5.js context instance to use.
+     * @param replace - If true, the current context will be replaced.
+     * If false, the given p5Instance will only be used if no context has been initialized.
+     *
+     * @returns True if the given p5Instance was successfully applied, false otherwise.
+     *
+     * @since 2.0.0
+     */
+    public static init(p5Instance: p5, replace: boolean = false): boolean {
+        if (replace) {
+            P5Context.reset();
+            P5Context.#p5Instance = p5Instance;
+            return true;
+        } else if (!P5Context.hasInstance()) {
+            P5Context.#p5Instance = p5Instance;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Does P5Context have an initialized p5.js context?
+     *
+     * @returns True if P5Context has an initialized p5.js context, false otherwise.
+     *
+     * @since 2.0.0
+     */
+    public static hasInstance(): boolean {
+        return P5Context.#p5Instance !== null;
+    }
+
+    /**
+     * Resets the p5.js context.
+     *
+     * @remarks This removes the p5.js context.
+     * This may cause unexpected behavior.
+     * You will lose access to the current context and the current canvas.
+     *
+     * @since 2.0.0
+     */
+    public static reset(): void {
+        console.warn('P5Context.reset() removes the p5.js context. ' +
+            'This may cause unexpected behavior. ' +
+            'You will lose access to the current context and the current canvas.');
+        P5Context.#p5Instance?.remove();
+        P5Context.#p5Instance = null;
+    }
 }
