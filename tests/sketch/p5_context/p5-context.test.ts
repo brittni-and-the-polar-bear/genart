@@ -20,19 +20,150 @@
  * SOFTWARE.
  */
 
-import { describe, test } from 'vitest';
+import p5 from 'p5';
+
+import { describe, test, expect, afterAll, afterEach } from 'vitest';
+
+import { P5Context } from '../../../src';
 
 describe('P5Context', (): void => {
+    afterEach((): void => {
+        P5Context.reset(true);
+    });
+
+    afterAll((): void => {
+        P5Context.reset(true);
+    });
+
     describe('P5Context constructor', (): void => {
-        test.todo('P5Context constructor');
+        test('new P5Context()', (): void => {
+            expect(() => new P5Context()).toThrow('P5Context is a static class and cannot be instantiated.');
+        });
     });
 
     describe('P5Context.instance', (): void => {
-        test.todo('P5Context.instance');
+        test('P5Context.instance default', (): void => {
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance.width).toBe(0);
+            expect(P5Context.instance.height).toBe(0);
+            expect(P5Context.instance.color(255, 0, 0)).toBeTruthy();
+        });
+
+        test('P5Context.instance', (): void => {
+            expect(P5Context.instance).toBeTruthy();
+
+            const expectedWidth: number = 250;
+            const expectedHeight: number = 250;
+
+            P5Context.instance.createCanvas(expectedWidth, expectedHeight);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 255, 0)).toBeTruthy();
+        });
     });
 
     describe('P5Context.init()', (): void => {
-        test.todo('P5Context.init');
+        test('P5Context.init(new p5())', (): void => {
+            const expectedWidth: number = 500;
+            const expectedHeight: number = 250;
+
+            const testInstance = new p5((p: p5): void => {
+                p.setup = (): void => {
+                    p.createCanvas(expectedWidth, expectedHeight);
+                    p.noLoop();
+                };
+            });
+
+            P5Context.init(testInstance);
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance).toBe(testInstance);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
+        });
+
+        test('P5Context.init(new p5(), replace = true) - no existing context', (): void => {
+            const expectedWidth: number = 500;
+            const expectedHeight: number = 500;
+
+            const testInstance = new p5((p: p5): void => {
+                p.setup = (): void => {
+                    p.createCanvas(expectedWidth, expectedHeight);
+                    p.noLoop();
+                };
+            });
+
+            P5Context.init(testInstance, true);
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance).toBe(testInstance);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
+        });
+
+        test('P5Context.init(new p5(), replace = false) - no existing context', (): void => {
+            const expectedWidth: number = 720;
+            const expectedHeight: number = 500;
+
+            const testInstance = new p5((p: p5): void => {
+                p.setup = (): void => {
+                    p.createCanvas(expectedWidth, expectedHeight);
+                    p.noLoop();
+                };
+            });
+
+            P5Context.init(testInstance, false);
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance).toBe(testInstance);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
+        });
+
+        test('P5Context.init(new p5(), replace = true) - existing context', (): void => {
+            expect(P5Context.instance).toBeTruthy();
+
+            const expectedWidth: number = 720;
+            const expectedHeight: number = 720;
+
+            const testInstance = new p5((p: p5): void => {
+                p.setup = (): void => {
+                    p.createCanvas(expectedWidth, expectedHeight);
+                    p.noLoop();
+                };
+            });
+
+            P5Context.init(testInstance, true);
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance).toBe(testInstance);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
+        });
+
+        test('P5Context.init(new p5(), replace = false) - existing context', (): void => {
+            expect(P5Context.instance).toBeTruthy();
+
+            const expectedWidth: number = 0;
+            const expectedHeight: number = 0;
+
+            const width: number = 1080;
+            const height: number = 720;
+
+            const testInstance = new p5((p: p5): void => {
+                p.setup = (): void => {
+                    p.createCanvas(width, height);
+                    p.noLoop();
+                };
+            });
+
+            P5Context.init(testInstance, false);
+            expect(P5Context.instance).toBeTruthy();
+            expect(P5Context.instance).not.toBe(testInstance);
+            expect(P5Context.instance.width).toBe(expectedWidth);
+            expect(P5Context.instance.height).toBe(expectedHeight);
+            expect(P5Context.instance.color(255, 0, 255)).toBeTruthy();
+        });
     });
 
     describe('P5Context.hasInstance()', (): void => {
