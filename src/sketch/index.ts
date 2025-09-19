@@ -20,6 +20,11 @@
  * SOFTWARE.
  */
 
-export class P5Context {
+export * from './p5_context';
 
-}
+/**
+ * @category Namespace
+ *
+ * @since 2.0.0
+ */
+export * as p5_context from './p5_context';

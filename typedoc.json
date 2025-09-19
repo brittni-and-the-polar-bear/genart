@@ -9,9 +9,9 @@
     "./src/color/index.ts",
     "./src/discriminator/index.ts",
     "./src/map/index.ts",
-    "./src/p5_context/index.ts",
     "./src/palette/index.ts",
     "./src/palette_color/index.ts",
+    "./src/sketch/index.ts",
     "./src/string/index.ts"
   ],
 
