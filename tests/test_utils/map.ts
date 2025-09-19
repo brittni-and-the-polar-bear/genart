@@ -22,9 +22,9 @@
 
 import { expect } from 'vitest';
 
-import { map } from '../../src';
+import { StringMap } from '../../src';
 
-export function testStringMap<Type>(stringMap: map.StringMap<Type>, expectedSize?: number): void {
+export function testStringMap<Type>(stringMap: StringMap<Type>, expectedSize?: number): void {
     expect(stringMap).toBeTruthy();
 
     const keys: string[] = Array.from(stringMap.keys());
