@@ -32,7 +32,7 @@ const { Discriminators } = discriminator;
 
 describe('ColorNames', (): void => {
     beforeAll((): void => {
-        ColorNames.setPossibleColors(colornames);
+        ColorNames.setPossibleColors(colornames as ({ name: string; hex: string; }[]));
     });
 
     describe('ColorNames constructor', (): void => {
@@ -62,15 +62,15 @@ describe('ColorNames', (): void => {
             { hex: '4BCCAB', expected: 'disc jockey' },
             { hex: '4bccab', expected: 'disc jockey' },
             { hex: '4BcCaB', expected: 'disc jockey' }
-        ])('ColorNames.getColorName($hex)', ({ hex, expected }: { hex: string; expected: unknown }): void => {
+        ])('ColorNames.getColorName($hex)', ({ hex, expected }: { hex: string; expected: unknown; }): void => {
             expect(ColorNames.getColorName(hex)).toBe(expected);
         });
 
         test.each(
-            Array.from(ALL_PALETTE_COLORS.values()).map((pc: palette_color.PaletteColor): { hex: string, expected: string } => {
-                return { hex: pc.HEX, expected: pc.NAME }
+            Array.from(ALL_PALETTE_COLORS.values()).map((pc: palette_color.PaletteColor): { hex: string; expected: string; } => {
+                return { hex: pc.HEX, expected: pc.NAME };
             })
-        )('ColorNames.getColorName($hex)', ({ hex, expected }: { hex: string; expected: string }): void => {
+        )('ColorNames.getColorName($hex)', ({ hex, expected }: { hex: string; expected: string; }): void => {
             expect(ColorNames.getColorName(hex)).toBe(expected);
         });
     });
