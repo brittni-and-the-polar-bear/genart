@@ -20,4 +20,20 @@
  * SOFTWARE.
  */
 
+export * from './color';
+export * as color from './color';
+
+export * from './discriminator';
+export * as discriminator from './discriminator';
+
+export * from './map';
+export * as map from './map';
+
+export * from './palette';
+export * as palette from './palette';
+
+export * from './palette_color';
+export * as palette_color from './palette_color';
+
+export * from './string';
 export * as string from './string';

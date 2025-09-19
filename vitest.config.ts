@@ -30,7 +30,7 @@ export default defineConfig({
         exclude: ['node_modules', '_dist', '_compiled', '_doc'],
         coverage: {
             provider: 'v8',
-            reporter: ['text', 'json', 'html'],
+            reporter: ['text', 'lcov', 'json', 'json-summary', 'clover', 'html'],
             reportsDirectory: './_coverage',
             exclude: [
                 'node_modules/',

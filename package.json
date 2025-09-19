@@ -1,6 +1,6 @@
 {
   "name": "@batpb/genart",
-  "version": "2.0.0-rc.3-alpha.0",
+  "version": "2.0.0-rc.3-alpha.1",
   "description": "A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects.",
   "license": "MIT",
   "types": "./_dist/index.d.ts",
@@ -61,12 +61,19 @@
     "build": "tsup",
     "docs": "typedoc",
     "lint:js": "eslint -c eslint.config.js.mjs ./eslint.config.js.mjs ./eslint.config.ts.mjs",
-    "lint:ts": "eslint -c eslint.config.ts.mjs ./src tsup.config.ts vitest.config.ts",
+    "lint:ts": "eslint -c eslint.config.ts.mjs ./src ./tests tsup.config.ts vitest.config.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@types/nearest-color": "^0.4.1",
+    "nearest-color": "^0.4.4"
+  },
+  "peerDependencies": {
+    "color-name-list": "^11.24.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
