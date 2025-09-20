@@ -88,6 +88,7 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   ├── palettes/                 # Palette documentation pages
 │   │   ├── palettes.md           # Main palettes page
 │   │   ├── all-palettes.md       # All palettes display page
+│   │   ├── gradient-palettes.md   # Gradient palettes display page
 │   │   ├── nature/               # Nature palette category
 │   │   │   └── nature-palettes.md # Nature palettes display page
 │   │   └── pride/                # Pride palette category
@@ -266,6 +267,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
   - CALIFORNIA_WINE_SUNSET_PALETTE - California wine sunset color palette
   - PRIDE_PALETTES map - Collection of pride flag palettes
   - NATURE_PALETTES map - Collection of nature palettes
+  - GRADIENT_PALETTES map - Collection of gradient palettes
   - ALL_PALETTES map - Collection of all available palettes
 - **`palette_color` module**: Individual color definitions and collections
   - PaletteColor interface for individual color objects
