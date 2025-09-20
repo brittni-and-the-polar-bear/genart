@@ -26,6 +26,10 @@ export const BLACK_HEXES: HexCollection = [
     { hexString: '#000000' }
 ];
 
+export const BLUE_HEXES: HexCollection = [
+    { hexString: '#1E1A75' }
+];
+
 export const GRAY_HEXES: HexCollection = [
     { hexString: '#A3A3A3' }
 ];

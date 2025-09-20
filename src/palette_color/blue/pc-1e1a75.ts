@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,62 +20,34 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './blue';
-export * from './gray';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './white';
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export * from './all-colors';
-export * from './palette-color';
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { BLUE_PALETTE_COLORS } from './blue-colors';
 
 /**
- * @category Namespace
+ * <div class="color-block" style="background: #1E1A75;">
+ *     <a href="https://coolors.co/1e1a75" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">20000 leagues under the sea (#1E1A75)</h2>
+ *     </a>
+ * </div>
  *
  * @since 2.0.0
+ *
+ * @category Blue
  */
-export * as black from './black';
+export const PC_1E1A75: PaletteColor = {
+    HEX: '#1E1A75',
+    HSL: { H: 243, S: 64, L: 28 },
+    RGB: { R: 30, G: 26, B: 117 },
+    NAME: '20000 leagues under the sea',
+    LUMINANCE: 0.0229916257,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as blue from './blue';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+ALL_PALETTE_COLORS.setIfAbsent(PC_1E1A75.HEX, PC_1E1A75);
+BLUE_PALETTE_COLORS.setIfAbsent(PC_1E1A75.HEX, PC_1E1A75);
+ColorNames.addColor(PC_1E1A75);

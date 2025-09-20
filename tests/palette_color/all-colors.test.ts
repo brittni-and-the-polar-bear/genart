@@ -26,6 +26,7 @@ import { ALL_PALETTE_COLORS } from '../../src';
 
 import {
     BLACK_HEXES,
+    BLUE_HEXES,
     GRAY_HEXES,
     ORANGE_HEXES,
     PINK_HEXES,
@@ -38,6 +39,7 @@ import {
 const ALL_HEXES: HexCollection = [];
 ALL_HEXES.push(
     ...BLACK_HEXES,
+    ...BLUE_HEXES,
     ...GRAY_HEXES,
     ...ORANGE_HEXES,
     ...PINK_HEXES,

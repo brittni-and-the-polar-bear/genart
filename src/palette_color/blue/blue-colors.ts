@@ -20,62 +20,18 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './blue';
-export * from './gray';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './white';
+import { StringMap } from '../../map';
 
-export * from './all-colors';
-export * from './palette-color';
+import { PaletteColor } from '../palette-color';
 
 /**
- * @category Namespace
+ * A map of hex values to {@link PaletteColor} objects for all blue palette colors.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/blue/blue-colors.html" target="_blank" rel="noopener noreferrer">See the Colors.</a>
  *
  * @since 2.0.0
- */
-export * as black from './black';
-
-/**
- * @category Namespace
  *
- * @since 2.0.0
+ * @category PaletteColor Collections
+ * @category Blue
  */
-export * as blue from './blue';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+export const BLUE_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
