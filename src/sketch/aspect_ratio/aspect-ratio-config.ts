@@ -22,8 +22,10 @@
 
 import { Discriminable, Discriminators } from '../../discriminator';
 
+import { AspectRatio } from './aspect-ratio';
+
 /**
- * A configuration for an aspect ratio.
+ * A configuration for an {@link AspectRatio} object.
  *
  * @since 2.0.0
  *
