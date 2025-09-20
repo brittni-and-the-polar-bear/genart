@@ -22,6 +22,7 @@
 
 export * from './black';
 export * from './gray';
+export * from './orange';
 export * from './purple';
 export * from './white';
 
@@ -41,6 +42,13 @@ export * as black from './black';
  * @since 2.0.0
  */
 export * as gray from './gray';
+
+/**
+ * @category Namespace
+ *
+ * @since 2.0.0
+ */
+export * as orange from './orange';
 
 /**
  * @category Namespace

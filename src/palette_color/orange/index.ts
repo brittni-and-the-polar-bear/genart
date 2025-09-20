@@ -20,3 +20,6 @@
  * SOFTWARE.
  */
 
+export * from './orange-colors';
+
+export * from './pc_ffa852';
