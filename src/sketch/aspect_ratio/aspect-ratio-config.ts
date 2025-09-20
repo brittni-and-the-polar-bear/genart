@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,19 +20,14 @@
  * SOFTWARE.
  */
 
-export * from './aspect_ratio';
-export * from './p5_context';
+import { Discriminable, Discriminators } from '../../discriminator';
 
 /**
- * @category Namespace
- *
- * @since 2.0.0
+ * @category Aspect Ratio
  */
-export * as aspect_ratio from './aspect_ratio';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as p5_context from './p5_context';
+export interface AspectRatioConfig extends Discriminable {
+    readonly NAME?: string;
+    readonly WIDTH_RATIO: number;
+    readonly HEIGHT_RATIO: number;
+    readonly DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG;
+}
