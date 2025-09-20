@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 
+export * from './nature';
 export * from './pride';
 
 export * from './all-palettes';

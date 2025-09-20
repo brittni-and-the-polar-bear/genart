@@ -26,8 +26,22 @@ export const BLACK_HEXES: HexCollection = [
     { hexString: '#000000' }
 ];
 
+export const BLUE_HEXES: HexCollection = [
+    { hexString: '#1E1A75' }
+];
+
 export const GRAY_HEXES: HexCollection = [
     { hexString: '#A3A3A3' }
+];
+
+export const ORANGE_HEXES: HexCollection = [
+    { hexString: '#FF704D' },
+    { hexString: '#FFA852' }
+];
+
+export const PINK_HEXES: HexCollection = [
+    { hexString: '#9F1475' },
+    { hexString: '#E13762' }
 ];
 
 export const PURPLE_HEXES: HexCollection = [
