@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,54 +20,18 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './gray';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './white';
+import { StringMap } from '../../map';
 
-export * from './all-colors';
-export * from './palette-color';
+import { PaletteColor } from '../palette-color';
 
 /**
- * @category Namespace
+ * A map of hex values to {@link PaletteColor} objects for all pink palette colors.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/pink/pink-colors.html" target="_blank" rel="noopener noreferrer">See the Colors.</a>
  *
  * @since 2.0.0
- */
-export * as black from './black';
-
-/**
- * @category Namespace
  *
- * @since 2.0.0
+ * @category PaletteColor Collections
+ * @category Pink
  */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+export const PINK_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();

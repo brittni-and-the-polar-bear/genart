@@ -11,6 +11,8 @@ layout: base
 
 ## > [orange](./orange/orange-colors.md)
 
+## > [pink](./pink/pink-colors.md)
+
 ## > [purple](./purple/purple-colors.md)
 
 ## > [white](./white/white-colors.md)

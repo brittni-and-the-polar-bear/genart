@@ -27,5 +27,5 @@ import { ORANGE_PALETTE_COLORS } from '../../../src';
 import { ORANGE_HEXES, testPaletteColorMap } from '../../test_utils';
 
 describe('ORANGE_PALETTE_COLORS', (): void => {
-    testPaletteColorMap(ORANGE_PALETTE_COLORS, 'PURPLE_PALETTE_COLORS', ORANGE_HEXES);
+    testPaletteColorMap(ORANGE_PALETTE_COLORS, 'ORANGE_PALETTE_COLORS', ORANGE_HEXES);
 });

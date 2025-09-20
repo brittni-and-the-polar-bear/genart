@@ -28,6 +28,7 @@ import {
     BLACK_HEXES,
     GRAY_HEXES,
     ORANGE_HEXES,
+    PINK_HEXES,
     PURPLE_HEXES,
     WHITE_HEXES,
     HexCollection,
@@ -39,6 +40,7 @@ ALL_HEXES.push(
     ...BLACK_HEXES,
     ...GRAY_HEXES,
     ...ORANGE_HEXES,
+    ...PINK_HEXES,
     ...PURPLE_HEXES,
     ...WHITE_HEXES
 );

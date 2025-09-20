@@ -35,6 +35,10 @@ export const ORANGE_HEXES: HexCollection = [
     { hexString: '#FFA852' }
 ];
 
+export const PINK_HEXES: HexCollection = [
+    { hexString: '#E13762' }
+];
+
 export const PURPLE_HEXES: HexCollection = [
     { hexString: '#80007F' }
 ];

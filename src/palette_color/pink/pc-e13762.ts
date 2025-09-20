@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,54 +20,34 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './gray';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './white';
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export * from './all-colors';
-export * from './palette-color';
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { PINK_PALETTE_COLORS } from './pink-colors';
 
 /**
- * @category Namespace
+ * <div class="color-block" style="background: #E13762;">
+ *     <a href="https://coolors.co/e13762" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">intense passion (#E13762)</h2>
+ *     </a>
+ * </div>
  *
  * @since 2.0.0
+ *
+ * @category Pink
  */
-export * as black from './black';
+export const PC_E13762: PaletteColor = {
+    HEX: '#E13762',
+    HSL: { H: 345, S: 74, L: 55 },
+    RGB: { R: 225, G: 55, B: 98 },
+    NAME: 'intense passion',
+    LUMINANCE: 0.1962177012,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+ALL_PALETTE_COLORS.setIfAbsent(PC_E13762.HEX, PC_E13762);
+PINK_PALETTE_COLORS.setIfAbsent(PC_E13762.HEX, PC_E13762);
+ColorNames.addColor(PC_E13762);

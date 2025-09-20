@@ -20,54 +20,12 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './gray';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './white';
+import { describe } from 'vitest';
 
-export * from './all-colors';
-export * from './palette-color';
+import { PINK_PALETTE_COLORS } from '../../../src';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as black from './black';
+import { PINK_HEXES, testPaletteColorMap } from '../../test_utils';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+describe('PINK_PALETTE_COLORS', (): void => {
+    testPaletteColorMap(PINK_PALETTE_COLORS, 'PINK_PALETTE_COLORS', PINK_HEXES);
+});
