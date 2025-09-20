@@ -24,10 +24,24 @@ import { describe, test, expect } from 'vitest';
 
 import { ALL_PALETTE_COLORS } from '../../src';
 
-import { BLACK_HEXES, GRAY_HEXES, PURPLE_HEXES, WHITE_HEXES, HexCollection, testPaletteColorMap } from '../test_utils';
+import {
+    BLACK_HEXES,
+    GRAY_HEXES,
+    ORANGE_HEXES,
+    PURPLE_HEXES,
+    WHITE_HEXES,
+    HexCollection,
+    testPaletteColorMap
+} from '../test_utils';
 
 const ALL_HEXES: HexCollection = [];
-ALL_HEXES.push(...BLACK_HEXES, ...GRAY_HEXES, ...PURPLE_HEXES, ...WHITE_HEXES);
+ALL_HEXES.push(
+    ...BLACK_HEXES,
+    ...GRAY_HEXES,
+    ...ORANGE_HEXES,
+    ...PURPLE_HEXES,
+    ...WHITE_HEXES
+);
 
 function makeHSLKey(HSL: { H: number; S: number; L: number; }): string {
     let key: string = '';
