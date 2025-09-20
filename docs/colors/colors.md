@@ -9,6 +9,8 @@ layout: base
 
 ## > [gray](./gray/gray-colors.md)
 
+## > [orange](./orange/orange-colors.md)
+
 ## > [purple](./purple/purple-colors.md)
 
 ## > [white](./white/white-colors.md)
