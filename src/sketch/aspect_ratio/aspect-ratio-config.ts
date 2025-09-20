@@ -23,11 +23,36 @@
 import { Discriminable, Discriminators } from '../../discriminator';
 
 /**
+ * A configuration for an aspect ratio.
+ *
+ * @since 2.0.0
+ *
  * @category Aspect Ratio
  */
 export interface AspectRatioConfig extends Discriminable {
+    /**
+     * The name of the aspect ratio.
+     *
+     * @since 2.0.0
+     */
     readonly NAME?: string;
+
+    /**
+     * The width component of the aspect ratio.
+     *
+     * @since 2.0.0
+     */
     readonly WIDTH_RATIO: number;
+
+    /**
+     * The height component of the aspect ratio.
+     *
+     * @since 2.0.0
+     */
     readonly HEIGHT_RATIO: number;
+
+    /**
+     * @inheritDoc
+     */
     readonly DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG;
 }
