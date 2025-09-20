@@ -22,4 +22,5 @@
 
 export * from './pink-colors';
 
+export * from './pc-9f1475';
 export * from './pc-e13762';

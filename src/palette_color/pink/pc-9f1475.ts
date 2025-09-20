@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,30 +20,34 @@
  * SOFTWARE.
  */
 
-export type HexCollection = { hexString: string; }[];
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' }
-];
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
 
-export const GRAY_HEXES: HexCollection = [
-    { hexString: '#A3A3A3' }
-];
+import { PINK_PALETTE_COLORS } from './pink-colors';
 
-export const ORANGE_HEXES: HexCollection = [
-    { hexString: '#FF704D' },
-    { hexString: '#FFA852' }
-];
+/**
+ * <div class="color-block" style="background: #9F1475;">
+ *     <a href="https://coolors.co/9f1475" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">haunted pink (#9F1475)</h2>
+ *     </a>
+ * </div>
+ *
+ * @since 2.0.0
+ *
+ * @category Pink
+ */
+export const PC_9F1475: PaletteColor = {
+    HEX: '#9F1475',
+    HSL: { H: 318, S: 78, L: 35 },
+    RGB: { R: 159, G: 20, B: 117 },
+    NAME: 'haunted pink',
+    LUMINANCE: 0.0915559434,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-export const PINK_HEXES: HexCollection = [
-    { hexString: '#9F1475' },
-    { hexString: '#E13762' }
-];
-
-export const PURPLE_HEXES: HexCollection = [
-    { hexString: '#80007F' }
-];
-
-export const WHITE_HEXES: HexCollection = [
-    { hexString: '#FFFFFF' }
-];
+ALL_PALETTE_COLORS.setIfAbsent(PC_9F1475.HEX, PC_9F1475);
+PINK_PALETTE_COLORS.setIfAbsent(PC_9F1475.HEX, PC_9F1475);
+ColorNames.addColor(PC_9F1475);
