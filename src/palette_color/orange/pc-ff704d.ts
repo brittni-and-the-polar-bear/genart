@@ -20,25 +20,34 @@
  * SOFTWARE.
  */
 
-export type HexCollection = { hexString: string; }[];
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' }
-];
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
 
-export const GRAY_HEXES: HexCollection = [
-    { hexString: '#A3A3A3' }
-];
+import { ORANGE_PALETTE_COLORS } from './orange-colors';
 
-export const ORANGE_HEXES: HexCollection = [
-    { hexString: '#FF704D' },
-    { hexString: '#FFA852' }
-];
+/**
+ * <div class="color-block" style="background: #FF704D;">
+ *     <a href="https://coolors.co/ff704d" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">often orange (#FF704D)</h2>
+ *     </a>
+ * </div>
+ *
+ * @since 2.0.0
+ *
+ * @category Orange
+ */
+export const PC_FF704D: PaletteColor = {
+    HEX: '#FF704D',
+    HSL: { H: 12, S: 100, L: 65 },
+    RGB: { R: 255, G: 112, B: 77 },
+    NAME: 'often orange',
+    LUMINANCE: 0.3338416291,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-export const PURPLE_HEXES: HexCollection = [
-    { hexString: '#80007F' }
-];
-
-export const WHITE_HEXES: HexCollection = [
-    { hexString: '#FFFFFF' }
-];
+ALL_PALETTE_COLORS.setIfAbsent(PC_FF704D.HEX, PC_FF704D);
+ORANGE_PALETTE_COLORS.setIfAbsent(PC_FF704D.HEX, PC_FF704D);
+ColorNames.addColor(PC_FF704D);

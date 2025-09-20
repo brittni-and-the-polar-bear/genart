@@ -22,4 +22,5 @@
 
 export * from './orange-colors';
 
+export * from './pc-ff704d';
 export * from './pc_ffa852';
