@@ -54,6 +54,7 @@ layout: base
     </a>
 </div>
 
+{% if page.palettes.size > 0 %}
 <hr/>
 
 <h2>palettes</h2>
@@ -70,6 +71,7 @@ layout: base
         {%- endfor -%}
     {% endfor %}
 </ul>
+{% endif %}
 
 <hr/>
 
