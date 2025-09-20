@@ -24,9 +24,12 @@ import { StringMap } from '../../map';
 
 import { Palette } from '../palette';
 
-// TODO - add documentation link to GitHub pages.
 /**
  * A map of palette names to {@link Palette} objects for pride palettes.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/palettes/pride/pride-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes.</a>
+ *
+ * @since 2.0.0
  *
  * @category Palette Collections
  * @category Pride

@@ -22,6 +22,7 @@
 
 import { ColorNames } from '../../color';
 import { Discriminators } from '../../discriminator';
+import { CALIFORNIA_WINE_SUNSET_PALETTE } from '../../palette';
 
 import { ALL_PALETTE_COLORS } from '../all-colors';
 import { PaletteColor } from '../palette-color';
@@ -34,6 +35,8 @@ import { PINK_PALETTE_COLORS } from './pink-colors';
  *         <h2 class="color-block white-pass">haunted pink (#9F1475)</h2>
  *     </a>
  * </div>
+ *
+ * @see {@link CALIFORNIA_WINE_SUNSET_PALETTE}
  *
  * @since 2.0.0
  *

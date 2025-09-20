@@ -22,6 +22,7 @@
 
 import { ColorNames } from '../../color';
 import { Discriminators } from '../../discriminator';
+import { CALIFORNIA_WINE_SUNSET_PALETTE } from '../../palette';
 
 import { ALL_PALETTE_COLORS } from '../all-colors';
 import { PaletteColor } from '../palette-color';
@@ -34,6 +35,8 @@ import { ORANGE_PALETTE_COLORS } from './orange-colors';
  *         <h2 class="color-block black-pass">often orange (#FF704D)</h2>
  *     </a>
  * </div>
+ *
+ * @see {@link CALIFORNIA_WINE_SUNSET_PALETTE}
  *
  * @since 2.0.0
  *

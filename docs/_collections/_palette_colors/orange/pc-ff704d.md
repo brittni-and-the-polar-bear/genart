@@ -6,6 +6,8 @@ hex: "FF704D"
 luminance: 0.3338416291
 contrast: "black-pass"
 color_category: "orange"
+palettes:
+  - "california wine sunset"
 ---
 
 ## examples

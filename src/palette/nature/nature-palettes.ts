@@ -20,37 +20,18 @@
  * SOFTWARE.
  */
 
-import { ColorNames } from '../../color';
-import { Discriminators } from '../../discriminator';
-import { CALIFORNIA_WINE_SUNSET_PALETTE } from '../../palette';
+import { StringMap } from '../../map';
 
-import { ALL_PALETTE_COLORS } from '../all-colors';
-import { PaletteColor } from '../palette-color';
-
-import { ORANGE_PALETTE_COLORS } from './orange-colors';
+import { Palette } from '../palette';
 
 /**
- * <div class="color-block" style="background: #FFA852;">
- *     <a href="https://coolors.co/ffa852" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block black-pass">pumpkin vapour (#FFA852)</h2>
- *     </a>
- * </div>
+ * A map of palette names to {@link Palette} objects for nature palettes.
  *
- * @see {@link CALIFORNIA_WINE_SUNSET_PALETTE}
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/palettes/nature/nature-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes.</a>
  *
  * @since 2.0.0
  *
- * @category Orange
+ * @category Palette Collections
+ * @category Nature
  */
-export const PC_FFA852: PaletteColor = {
-    HEX: '#FFA852',
-    HSL: { H: 30, S: 100, L: 66 },
-    RGB: { R: 255, G: 168, B: 82 },
-    NAME: 'pumpkin vapour',
-    LUMINANCE: 0.4987445986,
-    DISCRIMINATOR: Discriminators.PALETTE_COLOR
-};
-
-ALL_PALETTE_COLORS.setIfAbsent(PC_FFA852.HEX, PC_FFA852);
-ORANGE_PALETTE_COLORS.setIfAbsent(PC_FFA852.HEX, PC_FFA852);
-ColorNames.addColor(PC_FFA852);
+export const NATURE_PALETTES: StringMap<Palette> = new StringMap<Palette>();
