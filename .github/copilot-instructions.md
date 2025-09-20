@@ -55,15 +55,32 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   │   ├── pc-000000.md      # PC_000000 color page
 │   │   │   ├── pc-a3a3a3.md      # PC_A3A3A3 color page
 │   │   │   ├── pc-ffffff.md      # PC_FFFFFF color page
-│   │   │   └── pc_80007f.md      # PC_80007F color page
+│   │   │   ├── pc_80007f.md      # PC_80007F color page
+│   │   │   ├── blue/             # Blue color collection files
+│   │   │   │   └── pc-1e1a75.md  # PC_1E1A75 color page
+│   │   │   ├── orange/           # Orange color collection files
+│   │   │   │   ├── pc-ff704d.md  # PC_FF704D color page
+│   │   │   │   └── pc-ffa852.md  # PC_FFA852 color page
+│   │   │   └── pink/             # Pink color collection files
+│   │   │       ├── pc-9f1475.md  # PC_9F1475 color page
+│   │   │       └── pc-e13762.md  # PC_E13762 color page
 │   │   └── _palettes/            # Palette collection files
-│   │       └── asexual-pride-palette.md # ASEXUAL_PRIDE_PALETTE page
+│   │       ├── nature/           # Nature palette collection files
+│   │       │   └── california-wine-sunset-palette.md # CALIFORNIA_WINE_SUNSET_PALETTE page
+│   │       └── pride/            # Pride palette collection files
+│   │           └── asexual-pride-palette.md # ASEXUAL_PRIDE_PALETTE page
 │   ├── colors/                   # Color documentation pages
 │   │   ├── colors.md             # Main colors page
 │   │   ├── black/                # Black color category
 │   │   │   └── black-colors.md   # Black colors display page
+│   │   ├── blue/                 # Blue color category
+│   │   │   └── blue-colors.md    # Blue colors display page
 │   │   ├── gray/                 # Gray color category
 │   │   │   └── gray-colors.md    # Gray colors display page
+│   │   ├── orange/               # Orange color category
+│   │   │   └── orange-colors.md  # Orange colors display page
+│   │   ├── pink/                 # Pink color category
+│   │   │   └── pink-colors.md    # Pink colors display page
 │   │   ├── purple/               # Purple color category
 │   │   │   └── purple-colors.md  # Purple colors display page
 │   │   └── white/                # White color category
@@ -71,6 +88,9 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   ├── palettes/                 # Palette documentation pages
 │   │   ├── palettes.md           # Main palettes page
 │   │   ├── all-palettes.md       # All palettes display page
+│   │   ├── gradient-palettes.md   # Gradient palettes display page
+│   │   ├── nature/               # Nature palette category
+│   │   │   └── nature-palettes.md # Nature palettes display page
 │   │   └── pride/                # Pride palette category
 │   │       └── pride-palettes.md # Pride palettes display page
 │   ├── doc/                      # TypeDoc generated documentation
@@ -96,13 +116,18 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   ├── palette/                  # Color palette definitions
 │   │   ├── palette.ts            # Palette interface
 │   │   ├── all-palettes.ts       # ALL_PALETTES map
+│   │   ├── nature/               # Nature palette collections
+│   │   │   └── california-wine-sunset-palette.ts # CALIFORNIA_WINE_SUNSET_PALETTE
 │   │   └── pride/                # Pride palette collections
 │   │       └── asexual-pride-palette.ts # ASEXUAL_PRIDE_PALETTE
 │   ├── palette_color/            # Palette color definitions
 │   │   ├── palette-color.ts      # PaletteColor interface
 │   │   ├── all-colors.ts         # ALL_PALETTE_COLORS map
 │   │   ├── black/                # Black color collection
+│   │   ├── blue/                 # Blue color collection
 │   │   ├── gray/                 # Gray color collection
+│   │   ├── orange/               # Orange color collection
+│   │   ├── pink/                 # Pink color collection
 │   │   ├── purple/               # Purple color collection
 │   │   └── white/                # White color collection
 │   ├── string/                   # String utility module
@@ -116,7 +141,10 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   ├── palette_color/            # Palette color module tests
 │   │   ├── all-colors.test.ts    # ALL_PALETTE_COLORS map tests
 │   │   ├── black/                # Black colors tests
+│   │   ├── blue/                 # Blue colors tests
 │   │   ├── gray/                 # Gray colors tests
+│   │   ├── orange/               # Orange colors tests
+│   │   ├── pink/                 # Pink colors tests
 │   │   ├── purple/               # Purple colors tests
 │   │   └── white/                # White colors tests
 │   ├── string/                   # String module tests
@@ -236,14 +264,20 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - **`palette` module**: Color palette definitions and collections
   - Palette interface for color palette objects
   - ASEXUAL_PRIDE_PALETTE - Asexual pride flag color palette
+  - CALIFORNIA_WINE_SUNSET_PALETTE - California wine sunset color palette
   - PRIDE_PALETTES map - Collection of pride flag palettes
+  - NATURE_PALETTES map - Collection of nature palettes
+  - GRADIENT_PALETTES map - Collection of gradient palettes
   - ALL_PALETTES map - Collection of all available palettes
 - **`palette_color` module**: Individual color definitions and collections
   - PaletteColor interface for individual color objects
-  - Individual colors: PC_000000, PC_A3A3A3, PC_FFFFFF, PC_80007F
+  - Individual colors: PC_000000, PC_A3A3A3, PC_FFFFFF, PC_80007F, PC_FFA852, PC_FF704D, PC_E13762, PC_9F1475, PC_1E1A75
   - ALL_PALETTE_COLORS map - Collection of all palette colors
   - BLACK_PALETTE_COLORS map - Collection of black palette colors
+  - BLUE_PALETTE_COLORS map - Collection of blue palette colors
   - GRAY_PALETTE_COLORS map - Collection of gray palette colors
+  - ORANGE_PALETTE_COLORS map - Collection of orange palette colors
+  - PINK_PALETTE_COLORS map - Collection of pink palette colors
   - PURPLE_PALETTE_COLORS map - Collection of purple palette colors
   - WHITE_PALETTE_COLORS map - Collection of white palette colors
 
