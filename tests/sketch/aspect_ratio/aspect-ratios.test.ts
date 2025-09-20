@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,5 +20,13 @@
  * SOFTWARE.
  */
 
-export * from './aspect-ratio-config';
-export * from './aspect-ratios';
+import { describe, test, expect } from 'vitest';
+
+import { AspectRatioName } from '../../../src';
+
+describe('AspectRatioName', (): void => {
+    test('all aspect ratio names are unique', (): void => {
+        const valuesSet: Set<string> = new Set<string>(Object.values(AspectRatioName));
+        expect(valuesSet.size).toBe(Object.values(AspectRatioName).length);
+    });
+});
