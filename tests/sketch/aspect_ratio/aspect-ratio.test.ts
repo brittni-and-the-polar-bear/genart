@@ -71,9 +71,9 @@ describe('AspectRatio', (): void => {
 
     describe('aspectRatio.getHeight()', (): void => {
         describe('aspectRatio.getHeight(resolution)', (): void => {
-           test.todo('aspectRatio.getHeight(resolution)');
+            test.todo('aspectRatio.getHeight(resolution)');
 
-           test.todo('aspectRatio.getHeight(resolution) - negative resolution');
+            test.todo('aspectRatio.getHeight(resolution) - negative resolution');
         });
 
         describe('aspectRatio.getHeight(resolution, applyToLongSide)', (): void => {
