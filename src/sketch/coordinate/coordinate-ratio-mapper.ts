@@ -20,6 +20,10 @@
  * SOFTWARE.
  */
 
+import p5 from 'p5';
+
+import { P5Context } from '../p5_context';
+
 export class CoordinateRatioMapper {
     #width: number;
     #height: number;
@@ -33,20 +37,22 @@ export class CoordinateRatioMapper {
         this.#isWebGL = isWebGL ?? false;
     }
 
-    public get width(): number {
-        return this.#width;
+    public get center(): p5.Vector {
+        return P5Context.instance.createVector(this.centerX, this.centerY);
     }
 
-    public set width(width: number) {
-        this.#width = width;
+    /**
+     * The center x-axis value of the canvas.
+     */
+    public get centerX(): number {
+        return this.mapRatioToCoordinateX(0.5);
     }
 
-    public get height(): number {
-        return this.#height;
-    }
-
-    public set height(height: number) {
-        this.#height = height;
+    /**
+     * The center y-axis value of the canvas.
+     */
+    public get centerY(): number {
+        return this.mapRatioToCoordinateY(0.5);
     }
 
     public get isWebGL(): boolean {
@@ -55,5 +61,113 @@ export class CoordinateRatioMapper {
 
     public set isWebGL(isWebGL: boolean) {
         this.#isWebGL = isWebGL;
+    }
+
+    /**
+     * The minimum visible x-axis value.
+     *
+     * @since 2.0.0
+     */
+    public get minX(): number {
+        let min: number = 0;
+
+        if (this.isWebGL) {
+            min = (this.width / 2.0) * -1.0;
+        }
+
+        return min;
+    }
+
+    /**
+     * The maximum visible x-axis value.
+     *
+     * @since 2.0.0
+     */
+    public get maxX(): number {
+        let max: number = this.width;
+
+        if (this.isWebGL) {
+            max = (this.width / 2.0);
+        }
+
+        return max;
+    }
+
+    /**
+     * The minimum visible y-axis value.
+     *
+     * @since 2.0.0
+     */
+    public get minY(): number {
+        let min: number = 0;
+
+        if (this.isWebGL) {
+            min = (this.height / 2.0) * -1.0;
+        }
+
+        return min;
+    }
+
+    /**
+     * The maximum visible y-axis value.
+     *
+     * @since 2.0.0
+     */
+    public get maxY(): number {
+        let max: number = this.height;
+
+        if (this.isWebGL) {
+            max = (this.height / 2.0);
+        }
+
+        return max;
+    }
+
+    /**
+     * The width of the coordinate system.
+     *
+     * @since 2.0.0
+     */
+    public get width(): number {
+        return this.#width;
+    }
+
+    public set width(width: number) {
+        this.#width = width;
+    }
+
+    /**
+     * The height of the coordinate system.
+     *
+     * @since 2.0.0
+     */
+    public get height(): number {
+        return this.#height;
+    }
+
+    public set height(height: number) {
+        this.#height = height;
+    }
+
+    /**
+     * Map a percentage value to a value on the x-axis.
+     * A percentage value of 0.5 will be exactly in the middle of the x-axis,
+     * regardless of context resolution or aspect ratio.
+     *
+     * @param ratioX - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     */
+    public mapRatioToCoordinateX(ratioX: number): number {
+        return P5Context.instance.map(ratioX, 0, 1, this.minX, this.maxX);
+    }
+
+    /**
+     * Map a percentage value to a value on the y-axis.
+     * A percentage value of 0.5 will be exactly in the middle of the y-axis,
+     * regardless of context resolution or aspect ratio.
+     *
+     * @param ratioY - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     */
+    public mapRatioToCoordinateY(ratioY: number): number {
+        return P5Context.instance.map(ratioY, 0, 1, this.minY, this.maxY);
     }
 }
