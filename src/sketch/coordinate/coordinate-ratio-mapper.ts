@@ -21,5 +21,39 @@
  */
 
 export class CoordinateRatioMapper {
+    #width: number;
+    #height: number;
+    #isWebGL: boolean;
 
+    public constructor();
+    public constructor(width: number, height: number, isWebGL: boolean);
+    public constructor(width?: number, height?: number, isWebGL?: boolean) {
+        this.#width = width ?? 720;
+        this.#height = height ?? 720;
+        this.#isWebGL = isWebGL ?? false;
+    }
+
+    public get width(): number {
+        return this.#width;
+    }
+
+    public set width(width: number) {
+        this.#width = width;
+    }
+
+    public get height(): number {
+        return this.#height;
+    }
+
+    public set height(height: number) {
+        this.#height = height;
+    }
+
+    public get isWebGL(): boolean {
+        return this.#isWebGL;
+    }
+
+    public set isWebGL(isWebGL: boolean) {
+        this.#isWebGL = isWebGL;
+    }
 }
