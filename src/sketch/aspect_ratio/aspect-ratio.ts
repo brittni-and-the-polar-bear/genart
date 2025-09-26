@@ -82,7 +82,7 @@ export class AspectRatio {
             this.#WIDTH_RATIO = widthRatio;
             this.#HEIGHT_RATIO = heightRatio;
             this.#NAME = this.#buildName(config.NAME);
-        } else if ((arg1 && arg1 > 0) && (arg2 && arg2 > 0)) {
+        } else if ((arg1 > 0) && (typeof arg2 === 'number' && arg2 > 0)) {
             const width: number = arg1;
             const height: number = arg2;
             const name: string | undefined = arg3;
@@ -146,6 +146,10 @@ export class AspectRatio {
      * @param applyToLongSide - When true, long side of the canvas or graphic will be equal to the target resolution.
      */
     #calculateUnit(resolution: number, applyToLongSide?: boolean): number {
+        if (resolution < 0) {
+            return 0;
+        }
+
         if (applyToLongSide) {
             return resolution / Math.max(this.#WIDTH_RATIO, this.#HEIGHT_RATIO);
         }
