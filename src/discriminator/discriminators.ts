@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 
+import { AspectRatioConfig } from '../sketch';
 import { Palette } from '../palette';
 import { PaletteColor } from '../palette_color';
 
@@ -32,6 +33,13 @@ import { PaletteColor } from '../palette_color';
  * @category Discriminator
  */
 export enum Discriminators {
+    /**
+     * Discriminator for the {@link AspectRatioConfig} interface.
+     *
+     * @since 2.0.0
+     */
+    ASPECT_RATIO_CONFIG = 'I_ASPECT_RATIO_CONFIG',
+
     /**
      * Discriminator for the {@link Palette} interface.
      *

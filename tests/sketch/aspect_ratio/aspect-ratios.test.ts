@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,27 +20,13 @@
  * SOFTWARE.
  */
 
-export * from './aspect_ratio';
-export * from './coordinate';
-export * from './p5_context';
+import { describe, test, expect } from 'vitest';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as aspect_ratio from './aspect_ratio';
+import { AspectRatioName } from '../../../src';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as coordinate from './coordinate';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as p5_context from './p5_context';
+describe('AspectRatioName', (): void => {
+    test('all aspect ratio names are unique', (): void => {
+        const valuesSet: Set<string> = new Set<string>(Object.values(AspectRatioName));
+        expect(valuesSet.size).toBe(Object.values(AspectRatioName).length);
+    });
+});
