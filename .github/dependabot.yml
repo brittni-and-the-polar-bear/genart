@@ -60,3 +60,15 @@ updates:
     labels:
       - "dependencies"
       - "github actions"
+
+  - package-ecosystem: bundler
+    directory: "/docs"
+    schedule:
+      interval: weekly
+    target-branch: "main"
+    commit-message:
+      prefix: "dependabot bundler update"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "ruby"
