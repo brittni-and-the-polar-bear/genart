@@ -78,23 +78,23 @@
     "color-name-list": "^11.24.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.37.0",
-    "@stylistic/eslint-plugin": "^5.4.0",
-    "@vitest/coverage-v8": "^3.2.4",
-    "@vitest/ui": "^3.2.4",
+    "@eslint/js": "^9.38.0",
+    "@stylistic/eslint-plugin": "^5.5.0",
+    "@vitest/coverage-v8": "^4.0.4",
+    "@vitest/ui": "^4.0.4",
     "canvas": "^3.2.0",
-    "eslint": "^9.37.0",
-    "eslint-plugin-es-x": "^9.1.0",
+    "eslint": "^9.38.0",
+    "eslint-plugin-es-x": "^9.1.2",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-security": "^3.0.1",
-    "jsdom": "^27.0.0",
+    "jsdom": "^27.0.1",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "tsup": "^8.5.0",
-    "typedoc": "^0.28.13",
-    "typedoc-plugin-coverage": "^4.0.1",
+    "typedoc": "^0.28.14",
+    "typedoc-plugin-coverage": "^4.0.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.0",
-    "vitest": "^3.2.4"
+    "typescript-eslint": "^8.46.2",
+    "vitest": "^4.0.4"
   }
 }
