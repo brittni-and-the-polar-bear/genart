@@ -22,15 +22,18 @@
 
 import { describe, test, expect, beforeAll } from 'vitest';
 
-// @ts-expect-error colornames import works as of color-name-list@11.24.2
+// @ts-expect-error colornames import works despite TypeScript error as of color-name-list@11.24.2
 import { colornames } from 'color-name-list';
 
 import { ColorNames, Discriminators, PaletteColor, ALL_PALETTE_COLORS } from '../../../src';
 
 describe('ColorNames', (): void => {
-    beforeAll((): void => {
-        ColorNames.setPossibleColors(colornames as ({ name: string; hex: string; }[]));
-    });
+    describe('ColorNames - default colors', (): void => {
+        test('ColorNames - default colors', (): void => {
+            expect(ColorNames.getColorName('#0000FF')).toBe('#00f');
+            expect(ColorNames.getColorName('#FF00FF')).toBe('#808');
+        })
+    })
 
     describe('ColorNames constructor', (): void => {
         test('new ColorNames()', (): void => {
@@ -39,6 +42,10 @@ describe('ColorNames', (): void => {
     });
 
     describe('ColorNames.getColorName()', () => {
+        beforeAll((): void => {
+            ColorNames.setColors(colornames as ({ name: string; hex: string; }[]));
+        });
+
         test.each([
             { hex: 'this is not a hex', expected: undefined },
             { hex: '#FF0000FF', expected: undefined },
