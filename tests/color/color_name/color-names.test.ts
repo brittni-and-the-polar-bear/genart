@@ -32,8 +32,8 @@ describe('ColorNames', (): void => {
         test('ColorNames - default colors', (): void => {
             expect(ColorNames.getColorName('#0000FF')).toBe('#00f');
             expect(ColorNames.getColorName('#FF00FF')).toBe('#808');
-        })
-    })
+        });
+    });
 
     describe('ColorNames constructor', (): void => {
         test('new ColorNames()', (): void => {
