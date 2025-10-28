@@ -20,3 +20,34 @@
  * SOFTWARE.
  */
 
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
+
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { BLACK_PALETTE_COLORS } from './black-colors';
+
+/**
+ * <div class="color-block" style="background: #121212;">
+ *     <a href="https://coolors.co/121212" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">dark tone ink (#121212)</h2>
+ *     </a>
+ * </div>
+ *
+ * @since 2.0.0
+ *
+ * @category Black
+ */
+export const PC_121212: PaletteColor = {
+    HEX: '#121212',
+    HSL: { H: 0, S: 0, L: 7 },
+    RGB: { R: 18, G: 18, B: 18 },
+    NAME: 'dark tone ink',
+    LUMINANCE: 0.006048833,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
+
+ALL_PALETTE_COLORS.setIfAbsent(PC_121212.HEX, PC_121212);
+BLACK_PALETTE_COLORS.setIfAbsent(PC_121212.HEX, PC_121212);
+ColorNames.addColor(PC_121212);
