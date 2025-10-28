@@ -67,13 +67,20 @@ export class ColorNames {
     }
 
     /**
-     * Set the color names that could possibly be selected when searching for the nearest color match in {@link getColorName}.
+     * @deprecated - Replaced by {@link setColors}. Will be removed in v3.0.0.
+     */
+    public static setPossibleColors(colors: { name: string; hex: string; }[]): void {
+        ColorNames.setColors(colors);
+    }
+
+    /**
+     * Set the color names that could be selected when searching for the nearest color match in {@link getColorName}.
      *
      * @param colorNames - An array of color objects with the properties `name` and `hex`.
      *
      * @since 2.0.0
      */
-    public static setPossibleColors(colorNames: { name: string; hex: string; }[]): void {
+    public static setColors(colorNames: { name: string; hex: string; }[]): void {
         const colors = colorNames.reduce((o, { name, hex }) => Object.assign(o, { [name]: hex }), {});
         ColorNames.#nearestColor = nearestColor.from(colors);
     }
