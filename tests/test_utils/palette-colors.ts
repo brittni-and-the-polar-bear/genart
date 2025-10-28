@@ -23,7 +23,8 @@
 export type HexCollection = { hexString: string; }[];
 
 export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' }
+    { hexString: '#000000' },
+    { hexString: '#121212' }
 ];
 
 export const BLUE_HEXES: HexCollection = [
