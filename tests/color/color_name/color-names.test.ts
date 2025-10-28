@@ -30,6 +30,8 @@ import { ColorNames, Discriminators, PaletteColor, ALL_PALETTE_COLORS } from '..
 describe('ColorNames', (): void => {
     describe('ColorNames - default colors', (): void => {
         test('ColorNames - default colors', (): void => {
+            // Any colors tested here will be cached in the ColorNames #MATCHED_COLORS map.
+            // Any colors stored in PaletteColor constants will already have names in the #MATCHED_COLORS map.
             expect(ColorNames.getColorName('#0000FF')).toBe('#00f');
             expect(ColorNames.getColorName('#FF00FF')).toBe('#808');
         });
