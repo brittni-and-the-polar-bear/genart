@@ -12,6 +12,7 @@ Gemfile.lock
 # Jekyll
 _site/
 .jekyll-cache/
+.sass-cache/
 
 # Node.js
 node_modules/
