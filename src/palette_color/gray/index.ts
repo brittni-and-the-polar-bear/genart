@@ -22,4 +22,5 @@
 
 export * from './gray-colors';
 
+export * from './pc-3a3e40';
 export * from './pc-a3a3a3';
