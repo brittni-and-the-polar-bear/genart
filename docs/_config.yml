@@ -34,4 +34,5 @@ include:
 
 exclude:
   - Gemfile
+  - Gemfile.lock
   - .bundle
