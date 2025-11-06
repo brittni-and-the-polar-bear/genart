@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,41 +20,34 @@
  * SOFTWARE.
  */
 
-export type HexCollection = { hexString: string; }[];
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' },
-    { hexString: '#121212' }
-];
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
 
-export const BLUE_HEXES: HexCollection = [
-    { hexString: '#1E1A75' }
-];
+import { GRAY_PALETTE_COLORS } from './gray-colors';
 
-export const GRAY_HEXES: HexCollection = [
-    { hexString: '#3A3E40' },
-    { hexString: '#A3A3A3' },
-    { hexString: '#D2D3D5' }
-];
+/**
+ * <div class="color-block" style="background: #D2D3D5;">
+ *     <a href="https://coolors.co/d2d3d5" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">rapunzel silver (#D2D3D5)</h2>
+ *     </a>
+ * </div>
+ *
+ * @since 2.0.0
+ *
+ * @category Gray
+ */
+export const PC_D2D3D5: PaletteColor = {
+    HEX: '#D2D3D5',
+    RGB: { R: 210, G: 211, B: 213 },
+    HSL: { H: 220, S: 3, L: 83 },
+    NAME: 'rapunzel silver',
+    LUMINANCE: 0.6509426552,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-export const NEUTRAL_HEXES: HexCollection = [
-    { hexString: '#938F80' }
-];
-
-export const ORANGE_HEXES: HexCollection = [
-    { hexString: '#FF704D' },
-    { hexString: '#FFA852' }
-];
-
-export const PINK_HEXES: HexCollection = [
-    { hexString: '#9F1475' },
-    { hexString: '#E13762' }
-];
-
-export const PURPLE_HEXES: HexCollection = [
-    { hexString: '#80007F' }
-];
-
-export const WHITE_HEXES: HexCollection = [
-    { hexString: '#FFFFFF' }
-];
+ALL_PALETTE_COLORS.setIfAbsent(PC_D2D3D5.HEX, PC_D2D3D5);
+GRAY_PALETTE_COLORS.setIfAbsent(PC_D2D3D5.HEX, PC_D2D3D5);
+ColorNames.addColor(PC_D2D3D5);

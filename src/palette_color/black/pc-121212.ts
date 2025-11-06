@@ -20,41 +20,34 @@
  * SOFTWARE.
  */
 
-export type HexCollection = { hexString: string; }[];
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' },
-    { hexString: '#121212' }
-];
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
 
-export const BLUE_HEXES: HexCollection = [
-    { hexString: '#1E1A75' }
-];
+import { BLACK_PALETTE_COLORS } from './black-colors';
 
-export const GRAY_HEXES: HexCollection = [
-    { hexString: '#3A3E40' },
-    { hexString: '#A3A3A3' },
-    { hexString: '#D2D3D5' }
-];
+/**
+ * <div class="color-block" style="background: #121212;">
+ *     <a href="https://coolors.co/121212" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">dark tone ink (#121212)</h2>
+ *     </a>
+ * </div>
+ *
+ * @since 2.0.0
+ *
+ * @category Black
+ */
+export const PC_121212: PaletteColor = {
+    HEX: '#121212',
+    HSL: { H: 0, S: 0, L: 7 },
+    RGB: { R: 18, G: 18, B: 18 },
+    NAME: 'dark tone ink',
+    LUMINANCE: 0.006048833,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-export const NEUTRAL_HEXES: HexCollection = [
-    { hexString: '#938F80' }
-];
-
-export const ORANGE_HEXES: HexCollection = [
-    { hexString: '#FF704D' },
-    { hexString: '#FFA852' }
-];
-
-export const PINK_HEXES: HexCollection = [
-    { hexString: '#9F1475' },
-    { hexString: '#E13762' }
-];
-
-export const PURPLE_HEXES: HexCollection = [
-    { hexString: '#80007F' }
-];
-
-export const WHITE_HEXES: HexCollection = [
-    { hexString: '#FFFFFF' }
-];
+ALL_PALETTE_COLORS.setIfAbsent(PC_121212.HEX, PC_121212);
+BLACK_PALETTE_COLORS.setIfAbsent(PC_121212.HEX, PC_121212);
+ColorNames.addColor(PC_121212);
