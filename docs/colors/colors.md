@@ -11,6 +11,8 @@ layout: base
 
 ## > [gray](./gray/gray-colors.md)
 
+## > [neutral](./neutral/neutral-colors.md)
+
 ## > [orange](./orange/orange-colors.md)
 
 ## > [pink](./pink/pink-colors.md)

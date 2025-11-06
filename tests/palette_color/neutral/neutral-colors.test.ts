@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,41 +20,12 @@
  * SOFTWARE.
  */
 
-export type HexCollection = { hexString: string; }[];
+import { describe } from 'vitest';
 
-export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' },
-    { hexString: '#121212' }
-];
+import { NEUTRAL_PALETTE_COLORS } from '../../../src';
 
-export const BLUE_HEXES: HexCollection = [
-    { hexString: '#1E1A75' }
-];
+import { NEUTRAL_HEXES, testPaletteColorMap } from '../../test_utils';
 
-export const GRAY_HEXES: HexCollection = [
-    { hexString: '#3A3E40' },
-    { hexString: '#A3A3A3' },
-    { hexString: '#D2D3D5' }
-];
-
-export const NEUTRAL_HEXES: HexCollection = [
-    { hexString: '#938F80' }
-];
-
-export const ORANGE_HEXES: HexCollection = [
-    { hexString: '#FF704D' },
-    { hexString: '#FFA852' }
-];
-
-export const PINK_HEXES: HexCollection = [
-    { hexString: '#9F1475' },
-    { hexString: '#E13762' }
-];
-
-export const PURPLE_HEXES: HexCollection = [
-    { hexString: '#80007F' }
-];
-
-export const WHITE_HEXES: HexCollection = [
-    { hexString: '#FFFFFF' }
-];
+describe('NEUTRAL_PALETTE_COLORS', (): void => {
+    testPaletteColorMap(NEUTRAL_PALETTE_COLORS, 'NEUTRAL_PALETTE_COLORS', NEUTRAL_HEXES);
+});

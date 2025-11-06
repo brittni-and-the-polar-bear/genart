@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,41 +20,18 @@
  * SOFTWARE.
  */
 
-export type HexCollection = { hexString: string; }[];
+import { StringMap } from '../../map';
 
-export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' },
-    { hexString: '#121212' }
-];
+import { PaletteColor } from '../palette-color';
 
-export const BLUE_HEXES: HexCollection = [
-    { hexString: '#1E1A75' }
-];
-
-export const GRAY_HEXES: HexCollection = [
-    { hexString: '#3A3E40' },
-    { hexString: '#A3A3A3' },
-    { hexString: '#D2D3D5' }
-];
-
-export const NEUTRAL_HEXES: HexCollection = [
-    { hexString: '#938F80' }
-];
-
-export const ORANGE_HEXES: HexCollection = [
-    { hexString: '#FF704D' },
-    { hexString: '#FFA852' }
-];
-
-export const PINK_HEXES: HexCollection = [
-    { hexString: '#9F1475' },
-    { hexString: '#E13762' }
-];
-
-export const PURPLE_HEXES: HexCollection = [
-    { hexString: '#80007F' }
-];
-
-export const WHITE_HEXES: HexCollection = [
-    { hexString: '#FFFFFF' }
-];
+/**
+ * A map of hex values to {@link PaletteColor} objects for all neutral palette colors.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/neutral/neutral-colors.html" target="_blank" rel="noopener noreferrer">See the Colors.</a>
+ *
+ * @since 2.0.0
+ *
+ * @category PaletteColor Collections
+ * @category Neutral
+ */
+export const NEUTRAL_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
