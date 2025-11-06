@@ -75,26 +75,26 @@
     "p5": "^1.11.11"
   },
   "peerDependencies": {
-    "color-name-list": "^11.24.2"
+    "color-name-list": "^13.2.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.38.0",
+    "@eslint/js": "^9.39.1",
     "@stylistic/eslint-plugin": "^5.5.0",
-    "@vitest/coverage-v8": "^4.0.4",
-    "@vitest/ui": "^4.0.4",
+    "@vitest/coverage-v8": "^4.0.7",
+    "@vitest/ui": "^4.0.7",
     "canvas": "^3.2.0",
-    "eslint": "^9.38.0",
+    "eslint": "^9.39.1",
     "eslint-plugin-es-x": "^9.1.2",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-security": "^3.0.1",
-    "jsdom": "^27.0.1",
+    "jsdom": "^27.1.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "tsup": "^8.5.0",
     "typedoc": "^0.28.14",
     "typedoc-plugin-coverage": "^4.0.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.2",
-    "vitest": "^4.0.4"
+    "typescript-eslint": "^8.46.3",
+    "vitest": "^4.0.7"
   }
 }
