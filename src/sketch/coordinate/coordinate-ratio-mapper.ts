@@ -22,6 +22,7 @@
 
 import p5 from 'p5';
 
+import { Context } from '../context';
 import { P5Context } from '../p5_context';
 
 /**
@@ -46,45 +47,27 @@ export class CoordinateRatioMapper {
     /**
      * Constructor for the CoordinateRatioMapper class.
      *
-     * @param width - The width of the coordinate system.
-     * If the width is less than or equal to 0, the default width (720) will be used.
-     * @param height - The height of the coordinate system.
-     * If the height is less than or equal to 0, the default height (720) will be used.
+     * @param width - The width of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
+     * @param height - The height of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
      * @param isWebGL - Is the coordinate system in WebGL mode?
      *
      * @since 2.0.0
      */
     public constructor(width: number, height: number, isWebGL: boolean);
     public constructor(width?: number, height?: number, isWebGL?: boolean) {
-        this.#width = width ?? this.#DEFAULT_WIDTH;
-        this.#height = height ?? this.#DEFAULT_HEIGHT;
+        if (width && width > Context.MIN_RESOLUTION) {
+            this.#width = width;
+        } else {
+            this.#width = Context.MIN_RESOLUTION;
+        }
+
+        if (height && height > Context.MIN_RESOLUTION) {
+            this.#height = height;
+        } else {
+            this.#height = Context.MIN_RESOLUTION;
+        }
+
         this.#IS_WEBGL = isWebGL ?? false;
-
-        if (this.#width <= 0) {
-            this.#width = this.#DEFAULT_WIDTH;
-        }
-
-        if (this.#height <= 0) {
-            this.#height = this.#DEFAULT_HEIGHT;
-        }
-    }
-
-    /**
-     * The default width of the coordinate system.
-     *
-     * @private
-     */
-    get #DEFAULT_WIDTH(): number {
-        return 720;
-    }
-
-    /**
-     * The default height of the coordinate system.
-     *
-     * @private
-     */
-    get #DEFAULT_HEIGHT(): number {
-        return 720;
     }
 
     /**
@@ -195,14 +178,15 @@ export class CoordinateRatioMapper {
     /**
      * Set the width of the coordinate system.
      *
-     * @param width - The width of the coordinate system.
-     * If the width is less than or equal to 0, the default width (720) will be used.
+     * @param width - The width of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
+     *
+     * @since 2.0.0
      */
     public set width(width: number) {
-        this.#width = width;
-
-        if (this.#width <= 0) {
-            this.#width = this.#DEFAULT_WIDTH;
+        if (width > Context.MIN_RESOLUTION) {
+            this.#width = width;
+        } else {
+            this.#width = Context.MIN_RESOLUTION;
         }
     }
 
@@ -218,16 +202,15 @@ export class CoordinateRatioMapper {
     /**
      * Set the height of the coordinate system.
      *
-     * @param height - The height of the coordinate system.
-     * If the height is less than or equal to 0, the default height (720) will be used.
+     * @param height - The height of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
      *
      * @since 2.0.0
      */
     public set height(height: number) {
-        this.#height = height;
-
-        if (this.#height <= 0) {
-            this.#height = this.#DEFAULT_HEIGHT;
+        if (height > Context.MIN_RESOLUTION) {
+            this.#height = height;
+        } else {
+            this.#height = Context.MIN_RESOLUTION;
         }
     }
 
@@ -276,6 +259,8 @@ export class CoordinateRatioMapper {
      * Map a coordinate vector to percentage values relative to the minimum and maximum x-axis and y-axis values.
      *
      * @param coordinateVector - The coordinate vector.
+     *
+     * @since 2.0.0
      */
     public mapCoordinateToRatio(coordinateVector: p5.Vector): p5.Vector {
         const coordinateX: number = this.mapCoordinateToRatioX(coordinateVector.x);
@@ -287,6 +272,8 @@ export class CoordinateRatioMapper {
      * Map a coordinate value on the x-axis to a percentage value relative to the minimum and maximum x-axis values.
      *
      * @param coordinateX - The coordinate value on the x-axis.
+     *
+     * @since 2.0.0
      */
     public mapCoordinateToRatioX(coordinateX: number): number {
         return P5Context.instance.map(coordinateX, this.minX, this.maxX, 0, 1);
@@ -296,6 +283,8 @@ export class CoordinateRatioMapper {
      * Map a coordinate value on the y-axis to a percentage value relative to the minimum and maximum y-axis values.
      *
      * @param coordinateY - The coordinate value on the y-axis.
+     *
+     * @since 2.0.0
      */
     public mapCoordinateToRatioY(coordinateY: number): number {
         return P5Context.instance.map(coordinateY, this.minY, this.maxY, 0, 1);
