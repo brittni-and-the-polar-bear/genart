@@ -33,8 +33,6 @@ import { P5Context } from '../p5_context';
  */
 export class CoordinateRatioMapper {
     readonly #IS_WEBGL: boolean;
-    readonly #DEFAULT_WIDTH: number = 720;
-    readonly #DEFAULT_HEIGHT: number = 720;
 
     #width: number;
     #height: number;
@@ -69,6 +67,24 @@ export class CoordinateRatioMapper {
         if (this.#height <= 0) {
             this.#height = this.#DEFAULT_HEIGHT;
         }
+    }
+
+    /**
+     * The default width of the coordinate system.
+     *
+     * @private
+     */
+    get #DEFAULT_WIDTH(): number {
+        return 720;
+    }
+
+    /**
+     * The default height of the coordinate system.
+     *
+     * @private
+     */
+    get #DEFAULT_HEIGHT(): number {
+        return 720;
     }
 
     /**
