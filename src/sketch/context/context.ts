@@ -33,6 +33,9 @@ export interface ContextConfig {
 }
 
 export abstract class Context {
+    /**
+     * Minimum resolution for a context.
+     */
     public static get MIN_RESOLUTION(): number {
         return 100;
     }
