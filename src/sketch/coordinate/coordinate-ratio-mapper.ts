@@ -33,6 +33,8 @@ import { P5Context } from '../p5_context';
  */
 export class CoordinateRatioMapper {
     readonly #IS_WEBGL: boolean;
+    readonly #DEFAULT_WIDTH: number = 720;
+    readonly #DEFAULT_HEIGHT: number = 720;
 
     #width: number;
     #height: number;
@@ -47,16 +49,26 @@ export class CoordinateRatioMapper {
      * Constructor for the CoordinateRatioMapper class.
      *
      * @param width - The width of the coordinate system.
+     * If the width is less than or equal to 0, the default width (720) will be used.
      * @param height - The height of the coordinate system.
+     * If the height is less than or equal to 0, the default height (720) will be used.
      * @param isWebGL - Is the coordinate system in WebGL mode?
      *
      * @since 2.0.0
      */
     public constructor(width: number, height: number, isWebGL: boolean);
     public constructor(width?: number, height?: number, isWebGL?: boolean) {
-        this.#width = width ?? 720;
-        this.#height = height ?? 720;
+        this.#width = width ?? this.#DEFAULT_WIDTH;
+        this.#height = height ?? this.#DEFAULT_HEIGHT;
         this.#IS_WEBGL = isWebGL ?? false;
+
+        if (this.#width <= 0) {
+            this.#width = this.#DEFAULT_WIDTH;
+        }
+
+        if (this.#height <= 0) {
+            this.#height = this.#DEFAULT_HEIGHT;
+        }
     }
 
     /**
@@ -168,9 +180,14 @@ export class CoordinateRatioMapper {
      * Set the width of the coordinate system.
      *
      * @param width - The width of the coordinate system.
+     * If the width is less than or equal to 0, the default width (720) will be used.
      */
     public set width(width: number) {
         this.#width = width;
+
+        if (this.#width <= 0) {
+            this.#width = this.#DEFAULT_WIDTH;
+        }
     }
 
     /**
@@ -186,11 +203,16 @@ export class CoordinateRatioMapper {
      * Set the height of the coordinate system.
      *
      * @param height - The height of the coordinate system.
+     * If the height is less than or equal to 0, the default height (720) will be used.
      *
      * @since 2.0.0
      */
     public set height(height: number) {
         this.#height = height;
+
+        if (this.#height <= 0) {
+            this.#height = this.#DEFAULT_HEIGHT;
+        }
     }
 
     /**
