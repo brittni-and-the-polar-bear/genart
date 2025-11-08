@@ -25,42 +25,67 @@ import p5 from 'p5';
 import { P5Context } from '../p5_context';
 
 export class CoordinateRatioMapper {
+    readonly #IS_WEBGL: boolean;
+
     #width: number;
     #height: number;
-    #isWebGL: boolean;
 
+    /**
+     * Constructor for the CoordinateRatioMapper class.
+     *
+     * @since 2.0.0
+     */
     public constructor();
+    /**
+     * Constructor for the CoordinateRatioMapper class.
+     *
+     * @param width - The width of the coordinate system.
+     * @param height - The height of the coordinate system.
+     * @param isWebGL - Is the coordinate system in WebGL mode?
+     *
+     * @since 2.0.0
+     */
     public constructor(width: number, height: number, isWebGL: boolean);
     public constructor(width?: number, height?: number, isWebGL?: boolean) {
         this.#width = width ?? 720;
         this.#height = height ?? 720;
-        this.#isWebGL = isWebGL ?? false;
+        this.#IS_WEBGL = isWebGL ?? false;
     }
 
+    /**
+     * The center of the coordinate system.
+     *
+     * @since 2.0.0
+     */
     public get center(): p5.Vector {
         return P5Context.instance.createVector(this.centerX, this.centerY);
     }
 
     /**
-     * The center x-axis value of the canvas.
+     * The center x-axis value of the coordinate system.
+     *
+     * @since 2.0.0
      */
     public get centerX(): number {
         return this.mapRatioToCoordinateX(0.5);
     }
 
     /**
-     * The center y-axis value of the canvas.
+     * The center y-axis value of the coordinate system.
+     *
+     * @since 2.0.0
      */
     public get centerY(): number {
         return this.mapRatioToCoordinateY(0.5);
     }
 
+    /**
+     * Is the coordinate system in WebGL mode?
+     *
+     * @since 2.0.0
+     */
     public get isWebGL(): boolean {
-        return this.#isWebGL;
-    }
-
-    public set isWebGL(isWebGL: boolean) {
-        this.#isWebGL = isWebGL;
+        return this.#IS_WEBGL;
     }
 
     /**
@@ -132,6 +157,11 @@ export class CoordinateRatioMapper {
         return this.#width;
     }
 
+    /**
+     * Set the width of the coordinate system.
+     *
+     * @param width - The width of the coordinate system.
+     */
     public set width(width: number) {
         this.#width = width;
     }
@@ -145,6 +175,13 @@ export class CoordinateRatioMapper {
         return this.#height;
     }
 
+    /**
+     * Set the height of the coordinate system.
+     *
+     * @param height - The height of the coordinate system.
+     *
+     * @since 2.0.0
+     */
     public set height(height: number) {
         this.#height = height;
     }
@@ -155,6 +192,8 @@ export class CoordinateRatioMapper {
      * regardless of context resolution or aspect ratio.
      *
      * @param ratioX - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     *
+     * @since 2.0.0
      */
     public mapRatioToCoordinateX(ratioX: number): number {
         return P5Context.instance.map(ratioX, 0, 1, this.minX, this.maxX);
@@ -166,6 +205,8 @@ export class CoordinateRatioMapper {
      * regardless of context resolution or aspect ratio.
      *
      * @param ratioY - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     *
+     * @since 2.0.0
      */
     public mapRatioToCoordinateY(ratioY: number): number {
         return P5Context.instance.map(ratioY, 0, 1, this.minY, this.maxY);
