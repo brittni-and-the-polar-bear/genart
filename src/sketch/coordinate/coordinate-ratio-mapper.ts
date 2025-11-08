@@ -24,6 +24,13 @@ import p5 from 'p5';
 
 import { P5Context } from '../p5_context';
 
+/**
+ * Utility class for mapping coordinates between a ratio and a coordinate system.
+ *
+ * @since 2.0.0
+ *
+ * @category Coordinate
+ */
 export class CoordinateRatioMapper {
     readonly #IS_WEBGL: boolean;
 
@@ -225,5 +232,34 @@ export class CoordinateRatioMapper {
      */
     public mapRatioToCoordinateY(ratioY: number): number {
         return P5Context.instance.map(ratioY, 0, 1, this.minY, this.maxY);
+    }
+
+    /**
+     * Map a coordinate vector to percentage values relative to the minimum and maximum x-axis and y-axis values.
+     *
+     * @param coordinateVector - The coordinate vector.
+     */
+    public mapCoordinateToRatio(coordinateVector: p5.Vector): p5.Vector {
+        const coordinateX: number = this.mapCoordinateToRatioX(coordinateVector.x);
+        const coordinateY: number = this.mapCoordinateToRatioY(coordinateVector.y);
+        return P5Context.instance.createVector(coordinateX, coordinateY);
+    }
+
+    /**
+     * Map a coordinate value on the x-axis to a percentage value relative to the minimum and maximum x-axis values.
+     *
+     * @param coordinateX - The coordinate value on the x-axis.
+     */
+    public mapCoordinateToRatioX(coordinateX: number): number {
+        return P5Context.instance.map(coordinateX, this.minX, this.maxX, 0, 1);
+    }
+
+    /**
+     * Map a coordinate value on the y-axis to a percentage value relative to the minimum and maximum y-axis values.
+     *
+     * @param coordinateY - The coordinate value on the y-axis.
+     */
+    public mapCoordinateToRatioY(coordinateY: number): number {
+        return P5Context.instance.map(coordinateY, this.minY, this.maxY, 0, 1);
     }
 }
