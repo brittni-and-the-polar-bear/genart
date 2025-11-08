@@ -20,6 +20,20 @@
  * SOFTWARE.
  */
 
-export abstract class Context {
+import { AspectRatio } from '../aspect_ratio';
 
+import { RenderType } from './render-type';
+
+export interface ContextConfig {
+    readonly NAME: string;
+    readonly RENDER_TYPE?: RenderType;
+    readonly ASPECT_RATIO?: AspectRatio;
+    readonly RESOLUTION?: number;
+    readonly MATCH_CONTAINER_RATIO?: boolean;
+}
+
+export abstract class Context {
+    public static get MIN_RESOLUTION(): number {
+        return 100;
+    }
 }
