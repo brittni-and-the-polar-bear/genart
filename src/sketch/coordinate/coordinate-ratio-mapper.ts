@@ -187,6 +187,21 @@ export class CoordinateRatioMapper {
     }
 
     /**
+     * Map a percentage vector to values on the x-axis and y-axis.
+     * A percentage value of 0.5 will be exactly in the middle of the respective axis,
+     * regardless of context resolution or aspect ratio.
+     *
+     * @param ratioVector - The percentage vector expressed as decimal numbers (e.g. 50% = 0.5)
+     *
+     * @since 2.0.0
+     */
+    public mapRatioToCoordinate(ratioVector: p5.Vector): p5.Vector {
+        const coordinateX: number = this.mapRatioToCoordinateX(ratioVector.x);
+        const coordinateY: number = this.mapRatioToCoordinateY(ratioVector.y);
+        return P5Context.instance.createVector(coordinateX, coordinateY);
+    }
+
+    /**
      * Map a percentage value to a value on the x-axis.
      * A percentage value of 0.5 will be exactly in the middle of the x-axis,
      * regardless of context resolution or aspect ratio.
