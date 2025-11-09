@@ -73,11 +73,8 @@ export class AspectRatio {
             let widthRatio: number = config.WIDTH_RATIO;
             let heightRatio: number = config.HEIGHT_RATIO;
 
-            if (widthRatio < 1) {
+            if (widthRatio < 1 || heightRatio < 1) {
                 widthRatio = 1;
-            }
-
-            if (heightRatio < 1) {
                 heightRatio = 1;
             }
 
