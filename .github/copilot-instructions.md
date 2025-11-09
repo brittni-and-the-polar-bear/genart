@@ -40,6 +40,7 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   └── workflows/                # GitHub Actions workflows
 │       ├── codeql.yml            # CodeQL security scanning
 │       ├── npm-build-test.yml    # CI/CD build and test verification
+│       ├── npm-deprecate.yml     # NPM package deprecation workflow
 │       └── npm-publish.yml       # NPM package publishing
 ├── docs/                         # Jekyll documentation site
 │   ├── Gemfile                   # Ruby dependencies for Jekyll
@@ -99,7 +100,9 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │       └── v2.0.x/           # v2.0.x release documentation
 │   │           └── v2.0.0-rc.x/  # v2.0.0-rc.x release documentation
 │   │               └── v2.0.0-rc.3-alpha.x/ # v2.0.0-rc.3-alpha.x documentation
-│   │                   └── v2.0.0-rc.3-alpha.1/ # v2.0.0-rc.3-alpha.1 docs
+│   │                   ├── v2.0.0-rc.3-alpha.0/ # v2.0.0-rc.3-alpha.0 docs
+│   │                   ├── v2.0.0-rc.3-alpha.1/ # v2.0.0-rc.3-alpha.1 docs
+│   │                   └── v2.0.0-rc.3-alpha.2/ # v2.0.0-rc.3-alpha.2 docs
 │   ├── index.md                  # Main documentation page
 │   ├── releases.md               # Release documentation index
 │   └── resources.md              # Development tools and resources
@@ -117,9 +120,18 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   ├── palette.ts            # Palette interface
 │   │   ├── all-palettes.ts       # ALL_PALETTES map
 │   │   ├── nature/               # Nature palette collections
+│   │   │   ├── index.ts          # Nature module exports
+│   │   │   ├── nature-palettes.ts # NATURE_PALETTES map
 │   │   │   └── california-wine-sunset-palette.ts # CALIFORNIA_WINE_SUNSET_PALETTE
 │   │   └── pride/                # Pride palette collections
+│   │       ├── index.ts          # Pride module exports
+│   │       ├── pride-palettes.ts # PRIDE_PALETTES map
 │   │       └── asexual-pride-palette.ts # ASEXUAL_PRIDE_PALETTE
+│   ├── sketch/                   # Sketch and p5.js utilities
+│   │   ├── index.ts              # Sketch module exports
+│   │   └── p5_context/           # P5.js context management
+│   │       ├── index.ts          # P5Context module exports
+│   │       └── p5-context.ts     # P5Context class
 │   ├── palette_color/            # Palette color definitions
 │   │   ├── palette-color.ts      # PaletteColor interface
 │   │   ├── all-colors.ts         # ALL_PALETTE_COLORS map
@@ -137,6 +149,7 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 ├── tests/                        # Vitest unit tests
 │   ├── color/                    # Color module tests
 │   │   └── color_name/           # Color name tests
+│   │       └── color-names.test.ts # ColorNames unit tests
 │   ├── discriminator/            # Discriminator module tests
 │   ├── palette_color/            # Palette color module tests
 │   │   ├── all-colors.test.ts    # ALL_PALETTE_COLORS map tests
@@ -147,14 +160,17 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   ├── pink/                 # Pink colors tests
 │   │   ├── purple/               # Purple colors tests
 │   │   └── white/                # White colors tests
+│   ├── sketch/                   # Sketch module tests
+│   │   └── p5_context/           # P5Context tests
+│   │       └── p5-context.test.ts # P5Context unit tests
 │   ├── string/                   # String module tests
 │   │   └── string-validator.test.ts # StringValidator unit tests
 │   └── test_utils/               # Testing utilities
 │       ├── map.ts                # StringMap testing utilities
 │       ├── palette-color.ts      # PaletteColor testing utilities
 │       └── palette-colors.ts     # Palette color collection utilities
-├── style/                        # Styling files
-│   └── typedoc.css               # Custom TypeDoc styling
+├── typedoc/                      # TypeDoc styling files
+│   └── style.css                 # Custom TypeDoc styling
 ├── .gitignore                    # Git ignore rules (includes build outputs and coverage)
 ├── .node-version                 # Node.js version specification (v22.19.0)
 ├── eslint.config.js.mjs          # ESLint configuration for JavaScript files
@@ -186,7 +202,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 
 ## Package Information
 - **Name**: @batpb/genart
-- **Current Version**: 2.0.0-rc.3-alpha.1
+- **Current Version**: 2.0.0-rc.3-alpha.2
 - **Description**: A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects
 - **License**: MIT
 - **Homepage**: https://brittni-and-the-polar-bear.github.io/genart/
@@ -233,7 +249,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 ### Configuration Files
 - `tsconfig.json` - TypeScript compiler configuration with strict settings
 - `tsup.config.ts` - Build configuration for multiple output formats
-- `typedoc.json` - Documentation generation settings with custom styling (includes all modules: color, discriminator, map, palette, palette_color, string)
+- `typedoc.json` - Documentation generation settings with custom styling (includes all modules: color, discriminator, map, palette, palette_color, sketch, string)
 - `eslint.config.js.mjs` - ESLint rules for JavaScript configuration files
 - `eslint.config.ts.mjs` - ESLint rules for TypeScript source code (updated to support imports for typedoc documentation links)
 - `vitest.config.ts` - Testing configuration with coverage settings
@@ -245,7 +261,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - TypeScript compilation, build tools, and linting are set up and functional
 - Documentation generation is configured with typedoc
 - Vitest testing framework is configured and functional with comprehensive test coverage
-- GitHub Actions workflows for CI/CD are implemented (codeql.yml, npm-build-test.yml, npm-publish.yml)
+- GitHub Actions workflows for CI/CD are implemented (codeql.yml, npm-build-test.yml, npm-deprecate.yml, npm-publish.yml)
 - Build outputs (`_compiled/`, `_doc/`, `_dist/`) and test coverage (`_coverage/`) are ignored by `.gitignore`
 - May have breaking changes in future releases
 
@@ -261,6 +277,10 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
   - Discriminator class (static) for checking Discriminable objects to verify interface types
 - **`map` module**: Data structure utilities
   - StringMap class for string-keyed maps
+- **`sketch` module**: Sketch and p5.js utilities
+  - P5Context class for managing p5.js context and canvas
+  - Provides static access to p5.js instance
+  - Methods for initializing, resetting, and checking p5.js context
 - **`palette` module**: Color palette definitions and collections
   - Palette interface for color palette objects
   - ASEXUAL_PRIDE_PALETTE - Asexual pride flag color palette
@@ -308,7 +328,7 @@ This project now has comprehensive TypeScript development infrastructure:
 - Documentation generation creates comprehensive API docs for all modules
 - Vitest testing framework with comprehensive coverage and multiple test modes
 - GitHub Actions workflows for CI/CD, security scanning, and publishing
-- Code is organized in modules: `color`, `discriminator`, `map`, `palette`, `palette_color`, `string`
+- Code is organized in modules: `color`, `discriminator`, `map`, `palette`, `palette_color`, `sketch`, `string`
 - Comprehensive color and palette system with discriminator-based type safety
 - Jekyll-based documentation site with collections for colors and palettes
 - Testing utilities in `test_utils` module for comprehensive unit testing
