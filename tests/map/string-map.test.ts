@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import { describe, test, expect } from 'vitest';
+import {describe, test, expect, beforeAll} from 'vitest';
 
 import { StringMap } from '../../src';
 
@@ -82,8 +82,38 @@ describe('StringMap', (): void => {
         });
     });
 
+    describe('stringMap.size', (): void => {
+        const map: StringMap<number> = new StringMap<number>();
+
+        beforeAll((): void => {
+            map.set('a', 1);
+            map.set('b', 2);
+            map.set('c', 3);
+        });
+
+        test('stringMap.size', (): void => {
+            expect(map.size).toBe(3);
+        });
+    });
+
     describe('stringMap.get()', (): void => {
-        test.todo('stringMap.get()');
+        const map: StringMap<number> = new StringMap<number>();
+
+        beforeAll((): void => {
+            map.set('a', 1);
+            map.set('b', 2);
+            map.set('c', 3);
+        });
+
+        test.each([
+            { key: 'a', expectedValue: 1 },
+            { key: 'b', expectedValue: 2 },
+            { key: 'c', expectedValue: 3 },
+            { key: 'd', expectedValue: undefined },
+            { key: '', expectedValue: undefined }
+        ])('stringMap.get($key)', ({ key, expectedValue }: { key: string; expectedValue: number | undefined }): void => {
+            expect(map.get(key)).toBe(expectedValue);
+        });
     });
 
     describe('stringMap.set()', (): void => {
