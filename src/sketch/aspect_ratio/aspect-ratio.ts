@@ -36,16 +36,25 @@ import { AspectRatioConfig } from './aspect-ratio-config';
 export class AspectRatio {
     /**
      * The name of the aspect ratio.
+     *
+     * @private
+     * @readonly
      */
     readonly #NAME: string;
 
     /**
      * The width component of the aspect ratio.
+     *
+     * @private
+     * @readonly
      */
     readonly #WIDTH_RATIO: number;
 
     /**
      * The height component of the aspect ratio.
+     *
+     * @private
+     * @readonly
      */
     readonly #HEIGHT_RATIO: number;
 
@@ -121,6 +130,7 @@ export class AspectRatio {
 
     /**
      * Calculates the width of the canvas or graphic given the target resolution.
+     *
      * @param resolution - The target resolution.
      * @param applyToLongSide - When true, long side of the canvas or graphic will be equal to the target resolution.
      */
@@ -143,6 +153,8 @@ export class AspectRatio {
      *
      * @param resolution - The target resolution.
      * @param applyToLongSide - When true, long side of the canvas or graphic will be equal to the target resolution.
+     *
+     * @private
      */
     #calculateUnit(resolution: number, applyToLongSide?: boolean): number {
         if (resolution < 0) {
