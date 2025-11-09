@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import {describe, test, expect, beforeAll} from 'vitest';
+import { describe, test, expect, beforeAll } from 'vitest';
 
 import { StringMap } from '../../src';
 
@@ -111,7 +111,7 @@ describe('StringMap', (): void => {
             { key: 'c', expectedValue: 3 },
             { key: 'd', expectedValue: undefined },
             { key: '', expectedValue: undefined }
-        ])('stringMap.get($key)', ({ key, expectedValue }: { key: string; expectedValue: number | undefined }): void => {
+        ])('stringMap.get($key)', ({ key, expectedValue }: { key: string; expectedValue: number | undefined; }): void => {
             expect(map.get(key)).toBe(expectedValue);
         });
     });
