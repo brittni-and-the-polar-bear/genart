@@ -34,7 +34,6 @@ interface NearestColorMatch {
     distance: number;
 }
 
-// TODO - unit tests
 /**
  * Manager to store and retrieve the names of colors based on their
  * hex string value. When a name has not yet been stored or found,
@@ -48,12 +47,17 @@ interface NearestColorMatch {
 export class ColorNames {
     /**
      * A map of colors whose names have already been retrieved from the nearest-color library or set by the {@link addColor} method.
+     *
+     * @private
+     * @readonly
      */
     static readonly #MATCHED_COLORS: StringMap<string> = new StringMap<string>();
 
     /**
      * The method used in the {@link getColorName} function to find the nearest color.
      * If the method is `null`, the nearest-color library will use its list of default colors;
+     *
+     * @private
      */
     static #nearestColor: ((hex: string) => NearestColorMatch | null) | null = null;
 
@@ -64,13 +68,6 @@ export class ColorNames {
      */
     public constructor() {
         throw new Error('ColorNames is a static class and cannot be instantiated.');
-    }
-
-    /**
-     * @deprecated - Replaced by {@link setColors}. Will be removed in v3.0.0.
-     */
-    public static setPossibleColors(colors: { name: string; hex: string; }[]): void {
-        ColorNames.setColors(colors);
     }
 
     /**
@@ -163,15 +160,19 @@ export class ColorNames {
      */
     public static addColor(color: PaletteColor): void;
     public static addColor(color: PaletteColor | string, name?: string): void {
-        if (typeof color === 'string' && name) {
-            const hexColor: string = ColorNames.#formatHex(color);
+        let hexColor: string = '';
+        let hexName: string = '';
 
-            if (StringValidator.isHex(hexColor) && name) {
-                ColorNames.#MATCHED_COLORS.set(hexColor, name);
-            }
+        if (typeof color === 'string' && name) {
+            hexColor = ColorNames.#formatHex(color);
+            hexName = name.toLowerCase();
         } else if (Discriminator.isPaletteColor(color)) {
-            const hex: string = ColorNames.#formatHex(color.HEX);
-            ColorNames.#MATCHED_COLORS.set(hex, color.NAME);
+            hexColor = ColorNames.#formatHex(color.HEX);
+            hexName = color.NAME.toLowerCase();
+        }
+
+        if (StringValidator.isHex(hexColor) && hexName) {
+            ColorNames.#MATCHED_COLORS.set(hexColor, hexName);
         }
     }
 
@@ -181,6 +182,8 @@ export class ColorNames {
      * characters.
      *
      * @param original - The string to format.
+     *
+     * @private
      */
     static #formatHex(original: string): string {
         let hex: string = original;
