@@ -117,7 +117,25 @@ describe('StringMap', (): void => {
     });
 
     describe('stringMap.set()', (): void => {
-        test.todo('stringMap.set()');
+        const map: StringMap<number> = new StringMap<number>();
+
+        beforeAll((): void => {
+            map.set('a', 1);
+            map.set('b', 2);
+            map.set('c', 3);
+        });
+
+        test.each([
+            { key: 'a', originalValue: 1, newValue: 100 },
+            { key: 'b', originalValue: 2, newValue: 200 },
+            { key: 'c', originalValue: 3, newValue: 300 },
+            { key: 'd', originalValue: undefined, newValue: 400 },
+            { key: '', originalValue: undefined, newValue: 500 }
+        ])('stringMap.set($key, $newValue)', ({ key, originalValue, newValue }: { key: string; originalValue: number | undefined; newValue: number; }): void => {
+            expect(map.get(key)).toBe(originalValue);
+            map.set(key, newValue);
+            expect(map.get(key)).toBe(newValue);
+        });
     });
 
     describe('stringMap.setIfAbsent()', (): void => {
