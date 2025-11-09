@@ -40,7 +40,7 @@ describe('AspectRatio', (): void => {
                 { width: 720, height: -100, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
                 { width: 0, height: 720, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
                 { width: 720, height: 0, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' }
-            ])('new AspectRatio($width, $height)', ({ width, height, expectedWidthRatio, expectedHeightRatio, expectedName}: { width: number, height: number, expectedWidthRatio: number, expectedHeightRatio: number, expectedName: string}): void => {
+            ])('new AspectRatio($width, $height)', ({ width, height, expectedWidthRatio, expectedHeightRatio, expectedName}: { width: number; height: number; expectedWidthRatio: number; expectedHeightRatio: number; expectedName: string; }): void => {
                 const aspectRatio = new AspectRatio(width, height);
                 expect(aspectRatio.WIDTH_RATIO).toBe(expectedWidthRatio);
                 expect(aspectRatio.HEIGHT_RATIO).toBe(expectedHeightRatio);
@@ -74,7 +74,7 @@ describe('AspectRatio', (): void => {
                 { width: 720, height: -100, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
                 { width: 0, height: 720, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
                 { width: 720, height: 0, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' }
-            ])('new AspectRatio($width, $height, $name)', ({ width, height, name, expectedWidthRatio, expectedHeightRatio, expectedName}: { width: number, height: number, name: string | undefined, expectedWidthRatio: number, expectedHeightRatio: number, expectedName: string}): void => {
+            ])('new AspectRatio($width, $height, $name)', ({ width, height, name, expectedWidthRatio, expectedHeightRatio, expectedName}: { width: number; height: number; name: string | undefined; expectedWidthRatio: number; expectedHeightRatio: number; expectedName: string; }): void => {
                 const aspectRatio = new AspectRatio(width, height, name);
                 expect(aspectRatio.WIDTH_RATIO).toBe(expectedWidthRatio);
                 expect(aspectRatio.HEIGHT_RATIO).toBe(expectedHeightRatio);
