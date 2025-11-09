@@ -31,6 +31,9 @@
 export class StringMap<ValueType> {
     /**
      * The underlying map object.
+     *
+     * @private
+     * @readonly
      */
     readonly #MAP: Map<string, ValueType>;
 
