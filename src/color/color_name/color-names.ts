@@ -95,35 +95,32 @@ export class ColorNames {
         let match: string | undefined = undefined;
 
         if (ColorNames.hasMatch(colorHex)) {
-            match = ColorNames.#MATCHED_COLORS.get(colorHex);
+            match = ColorNames.#MATCHED_COLORS.get(colorHex)?.toLowerCase();
         } else {
-            try {
-                let result: NearestColorMatch | string | null;
+            let result: NearestColorMatch | string | null;
 
+            try {
                 if (ColorNames.#nearestColor) {
                     result = ColorNames.#nearestColor(colorHex);
                 } else {
                     result = nearestColor(colorHex);
                 }
-
-                if (result) {
-                    if (typeof result === 'string') {
-                        match = result;
-                    } else {
-                        match = result.name;
-                    }
-                }
-
-                if (match) {
-                    ColorNames.#MATCHED_COLORS.setIfAbsent(colorHex, match);
-                }
             } catch {
-                match = undefined;
+                result = null;
             }
-        }
 
-        if (match) {
-            match = match.toLowerCase();
+            if (result) {
+                if (typeof result === 'string') {
+                    match = result;
+                } else {
+                    match = result.name;
+                }
+            }
+
+            if (match) {
+                match = match.toLowerCase();
+                ColorNames.#MATCHED_COLORS.setIfAbsent(colorHex, match);
+            }
         }
 
         return match;
