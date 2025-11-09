@@ -22,6 +22,8 @@
 
 import { Discriminator } from '../../discriminator';
 
+import { Context } from '../context';
+
 import { AspectRatioConfig } from './aspect-ratio-config';
 
 /**
@@ -50,8 +52,8 @@ export class AspectRatio {
     /**
      *  Create an aspect ratio using the given target width and height.
      *
-     * @param width - The target width of the canvas or graphic.
-     * @param height - The target height of the canvas or graphic.
+     * @param width - The target width of the canvas or graphic. Minimum value is {@link Context.MIN_RESOLUTION}.
+     * @param height - The target height of the canvas or graphic. Minimum value is {@link Context.MIN_RESOLUTION}.
      * @param name - Optional name to use.
      *
      * @since 2.0.0
@@ -82,7 +84,7 @@ export class AspectRatio {
             this.#WIDTH_RATIO = widthRatio;
             this.#HEIGHT_RATIO = heightRatio;
             this.#NAME = this.#buildName(config.NAME);
-        } else if ((arg1 > 0) && (typeof arg2 === 'number' && arg2 > 0)) {
+        } else if ((arg1 >= Context.MIN_RESOLUTION) && (typeof arg2 === 'number' && arg2 >= Context.MIN_RESOLUTION)) {
             const width: number = arg1;
             const height: number = arg2;
             const name: string | undefined = arg3;

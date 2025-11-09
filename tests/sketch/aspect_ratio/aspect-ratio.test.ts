@@ -20,24 +20,66 @@
  * SOFTWARE.
  */
 
-import { describe, test } from 'vitest';
+import { describe, test, expect } from 'vitest';
+
+import { AspectRatio } from '../../../src';
 
 describe('AspectRatio', (): void => {
     describe('AspectRatio constructor', (): void => {
         describe('new AspectRatio(width, height)', (): void => {
-            test.todo('new AspectRatio(width, height)');
-
-            test.todo('new AspectRatio(width, height) - negative width and/or height');
+            test.each([
+                { width: 720, height: 720, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 720, height: 1080, expectedWidthRatio: 1, expectedHeightRatio: 1.5, expectedName: '1:1.5' },
+                { width: 1080, height: 720, expectedWidthRatio: 1.5, expectedHeightRatio: 1, expectedName: '1.5:1' },
+                { width: 250, height: 500, expectedWidthRatio: 1, expectedHeightRatio: 2, expectedName: '1:2' },
+                { width: 500, height: 250, expectedWidthRatio: 2, expectedHeightRatio: 1, expectedName: '2:1' },
+                { width: 100, height: 100, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 0, height: 0, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: -100, height: -100, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: -100, height: 720, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 720, height: -100, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 0, height: 720, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 720, height: 0, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' }
+            ])('new AspectRatio($width, $height)', ({ width, height, expectedWidthRatio, expectedHeightRatio, expectedName}: { width: number, height: number, expectedWidthRatio: number, expectedHeightRatio: number, expectedName: string}): void => {
+                const aspectRatio = new AspectRatio(width, height);
+                expect(aspectRatio.WIDTH_RATIO).toBe(expectedWidthRatio);
+                expect(aspectRatio.HEIGHT_RATIO).toBe(expectedHeightRatio);
+                expect(aspectRatio.NAME).toBe(expectedName);
+            });
         });
 
         describe('new AspectRatio(width, height, name)', (): void => {
-            test.todo('new AspectRatio(width, height, name)');
-
-            test.todo('new AspectRatio(width, height, name) - name undefined');
-
-            test.todo('new AspectRatio(width, height, name) - negative width and/or height');
-
-            test.todo('new AspectRatio(width, height, name) - negative width and/or height with undefined name');
+            test.each([
+                { width: 720, height: 720, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: 'test name' },
+                { width: 720, height: 1080, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 1.5, expectedName: 'test name' },
+                { width: 1080, height: 720, name: 'test name', expectedWidthRatio: 1.5, expectedHeightRatio: 1, expectedName: 'test name' },
+                { width: 250, height: 500, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 2, expectedName: 'test name' },
+                { width: 500, height: 250, name: 'test name', expectedWidthRatio: 2, expectedHeightRatio: 1, expectedName: 'test name' },
+                { width: 100, height: 100, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: 'test name' },
+                { width: 0, height: 0, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: -100, height: -100, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: -100, height: 720, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 720, height: -100, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 0, height: 720, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 720, height: 0, name: 'test name', expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 720, height: 720, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 720, height: 1080, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1.5, expectedName: '1:1.5' },
+                { width: 1080, height: 720, name: undefined, expectedWidthRatio: 1.5, expectedHeightRatio: 1, expectedName: '1.5:1' },
+                { width: 250, height: 500, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 2, expectedName: '1:2' },
+                { width: 500, height: 250, name: undefined, expectedWidthRatio: 2, expectedHeightRatio: 1, expectedName: '2:1' },
+                { width: 100, height: 100, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 0, height: 0, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: -100, height: -100, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: -100, height: 720, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 720, height: -100, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 0, height: 720, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' },
+                { width: 720, height: 0, name: undefined, expectedWidthRatio: 1, expectedHeightRatio: 1, expectedName: '1:1' }
+            ])('new AspectRatio($width, $height, $name)', ({ width, height, name, expectedWidthRatio, expectedHeightRatio, expectedName}: { width: number, height: number, name: string | undefined, expectedWidthRatio: number, expectedHeightRatio: number, expectedName: string}): void => {
+                const aspectRatio = new AspectRatio(width, height, name);
+                expect(aspectRatio.WIDTH_RATIO).toBe(expectedWidthRatio);
+                expect(aspectRatio.HEIGHT_RATIO).toBe(expectedHeightRatio);
+                expect(aspectRatio.NAME).toBe(expectedName);
+            });
         });
 
         describe('new AspectRatio(AspectRatioConfig)', (): void => {
@@ -85,5 +127,9 @@ describe('AspectRatio', (): void => {
 
             test.todo('aspectRatio.getHeight(resolution, applyToLongSide) - negative resolution and apply to long side undefined');
         });
+    });
+
+    describe('aspectRatio.WIDTH_RATIO', (): void => {
+        test.todo('aspectRatio.WIDTH_RATIO');
     });
 });
