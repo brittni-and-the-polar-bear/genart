@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,35 +20,23 @@
  * SOFTWARE.
  */
 
-export * from './aspect_ratio';
-export * from './context';
-export * from './coordinate';
-export * from './p5_context';
+import { AspectRatio } from '../aspect_ratio';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as aspect_ratio from './aspect_ratio';
+import { RenderType } from './render-type';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as context from './context';
+export interface ContextConfig {
+    readonly NAME: string;
+    readonly RENDER_TYPE?: RenderType;
+    readonly ASPECT_RATIO?: AspectRatio;
+    readonly RESOLUTION?: number;
+    readonly MATCH_CONTAINER_RATIO?: boolean;
+}
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as coordinate from './coordinate';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as p5_context from './p5_context';
+export abstract class Context {
+    /**
+     * Minimum resolution for a context.
+     */
+    public static get MIN_RESOLUTION(): number {
+        return 100;
+    }
+}
