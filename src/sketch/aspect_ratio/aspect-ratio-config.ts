@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,35 +20,41 @@
  * SOFTWARE.
  */
 
-export * from './aspect_ratio';
-export * from './context';
-export * from './coordinate';
-export * from './p5_context';
+import { Discriminable, Discriminators } from '../../discriminator';
+
+import { AspectRatio } from './aspect-ratio';
 
 /**
- * @category Namespace
+ * A configuration for an {@link AspectRatio} object.
  *
  * @since 2.0.0
+ *
+ * @category Aspect Ratio
  */
-export * as aspect_ratio from './aspect_ratio';
+export interface AspectRatioConfig extends Discriminable {
+    /**
+     * The name of the aspect ratio.
+     *
+     * @since 2.0.0
+     */
+    readonly NAME?: string;
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as context from './context';
+    /**
+     * The width component of the aspect ratio.
+     *
+     * @since 2.0.0
+     */
+    readonly WIDTH_RATIO: number;
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as coordinate from './coordinate';
+    /**
+     * The height component of the aspect ratio.
+     *
+     * @since 2.0.0
+     */
+    readonly HEIGHT_RATIO: number;
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as p5_context from './p5_context';
+    /**
+     * @inheritDoc
+     */
+    readonly DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG;
+}

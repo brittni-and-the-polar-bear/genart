@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,35 +20,5 @@
  * SOFTWARE.
  */
 
-export * from './aspect_ratio';
 export * from './context';
-export * from './coordinate';
-export * from './p5_context';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as aspect_ratio from './aspect_ratio';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as context from './context';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as coordinate from './coordinate';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as p5_context from './p5_context';
+export * from './render-type';
