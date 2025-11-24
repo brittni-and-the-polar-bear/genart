@@ -79,22 +79,22 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@stylistic/eslint-plugin": "^5.5.0",
-    "@vitest/coverage-v8": "^4.0.8",
+    "@stylistic/eslint-plugin": "^5.6.1",
+    "@vitest/coverage-v8": "^4.0.13",
     "@vitest/ui": "^4.0.7",
     "canvas": "^3.2.0",
     "eslint": "^9.39.1",
-    "eslint-plugin-es-x": "^9.1.2",
+    "eslint-plugin-es-x": "^9.2.0",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-security": "^3.0.1",
-    "jsdom": "^27.1.0",
+    "jsdom": "^27.2.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
-    "tsup": "^8.5.0",
+    "tsup": "^8.5.1",
     "typedoc": "^0.28.14",
     "typedoc-plugin-coverage": "^4.0.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.3",
+    "typescript-eslint": "^8.47.0",
     "vitest": "^4.0.7"
   }
 }
