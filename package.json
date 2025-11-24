@@ -72,7 +72,7 @@
     "@types/nearest-color": "^0.4.1",
     "@types/p5": "^1.7.7",
     "nearest-color": "^0.4.4",
-    "p5": "^1.11.11"
+    "p5": "^2.1.1"
   },
   "peerDependencies": {
     "color-name-list": "^13.2.0"
