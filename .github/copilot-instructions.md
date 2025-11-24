@@ -19,10 +19,10 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 **IMPORTANT**: This project is in alpha development.
 
 3. **Build & Test**: Multiple scripts available
-   - `npm run build` - Compiles TypeScript to multiple formats using tsup
+   - `npm run build` - Compiles TypeScript to multiple formats using tsdown
    - `npm run docs` - Generates documentation using typedoc  
    - `npm run lint:js` - Lints JavaScript configuration files with ESLint
-   - `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsup.config.ts, vitest.config.ts, and tests directory)
+   - `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsdown.config.ts, vitest.config.ts, and tests directory)
    - `npm test` - Runs vitest unit tests
    - `npm run test:watch` - Runs vitest in watch mode
    - `npm run test:ui` - Runs vitest with UI interface
@@ -180,7 +180,7 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 ├── package.json                  # NPM package configuration with build scripts
 ├── package-lock.json             # NPM dependency lock file
 ├── tsconfig.json                 # TypeScript compiler configuration
-├── tsup.config.ts                # Build tool configuration
+├── tsdown.config.ts              # Build tool configuration
 ├── typedoc.json                  # Documentation generator configuration
 ├── velocity-copyright-template.txt  # Copyright template
 └── vitest.config.ts              # Vitest testing configuration
@@ -218,7 +218,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 
 ### Core Dependencies
 - **typescript** - TypeScript compiler and language support
-- **tsup** - Build tool for TypeScript packages  
+- **tsdown** - Build tool for TypeScript packages  
 - **ts-node** - TypeScript execution environment
 - **tslib** - TypeScript runtime library
 - **nearest-color** - Find the nearest named color from a given hex color
@@ -248,7 +248,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 
 ### Configuration Files
 - `tsconfig.json` - TypeScript compiler configuration with strict settings
-- `tsup.config.ts` - Build configuration for multiple output formats
+- `tsdown.config.ts` - Build configuration for multiple output formats
 - `typedoc.json` - Documentation generation settings with custom styling (includes all modules: color, discriminator, map, palette, palette_color, sketch, string)
 - `eslint.config.js.mjs` - ESLint rules for JavaScript configuration files
 - `eslint.config.ts.mjs` - ESLint rules for TypeScript source code (updated to support imports for typedoc documentation links)
@@ -303,10 +303,10 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 
 ### Available Scripts
 The following npm scripts are available:
-- `npm run build` - Compiles TypeScript using tsup (outputs to `_dist/`)
+- `npm run build` - Compiles TypeScript using tsdown (outputs to `_dist/`)
 - `npm run docs` - Generates API documentation using typedoc (outputs to `_doc/`)
 - `npm run lint:js` - Lints JavaScript configuration files with ESLint
-- `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsup.config.ts, vitest.config.ts, and tests directory)
+- `npm run lint:ts` - Lints TypeScript source files with ESLint (includes tsdown.config.ts, vitest.config.ts, and tests directory)
 - `npm run prepack` - Runs build automatically before packaging
 - `npm test` - Runs vitest unit tests
 - `npm run test:watch` - Runs vitest in watch mode for development
@@ -341,7 +341,7 @@ This project now has comprehensive TypeScript development infrastructure:
 
 ### Build and Development Tools
 - **TypeScript**: Configured with strict settings, outputs to `_compiled/`
-- **tsup**: Build tool that creates multiple output formats in `_dist/`
+- **tsdown**: Build tool that creates multiple output formats in `_dist/`
 - **typedoc**: Documentation generator with coverage plugin, outputs to `_doc/`
 - **ESLint**: Separate configurations for JS and TS files with comprehensive rules
 - **vitest**: Fast unit testing framework with coverage reporting, outputs to `_coverage/`
