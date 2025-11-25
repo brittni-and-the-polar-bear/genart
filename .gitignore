@@ -6,12 +6,10 @@
 # Visual Studio Code
 .vscode/
 
-# Ruby
-Gemfile.lock
-
 # Jekyll
-_site/
 .jekyll-cache/
+.sass-cache/
+_site/
 
 # Node.js
 node_modules/
