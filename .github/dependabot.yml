@@ -25,6 +25,8 @@ updates:
     schedule:
       interval: weekly
     target-branch: "main"
+    allow:
+      - dependency-type: "direct"
     commit-message:
       prefix: "dependabot github-actions update"
       include: "scope"
@@ -37,6 +39,8 @@ updates:
     schedule:
       interval: weekly
     target-branch: "main"
+    allow:
+      - dependency-type: "direct"
     commit-message:
       prefix: "dependabot bundler update"
       include: "scope"
