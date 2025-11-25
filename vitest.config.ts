@@ -27,7 +27,7 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         include: ['tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-        exclude: ['node_modules', '_dist', '_compiled', '_doc'],
+        exclude: ['node_modules', '_dist', '_compiled', '_doc', 'docs'],
         coverage: {
             provider: 'v8',
             reporter: ['text', 'lcov', 'json', 'json-summary', 'clover', 'html'],

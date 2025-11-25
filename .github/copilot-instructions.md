@@ -7,9 +7,9 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 ## Working Effectively
 
 ### Initial Setup and Dependencies
-1. **CRITICAL**: Use Node.js v22.19.0 (check `.node-version` file for exact version)
-   - Install via nvm: `nvm install 22.19.0 && nvm use 22.19.0`
-   - Verify: `node --version` should show `v22.19.0`
+1. Use Node.js v24.11.1 (check `.node-version` file for exact version)
+   - Install via nvm: `nvm install 24.11.1 && nvm use 24.11.1`
+   - Verify: `node --version` should show `v24.11.1`
 
 2. **Install dependencies**: `npm install`
    - The project has TypeScript, build, documentation, and linting dependencies
@@ -171,8 +171,8 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │       └── palette-colors.ts     # Palette color collection utilities
 ├── typedoc/                      # TypeDoc styling files
 │   └── style.css                 # Custom TypeDoc styling
-├── .gitignore                    # Git ignore rules (includes build outputs and coverage)
-├── .node-version                 # Node.js version specification (v22.19.0)
+├── .gitignore                    # Git ignore rules (includes build outputs, coverage, and Jekyll files)
+├── .node-version                 # Node.js version specification (v24.11.1)
 ├── eslint.config.js.mjs          # ESLint configuration for JavaScript files
 ├── eslint.config.ts.mjs          # ESLint configuration for TypeScript files
 ├── LICENSE                       # MIT License
@@ -263,6 +263,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - Vitest testing framework is configured and functional with comprehensive test coverage
 - GitHub Actions workflows for CI/CD are implemented (codeql.yml, npm-build-test.yml, npm-deprecate.yml, npm-publish.yml)
 - Build outputs (`_compiled/`, `_doc/`, `_dist/`) and test coverage (`_coverage/`) are ignored by `.gitignore`
+- Jekyll build artifacts (`.jekyll-cache/`, `.sass-cache/`, `_site/`) are ignored by `.gitignore`
 - May have breaking changes in future releases
 
 ### Library Content
@@ -316,7 +317,7 @@ The following npm scripts are available:
 ## Development Guidelines
 
 ### Node.js Version
-- **CRITICAL**: Always use Node.js v22.19.0 as specified in `.node-version`
+- Use Node.js v24.11.1 as specified in `.node-version`
 - Check version before working: `node --version`
 
 ### Working with the Project
@@ -352,7 +353,7 @@ This project now has comprehensive TypeScript development infrastructure:
 
 **Setup new environment:**
 ```bash
-nvm use 22.19.0        # Use correct Node.js version
+nvm use 24.11.1        # Use correct Node.js version
 npm install            # Install all development dependencies
 ```
 
@@ -368,7 +369,7 @@ npm run test:coverage  # Run tests with coverage reporting
 
 **Basic validation:**
 ```bash
-node --version         # Verify Node.js version (should be v22.19.0)
+node --version         # Verify Node.js version (should be v24.11.1)
 npm run build          # Should build successfully
 npm run docs           # Should generate docs
 npm test               # Should run vitest tests and pass
