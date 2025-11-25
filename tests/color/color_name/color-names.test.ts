@@ -22,23 +22,32 @@
 
 import { describe, test, expect, beforeAll } from 'vitest';
 
-// @ts-expect-error colornames import works as of color-name-list@11.24.2
+// @ts-expect-error colornames import works despite TypeScript error as of color-name-list@13.2.0
 import { colornames } from 'color-name-list';
 
 import { ColorNames, Discriminators, PaletteColor, ALL_PALETTE_COLORS } from '../../../src';
 
 describe('ColorNames', (): void => {
-    beforeAll((): void => {
-        ColorNames.setPossibleColors(colornames as ({ name: string; hex: string; }[]));
-    });
-
     describe('ColorNames constructor', (): void => {
         test('new ColorNames()', (): void => {
             expect(() => new ColorNames()).toThrow('ColorNames is a static class and cannot be instantiated.');
         });
     });
 
+    describe('ColorNames - default colors', (): void => {
+        test('ColorNames - default colors', (): void => {
+            // Any colors tested here will be cached in the ColorNames #MATCHED_COLORS map.
+            // Any colors stored in PaletteColor constants will already have names in the #MATCHED_COLORS map.
+            expect(ColorNames.getColorName('#0000FF')).toBe('#00f');
+            expect(ColorNames.getColorName('#FF00FF')).toBe('#808');
+        });
+    });
+
     describe('ColorNames.getColorName()', () => {
+        beforeAll((): void => {
+            ColorNames.setColors(colornames as ({ name: string; hex: string; }[]));
+        });
+
         test.each([
             { hex: 'this is not a hex', expected: undefined },
             { hex: '#FF0000FF', expected: undefined },
@@ -73,7 +82,7 @@ describe('ColorNames', (): void => {
     });
 
     describe('ColorNames.addColor()', () => {
-        test('ColorNames.addColor()', (): void => {
+        test('ColorNames.addColor(PaletteColor)', (): void => {
             const fakeColor: PaletteColor = {
                 RGB: { R: 0, G: 0, B: 0 },
                 HSL: { H: 0, S: 0, L: 0 },
@@ -91,6 +100,22 @@ describe('ColorNames', (): void => {
             expect(originalName).toBe(expectedOriginalName);
 
             ColorNames.addColor(fakeColor);
+
+            const newName: string | undefined = ColorNames.getColorName(hex);
+            expect(newName).toBe(expectedNewName);
+        });
+
+        test.each([
+            { hex: 'this is not a hex', name: 'test fake name', expectedOriginalName: undefined, expectedNewName: undefined },
+            { hex: '', name: 'test fake name', expectedOriginalName: undefined, expectedNewName: undefined },
+            { hex: '#FF0000', name: 'test fake name', expectedOriginalName: 'red', expectedNewName: 'test fake name' },
+            { hex: 'FFFF00', name: 'test fake name', expectedOriginalName: 'yellow', expectedNewName: 'test fake name' },
+            { hex: '#00FF00', name: '', expectedOriginalName: 'green', expectedNewName: 'green' }
+        ])('ColorNames.addColor($hexColor, $name)', ({ hex, name, expectedOriginalName, expectedNewName }: { hex: string; name: string; expectedOriginalName: string | undefined; expectedNewName: string | undefined; }): void => {
+            const originalName: string | undefined = ColorNames.getColorName(hex);
+            expect(originalName).toBe(expectedOriginalName);
+
+            ColorNames.addColor(hex, name);
 
             const newName: string | undefined = ColorNames.getColorName(hex);
             expect(newName).toBe(expectedNewName);

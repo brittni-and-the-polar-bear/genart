@@ -3,9 +3,9 @@
   "version": "2.0.0-rc.3-alpha.2",
   "description": "A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects.",
   "license": "MIT",
-  "types": "./_dist/index.d.ts",
+  "types": "./_dist/index.d.cts",
   "module": "./_dist/index.mjs",
-  "main": "./_dist/index.js",
+  "main": "./_dist/index.cjs",
   "exports": {
     ".": {
       "import": {
@@ -13,8 +13,8 @@
         "default": "./_dist/index.mjs"
       },
       "require": {
-        "types": "./_dist/index.d.ts",
-        "default": "./_dist/index.js"
+        "types": "./_dist/index.d.cts",
+        "default": "./_dist/index.cjs"
       }
     }
   },
@@ -58,10 +58,10 @@
     "typescript"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "docs": "typedoc",
     "lint:js": "eslint -c eslint.config.js.mjs ./eslint.config.js.mjs ./eslint.config.ts.mjs",
-    "lint:ts": "eslint -c eslint.config.ts.mjs ./src ./tests tsup.config.ts vitest.config.ts",
+    "lint:ts": "eslint -c eslint.config.ts.mjs ./src ./tests tsdown.config.ts vitest.config.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
@@ -79,22 +79,22 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@stylistic/eslint-plugin": "^5.5.0",
-    "@vitest/coverage-v8": "^4.0.7",
-    "@vitest/ui": "^4.0.7",
+    "@stylistic/eslint-plugin": "^5.6.1",
+    "@vitest/coverage-v8": "^4.0.14",
+    "@vitest/ui": "^4.0.14",
     "canvas": "^3.2.0",
     "eslint": "^9.39.1",
-    "eslint-plugin-es-x": "^9.1.2",
+    "eslint-plugin-es-x": "^9.2.0",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-security": "^3.0.1",
-    "jsdom": "^27.1.0",
+    "jsdom": "^27.2.0",
     "ts-node": "^10.9.2",
+    "tsdown": "^0.16.6",
     "tslib": "^2.8.1",
-    "tsup": "^8.5.0",
     "typedoc": "^0.28.14",
     "typedoc-plugin-coverage": "^4.0.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.3",
-    "vitest": "^4.0.7"
+    "typescript-eslint": "^8.48.0",
+    "vitest": "^4.0.14"
   }
 }

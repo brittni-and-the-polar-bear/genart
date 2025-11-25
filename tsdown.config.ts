@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import { defineConfig } from 'tsup';
+import { defineConfig } from 'tsdown';
 
 export default defineConfig({
     entry: {
@@ -33,5 +33,6 @@ export default defineConfig({
     dts: true,
     format: ['cjs', 'esm', 'iife'],
     globalName: 'genart',
+    external: ['nearest-color', 'p5'],
     minifySyntax: false
 });

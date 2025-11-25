@@ -34,7 +34,6 @@ interface NearestColorMatch {
     distance: number;
 }
 
-// TODO - unit tests
 /**
  * Manager to store and retrieve the names of colors based on their
  * hex string value. When a name has not yet been stored or found,
@@ -48,12 +47,17 @@ interface NearestColorMatch {
 export class ColorNames {
     /**
      * A map of colors whose names have already been retrieved from the nearest-color library or set by the {@link addColor} method.
+     *
+     * @private
+     * @readonly
      */
     static readonly #MATCHED_COLORS: StringMap<string> = new StringMap<string>();
 
     /**
      * The method used in the {@link getColorName} function to find the nearest color.
      * If the method is `null`, the nearest-color library will use its list of default colors;
+     *
+     * @private
      */
     static #nearestColor: ((hex: string) => NearestColorMatch | null) | null = null;
 
@@ -67,13 +71,13 @@ export class ColorNames {
     }
 
     /**
-     * Set the color names that could possibly be selected when searching for the nearest color match in {@link getColorName}.
+     * Set the color names that could be selected when searching for the nearest color match in {@link getColorName}.
      *
      * @param colorNames - An array of color objects with the properties `name` and `hex`.
      *
      * @since 2.0.0
      */
-    public static setPossibleColors(colorNames: { name: string; hex: string; }[]): void {
+    public static setColors(colorNames: { name: string; hex: string; }[]): void {
         const colors = colorNames.reduce((o, { name, hex }) => Object.assign(o, { [name]: hex }), {});
         ColorNames.#nearestColor = nearestColor.from(colors);
     }
@@ -91,35 +95,32 @@ export class ColorNames {
         let match: string | undefined = undefined;
 
         if (ColorNames.hasMatch(colorHex)) {
-            match = ColorNames.#MATCHED_COLORS.get(colorHex);
+            match = ColorNames.#MATCHED_COLORS.get(colorHex)?.toLowerCase();
         } else {
-            try {
-                let result: NearestColorMatch | string | null;
+            let result: NearestColorMatch | string | null;
 
+            try {
                 if (ColorNames.#nearestColor) {
                     result = ColorNames.#nearestColor(colorHex);
                 } else {
                     result = nearestColor(colorHex);
                 }
-
-                if (result) {
-                    if (typeof result === 'string') {
-                        match = result;
-                    } else {
-                        match = result.name;
-                    }
-                }
-
-                if (match) {
-                    ColorNames.#MATCHED_COLORS.setIfAbsent(colorHex, match);
-                }
             } catch {
-                match = undefined;
+                result = null;
             }
-        }
 
-        if (match) {
-            match = match.toLowerCase();
+            if (result) {
+                if (typeof result === 'string') {
+                    match = result;
+                } else {
+                    match = result.name;
+                }
+            }
+
+            if (match) {
+                match = match.toLowerCase();
+                ColorNames.#MATCHED_COLORS.setIfAbsent(colorHex, match);
+            }
         }
 
         return match;
@@ -156,15 +157,19 @@ export class ColorNames {
      */
     public static addColor(color: PaletteColor): void;
     public static addColor(color: PaletteColor | string, name?: string): void {
-        if (typeof color === 'string' && name) {
-            const hexColor: string = ColorNames.#formatHex(color);
+        let hexColor: string = '';
+        let hexName: string = '';
 
-            if (StringValidator.isHex(hexColor) && name) {
-                ColorNames.#MATCHED_COLORS.set(hexColor, name);
-            }
+        if (typeof color === 'string' && name) {
+            hexColor = ColorNames.#formatHex(color);
+            hexName = name.toLowerCase();
         } else if (Discriminator.isPaletteColor(color)) {
-            const hex: string = ColorNames.#formatHex(color.HEX);
-            ColorNames.#MATCHED_COLORS.set(hex, color.NAME);
+            hexColor = ColorNames.#formatHex(color.HEX);
+            hexName = color.NAME.toLowerCase();
+        }
+
+        if (StringValidator.isHex(hexColor) && hexName) {
+            ColorNames.#MATCHED_COLORS.set(hexColor, hexName);
         }
     }
 
@@ -174,6 +179,8 @@ export class ColorNames {
      * characters.
      *
      * @param original - The string to format.
+     *
+     * @private
      */
     static #formatHex(original: string): string {
         let hex: string = original;
