@@ -48,6 +48,20 @@ updates:
           - "major"
           - "minor"
           - "patch"
+    peer-dependencies:
+      applies-to: version-updates
+      dependency-type: "peer"
+      update-types:
+        - "major"
+        - "minor"
+        - "patch"
+    peer-dependencies-security:
+      applies-to: security-updates
+      dependency-type: "peer"
+      update-types:
+        - "major"
+        - "minor"
+        - "patch"
 
   - package-ecosystem: github-actions
     directory: "/"
