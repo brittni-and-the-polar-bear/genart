@@ -11,7 +11,7 @@ updates:
       interval: weekly
     target-branch: "main"
     allow:
-      - dependency-type: "all"
+      - dependency-type: "direct"
     versioning-strategy: increase
     commit-message:
       prefix: "dependabot npm update"
