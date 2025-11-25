@@ -62,7 +62,7 @@
     "build": "tsdown",
     "docs": "typedoc",
     "lint:js": "eslint -c eslint.config.js.mjs ./eslint.config.js.mjs ./eslint.config.ts.mjs",
-    "lint:ts": "eslint -c eslint.config.ts.mjs ./src ./tests tsdown.config.ts vitest.config.ts",
+    "lint:ts": "eslint -c eslint.config.ts.mjs ./src ./tests ./tsdown.config.ts ./vitest.config.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",

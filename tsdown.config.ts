@@ -37,8 +37,8 @@ export default defineConfig({
     external: ['nearest-color', 'p5'],
     outputOptions: {
         globals: {
-            "nearest-color": "nearestColor",
-            "p5": "p5"
+            'nearest-color': 'nearestColor',
+            'p5': 'p5'
         }
     }
 });
