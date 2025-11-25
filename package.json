@@ -3,6 +3,7 @@
   "version": "2.0.0-rc.3-alpha.2",
   "description": "A TypeScript compatible library built with p5.js for creating responsive, generative, algorithmic art projects.",
   "license": "MIT",
+  "type": "module",
   "types": "./_dist/index.d.cts",
   "module": "./_dist/index.mjs",
   "main": "./_dist/index.cjs",

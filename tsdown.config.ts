@@ -27,12 +27,18 @@ export default defineConfig({
         index: './src/index.ts'
     },
     outDir: './_dist',
-    splitting: false,
+    globalName: 'genart',
     sourcemap: true,
     clean: true,
     dts: true,
+    failOnWarn: true,
+    minify: false,
     format: ['cjs', 'esm', 'iife'],
-    globalName: 'genart',
     external: ['nearest-color', 'p5'],
-    minifySyntax: false
+    outputOptions: {
+        globals: {
+            "nearest-color": "nearestColor",
+            "p5": "p5"
+        }
+    }
 });
