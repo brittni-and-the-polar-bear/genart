@@ -7,7 +7,7 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 ## Working Effectively
 
 ### Initial Setup and Dependencies
-1. **CRITICAL**: Use Node.js v24.11.1 (check `.node-version` file for exact version)
+1. Use Node.js v24.11.1 (check `.node-version` file for exact version)
    - Install via nvm: `nvm install 24.11.1 && nvm use 24.11.1`
    - Verify: `node --version` should show `v24.11.1`
 
@@ -252,7 +252,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - `typedoc.json` - Documentation generation settings with custom styling (includes all modules: color, discriminator, map, palette, palette_color, sketch, string)
 - `eslint.config.js.mjs` - ESLint rules for JavaScript configuration files
 - `eslint.config.ts.mjs` - ESLint rules for TypeScript source code (updated to support imports for typedoc documentation links)
-- `vitest.config.ts` - Testing configuration with coverage settings (excludes node_modules, _dist, _compiled, _doc, docs)
+- `vitest.config.ts` - Testing configuration with coverage settings
 
 ## Current Limitations
 
@@ -317,7 +317,7 @@ The following npm scripts are available:
 ## Development Guidelines
 
 ### Node.js Version
-- **CRITICAL**: Always use Node.js v24.11.1 as specified in `.node-version`
+- Use Node.js v24.11.1 as specified in `.node-version`
 - Check version before working: `node --version`
 
 ### Working with the Project
