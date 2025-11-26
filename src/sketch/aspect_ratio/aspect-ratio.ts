@@ -109,6 +109,8 @@ export class AspectRatio {
 
     /**
      * The name of the aspect ratio.
+     *
+     * @since 2.0.0
      */
     public get NAME(): string {
         return this.#NAME;
@@ -116,6 +118,8 @@ export class AspectRatio {
 
     /**
      * The width component of the aspect ratio.
+     *
+     * @since 2.0.0
      */
     public get WIDTH_RATIO(): number {
         return this.#WIDTH_RATIO;
@@ -123,6 +127,8 @@ export class AspectRatio {
 
     /**
      * The height component of the aspect ratio.
+     *
+     * @since 2.0.0
      */
     public get HEIGHT_RATIO(): number {
         return this.#HEIGHT_RATIO;
@@ -133,6 +139,8 @@ export class AspectRatio {
      *
      * @param resolution - The target resolution.
      * @param applyToLongSide - When true, long side of the canvas or graphic will be equal to the target resolution.
+     *
+     * @since 2.0.0
      */
     public getWidth(resolution: number, applyToLongSide?: boolean): number {
         return Math.floor(this.#calculateUnit(resolution, applyToLongSide) * this.#WIDTH_RATIO);
@@ -143,6 +151,8 @@ export class AspectRatio {
      *
      * @param resolution - The target resolution.
      * @param applyToLongSide - When true, long side of the canvas or graphic will be equal to the target resolution.
+     *
+     * @since 2.0.0
      */
     public getHeight(resolution: number, applyToLongSide?: boolean): number {
         return Math.floor(this.#calculateUnit(resolution, applyToLongSide) * this.#HEIGHT_RATIO);

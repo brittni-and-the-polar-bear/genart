@@ -32,6 +32,12 @@ export interface ContextConfig {
     readonly MATCH_CONTAINER_RATIO?: boolean;
 }
 
+// TODO - complete documentation of Context class
+/**
+ * @since 2.0.0
+ *
+ * @category Context
+ */
 export abstract class Context {
     /**
      * Minimum resolution for a context.

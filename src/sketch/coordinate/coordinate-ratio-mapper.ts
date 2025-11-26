@@ -40,6 +40,7 @@ export class CoordinateRatioMapper {
 
     /**
      * Constructor for the CoordinateRatioMapper class.
+     * The default coordinate system will have a width and height of {@link Context.MIN_RESOLUTION}, and the coordinate system will not be in WebGL mode.
      *
      * @since 2.0.0
      */
@@ -55,13 +56,13 @@ export class CoordinateRatioMapper {
      */
     public constructor(width: number, height: number, isWebGL: boolean);
     public constructor(width?: number, height?: number, isWebGL?: boolean) {
-        if (width && width > Context.MIN_RESOLUTION) {
+        if (width && width >= Context.MIN_RESOLUTION) {
             this.#width = width;
         } else {
             this.#width = Context.MIN_RESOLUTION;
         }
 
-        if (height && height > Context.MIN_RESOLUTION) {
+        if (height && height >= Context.MIN_RESOLUTION) {
             this.#height = height;
         } else {
             this.#height = Context.MIN_RESOLUTION;

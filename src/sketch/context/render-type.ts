@@ -22,5 +22,9 @@
 
 /**
  * Accepted render type values for canvas and context objects.
+ *
+ * @since 2.0.0
+ *
+ * @category Context
  */
 export type RenderType = 'p2d' | 'webgl';
