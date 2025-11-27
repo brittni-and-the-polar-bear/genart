@@ -20,25 +20,29 @@
  * SOFTWARE.
  */
 
-import { defineConfig } from 'tsdown';
+import { AspectRatio } from '../aspect_ratio';
 
-export default defineConfig({
-    entry: {
-        index: './src/index.ts'
-    },
-    outDir: './_dist',
-    globalName: 'genart',
-    sourcemap: true,
-    clean: true,
-    dts: true,
-    failOnWarn: true,
-    minify: false,
-    format: ['cjs', 'esm', 'iife'],
-    external: ['nearest-color', 'p5'],
-    outputOptions: {
-        globals: {
-            'nearest-color': 'nearestColor',
-            'p5': 'p5'
-        }
+import { RenderType } from './render-type';
+
+export interface ContextConfig {
+    readonly NAME: string;
+    readonly RENDER_TYPE?: RenderType;
+    readonly ASPECT_RATIO?: AspectRatio;
+    readonly RESOLUTION?: number;
+    readonly MATCH_CONTAINER_RATIO?: boolean;
+}
+
+// TODO - complete documentation of Context class
+/**
+ * @since 2.0.0
+ *
+ * @category Context
+ */
+export abstract class Context {
+    /**
+     * Minimum resolution for a context.
+     */
+    public static get MIN_RESOLUTION(): number {
+        return 100;
     }
-});
+}

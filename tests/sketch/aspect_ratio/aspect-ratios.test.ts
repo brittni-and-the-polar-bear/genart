@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,13 @@
  * SOFTWARE.
  */
 
-import { defineConfig } from 'tsdown';
+import { describe, test, expect } from 'vitest';
 
-export default defineConfig({
-    entry: {
-        index: './src/index.ts'
-    },
-    outDir: './_dist',
-    globalName: 'genart',
-    sourcemap: true,
-    clean: true,
-    dts: true,
-    failOnWarn: true,
-    minify: false,
-    format: ['cjs', 'esm', 'iife'],
-    external: ['nearest-color', 'p5'],
-    outputOptions: {
-        globals: {
-            'nearest-color': 'nearestColor',
-            'p5': 'p5'
-        }
-    }
+import { AspectRatioName } from '../../../src';
+
+describe('AspectRatioName', (): void => {
+    test('all aspect ratio names are unique', (): void => {
+        const valuesSet: Set<string> = new Set<string>(Object.values(AspectRatioName));
+        expect(valuesSet.size).toBe(Object.values(AspectRatioName).length);
+    });
 });

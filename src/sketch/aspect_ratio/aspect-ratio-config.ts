@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,41 @@
  * SOFTWARE.
  */
 
-import { defineConfig } from 'tsdown';
+import { Discriminable, Discriminators } from '../../discriminator';
 
-export default defineConfig({
-    entry: {
-        index: './src/index.ts'
-    },
-    outDir: './_dist',
-    globalName: 'genart',
-    sourcemap: true,
-    clean: true,
-    dts: true,
-    failOnWarn: true,
-    minify: false,
-    format: ['cjs', 'esm', 'iife'],
-    external: ['nearest-color', 'p5'],
-    outputOptions: {
-        globals: {
-            'nearest-color': 'nearestColor',
-            'p5': 'p5'
-        }
-    }
-});
+import { AspectRatio } from './aspect-ratio';
+
+/**
+ * A configuration for an {@link AspectRatio} object.
+ *
+ * @since 2.0.0
+ *
+ * @category Aspect Ratio
+ */
+export interface AspectRatioConfig extends Discriminable {
+    /**
+     * The name of the aspect ratio.
+     *
+     * @since 2.0.0
+     */
+    readonly NAME?: string;
+
+    /**
+     * The width component of the aspect ratio.
+     *
+     * @since 2.0.0
+     */
+    readonly WIDTH_RATIO: number;
+
+    /**
+     * The height component of the aspect ratio.
+     *
+     * @since 2.0.0
+     */
+    readonly HEIGHT_RATIO: number;
+
+    /**
+     * @inheritDoc
+     */
+    readonly DISCRIMINATOR: Discriminators.ASPECT_RATIO_CONFIG;
+}

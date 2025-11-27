@@ -20,7 +20,31 @@
  * SOFTWARE.
  */
 
+export * from './aspect_ratio';
+export * from './context';
+export * from './coordinate';
 export * from './p5_context';
+
+/**
+ * @category Namespace
+ *
+ * @since 2.0.0
+ */
+export * as aspect_ratio from './aspect_ratio';
+
+/**
+ * @category Namespace
+ *
+ * @since 2.0.0
+ */
+export * as context from './context';
+
+/**
+ * @category Namespace
+ *
+ * @since 2.0.0
+ */
+export * as coordinate from './coordinate';
 
 /**
  * @category Namespace
