@@ -23,6 +23,7 @@
 import { AspectRatio } from '../aspect_ratio';
 
 import { RenderType } from './render-type';
+import {P5Context} from "../p5_context";
 
 export interface ContextConfig {
     readonly NAME: string;
@@ -40,9 +41,48 @@ export interface ContextConfig {
  */
 export abstract class Context {
     /**
+     * The render type of the context.
+     *
+     * @private
+     */
+    readonly #RENDER_TYPE: RenderType
+
+    /**
+     * The name of the context.
+     *
+     * @private
+     */
+    readonly #NAME: string;
+
+    /**
+     * The constructor for the Context class.
+     *
+     * @param config - The configuration for the context.
+     *
+     * @protected
+     */
+    protected constructor(config: ContextConfig) {
+        this.#RENDER_TYPE = config.RENDER_TYPE ?? P5Context.instance.P2D;
+        this.#NAME = config.NAME;
+    }
+
+    /**
      * Minimum resolution for a context.
+     *
+     * @since 2.0.0
      */
     public static get MIN_RESOLUTION(): number {
         return 100;
+    }
+
+    /**
+     * Is the context in WebGL mode?
+     *
+     * @returns true if the context is in WebGL mode, false otherwise.
+     *
+     * @since 2.0.0
+     */
+    public get IS_WEBGL(): boolean {
+        return this.#RENDER_TYPE === P5Context.instance.WEBGL;
     }
 }
