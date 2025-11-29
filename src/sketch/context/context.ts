@@ -20,16 +20,52 @@
  * SOFTWARE.
  */
 
-import { AspectRatio } from '../aspect_ratio';
+import {ASPECT_RATIOS, AspectRatio} from '../aspect_ratio';
+import { P5Context } from '../p5_context';
 
 import { RenderType } from './render-type';
-import {P5Context} from "../p5_context";
 
+/**
+ * Configuration for a Context.
+ *
+ * @since 2.0.0
+ *
+ * @category Context
+ */
 export interface ContextConfig {
+    /**
+     * The name of the context.
+     *
+     * @since 2.0.0
+     */
     readonly NAME: string;
+
+    /**
+     * The {@link RenderType} of the context.
+     *
+     * @since 2.0.0
+     */
     readonly RENDER_TYPE?: RenderType;
+
+    /**
+     * The {@link AspectRatio} of the context.
+     *
+     * @since 2.0.0
+     */
     readonly ASPECT_RATIO?: AspectRatio;
+
+    /**
+     * The resolution of the context.
+     *
+     * @since 2.0.0
+     */
     readonly RESOLUTION?: number;
+
+    /**
+     * Should the aspect ratio of the context match the aspect ratio of its container?
+     *
+     * @since 2.0.0
+     */
     readonly MATCH_CONTAINER_RATIO?: boolean;
 }
 
@@ -55,6 +91,20 @@ export abstract class Context {
     readonly #NAME: string;
 
     /**
+     * The {@link AspectRatio} of the context.
+     *
+     * @private
+     */
+    #aspectRatio: AspectRatio;
+
+    /**
+     * The resolution of the context.
+     *
+     * @private
+     */
+    #resolution: number;
+
+    /**
      * The constructor for the Context class.
      *
      * @param config - The configuration for the context.
@@ -64,6 +114,12 @@ export abstract class Context {
     protected constructor(config: ContextConfig) {
         this.#RENDER_TYPE = config.RENDER_TYPE ?? P5Context.instance.P2D;
         this.#NAME = config.NAME;
+        this.#aspectRatio = config.ASPECT_RATIO ?? new AspectRatio(ASPECT_RATIOS.SQUARE);
+        this.#resolution = config.RESOLUTION ?? Context.MIN_RESOLUTION;
+
+        if (this.#resolution < Context.MIN_RESOLUTION) {
+            this.#resolution = Context.MIN_RESOLUTION;
+        }
     }
 
     /**
@@ -76,6 +132,15 @@ export abstract class Context {
     }
 
     /**
+     * The {@link AspectRatio} of the context.
+     *
+     * @since 2.0.0
+     */
+    public get aspectRatio(): AspectRatio {
+        return this.#aspectRatio;
+    }
+
+    /**
      * Is the context in WebGL mode?
      *
      * @returns true if the context is in WebGL mode, false otherwise.
@@ -84,5 +149,32 @@ export abstract class Context {
      */
     public get IS_WEBGL(): boolean {
         return this.#RENDER_TYPE === P5Context.instance.WEBGL;
+    }
+
+    /**
+     * The name of the context.
+     *
+     * @since 2.0.0
+     */
+    public get NAME(): string {
+        return this.#NAME;
+    }
+
+    /**
+     * The {@link RenderType} of the context.
+     *
+     * @since 2.0.0
+     */
+    public get RENDER_TYPE(): RenderType {
+        return this.#RENDER_TYPE;
+    }
+
+    /**
+     * The resolution of the context.
+     *
+     * @since 2.0.0
+     */
+    public get resolution(): number {
+        return this.#resolution;
     }
 }
