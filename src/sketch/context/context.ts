@@ -141,6 +141,16 @@ export abstract class Context {
     }
 
     /**
+     * The default stroke weight for the context.
+     * Equivalent to a stroke of 1 in a 500x500 sketch.
+     *
+     * @since 2.0.0
+     */
+    public get defaultStrokeWeight(): number {
+        return this.resolution * 0.002;
+    }
+
+    /**
      * Is the context in WebGL mode?
      *
      * @returns true if the context is in WebGL mode, false otherwise.
@@ -177,4 +187,29 @@ export abstract class Context {
     public get resolution(): number {
         return this.#resolution;
     }
+
+    /**
+     * Resize the context.
+     *
+     * @since 2.0.0
+     */
+    public abstract resize(): void;
+
+    /**
+     * Update the {@link AspectRatio} of the context.
+     *
+     * @param aspectRatio - The new {@link AspectRatio} of the context.
+     *
+     * @since 2.0.0
+     */
+    public abstract updateAspectRatio(aspectRatio: AspectRatio): void;
+
+    /**
+     * Update the resolution of the context.
+     *
+     * @param resolution - The new resolution of the context.
+     *
+     * @since 2.0.0
+     */
+    public abstract updateResolution(resolution: number): void;
 }
