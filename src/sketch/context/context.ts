@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import {ASPECT_RATIOS, AspectRatio} from '../aspect_ratio';
+import { ASPECT_RATIOS, AspectRatio } from '../aspect_ratio';
 import { P5Context } from '../p5_context';
 
 import { RenderType } from './render-type';
@@ -81,7 +81,7 @@ export abstract class Context {
      *
      * @private
      */
-    readonly #RENDER_TYPE: RenderType
+    readonly #RENDER_TYPE: RenderType;
 
     /**
      * The name of the context.
