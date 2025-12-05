@@ -22,7 +22,7 @@
 
 import { describe, test, expect, beforeAll } from 'vitest';
 
-// @ts-expect-error colornames import works despite TypeScript error as of color-name-list@13.2.0
+// @ts-expect-error colornames import works despite TypeScript error as of color-name-list@13.41.1
 import { colornames } from 'color-name-list';
 
 import { ColorNames, Discriminators, PaletteColor, ALL_PALETTE_COLORS } from '../../../src';
