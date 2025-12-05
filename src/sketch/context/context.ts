@@ -26,51 +26,8 @@ import { ASPECT_RATIOS, AspectRatio } from '../aspect_ratio';
 import { CoordinateRatioMapper } from '../coordinate';
 import { P5Context } from '../p5_context';
 
+import { ContextConfig } from './context-config';
 import { RenderType } from './render-type';
-
-/**
- * Configuration for a Context.
- *
- * @since 2.0.0
- *
- * @category Context
- */
-export interface ContextConfig {
-    /**
-     * The name of the context.
-     *
-     * @since 2.0.0
-     */
-    readonly NAME: string;
-
-    /**
-     * The {@link RenderType} of the context.
-     *
-     * @since 2.0.0
-     */
-    readonly RENDER_TYPE?: RenderType;
-
-    /**
-     * The {@link AspectRatio} of the context.
-     *
-     * @since 2.0.0
-     */
-    readonly ASPECT_RATIO?: AspectRatio;
-
-    /**
-     * The resolution of the context.
-     *
-     * @since 2.0.0
-     */
-    readonly RESOLUTION?: number;
-
-    /**
-     * Should the aspect ratio of the context match the aspect ratio of its container?
-     *
-     * @since 2.0.0
-     */
-    readonly MATCH_CONTAINER_RATIO?: boolean;
-}
 
 /**
  * Abstract base class for managing rendering contexts in generative art sketches.
