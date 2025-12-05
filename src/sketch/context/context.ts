@@ -20,7 +20,10 @@
  * SOFTWARE.
  */
 
+import p5 from 'p5';
+
 import { ASPECT_RATIOS, AspectRatio } from '../aspect_ratio';
+import { CoordinateRatioMapper } from '../coordinate';
 import { P5Context } from '../p5_context';
 
 import { RenderType } from './render-type';
@@ -69,15 +72,17 @@ export interface ContextConfig {
     readonly MATCH_CONTAINER_RATIO?: boolean;
 }
 
-// TODO - complete documentation of Context class
 /**
+ * Abstract base class for managing rendering contexts in generative art sketches.
+ * Provides configuration for {@link RenderType}, {@link AspectRatio}, resolution, and {@link CoordinateRatioMapper}, supporting both 2D and WebGL modes with responsive resizing and aspect ratio control.
+ *
  * @since 2.0.0
  *
  * @category Context
  */
 export abstract class Context {
     /**
-     * The render type of the context.
+     * The {@link RenderType} of the context.
      *
      * @private
      */
@@ -91,11 +96,25 @@ export abstract class Context {
     readonly #NAME: string;
 
     /**
+     * The {@link CoordinateRatioMapper} for the context.
+     *
+     * @private
+     */
+    readonly #COORDINATE_MAPPER: CoordinateRatioMapper;
+
+    /**
      * The {@link AspectRatio} of the context.
      *
      * @private
      */
     #aspectRatio: AspectRatio;
+
+    /**
+     * Should the aspect ratio of the context match the aspect ratio of its container?
+     *
+     * @private
+     */
+    #matchContainerRatio: boolean;
 
     /**
      * The resolution of the context.
@@ -116,10 +135,15 @@ export abstract class Context {
         this.#NAME = config.NAME;
         this.#aspectRatio = config.ASPECT_RATIO ?? new AspectRatio(ASPECT_RATIOS.SQUARE);
         this.#resolution = config.RESOLUTION ?? Context.MIN_RESOLUTION;
+        this.#matchContainerRatio = config.MATCH_CONTAINER_RATIO ?? false;
 
         if (this.#resolution < Context.MIN_RESOLUTION) {
             this.#resolution = Context.MIN_RESOLUTION;
         }
+
+        const width: number = this.aspectRatio.getWidth(this.resolution, true);
+        const height: number = this.aspectRatio.getHeight(this.resolution, true);
+        this.#COORDINATE_MAPPER = new CoordinateRatioMapper(width, height, this.IS_WEBGL);
     }
 
     /**
@@ -132,22 +156,12 @@ export abstract class Context {
     }
 
     /**
-     * The {@link AspectRatio} of the context.
+     * The {@link CoordinateRatioMapper} for the context.
      *
      * @since 2.0.0
      */
-    public get aspectRatio(): AspectRatio {
-        return this.#aspectRatio;
-    }
-
-    /**
-     * The default stroke weight for the context.
-     * Equivalent to a stroke of 1 in a 500x500 sketch.
-     *
-     * @since 2.0.0
-     */
-    public get defaultStrokeWeight(): number {
-        return this.resolution * 0.002;
+    public get COORDINATE_MAPPER(): CoordinateRatioMapper {
+        return this.#COORDINATE_MAPPER;
     }
 
     /**
@@ -180,12 +194,98 @@ export abstract class Context {
     }
 
     /**
+     * The {@link AspectRatio} of the context.
+     *
+     * @since 2.0.0
+     */
+    public get aspectRatio(): AspectRatio {
+        return this.#aspectRatio;
+    }
+
+    /**
+     * Set the {@link AspectRatio} of the context.
+     *
+     * @param aspectRatio - The new {@link AspectRatio} of the context.
+     *
+     * @protected
+     */
+    protected set aspectRatio(aspectRatio: AspectRatio) {
+        this.#aspectRatio = aspectRatio;
+        this.COORDINATE_MAPPER.width = aspectRatio.getWidth(this.resolution, true);
+        this.COORDINATE_MAPPER.height = aspectRatio.getHeight(this.resolution, true);
+    }
+
+    /**
+     * The default stroke weight for the context.
+     * Equivalent to a stroke of 1 in a 500x500 sketch.
+     *
+     * @since 2.0.0
+     */
+    public get defaultStrokeWeight(): number {
+        return this.resolution * 0.002;
+    }
+
+    /**
+     * Should the aspect ratio of the context match the aspect ratio of its container?
+     *
+     * @since 2.0.0
+     */
+    public get matchContainerRatio(): boolean {
+        return this.#matchContainerRatio;
+    }
+
+    /**
+     * Should the aspect ratio of the context match the aspect ratio of its container?
+     *
+     * @param matchContainerRatio - The new value for the matchContainerRatio property.
+     *
+     * @since 2.0.0
+     */
+    public set matchContainerRatio(matchContainerRatio: boolean) {
+        this.#matchContainerRatio = matchContainerRatio;
+    }
+
+    /**
      * The resolution of the context.
      *
      * @since 2.0.0
      */
     public get resolution(): number {
         return this.#resolution;
+    }
+
+    /**
+     * Set the resolution of the context.
+     *
+     * @param resolution - The new resolution of the context.
+     *
+     * @protected
+     */
+    protected set resolution(resolution: number) {
+        this.#resolution = resolution;
+        this.COORDINATE_MAPPER.width = this.aspectRatio.getWidth(resolution, true);
+        this.COORDINATE_MAPPER.height = this.aspectRatio.getHeight(resolution, true);
+    }
+
+    /**
+     * The width of the context.
+     */
+    public get width(): number {
+        return this.COORDINATE_MAPPER.width;
+    }
+
+    /**
+     * The height of the context.
+     */
+    public get height(): number {
+        return this.COORDINATE_MAPPER.height;
+    }
+
+    /**
+     * The center of the context.
+     */
+    public get center(): p5.Vector {
+        return this.COORDINATE_MAPPER.center;
     }
 
     /**
