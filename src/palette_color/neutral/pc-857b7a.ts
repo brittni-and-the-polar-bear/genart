@@ -20,7 +20,34 @@
  * SOFTWARE.
  */
 
-export * from './neutral-colors';
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export * from './pc-857b7a';
-export * from './pc-938f80';
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { NEUTRAL_PALETTE_COLORS } from './neutral-colors';
+
+/**
+ * <div class="color-block" style="background: #857B7A;">
+ *     <a href="https://coolors.co/857b7a" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">eastlake lavender (#857B7A)</h2>
+ *     </a>
+ * </div>
+ *
+ * @since 2.0.0
+ *
+ * @category Neutral
+ */
+export const PC_857B7A: PaletteColor = {
+    HEX: '#857B7A',
+    RGB: { R: 133, G: 123, B: 122 },
+    HSL: { H: 5, S: 4, L: 50 },
+    NAME: 'eastlake lavender',
+    LUMINANCE: 0.2055760385,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
+
+ALL_PALETTE_COLORS.setIfAbsent(PC_857B7A.HEX, PC_857B7A);
+NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_857B7A.HEX, PC_857B7A);
+ColorNames.addColor(PC_857B7A);

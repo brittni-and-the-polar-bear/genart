@@ -38,6 +38,7 @@ export const GRAY_HEXES: HexCollection = [
 ];
 
 export const NEUTRAL_HEXES: HexCollection = [
+    { hexString: '#857B7A' },
     { hexString: '#938F80' }
 ];
 
