@@ -85,7 +85,7 @@ export class ContextConfigBuilder {
      *
      * @param name - The name of the context.
      *
-     * @returns This builder.
+     * @return This builder.
      *
      * @since 2.0.0
      */
@@ -99,7 +99,7 @@ export class ContextConfigBuilder {
      *
      * @param renderType - The {@link RenderType} of the context.
      *
-     * @returns This builder.
+     * @return This builder.
      *
      * @since 2.0.0
      */
@@ -113,7 +113,7 @@ export class ContextConfigBuilder {
      *
      * @param aspectRatio - The {@link AspectRatio} of the context.
      *
-     * @returns This builder.
+     * @return This builder.
      *
      * @since 2.0.0
      */
@@ -127,7 +127,7 @@ export class ContextConfigBuilder {
      *
      * @param resolution - The resolution of the context.
      *
-     * @returns This builder.
+     * @return This builder.
      *
      * @since 2.0.0
      */
@@ -141,7 +141,7 @@ export class ContextConfigBuilder {
      *
      * @param matchContainerRatio - Whether the aspect ratio of the context should match the aspect ratio of its container.
      *
-     * @returns This builder.
+     * @return This builder.
      *
      * @since 2.0.0
      */
@@ -153,7 +153,7 @@ export class ContextConfigBuilder {
     /**
      * Build a {@link ContextConfig} object from the builder's state.
      *
-     * @returns A {@link ContextConfig} object.
+     * @return A {@link ContextConfig} object.
      *
      * @throws {Error} If the name of the context is not set. The name field can be set using {@link setName}.
      *

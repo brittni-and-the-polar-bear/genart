@@ -124,7 +124,7 @@ export abstract class Context {
     /**
      * Is the context in WebGL mode?
      *
-     * @returns true if the context is in WebGL mode, false otherwise.
+     * @return true if the context is in WebGL mode, false otherwise.
      *
      * @since 2.0.0
      */
@@ -225,21 +225,21 @@ export abstract class Context {
     }
 
     /**
-     * The width of the context.
+     * @return The width of the context.
      */
     public get width(): number {
         return this.COORDINATE_MAPPER.width;
     }
 
     /**
-     * The height of the context.
+     * @return The height of the context.
      */
     public get height(): number {
         return this.COORDINATE_MAPPER.height;
     }
 
     /**
-     * The center of the context.
+     * @return The center of the context.
      */
     public get center(): p5.Vector {
         return this.COORDINATE_MAPPER.center;
