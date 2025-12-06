@@ -31,6 +31,11 @@ import p5 from 'p5';
  * @since 2.0.0
  */
 export class P5Context {
+    /**
+     * The p5.js instance.
+     *
+     * @private
+     */
     static #p5Instance: p5 | null = null;
 
     /**

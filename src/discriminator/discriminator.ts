@@ -88,6 +88,8 @@ export class Discriminator {
      *
      * @param object - The object to check
      * @param discriminator - The discriminator value to check against
+     *
+     * @private
      */
     static #hasDiscriminatorMatch(object: unknown, discriminator: Discriminators): boolean {
         if (object && typeof object === 'object') {
