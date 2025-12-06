@@ -76,6 +76,8 @@ export class StringValidator {
 
     /**
      * The {@link RegExp} used to match hex color strings.
+     *
+     * @private
      */
     static get #HEX_PATTERN(): RegExp {
         return /^#[A-F0-9]{6}$/;
@@ -83,6 +85,8 @@ export class StringValidator {
 
     /**
      * The {@link RegExp} used to match hex color strings in lowercase.
+     *
+     * @private
      */
     static get #HEX_PATTERN_LOWERCASE(): RegExp {
         return /^#[a-f0-9]{6}$/;
@@ -90,6 +94,8 @@ export class StringValidator {
 
     /**
      * The {@link RegExp} used to match hex color strings with an alpha component.
+     *
+     * @private
      */
     static get #HEX_ALPHA_PATTERN(): RegExp {
         return /^#[A-F0-9]{8}$/;
@@ -97,6 +103,8 @@ export class StringValidator {
 
     /**
      * The {@link RegExp} used to match hex color strings with an alpha component in lowercase.
+     *
+     * @private
      */
     static get #HEX_ALPHA_PATTERN_LOWERCASE(): RegExp {
         return /^#[a-f0-9]{8}$/;

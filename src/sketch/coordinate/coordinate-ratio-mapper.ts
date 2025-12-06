@@ -33,9 +33,25 @@ import { P5Context } from '../p5_context';
  * @category Coordinate
  */
 export class CoordinateRatioMapper {
+    /**
+     * Is the coordinate system in WebGL mode?
+     *
+     * @private
+     */
     readonly #IS_WEBGL: boolean;
 
+    /**
+     * The width of the coordinate system.
+     *
+     * @private
+     */
     #width: number;
+
+    /**
+     * The height of the coordinate system.
+     *
+     * @private
+     */
     #height: number;
 
     /**

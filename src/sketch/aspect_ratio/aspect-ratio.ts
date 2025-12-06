@@ -183,7 +183,7 @@ export class AspectRatio {
      *
      * @param name - Optional name to use.
      *
-     * @returns The given name or a name built from the width and height ratios.
+     * @return The given name or a name built from the width and height ratios.
      *
      * @private
      */
