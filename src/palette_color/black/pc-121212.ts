@@ -20,70 +20,34 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './blue';
-export * from './gray';
-export * from './neutral';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './white';
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export * from './all-colors';
-export * from './palette-color';
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { BLACK_PALETTE_COLORS } from './black-colors';
 
 /**
- * @category Namespace
+ * <div class="color-block" style="background: #121212;">
+ *     <a href="https://coolors.co/121212" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">dark tone ink (#121212)</h2>
+ *     </a>
+ * </div>
  *
  * @since 2.0.0
+ *
+ * @category Black
  */
-export * as black from './black';
+export const PC_121212: PaletteColor = {
+    HEX: '#121212',
+    HSL: { H: 0, S: 0, L: 7 },
+    RGB: { R: 18, G: 18, B: 18 },
+    NAME: 'dark tone ink',
+    LUMINANCE: 0.006048833,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as blue from './blue';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as neutral from './neutral';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+ALL_PALETTE_COLORS.setIfAbsent(PC_121212.HEX, PC_121212);
+BLACK_PALETTE_COLORS.setIfAbsent(PC_121212.HEX, PC_121212);
+ColorNames.addColor(PC_121212);

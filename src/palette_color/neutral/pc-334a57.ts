@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,70 +20,34 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './blue';
-export * from './gray';
-export * from './neutral';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './white';
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export * from './all-colors';
-export * from './palette-color';
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { NEUTRAL_PALETTE_COLORS } from './neutral-colors';
 
 /**
- * @category Namespace
+ * <div class="color-block" style="background: #334A57;">
+ *     <a href="https://coolors.co/334a57" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">sailor's coat (#334A57)</h2>
+ *     </a>
+ * </div>
  *
  * @since 2.0.0
+ *
+ * @category Neutral
  */
-export * as black from './black';
+export const PC_334A57: PaletteColor = {
+    HEX: '#334A57',
+    RGB: { R: 51, G: 74, B: 87 },
+    HSL: { H: 202, S: 26, L: 27 },
+    NAME: "sailor's coat",
+    LUMINANCE: 0.0628948595,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as blue from './blue';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as neutral from './neutral';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+ALL_PALETTE_COLORS.setIfAbsent(PC_334A57.HEX, PC_334A57);
+NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_334A57.HEX, PC_334A57);
+ColorNames.addColor(PC_334A57);

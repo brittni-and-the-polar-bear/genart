@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,70 +20,8 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './blue';
-export * from './gray';
-export * from './neutral';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './white';
+export * from './neutral-colors';
 
-export * from './all-colors';
-export * from './palette-color';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as black from './black';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as blue from './blue';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as neutral from './neutral';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+export * from './pc-334a57';
+export * from './pc-857b7a';
+export * from './pc-938f80';

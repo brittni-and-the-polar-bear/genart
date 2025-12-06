@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,70 +20,12 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './blue';
-export * from './gray';
-export * from './neutral';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './white';
+import { describe } from 'vitest';
 
-export * from './all-colors';
-export * from './palette-color';
+import { NEUTRAL_PALETTE_COLORS } from '../../../src';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as black from './black';
+import { NEUTRAL_HEXES, testPaletteColorMap } from '../../test_utils';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as blue from './blue';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as neutral from './neutral';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+describe('NEUTRAL_PALETTE_COLORS', (): void => {
+    testPaletteColorMap(NEUTRAL_PALETTE_COLORS, 'NEUTRAL_PALETTE_COLORS', NEUTRAL_HEXES);
+});
