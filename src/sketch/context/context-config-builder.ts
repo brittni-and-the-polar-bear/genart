@@ -68,7 +68,9 @@ export class ContextConfigBuilder {
     #matchContainerRatio: boolean | undefined;
 
     /**
-     * Creates a new ContextConfigBuilder.
+     * The constructor for the ContextConfigBuilder class.
+     *
+     * @since 2.0.0
      */
     public constructor() {
         this.#name = '';
@@ -84,6 +86,8 @@ export class ContextConfigBuilder {
      * @param name - The name of the context.
      *
      * @returns This builder.
+     *
+     * @since 2.0.0
      */
     public setName(name: string): this {
         this.#name = name;
@@ -96,6 +100,8 @@ export class ContextConfigBuilder {
      * @param renderType - The {@link RenderType} of the context.
      *
      * @returns This builder.
+     *
+     * @since 2.0.0
      */
     public setRenderType(renderType: RenderType): this {
         this.#renderType = renderType;
@@ -108,6 +114,8 @@ export class ContextConfigBuilder {
      * @param aspectRatio - The {@link AspectRatio} of the context.
      *
      * @returns This builder.
+     *
+     * @since 2.0.0
      */
     public setAspectRatio(aspectRatio: AspectRatio): this {
         this.#aspectRatio = aspectRatio;
@@ -120,6 +128,8 @@ export class ContextConfigBuilder {
      * @param resolution - The resolution of the context.
      *
      * @returns This builder.
+     *
+     * @since 2.0.0
      */
     public setResolution(resolution: number): this {
         this.#resolution = resolution;
@@ -132,6 +142,8 @@ export class ContextConfigBuilder {
      * @param matchContainerRatio - Whether the aspect ratio of the context should match the aspect ratio of its container.
      *
      * @returns This builder.
+     *
+     * @since 2.0.0
      */
     public setMatchContainerRatio(matchContainerRatio: boolean): this {
         this.#matchContainerRatio = matchContainerRatio;
@@ -144,6 +156,8 @@ export class ContextConfigBuilder {
      * @returns A {@link ContextConfig} object.
      *
      * @throws {Error} If the name of the context is not set. The name field can be set using {@link setName}.
+     *
+     * @since 2.0.0
      */
     public build(): ContextConfig {
         if (!this.#name) {
