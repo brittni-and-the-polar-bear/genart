@@ -142,7 +142,7 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   │   ├── context-config-builder.ts # ContextConfigBuilder class
 │   │   │   ├── context-config.ts # ContextConfig interface
 │   │   │   ├── context.ts        # Context abstract class
-│   │   │   ├── render-type.ts    # RenderType enum
+│   │   │   ├── render-type.ts    # RenderType type
 │   │   │   └── index.ts          # Context module exports
 │   │   ├── coordinate/           # Coordinate mapping utilities
 │   │   │   ├── coordinate-ratio-mapper.ts # CoordinateRatioMapper class
@@ -357,7 +357,7 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
     - Context abstract class - Base class for managing rendering contexts
     - ContextConfig interface - Configuration for rendering contexts
     - ContextConfigBuilder class - Builder pattern for creating context configurations
-    - RenderType enum - Defines rendering modes (2D, WebGL)
+    - RenderType type - Defines rendering modes (2D, WebGL)
   - **`coordinate` submodule**: Coordinate mapping utilities
     - CoordinateRatioMapper class - Maps coordinates between ratio and coordinate systems
   - **`graphics` submodule**: Graphics context functionality
