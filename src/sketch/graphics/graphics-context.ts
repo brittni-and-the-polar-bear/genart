@@ -53,6 +53,7 @@ export class GraphicsContext extends Context {
 
     /**
      * @inheritDoc
+     * @override
      */
     public override get NAME(): string {
         if (!super.NAME) {
@@ -64,6 +65,7 @@ export class GraphicsContext extends Context {
 
     /**
      * @inheritDoc
+     * @override
      */
     public override resize(): void {
         // TODO - resize graphics
@@ -72,6 +74,7 @@ export class GraphicsContext extends Context {
 
     /**
      * @inheritDoc
+     * @override
      */
     public override updateAspectRatio(aspectRatio: AspectRatio): void {
         // TODO - update aspect ratio of graphics
@@ -80,6 +83,7 @@ export class GraphicsContext extends Context {
 
     /**
      * @inheritDoc
+     * @override
      */
     public override updateResolution(resolution: number): void {
         // TODO - update resolution of graphics
@@ -87,7 +91,9 @@ export class GraphicsContext extends Context {
     }
 
     /**
-     * @returns the p5.Graphics instance backing this context.
+     * @return the p5.Graphics instance backing this context.
+     *
+     * @since 2.0.0
      */
     public get GRAPHICS(): p5.Graphics {
         return this.#GRAPHICS;
