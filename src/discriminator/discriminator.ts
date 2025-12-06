@@ -22,6 +22,7 @@
 
 import { Palette } from '../palette';
 import { PaletteColor } from '../palette_color';
+import { AspectRatioConfig } from '../sketch';
 
 import { Discriminable } from './discriminable';
 import { Discriminators } from './discriminators';
@@ -41,6 +42,19 @@ export class Discriminator {
      */
     public constructor() {
         throw new Error('Discriminator is a static class and cannot be instantiated.');
+    }
+
+    /**
+     * Does the given object implement the {@link AspectRatioConfig} interface?
+     *
+     * @param object - The object to check
+     *
+     * @returns `true` if the given object implements the {@link AspectRatioConfig} interface, `false` if it does not.
+     *
+     * @since 2.0.0
+     */
+    public static isAspectRatioConfig(object: unknown): object is AspectRatioConfig {
+        return Discriminator.#hasDiscriminatorMatch(object, Discriminators.ASPECT_RATIO_CONFIG);
     }
 
     /**

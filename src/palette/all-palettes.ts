@@ -34,9 +34,12 @@ import { Palette } from './palette';
  */
 export const ALL_PALETTES: StringMap<Palette> = new StringMap<Palette>();
 
-// TODO - add documentation link to GitHub pages.
 /**
  * A map of palette names to {@link Palette} objects for gradient palettes.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/palettes/gradient-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes.</a>
+ *
+ * @since 2.0.0
  *
  * @category Palette Collections
  * @category Gradient

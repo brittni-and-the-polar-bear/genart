@@ -53,6 +53,7 @@ export class P5Context {
             P5Context.#p5Instance = new p5((p: p5): void => {
                 p.setup = (): void => {
                     p.createCanvas(0, 0);
+                    p.noLoop();
                     p.noCanvas();
                 };
             });

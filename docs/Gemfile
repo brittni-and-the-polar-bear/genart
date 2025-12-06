@@ -10,7 +10,7 @@ group :jekyll_plugins do
     gem "jekyll-seo-tag"
     gem "jekyll-remote-theme"
     gem "jekyll-coffeescript"
-    gem "jekyll-commonmark-ghpages"
+    gem "jekyll-commonmark-ghpages", ">=0.2.0"
     gem "jekyll-gist"
     gem "jekyll-paginate"
     gem "jekyll-relative-links"
