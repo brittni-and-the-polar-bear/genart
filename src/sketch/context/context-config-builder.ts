@@ -85,7 +85,7 @@ export class ContextConfigBuilder {
      *
      * @returns This builder.
      */
-    public setName(name: string): ContextConfigBuilder {
+    public setName(name: string): this {
         this.#name = name;
         return this;
     }
@@ -97,7 +97,7 @@ export class ContextConfigBuilder {
      *
      * @returns This builder.
      */
-    public setRenderType(renderType: RenderType): ContextConfigBuilder {
+    public setRenderType(renderType: RenderType): this {
         this.#renderType = renderType;
         return this;
     }
@@ -109,7 +109,7 @@ export class ContextConfigBuilder {
      *
      * @returns This builder.
      */
-    public setAspectRatio(aspectRatio: AspectRatio): ContextConfigBuilder {
+    public setAspectRatio(aspectRatio: AspectRatio): this {
         this.#aspectRatio = aspectRatio;
         return this;
     }
@@ -121,7 +121,7 @@ export class ContextConfigBuilder {
      *
      * @returns This builder.
      */
-    public setResolution(resolution: number): ContextConfigBuilder {
+    public setResolution(resolution: number): this {
         this.#resolution = resolution;
         return this;
     }
@@ -133,7 +133,7 @@ export class ContextConfigBuilder {
      *
      * @returns This builder.
      */
-    public setMatchContainerRatio(matchContainerRatio: boolean): ContextConfigBuilder {
+    public setMatchContainerRatio(matchContainerRatio: boolean): this {
         this.#matchContainerRatio = matchContainerRatio;
         return this;
     }
@@ -156,6 +156,6 @@ export class ContextConfigBuilder {
             ASPECT_RATIO: this.#aspectRatio,
             RESOLUTION: this.#resolution,
             MATCH_CONTAINER_RATIO: this.#matchContainerRatio
-        }
+        };
     }
 }
