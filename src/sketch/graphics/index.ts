@@ -20,7 +20,5 @@
  * SOFTWARE.
  */
 
-export * from './context';
-export * from './context-config';
-export * from './context-config-builder';
-export * from './render-type';
+export * from './graphics-context';
+export * from './graphics-context-handler';

@@ -20,7 +20,8 @@
  * SOFTWARE.
  */
 
-export * from './context';
-export * from './context-config';
-export * from './context-config-builder';
-export * from './render-type';
+import { describe, test } from 'vitest';
+
+describe('GraphicsContext', (): void => {
+    test.todo('GraphicsContext');
+});
