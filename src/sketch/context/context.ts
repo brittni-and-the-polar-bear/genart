@@ -226,6 +226,8 @@ export abstract class Context {
 
     /**
      * @return The width of the context.
+     *
+     * @since 2.0.0
      */
     public get width(): number {
         return this.COORDINATE_MAPPER.width;
@@ -233,6 +235,8 @@ export abstract class Context {
 
     /**
      * @return The height of the context.
+     *
+     * @since 2.0.0
      */
     public get height(): number {
         return this.COORDINATE_MAPPER.height;
@@ -240,6 +244,8 @@ export abstract class Context {
 
     /**
      * @return The center of the context.
+     *
+     * @since 2.0.0
      */
     public get center(): p5.Vector {
         return this.COORDINATE_MAPPER.center;
