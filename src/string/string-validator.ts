@@ -21,8 +21,7 @@
  */
 
 /**
- * StringValidator provides static methods that can be used
- * to verify that strings contain specified patterns.
+ * The StringValidator class provides static methods that can be used to verify that strings contain specified patterns.
  *
  * @since 2.0.0
  *
@@ -31,6 +30,8 @@
 export class StringValidator {
     /**
      * @throws {Error} - StringValidator is a static class and cannot be instantiated.
+     *
+     * @constructor
      */
     public constructor() {
         throw new Error('StringValidator is a static class and cannot be instantiated.');
@@ -39,9 +40,13 @@ export class StringValidator {
     /**
      * Is the given string a hex color string?
      *
-     * @param hex - string to check for the hex color pattern
-     * @param withAlpha - When `true` the string will be checked for a `#RRGGBBAA` pattern.
+     * @param hex {string} - string to check for the hex color pattern
+     * @param withAlpha {boolean} - When `true` the string will be checked for a `#RRGGBBAA` pattern.
      * When `false`, the given string will be checked for a `#RRGGBB` pattern.
+     *
+     * @returns {boolean} - `true` if the given string is a hex color string, `false` otherwise.
+     *
+     * @static
      *
      * @since 2.0.0
      */
@@ -61,7 +66,11 @@ export class StringValidator {
     /**
      * Is the given string a hex color string with an alpha component (`#RRGGBBAA`)?
      *
-     * @param hex - string to check for the hex color pattern.
+     * @param hex {string} - string to check for the hex color pattern.
+     *
+     * @returns {boolean} - `true` if the given string is a hex color string with an alpha component, `false` otherwise.
+     *
+     * @static
      *
      * @since 2.0.0
      */
@@ -75,44 +84,40 @@ export class StringValidator {
     }
 
     /**
-     * The {@link RegExp} used to match hex color strings.
-     *
-     * @returns The {@link RegExp} used to match hex color strings.
+     * @returns {RegExp} The {@link RegExp} used to match hex color strings.
      *
      * @private
+     * @static
      */
     static get #HEX_PATTERN(): RegExp {
         return /^#[A-F0-9]{6}$/;
     }
 
     /**
-     * The {@link RegExp} used to match hex color strings in lowercase.
-     *
-     * @returns The {@link RegExp} used to match hex color strings in lowercase.
+     * @returns {RegExp} The {@link RegExp} used to match hex color strings in lowercase.
      *
      * @private
+     * @static
      */
     static get #HEX_PATTERN_LOWERCASE(): RegExp {
         return /^#[a-f0-9]{6}$/;
     }
 
     /**
-     * The {@link RegExp} used to match hex color strings with an alpha component.
-     *
-     * @returns The {@link RegExp} used to match hex color strings with an alpha component.
+     * @returns {RegExp} The {@link RegExp} used to match hex color strings with an alpha component.
      *
      * @private
+     * @static
      */
     static get #HEX_ALPHA_PATTERN(): RegExp {
         return /^#[A-F0-9]{8}$/;
     }
 
     /**
-     * The {@link RegExp} used to match hex color strings with an alpha component in lowercase.
-     *
-     * @returns The {@link RegExp} used to match hex color strings with an alpha component in lowercase.
+     * @returns {RegExp} The {@link RegExp} used to match hex color strings with an alpha component in lowercase.
      *
      * @private
+     * @static
      */
     static get #HEX_ALPHA_PATTERN_LOWERCASE(): RegExp {
         return /^#[a-f0-9]{8}$/;
