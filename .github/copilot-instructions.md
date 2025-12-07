@@ -436,20 +436,24 @@ This project now has comprehensive TypeScript development infrastructure:
 - **Package exports**: Configured for proper module resolution in different environments
 
 ### Documentation Comment Preferences
+
 When writing or reviewing code, follow these documentation standards for maximum compatibility:
 
-- **Prefer `@returns` over `@return`**: Use `@returns` in documentation comments for maximum compatibility with documentation generators.
-- **Always include a type indicator with `@param` annotations**: Specify the parameter type in every `@param` annotation for clarity and documentation generator compatibility.
-- **Always include a type indicator with `@returns` annotations**: Specify the return type in every `@returns` annotation for clarity and documentation generator compatibility.
-- **Always include `@returns {void}` on `void` return type methods**: For any method that does not return a value, explicitly document the return type as `{void}` in the `@returns` annotation for clarity and documentation generator compatibility.
-- **Prefer `@returns` for getter methods**: For getter methods, prefer using the `@returns` annotation over providing a description to maintain consistency with other methods.
-- **Require `@since` on public/exported members**: All public and exported members (classes, interfaces, methods, properties, constants, etc.) must include a `@since` annotation indicating the version where they were introduced.
-- **Use `@readonly` on readonly members**: Add `@readonly` annotations to all readonly class members and properties for clear documentation visibility.
-- **Use `@private` on private members**: Add `@private` annotations to all private class members and methods for clear documentation visibility.
-- **Use `@protected` on protected members**: Add `@protected` annotations to all protected class members and methods for clear documentation visibility.
-- **Use `@override` on override methods**: Add `@override` annotations to all methods that override parent class methods to indicate inheritance relationships.
-- **Always include `@constructor` on constructors**: Add the `@constructor` annotation to all class constructors to clearly indicate constructor functions for documentation generators.
-- **Enclose `true` and `false` in backticks**: Always use backticks when referring to the boolean values `true` and `false` in documentation comments to clearly indicate their type and avoid ambiguity for documentation generators.
+- **Use `@returns` instead of `@return`**: Always use `@returns` in documentation comments for compatibility with documentation generators.
+- **Always specify parameter types with `@param`**: Include a type indicator in every `@param` annotation.
+- **Always specify return types with `@returns`**: Include a type indicator in every `@returns` annotation.
+- **Document void returns with `@returns {void}`**: For methods that do not return a value, explicitly use `@returns {void}`.
+- **Use `@returns` for getter methods**: Prefer `@returns` for getter documentation.
+- **Document version with `@since`**: Add `@since` to all public/exported members.
+- **Annotate static members with `@static`**: Use `@static` for all static class members and methods.
+- **Annotate abstract members with `@abstract`**: Use `@abstract` for all abstract classes, methods, and properties.
+- **Annotate readonly members with `@readonly`**: Use `@readonly` for all readonly members.
+- **Annotate private members with `@private`**: Use `@private` for all private members.
+- **Annotate protected members with `@protected`**: Use `@protected` for all protected members.
+- **Annotate overrides with `@override`**: Use `@override` for all methods that override parent class methods.
+- **Annotate constructors with `@constructor`**: Use `@constructor` for all class constructors.
+- **Enclose boolean values in backticks**: Always use backticks for `true` and `false` in documentation comments.
+- **Use consistent tense and voice**: Write documentation in the present tense and active voice for clarity.
 
 ## Quick Reference Commands
 
