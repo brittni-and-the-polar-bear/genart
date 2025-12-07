@@ -64,6 +64,8 @@ export class ColorNames {
     /**
      * @throws {Error} - ColorNames is a static class and cannot be instantiated.
      *
+     * @constructor
+     *
      * @since 2.0.0
      */
     public constructor() {
@@ -73,7 +75,9 @@ export class ColorNames {
     /**
      * Set the color names that could be selected when searching for the nearest color match in {@link getColorName}.
      *
-     * @param colorNames - An array of color objects with the properties `name` and `hex`.
+     * @param colorNames {{ name: string; hex: string; }[]} - An array of color objects with the properties `name` and `hex`.
+     *
+     * @returns {void}
      *
      * @since 2.0.0
      */
@@ -86,7 +90,9 @@ export class ColorNames {
      * Retrieves the name of the color represented by the given colorHex.
      * If the colorHex string is not well formatted or the nearest color function encounters an error, the method will return undefined.
      *
-     * @param colorHex - The hex string representation of the color (format: `#RRGGBB`).
+     * @param colorHex {string} - The hex string representation of the color (format: `#RRGGBB`).
+     *
+     * @returns {string | undefined} The name of the color represented by the given hex string, or undefined if the hex string is not well formatted or the nearest color function encounters an error.
      *
      * @since 2.0.0
      */
@@ -129,9 +135,9 @@ export class ColorNames {
     /**
      * Does the given hex string already have a color name match?
      *
-     * @param hex - the hex string to check.
+     * @param hex {string} - the hex string to check.
      *
-     * @returns `true` if the hex has a direct color name match in the manager, `false` if it does not.
+     * @returns {boolean} `true` if the hex has a direct color name match in the manager, `false` if it does not.
      *
      * @since 2.0.0
      */
@@ -142,8 +148,10 @@ export class ColorNames {
     /**
      * Map the given hex to the given name.
      *
-     * @param hex - The hex string to map.
-     * @param name - The name to map the hex string to.
+     * @param hex {string} - The hex string to map.
+     * @param name {string} - The name to map the hex string to.
+     *
+     * @returns {void}
      *
      * @since 2.0.0
      */
@@ -151,7 +159,9 @@ export class ColorNames {
     /**
      * Map the given {@link PaletteColor.HEX} to the given {@link PaletteColor.NAME}.
      *
-     * @param color - The {@link PaletteColor} to map.
+     * @param color {PaletteColor} - The {@link PaletteColor} to map.
+     *
+     * @returns {void}
      *
      * @since 2.0.0
      */
@@ -178,7 +188,9 @@ export class ColorNames {
      * if one is missing and returns the result with all uppercase
      * characters.
      *
-     * @param original - The string to format.
+     * @param original {string} - The string to format.
+     *
+     * @returns {string} The formatted string.
      *
      * @private
      */
