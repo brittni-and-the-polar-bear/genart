@@ -55,7 +55,7 @@ export class StringMap<ValueType> {
      *
      * @param map - The map to copy.
      *
-     * @returns A new {@link StringMap} instance containing the same key-value pairs as the given map.
+     * @return A new {@link StringMap} instance containing the same key-value pairs as the given map.
      *
      * @since 2.0.0
      */
@@ -64,7 +64,7 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * @returns The size of the map.
+     * @return The size of the map.
      *
      * @since 2.0.0
      */
@@ -103,7 +103,7 @@ export class StringMap<ValueType> {
      * @param value - The value to store in the map.
      * @param errorMessage - Message to log if the key already has a value.
      *
-     * @returns `true` if the operation is successful, `false` if it is not.
+     * @return `true` if the operation is successful, `false` if it is not.
      *
      * @since 2.0.0
      */
@@ -129,7 +129,7 @@ export class StringMap<ValueType> {
      *
      * @param key - The key to check for in the map.
      *
-     * @returns `true` if the map contains the given key, `false` otherwise.
+     * @return `true` if the map contains the given key, `false` otherwise.
      *
      * @since 2.0.0
      */
@@ -138,7 +138,7 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * @returns All the values of the map.
+     * @return All the values of the map.
      *
      * @since 2.0.0
      */
@@ -147,7 +147,7 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * @returns All the keys of the map.
+     * @return All the keys of the map.
      *
      * @since 2.0.0
      */
@@ -156,7 +156,7 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * @returns An iterator of key-value pairs for the map.
+     * @return An iterator of key-value pairs for the map.
      *
      * @since 2.0.0
      */
@@ -178,7 +178,7 @@ export class StringMap<ValueType> {
      *
      * @param key - The key to delete from the map.
      *
-     * @returns `true` if the given key has been removed from the map,
+     * @return `true` if the given key has been removed from the map,
      * `false` if the element does not exist.
      *
      * @since 2.0.0
