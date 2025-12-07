@@ -31,6 +31,9 @@
 export class StringMap<ValueType> {
     /**
      * The underlying map object.
+     *
+     * @readonly
+     * @private
      */
     readonly #MAP: Map<string, ValueType>;
 
@@ -55,7 +58,7 @@ export class StringMap<ValueType> {
      *
      * @param map - The map to copy.
      *
-     * @return A new {@link StringMap} instance containing the same key-value pairs as the given map.
+     * @returns A new {@link StringMap} instance containing the same key-value pairs as the given map.
      *
      * @since 2.0.0
      */
@@ -64,7 +67,7 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * @return The size of the map.
+     * @returns The size of the map.
      *
      * @since 2.0.0
      */
@@ -103,7 +106,7 @@ export class StringMap<ValueType> {
      * @param value - The value to store in the map.
      * @param errorMessage - Message to log if the key already has a value.
      *
-     * @return `true` if the operation is successful, `false` if it is not.
+     * @returns `true` if the operation is successful, `false` if it is not.
      *
      * @since 2.0.0
      */
@@ -129,7 +132,7 @@ export class StringMap<ValueType> {
      *
      * @param key - The key to check for in the map.
      *
-     * @return `true` if the map contains the given key, `false` otherwise.
+     * @returns `true` if the map contains the given key, `false` otherwise.
      *
      * @since 2.0.0
      */
@@ -138,7 +141,7 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * @return All the values of the map.
+     * @returns All the values of the map.
      *
      * @since 2.0.0
      */
@@ -147,7 +150,7 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * @return All the keys of the map.
+     * @returns All the keys of the map.
      *
      * @since 2.0.0
      */
@@ -156,7 +159,7 @@ export class StringMap<ValueType> {
     }
 
     /**
-     * @return An iterator of key-value pairs for the map.
+     * @returns An iterator of key-value pairs for the map.
      *
      * @since 2.0.0
      */
@@ -178,7 +181,7 @@ export class StringMap<ValueType> {
      *
      * @param key - The key to delete from the map.
      *
-     * @return `true` if the given key has been removed from the map,
+     * @returns `true` if the given key has been removed from the map,
      * `false` if the element does not exist.
      *
      * @since 2.0.0

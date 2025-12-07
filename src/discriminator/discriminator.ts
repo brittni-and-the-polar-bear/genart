@@ -49,7 +49,7 @@ export class Discriminator {
      *
      * @param object - The object to check
      *
-     * @return `true` if the given object implements the {@link AspectRatioConfig} interface, `false` if it does not.
+     * @returns `true` if the given object implements the {@link AspectRatioConfig} interface, `false` if it does not.
      *
      * @since 2.0.0
      */
@@ -62,7 +62,7 @@ export class Discriminator {
      *
      * @param object - The object to check
      *
-     * @return `true` if the given object implements the {@link Palette} interface, `false` if it does not.
+     * @returns `true` if the given object implements the {@link Palette} interface, `false` if it does not.
      *
      * @since 2.0.0
      */
@@ -75,7 +75,7 @@ export class Discriminator {
      *
      * @param object - The object to check
      *
-     * @return `true` if the given object implements the {@link PaletteColor} interface, `false` if it does not.
+     * @returns `true` if the given object implements the {@link PaletteColor} interface, `false` if it does not.
      *
      * @since 2.0.0
      */
@@ -89,7 +89,7 @@ export class Discriminator {
      * @param object - The object to check
      * @param discriminator - The discriminator value to check against
      *
-     * @return `true` if the object implements {@link Discriminable} and has a matching discriminator value, `false` otherwise.
+     * @returns `true` if the object implements {@link Discriminable} and has a matching discriminator value, `false` otherwise.
      *
      * @private
      */

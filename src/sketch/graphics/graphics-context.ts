@@ -37,6 +37,7 @@ export class GraphicsContext extends Context {
     /**
      * The p5.Graphics instance backing this context.
      *
+     * @readonly
      * @private
      */
     readonly #GRAPHICS: p5.Graphics;
@@ -91,7 +92,7 @@ export class GraphicsContext extends Context {
     }
 
     /**
-     * @return the p5.Graphics instance backing this context.
+     * @returns the p5.Graphics instance backing this context.
      *
      * @since 2.0.0
      */
