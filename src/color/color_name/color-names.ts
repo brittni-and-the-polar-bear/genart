@@ -131,7 +131,7 @@ export class ColorNames {
      *
      * @param hex - the hex string to check.
      *
-     * @return `true` if the hex has a direct color name match in the manager, `false` if it does not.
+     * @returns `true` if the hex has a direct color name match in the manager, `false` if it does not.
      *
      * @since 2.0.0
      */

@@ -36,6 +36,7 @@ export class CoordinateRatioMapper {
     /**
      * Is the coordinate system in WebGL mode?
      *
+     * @readonly
      * @private
      */
     readonly #IS_WEBGL: boolean;
@@ -90,6 +91,8 @@ export class CoordinateRatioMapper {
     /**
      * The center of the coordinate system.
      *
+     * @returns The center of the coordinate system.
+     *
      * @since 2.0.0
      */
     public get center(): p5.Vector {
@@ -98,6 +101,8 @@ export class CoordinateRatioMapper {
 
     /**
      * The center x-axis value of the coordinate system.
+     *
+     * @returns The center x-axis value of the coordinate system.
      *
      * @since 2.0.0
      */
@@ -108,6 +113,8 @@ export class CoordinateRatioMapper {
     /**
      * The center y-axis value of the coordinate system.
      *
+     * @returns The center y-axis value of the coordinate system.
+     *
      * @since 2.0.0
      */
     public get centerY(): number {
@@ -117,6 +124,8 @@ export class CoordinateRatioMapper {
     /**
      * Is the coordinate system in WebGL mode?
      *
+     * @returns Whether the coordinate system is in WebGL mode.
+     *
      * @since 2.0.0
      */
     public get isWebGL(): boolean {
@@ -125,6 +134,8 @@ export class CoordinateRatioMapper {
 
     /**
      * The minimum visible x-axis value.
+     *
+     * @returns The minimum visible x-axis value.
      *
      * @since 2.0.0
      */
@@ -141,6 +152,8 @@ export class CoordinateRatioMapper {
     /**
      * The maximum visible x-axis value.
      *
+     * @returns The maximum visible x-axis value.
+     *
      * @since 2.0.0
      */
     public get maxX(): number {
@@ -155,6 +168,8 @@ export class CoordinateRatioMapper {
 
     /**
      * The minimum visible y-axis value.
+     *
+     * @returns The minimum visible y-axis value.
      *
      * @since 2.0.0
      */
@@ -171,6 +186,8 @@ export class CoordinateRatioMapper {
     /**
      * The maximum visible y-axis value.
      *
+     * @returns The maximum visible y-axis value.
+     *
      * @since 2.0.0
      */
     public get maxY(): number {
@@ -185,6 +202,8 @@ export class CoordinateRatioMapper {
 
     /**
      * The width of the coordinate system.
+     *
+     * @returns The width of the coordinate system.
      *
      * @since 2.0.0
      */
@@ -209,6 +228,8 @@ export class CoordinateRatioMapper {
 
     /**
      * The height of the coordinate system.
+     *
+     * @returns The height of the coordinate system.
      *
      * @since 2.0.0
      */

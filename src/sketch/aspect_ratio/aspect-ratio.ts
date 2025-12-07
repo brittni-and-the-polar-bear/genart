@@ -37,24 +37,24 @@ export class AspectRatio {
     /**
      * The name of the aspect ratio.
      *
-     * @private
      * @readonly
+     * @private
      */
     readonly #NAME: string;
 
     /**
      * The width component of the aspect ratio.
      *
-     * @private
      * @readonly
+     * @private
      */
     readonly #WIDTH_RATIO: number;
 
     /**
      * The height component of the aspect ratio.
      *
-     * @private
      * @readonly
+     * @private
      */
     readonly #HEIGHT_RATIO: number;
 
@@ -110,6 +110,8 @@ export class AspectRatio {
     /**
      * The name of the aspect ratio.
      *
+     * @returns The name of the aspect ratio.
+     *
      * @since 2.0.0
      */
     public get NAME(): string {
@@ -119,6 +121,8 @@ export class AspectRatio {
     /**
      * The width component of the aspect ratio.
      *
+     * @returns The width component of the aspect ratio.
+     *
      * @since 2.0.0
      */
     public get WIDTH_RATIO(): number {
@@ -127,6 +131,8 @@ export class AspectRatio {
 
     /**
      * The height component of the aspect ratio.
+     *
+     * @returns The height component of the aspect ratio.
      *
      * @since 2.0.0
      */
@@ -183,7 +189,7 @@ export class AspectRatio {
      *
      * @param name - Optional name to use.
      *
-     * @return The given name or a name built from the width and height ratios.
+     * @returns The given name or a name built from the width and height ratios.
      *
      * @private
      */

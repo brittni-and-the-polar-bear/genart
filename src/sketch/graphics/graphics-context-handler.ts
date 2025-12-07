@@ -37,6 +37,7 @@ export class GraphicsContextHandler {
     /**
      * A {@link StringMap} of {@link GraphicsContext} objects keyed by their unique names.
      *
+     * @readonly
      * @private
      */
     readonly #CONTEXTS: StringMap<GraphicsContext> = new StringMap<GraphicsContext>();
@@ -66,7 +67,7 @@ export class GraphicsContextHandler {
     }
 
     /**
-     * @return The currently active {@link GraphicsContext}.
+     * @returns The currently active {@link GraphicsContext}.
      *
      * @since 2.0.0
      */
@@ -75,7 +76,7 @@ export class GraphicsContextHandler {
     }
 
     /**
-     * @return The p5.Graphics object associated with the active {@link GraphicsContext}.
+     * @returns The p5.Graphics object associated with the active {@link GraphicsContext}.
      *
      * @since 2.0.0
      */
@@ -84,7 +85,7 @@ export class GraphicsContextHandler {
     }
 
     /**
-     * @return All {@link GraphicsContext} objects in the handler.
+     * @returns All {@link GraphicsContext} objects in the handler.
      *
      * @since 2.0.0
      */
@@ -93,7 +94,7 @@ export class GraphicsContextHandler {
     }
 
     /**
-     * @return An array of the p5.Graphics objects associated with all {@link GraphicsContext} objects in the handler.
+     * @returns An array of the p5.Graphics objects associated with all {@link GraphicsContext} objects in the handler.
      *
      * @since 2.0.0
      */
@@ -102,7 +103,7 @@ export class GraphicsContextHandler {
     }
 
     /**
-     * @return An array of the names of all {@link GraphicsContext} objects in the handler.
+     * @returns An array of the names of all {@link GraphicsContext} objects in the handler.
      *
      * @since 2.0.0
      */
@@ -115,7 +116,7 @@ export class GraphicsContextHandler {
      *
      * @param context - The {@link GraphicsContext} to add.
      *
-     * @return `true` if the context was added successfully, `false` otherwise.
+     * @returns `true` if the context was added successfully, `false` otherwise.
      *
      * @since 2.0.0
      */
@@ -128,7 +129,7 @@ export class GraphicsContextHandler {
      *
      * @param contexts - The {@link GraphicsContext} objects to add.
      *
-     * @return `true` if all contexts were added successfully, `false` otherwise.
+     * @returns `true` if all contexts were added successfully, `false` otherwise.
      *
      * @since 2.0.0
      */

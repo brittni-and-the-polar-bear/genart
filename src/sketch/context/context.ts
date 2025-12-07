@@ -41,6 +41,7 @@ export abstract class Context {
     /**
      * The {@link RenderType} of the context.
      *
+     * @readonly
      * @private
      */
     readonly #RENDER_TYPE: RenderType;
@@ -48,6 +49,7 @@ export abstract class Context {
     /**
      * The name of the context.
      *
+     * @readonly
      * @private
      */
     readonly #NAME: string;
@@ -55,6 +57,7 @@ export abstract class Context {
     /**
      * The {@link CoordinateRatioMapper} for the context.
      *
+     * @readonly
      * @private
      */
     readonly #COORDINATE_MAPPER: CoordinateRatioMapper;
@@ -106,6 +109,8 @@ export abstract class Context {
     /**
      * Minimum resolution for a context.
      *
+     * @returns Minimum resolution for a context.
+     *
      * @since 2.0.0
      */
     public static get MIN_RESOLUTION(): number {
@@ -114,6 +119,8 @@ export abstract class Context {
 
     /**
      * The {@link CoordinateRatioMapper} for the context.
+     *
+     * @returns The {@link CoordinateRatioMapper} for the context.
      *
      * @since 2.0.0
      */
@@ -124,7 +131,7 @@ export abstract class Context {
     /**
      * Is the context in WebGL mode?
      *
-     * @return true if the context is in WebGL mode, false otherwise.
+     * @returns true if the context is in WebGL mode, false otherwise.
      *
      * @since 2.0.0
      */
@@ -135,6 +142,8 @@ export abstract class Context {
     /**
      * The name of the context.
      *
+     * @returns The name of the context.
+     *
      * @since 2.0.0
      */
     public get NAME(): string {
@@ -144,6 +153,8 @@ export abstract class Context {
     /**
      * The {@link RenderType} of the context.
      *
+     * @returns The {@link RenderType} of the context.
+     *
      * @since 2.0.0
      */
     public get RENDER_TYPE(): RenderType {
@@ -152,6 +163,8 @@ export abstract class Context {
 
     /**
      * The {@link AspectRatio} of the context.
+     *
+     * @returns The {@link AspectRatio} of the context.
      *
      * @since 2.0.0
      */
@@ -176,6 +189,8 @@ export abstract class Context {
      * The default stroke weight for the context.
      * Equivalent to a stroke of 1 in a 500x500 sketch.
      *
+     * @returns The default stroke weight for the context.
+     *
      * @since 2.0.0
      */
     public get defaultStrokeWeight(): number {
@@ -184,6 +199,8 @@ export abstract class Context {
 
     /**
      * Should the aspect ratio of the context match the aspect ratio of its container?
+     *
+     * @returns Whether the aspect ratio should match the container aspect ratio.
      *
      * @since 2.0.0
      */
@@ -205,6 +222,8 @@ export abstract class Context {
     /**
      * The resolution of the context.
      *
+     * @returns The resolution of the context.
+     *
      * @since 2.0.0
      */
     public get resolution(): number {
@@ -225,21 +244,21 @@ export abstract class Context {
     }
 
     /**
-     * @return The width of the context.
+     * @returns The width of the context.
      */
     public get width(): number {
         return this.COORDINATE_MAPPER.width;
     }
 
     /**
-     * @return The height of the context.
+     * @returns The height of the context.
      */
     public get height(): number {
         return this.COORDINATE_MAPPER.height;
     }
 
     /**
-     * @return The center of the context.
+     * @returns The center of the context.
      */
     public get center(): p5.Vector {
         return this.COORDINATE_MAPPER.center;

@@ -48,7 +48,7 @@ export class P5Context {
     }
 
     /**
-     * @return The p5.js context instance.
+     * @returns The p5.js context instance.
      * If no context has been initialized, a default context will be created.
      *
      * @since 2.0.0
@@ -77,7 +77,7 @@ export class P5Context {
      * If false, the given p5Instance will only be used if no context has been initialized.
      * This parameter defaults to false.
      *
-     * @return True if the given p5Instance was successfully applied, false otherwise.
+     * @returns True if the given p5Instance was successfully applied, false otherwise.
      *
      * @since 2.0.0
      */
@@ -97,7 +97,7 @@ export class P5Context {
     /**
      * Does P5Context have an initialized p5.js context?
      *
-     * @return True if P5Context has an initialized p5.js context, false otherwise.
+     * @returns True if P5Context has an initialized p5.js context, false otherwise.
      *
      * @since 2.0.0
      */
