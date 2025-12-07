@@ -22,10 +22,11 @@
 
 import { AspectRatio } from '../aspect_ratio';
 
+import { Context } from './context';
 import { RenderType } from './render-type';
 
 /**
- * Configuration for a Context.
+ * Configuration for a {@link Context}.
  *
  * @since 2.0.0
  *
