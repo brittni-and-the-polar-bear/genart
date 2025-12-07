@@ -55,8 +55,6 @@ export class GraphicsContextHandler {
      * @param activeContext {GraphicsContext} - The {@link GraphicsContext} to make active by default.
      * @param otherContexts {GraphicsContext[]} - An optional array of additional {@link GraphicsContext} objects to add to the handler.
      *
-     * @constructor
-     *
      * @since 2.0.0
      */
     public constructor(activeContext: GraphicsContext, otherContexts?: GraphicsContext[]) {

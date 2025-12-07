@@ -65,8 +65,6 @@ export class AspectRatio {
      * @param height {number} - The target height of the canvas or graphic. Minimum value is {@link Context.MIN_RESOLUTION}.
      * @param name {string} - Optional name to use.
      *
-     * @constructor
-     *
      * @since 2.0.0
      */
     constructor(width: number, height: number, name?: string);
@@ -74,8 +72,6 @@ export class AspectRatio {
      * Create an aspect ratio using the given {@link AspectRatioConfig}.
      *
      * @param config {AspectRatioConfig} - The {@link AspectRatioConfig} to use.
-     *
-     * @constructor
      *
      * @since 2.0.0
      */

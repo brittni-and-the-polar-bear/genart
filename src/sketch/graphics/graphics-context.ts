@@ -45,8 +45,6 @@ export class GraphicsContext extends Context {
     /**
      * The constructor for the GraphicsContext class.
      *
-     * @constructor
-     *
      * @param config {ContextConfig} - The configuration for the context.
      *
      * @since 2.0.0

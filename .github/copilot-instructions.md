@@ -445,13 +445,11 @@ When writing or reviewing code, follow these documentation standards for maximum
 - **Document void returns with `@returns {void}`**: For methods that do not return a value, explicitly use `@returns {void}`.
 - **Use `@returns` for getter methods**: Prefer `@returns` for getter documentation.
 - **Document version with `@since`**: Add `@since` to all public/exported members.
-- **Annotate static members with `@static`**: Use `@static` for all static class members and methods.
 - **Annotate abstract members with `@abstract`**: Use `@abstract` for all abstract classes, methods, and properties.
 - **Annotate readonly members with `@readonly`**: Use `@readonly` for all readonly members.
 - **Annotate private members with `@private`**: Use `@private` for all private members.
 - **Annotate protected members with `@protected`**: Use `@protected` for all protected members.
 - **Annotate overrides with `@override`**: Use `@override` for all methods that override parent class methods.
-- **Annotate constructors with `@constructor`**: Use `@constructor` for all class constructors.
 - **Enclose boolean values in backticks**: Always use backticks for `true` and `false` in documentation comments.
 - **Use consistent tense and voice**: Write documentation in the present tense and active voice for clarity.
 - **Document exceptions with `@throws`**: Use `@throws` to document any errors or exceptions a function may throw.
@@ -472,10 +470,8 @@ Place annotations in the following order for consistency and readability:
 1. `@private`
 1. `@protected`
 1. `@public`
-1. `@static`
 1. `@abstract`
 1. `@override`
-1. `@constructor`
 1. `@deprecated`
 1. `@since`
 1. `@category`

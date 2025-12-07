@@ -88,7 +88,6 @@ export abstract class Context {
      *
      * @param config {ContextConfig} - The configuration for the context.
      *
-     * @constructor
      * @protected
      */
     protected constructor(config: ContextConfig) {
@@ -109,8 +108,6 @@ export abstract class Context {
 
     /**
      * @returns {number} The minimum resolution for a context.
-     *
-     * @static
      *
      * @since 2.0.0
      */

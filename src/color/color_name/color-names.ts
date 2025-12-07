@@ -64,8 +64,6 @@ export class ColorNames {
     /**
      * @throws {Error} - ColorNames is a static class and cannot be instantiated.
      *
-     * @constructor
-     *
      * @since 2.0.0
      */
     public constructor() {

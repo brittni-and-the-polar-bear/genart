@@ -30,8 +30,6 @@
 export class StringValidator {
     /**
      * @throws {Error} - StringValidator is a static class and cannot be instantiated.
-     *
-     * @constructor
      */
     public constructor() {
         throw new Error('StringValidator is a static class and cannot be instantiated.');
@@ -45,8 +43,6 @@ export class StringValidator {
      * When `false`, the given string will be checked for a `#RRGGBB` pattern.
      *
      * @returns {boolean} - `true` if the given string is a hex color string, `false` otherwise.
-     *
-     * @static
      *
      * @since 2.0.0
      */
@@ -70,8 +66,6 @@ export class StringValidator {
      *
      * @returns {boolean} - `true` if the given string is a hex color string with an alpha component, `false` otherwise.
      *
-     * @static
-     *
      * @since 2.0.0
      */
     public static isHexWithAlpha(hex: string): boolean {
@@ -87,7 +81,6 @@ export class StringValidator {
      * @returns {RegExp} The {@link RegExp} used to match hex color strings.
      *
      * @private
-     * @static
      */
     static get #HEX_PATTERN(): RegExp {
         return /^#[A-F0-9]{6}$/;
@@ -97,7 +90,6 @@ export class StringValidator {
      * @returns {RegExp} The {@link RegExp} used to match hex color strings in lowercase.
      *
      * @private
-     * @static
      */
     static get #HEX_PATTERN_LOWERCASE(): RegExp {
         return /^#[a-f0-9]{6}$/;
@@ -107,7 +99,6 @@ export class StringValidator {
      * @returns {RegExp} The {@link RegExp} used to match hex color strings with an alpha component.
      *
      * @private
-     * @static
      */
     static get #HEX_ALPHA_PATTERN(): RegExp {
         return /^#[A-F0-9]{8}$/;
@@ -117,7 +108,6 @@ export class StringValidator {
      * @returns {RegExp} The {@link RegExp} used to match hex color strings with an alpha component in lowercase.
      *
      * @private
-     * @static
      */
     static get #HEX_ALPHA_PATTERN_LOWERCASE(): RegExp {
         return /^#[a-f0-9]{8}$/;

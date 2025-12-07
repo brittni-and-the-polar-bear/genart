@@ -43,8 +43,6 @@ export class StringMap<ValueType> {
      * @param map {StringMap<ValueType> | Map<string, ValueType>} - Optional map to initialize from.
      * If provided, all entries from the given map will be copied to this new instance.
      *
-     * @constructor
-     *
      * @since 2.0.0
      */
     public constructor(map?: StringMap<ValueType> | Map<string, ValueType>) {
@@ -61,8 +59,6 @@ export class StringMap<ValueType> {
      * @param map {StringMap<Type> | Map<string, Type>} - The map to copy.
      *
      * @returns {StringMap<Type>} A new {@link StringMap} instance containing the same key-value pairs as the given map.
-     *
-     * @static
      *
      * @since 2.0.0
      */

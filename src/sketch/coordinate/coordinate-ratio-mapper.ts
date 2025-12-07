@@ -59,8 +59,6 @@ export class CoordinateRatioMapper {
      * Constructor for the CoordinateRatioMapper class.
      * The default coordinate system will have a width and height of {@link Context.MIN_RESOLUTION}, and the coordinate system will not be in WebGL mode.
      *
-     * @constructor
-     *
      * @since 2.0.0
      */
     public constructor();
@@ -70,8 +68,6 @@ export class CoordinateRatioMapper {
      * @param width {number} - The width of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
      * @param height {number} - The height of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
      * @param isWebGL {boolean} - Is the coordinate system in WebGL mode?
-     *
-     * @constructor
      *
      * @since 2.0.0
      */

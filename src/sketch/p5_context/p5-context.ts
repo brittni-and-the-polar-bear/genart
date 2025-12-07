@@ -35,14 +35,11 @@ export class P5Context {
      * The p5.js instance.
      *
      * @private
-     * @static
      */
     static #p5Instance: p5 | null = null;
 
     /**
      * @throws {Error} - P5Context is a static class and cannot be instantiated.
-     *
-     * @constructor
      *
      * @since 2.0.0
      */
@@ -53,8 +50,6 @@ export class P5Context {
     /**
      * @returns {p5} The p5.js context instance.
      * If no context has been initialized, a default context will be created.
-     *
-     * @static
      *
      * @since 2.0.0
      */
@@ -84,8 +79,6 @@ export class P5Context {
      *
      * @returns {boolean} `true` if the given p5Instance was successfully applied, `false` otherwise.
      *
-     * @static
-     *
      * @since 2.0.0
      */
     public static init(p5Instance: p5, replace: boolean = false): boolean {
@@ -106,8 +99,6 @@ export class P5Context {
      *
      * @returns {boolean} `true` if P5Context has an initialized p5.js context, `false` otherwise.
      *
-     * @static
-     *
      * @since 2.0.0
      */
     public static hasInstance(): boolean {
@@ -122,8 +113,6 @@ export class P5Context {
      * You will lose access to the current context and the current canvas.
      *
      * @returns {void}
-     *
-     * @static
      *
      * @since 2.0.0
      */

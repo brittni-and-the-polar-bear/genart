@@ -38,8 +38,6 @@ export class Discriminator {
     /**
      * @throws {Error} - Discriminator is a static class and cannot be instantiated.
      *
-     * @constructor
-     *
      * @since 2.0.0
      */
     public constructor() {

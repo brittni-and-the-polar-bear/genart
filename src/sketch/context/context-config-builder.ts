@@ -70,8 +70,6 @@ export class ContextConfigBuilder {
     /**
      * The constructor for the ContextConfigBuilder class.
      *
-     * @constructor
-     *
      * @since 2.0.0
      */
     public constructor() {
