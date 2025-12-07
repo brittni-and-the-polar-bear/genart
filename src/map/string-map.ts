@@ -62,6 +62,8 @@ export class StringMap<ValueType> {
      *
      * @returns {StringMap<Type>} A new {@link StringMap} instance containing the same key-value pairs as the given map.
      *
+     * @static
+     *
      * @since 2.0.0
      */
     public static copy<Type>(map: StringMap<Type> | Map<string, Type>): StringMap<Type> {

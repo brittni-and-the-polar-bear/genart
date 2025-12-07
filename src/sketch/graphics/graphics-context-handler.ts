@@ -96,7 +96,7 @@ export class GraphicsContextHandler {
     }
 
     /**
-     * @returns {p5.Graphics} An array of the p5.Graphics objects associated with all {@link GraphicsContext} objects in the handler.
+     * @returns {p5.Graphics[]} An array of the p5.Graphics objects associated with all {@link GraphicsContext} objects in the handler.
      *
      * @since 2.0.0
      */
@@ -150,9 +150,9 @@ export class GraphicsContextHandler {
      *
      * @param name {string} - The name of the {@link GraphicsContext} to set as active.
      *
-     * @throws {Error} if the context with the specified name is not found.
-     *
      * @returns {void}
+     *
+     * @throws {Error} if the context with the specified name is not found.
      *
      * @since 2.0.0
      */

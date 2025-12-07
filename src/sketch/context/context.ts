@@ -110,6 +110,8 @@ export abstract class Context {
     /**
      * @returns {number} The minimum resolution for a context.
      *
+     * @static
+     *
      * @since 2.0.0
      */
     public static get MIN_RESOLUTION(): number {
