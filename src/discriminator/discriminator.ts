@@ -89,6 +89,8 @@ export class Discriminator {
      * @param object - The object to check
      * @param discriminator - The discriminator value to check against
      *
+     * @return `true` if the object implements {@link Discriminable} and has a matching discriminator value, `false` otherwise.
+     *
      * @private
      */
     static #hasDiscriminatorMatch(object: unknown, discriminator: Discriminators): boolean {
