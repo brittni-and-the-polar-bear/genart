@@ -438,12 +438,13 @@ This project now has comprehensive TypeScript development infrastructure:
 ### Documentation Comment Preferences
 When writing or reviewing code, follow these documentation standards for maximum compatibility:
 
-- **Prefer `@return` over `@returns`**: Use `@return` in documentation comments for consistency and maximum compatibility with documentation generators.
+- **Prefer `@returns` over `@return`**: Use `@returns` in documentation comments for maximum compatibility with documentation generators.
+- **Use `@readonly` on readonly members**: Add `@readonly` annotations to all readonly class members and properties for clear documentation visibility.
 - **Use `@private` on private members**: Add `@private` annotations to all private class members and methods for clear documentation visibility.
 - **Use `@protected` on protected members**: Add `@protected` annotations to all protected class members and methods for clear documentation visibility.
 - **Use `@override` on override methods**: Add `@override` annotations to all methods that override parent class methods to indicate inheritance relationships.
 - **Require `@since` on public/exported members**: All public and exported members (classes, interfaces, methods, properties, constants, etc.) must include a `@since` annotation indicating the version where they were introduced.
-- **Prefer `@return` for getter methods**: For getter methods, prefer using the `@return` annotation over providing a description to maintain consistency with other methods.
+- **Prefer `@returns` for getter methods**: For getter methods, prefer using the `@returns` annotation over providing a description to maintain consistency with other methods.
 
 ## Quick Reference Commands
 
