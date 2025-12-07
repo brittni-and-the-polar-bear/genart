@@ -20,6 +20,99 @@
  * SOFTWARE.
  */
 
-export class Screen {
+import { GraphicsContextHandler } from '../graphics';
 
+import { ScreenConfig } from './screen-config';
+
+export abstract class Screen {
+    /**
+     * The {@link GraphicsContextHandler} for the screen.
+     *
+     * @private
+     * @readonly
+     */
+    readonly #GRAPHICS_HANDLER: GraphicsContextHandler;
+
+    /**
+     * The name of the screen.
+     *
+     * @private
+     * @readonly
+     */
+    readonly #NAME: string;
+
+    /**
+     * Is the screen active?
+     *
+     * @default false
+     * @private
+     */
+    #isActive: boolean = false;
+
+    /**
+     * The constructor for the Screen class.
+     *
+     * @param config - The configuration for the screen.
+     *
+     * @protected
+     */
+    protected constructor(config: ScreenConfig) {
+        this.#NAME = config.NAME;
+        this.#GRAPHICS_HANDLER = new GraphicsContextHandler(config.ACTIVE_GRAPHICS, config.OTHER_GRAPHICS);
+    }
+
+    /**
+     * @returns {string} The name of the screen.
+     *
+     * @since 2.0.0
+     */
+    public get NAME(): string {
+        return this.#NAME;
+    }
+
+    /**
+     * @returns {boolean} `true` if the screen is active, `false` otherwise.
+     *
+     * @since 2.0.0
+     */
+    public get isActive(): boolean {
+        return this.#isActive;
+    }
+
+    /**
+     * The minimum visible x-axis coordinate on the screen.
+     */
+    public get minX(): number {
+        return this.GRAPHICS_HANDLER.activeContext.COORDINATE_MAPPER.minX;
+    }
+
+    /**
+     * The minimum visible y-axis coordinate on the screen.
+     */
+    public get minY(): number {
+        return this.GRAPHICS_HANDLER.activeContext.COORDINATE_MAPPER.minY;
+    }
+
+    /**
+     * The maximum visible x-axis coordinate on the screen.
+     */
+    public get maxX(): number {
+        return this.GRAPHICS_HANDLER.activeContext.COORDINATE_MAPPER.maxX;
+    }
+
+    /**
+     * The maximum visible y-axis coordinate on the screen.
+     */
+    public get maxY(): number {
+        return this.GRAPHICS_HANDLER.activeContext.COORDINATE_MAPPER.maxY;
+    }
+
+    /**
+     * @returns {GraphicsContextHandler} The {@link GraphicsContextHandler} for the screen.
+     *
+     * @protected
+     */
+    protected get GRAPHICS_HANDLER(): GraphicsContextHandler {
+        return this.#GRAPHICS_HANDLER;
+    }
 }
