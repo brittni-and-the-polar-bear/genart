@@ -34,12 +34,16 @@ export interface Palette extends Discriminable {
     /**
      * The name of the palette.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly NAME: string;
 
     /**
      * The source of the palette.
+     *
+     * @readonly
      *
      * @since 2.0.0
      */
@@ -48,6 +52,8 @@ export interface Palette extends Discriminable {
     /**
      * The source URL of the palette.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly SOURCE_URL?: string;
@@ -55,12 +61,16 @@ export interface Palette extends Discriminable {
     /**
      * A flag indicating if the palette is a gradient.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly IS_GRADIENT: boolean;
 
     /**
      * The list of {@link PaletteColor} objects that compose the palette.
+     *
+     * @readonly
      *
      * @since 2.0.0
      */
@@ -73,6 +83,8 @@ export interface Palette extends Discriminable {
      * The only colors listed in this map should be the colors of the
      * palette, black (#000000), and white (#FFFFFF).
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly CONTRAST_MAP?: {
@@ -80,6 +92,8 @@ export interface Palette extends Discriminable {
          * The colors in the palette that pass the WCAG AA standard when
          * compared to black (#000000). This list should NOT contain
          * white (#FFFFFF) unless it is a color listed in the palette.
+         *
+         * @readonly
          *
          * @since 2.0.0
          */
@@ -90,6 +104,8 @@ export interface Palette extends Discriminable {
          * compared to white (#FFFFFF). This list should NOT contain
          * black (#000000) unless it is a color listed in the palette.
          *
+         * @readonly
+         *
          * @since 2.0.0
          */
         readonly '#FFFFFF': string[];
@@ -97,6 +113,8 @@ export interface Palette extends Discriminable {
         /**
          * The colors in the palette that pass the WCAG AA standard when
          * compared to any other color in the palette.
+         *
+         * @readonly
          *
          * @since 2.0.0
          */
