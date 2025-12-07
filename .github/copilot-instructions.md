@@ -454,6 +454,33 @@ When writing or reviewing code, follow these documentation standards for maximum
 - **Annotate constructors with `@constructor`**: Use `@constructor` for all class constructors.
 - **Enclose boolean values in backticks**: Always use backticks for `true` and `false` in documentation comments.
 - **Use consistent tense and voice**: Write documentation in the present tense and active voice for clarity.
+- **Document exceptions with `@throws`**: Use `@throws` to document any errors or exceptions a function may throw.
+- **Document default parameter values**: Indicate default values for parameters in the `@param` annotation.
+- **Document all exported symbols**: Ensure every exported class, function, interface, type, enum, and constant has a documentation comment.
+
+**Annotation Order:**  
+Place annotations in the following order for consistency and readability:
+
+1. `@remarks`
+1. `@param`
+1. `@returns`
+1. `@throws`
+1. `@default`
+1. `@see`
+1. `@example`
+1. `@readonly`
+1. `@private`
+1. `@protected`
+1. `@public`
+1. `@static`
+1. `@abstract`
+1. `@override`
+1. `@constructor`
+1. `@deprecated`
+1. `@since`
+1. `@category`
+
+Include other relevant tags (such as `@template`, `@type`) after the above, as appropriate for the context.
 
 ## Quick Reference Commands
 
