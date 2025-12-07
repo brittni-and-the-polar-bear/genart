@@ -445,6 +445,9 @@ When writing or reviewing code, follow these documentation standards for maximum
 - **Use `@override` on override methods**: Add `@override` annotations to all methods that override parent class methods to indicate inheritance relationships.
 - **Require `@since` on public/exported members**: All public and exported members (classes, interfaces, methods, properties, constants, etc.) must include a `@since` annotation indicating the version where they were introduced.
 - **Prefer `@returns` for getter methods**: For getter methods, prefer using the `@returns` annotation over providing a description to maintain consistency with other methods.
+- **Always include a type indicator with `@param` annotations**: Specify the parameter type in every `@param` annotation for clarity and documentation generator compatibility.
+- **Always include a type indicator with `@returns` annotations**: Specify the return type in every `@returns` annotation for clarity and documentation generator compatibility.
+- **Enclose `true` and `false` in backticks**: Always use backticks when referring to the boolean values `true` and `false` in documentation comments to clearly indicate their type and avoid ambiguity for documentation generators.
 
 ## Quick Reference Commands
 
