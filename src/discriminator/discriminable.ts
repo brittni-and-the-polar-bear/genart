@@ -35,6 +35,8 @@ export interface Discriminable {
      * Discriminator value for the implementing interface.
      *
      * @since 2.0.0
+     *
+     * @readonly
      */
     readonly DISCRIMINATOR: Discriminators;
 }
