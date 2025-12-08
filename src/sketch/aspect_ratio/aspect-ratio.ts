@@ -160,7 +160,7 @@ export class AspectRatio {
 
     /**
      * @param resolution {number} - The target resolution.
-     * @param applyToLongSide {boolean} - When `true`, long side of the canvas or graphic will be equal to the target resolution.
+     * @param applyToLongSide {boolean} - When `true`, the long side of the canvas or graphic will be equal to the target resolution.
      *
      * @returns {number} The base unit for the aspect ratio given the target resolution.
      *
