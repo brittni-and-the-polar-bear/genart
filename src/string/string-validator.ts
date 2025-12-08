@@ -39,7 +39,7 @@ export class StringValidator {
      * Is the given string a hex color string?
      *
      * @param hex {string} - string to check for the hex color pattern
-     * @param withAlpha {boolean} - When `true` the string will be checked for a `#RRGGBBAA` pattern.
+     * @param withAlpha {boolean} - When `true`, the string will be checked for a `#RRGGBBAA` pattern.
      * When `false`, the given string will be checked for a `#RRGGBB` pattern.
      *
      * @returns {boolean} - `true` if the given string is a hex color string, `false` otherwise.
