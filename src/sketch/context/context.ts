@@ -263,6 +263,8 @@ export abstract class Context {
      *
      * @returns {void}
      *
+     * @abstract
+     *
      * @since 2.0.0
      */
     public abstract resize(): void;
@@ -274,6 +276,8 @@ export abstract class Context {
      *
      * @returns {void}
      *
+     * @abstract
+     *
      * @since 2.0.0
      */
     public abstract updateAspectRatio(aspectRatio: AspectRatio): void;
@@ -284,6 +288,8 @@ export abstract class Context {
      * @param resolution {number} - The new resolution of the context.
      *
      * @returns {void}
+     *
+     * @abstract
      *
      * @since 2.0.0
      */
