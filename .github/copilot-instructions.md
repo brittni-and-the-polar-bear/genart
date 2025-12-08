@@ -455,8 +455,10 @@ When writing or reviewing code, follow these documentation standards for maximum
 - **Document exceptions with `@throws`**: Use `@throws` to document any errors or exceptions a function may throw.
 - **Document default parameter values**: Indicate default values for parameters in the `@param` annotation.
 - **Document all exported symbols**: Ensure every exported class, function, interface, type, enum, and constant has a documentation comment.
+- **Do not use `@constructor`**: Do not use `@constructor` in documentation comments. It is not supported by typedoc.
+- **Do not use `@static`**: Do not use `@static` in documentation comments. It is not supported by typedoc.
 
-**Annotation Order:**  
+**Annotation Order:**
 Place annotations in the following order for consistency and readability:
 
 1. `@remarks`
