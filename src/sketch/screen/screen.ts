@@ -80,28 +80,36 @@ export abstract class Screen {
     }
 
     /**
-     * The minimum visible x-axis coordinate on the screen.
+     * @returns {number} The minimum visible x-axis coordinate on the screen.
+     *
+     * @since 2.0.0
      */
     public get minX(): number {
         return this.GRAPHICS_HANDLER.activeContext.COORDINATE_MAPPER.minX;
     }
 
     /**
-     * The minimum visible y-axis coordinate on the screen.
+     * @returns {number} The minimum visible y-axis coordinate on the screen.
+     *
+     * @since 2.0.0
      */
     public get minY(): number {
         return this.GRAPHICS_HANDLER.activeContext.COORDINATE_MAPPER.minY;
     }
 
     /**
-     * The maximum visible x-axis coordinate on the screen.
+     * @returns {number} The maximum visible x-axis coordinate on the screen.
+     *
+     * @since 2.0.0
      */
     public get maxX(): number {
         return this.GRAPHICS_HANDLER.activeContext.COORDINATE_MAPPER.maxX;
     }
 
     /**
-     * The maximum visible y-axis coordinate on the screen.
+     * @returns {number} The maximum visible y-axis coordinate on the screen.
+     *
+     * @since 2.0.0
      */
     public get maxY(): number {
         return this.GRAPHICS_HANDLER.activeContext.COORDINATE_MAPPER.maxY;
