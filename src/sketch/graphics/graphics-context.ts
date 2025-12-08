@@ -45,7 +45,9 @@ export class GraphicsContext extends Context {
     /**
      * The constructor for the GraphicsContext class.
      *
-     * @param config - The configuration for the context.
+     * @param config {ContextConfig} - The configuration for the context.
+     *
+     * @since 2.0.0
      */
     public constructor(config: ContextConfig) {
         super(config);
@@ -92,7 +94,7 @@ export class GraphicsContext extends Context {
     }
 
     /**
-     * @returns the p5.Graphics instance backing this context.
+     * @returns {p5.Graphics} The p5.Graphics instance backing this context.
      *
      * @since 2.0.0
      */

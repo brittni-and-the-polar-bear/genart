@@ -28,7 +28,7 @@ import { Discriminable } from './discriminable';
 import { Discriminators } from './discriminators';
 
 /**
- * Static class methods for evaluating if objects implement various interfaces.
+ * Static class methods for evaluating if objects implement various interfaces for type safety.
  *
  * @since 2.0.0
  *
@@ -47,9 +47,9 @@ export class Discriminator {
     /**
      * Does the given object implement the {@link AspectRatioConfig} interface?
      *
-     * @param object - The object to check
+     * @param object {unknown} - The object to check
      *
-     * @returns `true` if the given object implements the {@link AspectRatioConfig} interface, `false` if it does not.
+     * @returns {object is AspectRatioConfig} `true` if the given object implements the {@link AspectRatioConfig} interface, `false` if it does not.
      *
      * @since 2.0.0
      */
@@ -60,9 +60,9 @@ export class Discriminator {
     /**
      * Does the given object implement the {@link Palette} interface?
      *
-     * @param object - The object to check
+     * @param object {unknown} - The object to check
      *
-     * @returns `true` if the given object implements the {@link Palette} interface, `false` if it does not.
+     * @returns {object is Palette} `true` if the given object implements the {@link Palette} interface, `false` if it does not.
      *
      * @since 2.0.0
      */
@@ -73,9 +73,9 @@ export class Discriminator {
     /**
      * Does the given object implement the {@link PaletteColor} interface?
      *
-     * @param object - The object to check
+     * @param object {unknown} - The object to check
      *
-     * @returns `true` if the given object implements the {@link PaletteColor} interface, `false` if it does not.
+     * @returns {object is PaletteColor} `true` if the given object implements the {@link PaletteColor} interface, `false` if it does not.
      *
      * @since 2.0.0
      */
@@ -86,10 +86,10 @@ export class Discriminator {
     /**
      * Does the given object implement the {@link Discriminable} interface, and does the object's {@link Discriminable.DISCRIMINATOR} value match the given discriminator?
      *
-     * @param object - The object to check
-     * @param discriminator - The discriminator value to check against
+     * @param object {unknown} - The object to check
+     * @param discriminator {Discriminators} - The discriminator value to check against
      *
-     * @returns `true` if the object implements {@link Discriminable} and has a matching discriminator value, `false` otherwise.
+     * @returns {boolean} `true` if the object implements {@link Discriminable} and has a matching discriminator value, `false` otherwise.
      *
      * @private
      */
