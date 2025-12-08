@@ -20,9 +20,12 @@
  * SOFTWARE.
  */
 
-import { GraphicsContextHandler } from '../graphics';
+import { GraphicsContext, GraphicsContextHandler } from '../graphics';
 
 import { ScreenConfig } from './screen-config';
+import {P5Context} from "../p5_context";
+
+// TODO - Complete Canvas class implementation.
 
 export abstract class Screen {
     /**
@@ -48,6 +51,8 @@ export abstract class Screen {
      * @private
      */
     #isActive: boolean = false;
+
+    #saveCount: number = 0;
 
     /**
      * The constructor for the Screen class.
@@ -122,5 +127,168 @@ export abstract class Screen {
      */
     protected get GRAPHICS_HANDLER(): GraphicsContextHandler {
         return this.#GRAPHICS_HANDLER;
+    }
+
+    /**
+     * Activate the screen.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public activate(): void {
+        this.#isActive = true;
+    }
+
+    /**
+     * Deactivate the screen.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public deactivate(): void {
+        this.#isActive = false;
+    }
+
+    // public draw(): void {
+    //     if (this.isActive) {
+    //         const p5Ctx: p5 = P5Context.instance;
+    //         this.drawToActiveGraphics();
+    //         p5Ctx.imageMode(p5Ctx.CENTER);
+    //         const canvasCenter: p5.Vector = Canvas.center;
+    //         const { width, height } = this.#calculateGraphicsDimensions();
+    //
+    //         p5Ctx.image(
+    //             this.#GRAPHICS_HANDLER.activeGraphics,
+    //             canvasCenter.x,
+    //             canvasCenter.y,
+    //             width,
+    //             height
+    //         );
+    //     }
+    // }
+
+    /**
+     * Draw the screen to the active graphics context.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public drawToActiveGraphics(): void {
+        this.drawToGraphics(this.#GRAPHICS_HANDLER.activeContext);
+    }
+
+    /**
+     * Override this method to implement custom behavior when a key is pressed.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public keyPressed(): void {
+        /* empty */
+    }
+
+    /**
+     * Override this method to implement custom behavior when the mouse is pressed.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public mousePressed(): void {
+        /* empty */
+    }
+
+    /**
+     * Override this method to implement custom behavior when the mouse is dragged.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public mouseDragged(): void {
+        /* empty */
+    }
+
+    /**
+     * Draw the elements of the screen to the specified graphics context.
+     *
+     * @param context {GraphicsContext} - The graphics context to draw to.
+     *
+     * @returns {void}
+     *
+     * @abstract
+     *
+     * @since 2.0.0
+     */
+    public abstract drawToGraphics(context: GraphicsContext): void;
+
+    // #calculateGraphicsDimensions(): { width: number; height: number; } {
+    //     const graphicsContext: GraphicsContext = this.#GRAPHICS_HANDLER.activeContext;
+    //     const graphicsRatio: AspectRatio = graphicsContext.aspectRatio;
+    //
+    //     let width: number = graphicsRatio.getWidth(Canvas.resolution, true);
+    //     let height: number = graphicsRatio.getHeight(Canvas.resolution, true);
+    //
+    //     if (width > Canvas.width) {
+    //         width = graphicsRatio.getWidth(Canvas.width, true);
+    //         height = graphicsRatio.getHeight(Canvas.width, true);
+    //     }
+    //
+    //     if (height > Canvas.height) {
+    //         width = graphicsRatio.getWidth(Canvas.height, true);
+    //         height = graphicsRatio.getHeight(Canvas.height, true);
+    //     }
+    //
+    //     return { width: width, height: height };
+    // }
+
+    private get saveCount(): number {
+        return this.#saveCount++;
+    }
+
+    #buildFileName(graphicsContext: GraphicsContext): string {
+        const saveCount: string = this.saveCount.toString().padStart(3, '0');
+        return `${this.NAME}_${saveCount}_${graphicsContext.NAME}.png`;
+    }
+
+    async #saveGraphics(graphicsContext: GraphicsContext, timeout: number): Promise<string> {
+        this.drawToGraphics(graphicsContext);
+        await this.#timeout(timeout);
+        const filename: string = this.#buildFileName(graphicsContext);
+        P5Context.instance.save(graphicsContext.GRAPHICS, filename);
+        await this.#timeout(timeout);
+        return filename;
+    }
+
+    async #timeout(milliseconds: number): Promise<void> {
+        await new Promise<void>((): void => {
+            setTimeout((): void => {}, milliseconds);
+        });
+    }
+
+    // TODO - Does this work?
+    // TODO - Do all graphics save with the correct size and elements?
+    // TODO - Do all graphics save in parallel?
+    async #saveAllGraphics(): Promise<void> {
+        const promises: Promise<void>[] = [];
+
+        for (const context of this.#GRAPHICS_HANDLER.contexts) {
+            promises.push(
+                this.#saveGraphics(context, 1_000)
+                    .then(
+                        (filename: string): void => {
+                            console.log(`Saved file: ${filename}.`);
+                        },
+                        (error: unknown): void => {
+                            console.error(error);
+                        })
+            );
+        }
+
+        await Promise.all(promises);
     }
 }
