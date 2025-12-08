@@ -26,9 +26,9 @@ import p5 from 'p5';
  * P5Context provides static access to the p5.js context.
  * This context allows access to all methods and variables of the p5.js library.
  *
- * @category P5Context
- *
  * @since 2.0.0
+ *
+ * @category P5Context
  */
 export class P5Context {
     /**
@@ -48,7 +48,7 @@ export class P5Context {
     }
 
     /**
-     * @returns The p5.js context instance.
+     * @returns {p5} The p5.js context instance.
      * If no context has been initialized, a default context will be created.
      *
      * @since 2.0.0
@@ -72,12 +72,12 @@ export class P5Context {
      * This will reset the current context with
      * {@link P5Context.reset}.
      *
-     * @param p5Instance - The p5.js context instance to use.
-     * @param replace - If true, the current context will be replaced.
-     * If false, the given p5Instance will only be used if no context has been initialized.
+     * @param p5Instance {p5} - The p5.js context instance to use.
+     * @param replace {boolean} - If `true`, the current context will be replaced.
+     * If `false`, the given p5Instance will only be used if no context has been initialized.
      * This parameter defaults to false.
      *
-     * @returns True if the given p5Instance was successfully applied, false otherwise.
+     * @returns {boolean} `true` if the given p5Instance was successfully applied, `false` otherwise.
      *
      * @since 2.0.0
      */
@@ -97,7 +97,7 @@ export class P5Context {
     /**
      * Does P5Context have an initialized p5.js context?
      *
-     * @returns True if P5Context has an initialized p5.js context, false otherwise.
+     * @returns {boolean} `true` if P5Context has an initialized p5.js context, `false` otherwise.
      *
      * @since 2.0.0
      */
@@ -111,6 +111,8 @@ export class P5Context {
      * @remarks This removes the p5.js context.
      * This may cause unexpected behavior.
      * You will lose access to the current context and the current canvas.
+     *
+     * @returns {void}
      *
      * @since 2.0.0
      */

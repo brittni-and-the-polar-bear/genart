@@ -436,15 +436,49 @@ This project now has comprehensive TypeScript development infrastructure:
 - **Package exports**: Configured for proper module resolution in different environments
 
 ### Documentation Comment Preferences
+
 When writing or reviewing code, follow these documentation standards for maximum compatibility:
 
-- **Prefer `@returns` over `@return`**: Use `@returns` in documentation comments for maximum compatibility with documentation generators.
-- **Use `@readonly` on readonly members**: Add `@readonly` annotations to all readonly class members and properties for clear documentation visibility.
-- **Use `@private` on private members**: Add `@private` annotations to all private class members and methods for clear documentation visibility.
-- **Use `@protected` on protected members**: Add `@protected` annotations to all protected class members and methods for clear documentation visibility.
-- **Use `@override` on override methods**: Add `@override` annotations to all methods that override parent class methods to indicate inheritance relationships.
-- **Require `@since` on public/exported members**: All public and exported members (classes, interfaces, methods, properties, constants, etc.) must include a `@since` annotation indicating the version where they were introduced.
-- **Prefer `@returns` for getter methods**: For getter methods, prefer using the `@returns` annotation over providing a description to maintain consistency with other methods.
+- **Use `@returns` instead of `@return`**: Always use `@returns` in documentation comments for compatibility with documentation generators.
+- **Always specify parameter types with `@param`**: Include a type indicator in every `@param` annotation.
+- **Always specify return types with `@returns`**: Include a type indicator in every `@returns` annotation.
+- **Document void returns with `@returns {void}`**: For methods that do not return a value, explicitly use `@returns {void}`.
+- **Use `@returns` for getter methods**: Prefer `@returns` for getter documentation.
+- **Document version with `@since`**: Add `@since` to all public/exported members.
+- **Annotate abstract members with `@abstract`**: Use `@abstract` for all abstract classes, methods, and properties.
+- **Annotate readonly members with `@readonly`**: Use `@readonly` for all readonly members.
+- **Annotate private members with `@private`**: Use `@private` for all private members.
+- **Annotate protected members with `@protected`**: Use `@protected` for all protected members.
+- **Annotate overrides with `@override`**: Use `@override` for all methods that override parent class methods.
+- **Enclose boolean values in backticks**: Always use backticks for `true` and `false` in documentation comments.
+- **Use consistent tense and voice**: Write documentation in the present tense and active voice for clarity.
+- **Document exceptions with `@throws`**: Use `@throws` to document any errors or exceptions a function may throw.
+- **Document default parameter values**: Indicate default values for parameters in the `@param` annotation.
+- **Document all exported symbols**: Ensure every exported class, function, interface, type, enum, and constant has a documentation comment.
+- **Do not use `@constructor`**: Do not use `@constructor` in documentation comments. It is not supported by typedoc.
+- **Do not use `@static`**: Do not use `@static` in documentation comments. It is not supported by typedoc.
+
+**Annotation Order:**
+Place annotations in the following order for consistency and readability:
+
+1. `@remarks`
+1. `@param`
+1. `@returns`
+1. `@throws`
+1. `@default`
+1. `@see`
+1. `@example`
+1. `@readonly`
+1. `@private`
+1. `@protected`
+1. `@public`
+1. `@abstract`
+1. `@override`
+1. `@deprecated`
+1. `@since`
+1. `@category`
+
+Include other relevant tags (such as `@template`, `@type`) after the above, as appropriate for the context.
 
 ## Quick Reference Commands
 

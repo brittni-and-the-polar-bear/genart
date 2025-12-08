@@ -86,7 +86,7 @@ export abstract class Context {
     /**
      * The constructor for the Context class.
      *
-     * @param config - The configuration for the context.
+     * @param config {ContextConfig} - The configuration for the context.
      *
      * @protected
      */
@@ -107,9 +107,7 @@ export abstract class Context {
     }
 
     /**
-     * Minimum resolution for a context.
-     *
-     * @returns Minimum resolution for a context.
+     * @returns {number} The minimum resolution for a context.
      *
      * @since 2.0.0
      */
@@ -118,9 +116,7 @@ export abstract class Context {
     }
 
     /**
-     * The {@link CoordinateRatioMapper} for the context.
-     *
-     * @returns The {@link CoordinateRatioMapper} for the context.
+     * @returns {CoordinateRatioMapper} The {@link CoordinateRatioMapper} for the context.
      *
      * @since 2.0.0
      */
@@ -131,7 +127,7 @@ export abstract class Context {
     /**
      * Is the context in WebGL mode?
      *
-     * @returns true if the context is in WebGL mode, false otherwise.
+     * @returns {boolean} `true` if the context is in WebGL mode, `false` otherwise.
      *
      * @since 2.0.0
      */
@@ -140,9 +136,7 @@ export abstract class Context {
     }
 
     /**
-     * The name of the context.
-     *
-     * @returns The name of the context.
+     * @returns {string} The name of the context.
      *
      * @since 2.0.0
      */
@@ -151,9 +145,7 @@ export abstract class Context {
     }
 
     /**
-     * The {@link RenderType} of the context.
-     *
-     * @returns The {@link RenderType} of the context.
+     * @returns {RenderType} The {@link RenderType} of the context.
      *
      * @since 2.0.0
      */
@@ -162,9 +154,7 @@ export abstract class Context {
     }
 
     /**
-     * The {@link AspectRatio} of the context.
-     *
-     * @returns The {@link AspectRatio} of the context.
+     * @returns {AspectRatio} The {@link AspectRatio} of the context.
      *
      * @since 2.0.0
      */
@@ -175,7 +165,7 @@ export abstract class Context {
     /**
      * Set the {@link AspectRatio} of the context.
      *
-     * @param aspectRatio - The new {@link AspectRatio} of the context.
+     * @param aspectRatio {AspectRatio} - The new {@link AspectRatio} of the context.
      *
      * @protected
      */
@@ -189,7 +179,7 @@ export abstract class Context {
      * The default stroke weight for the context.
      * Equivalent to a stroke of 1 in a 500x500 sketch.
      *
-     * @returns The default stroke weight for the context.
+     * @returns {number} The default stroke weight for the context.
      *
      * @since 2.0.0
      */
@@ -200,7 +190,7 @@ export abstract class Context {
     /**
      * Should the aspect ratio of the context match the aspect ratio of its container?
      *
-     * @returns Whether the aspect ratio should match the container aspect ratio.
+     * @returns {boolean} Whether the aspect ratio should match the container aspect ratio.
      *
      * @since 2.0.0
      */
@@ -211,7 +201,7 @@ export abstract class Context {
     /**
      * Should the aspect ratio of the context match the aspect ratio of its container?
      *
-     * @param matchContainerRatio - The new value for the matchContainerRatio property.
+     * @param matchContainerRatio {boolean} - The new value for the matchContainerRatio property.
      *
      * @since 2.0.0
      */
@@ -220,9 +210,7 @@ export abstract class Context {
     }
 
     /**
-     * The resolution of the context.
-     *
-     * @returns The resolution of the context.
+     * @returns {number} The resolution of the context.
      *
      * @since 2.0.0
      */
@@ -233,7 +221,7 @@ export abstract class Context {
     /**
      * Set the resolution of the context.
      *
-     * @param resolution - The new resolution of the context.
+     * @param resolution {number} - The new resolution of the context.
      *
      * @protected
      */
@@ -244,21 +232,27 @@ export abstract class Context {
     }
 
     /**
-     * @returns The width of the context.
+     * @returns {number} The width of the context.
+     *
+     * @since 2.0.0
      */
     public get width(): number {
         return this.COORDINATE_MAPPER.width;
     }
 
     /**
-     * @returns The height of the context.
+     * @returns {number} The height of the context.
+     *
+     * @since 2.0.0
      */
     public get height(): number {
         return this.COORDINATE_MAPPER.height;
     }
 
     /**
-     * @returns The center of the context.
+     * @returns {p5.Vector} The center of the context.
+     *
+     * @since 2.0.0
      */
     public get center(): p5.Vector {
         return this.COORDINATE_MAPPER.center;
@@ -267,6 +261,10 @@ export abstract class Context {
     /**
      * Resize the context.
      *
+     * @returns {void}
+     *
+     * @abstract
+     *
      * @since 2.0.0
      */
     public abstract resize(): void;
@@ -274,7 +272,11 @@ export abstract class Context {
     /**
      * Update the {@link AspectRatio} of the context.
      *
-     * @param aspectRatio - The new {@link AspectRatio} of the context.
+     * @param aspectRatio {AspectRatio} - The new {@link AspectRatio} of the context.
+     *
+     * @returns {void}
+     *
+     * @abstract
      *
      * @since 2.0.0
      */
@@ -283,7 +285,11 @@ export abstract class Context {
     /**
      * Update the resolution of the context.
      *
-     * @param resolution - The new resolution of the context.
+     * @param resolution {number} - The new resolution of the context.
+     *
+     * @returns {void}
+     *
+     * @abstract
      *
      * @since 2.0.0
      */

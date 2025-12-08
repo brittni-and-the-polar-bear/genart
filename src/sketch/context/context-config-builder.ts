@@ -83,9 +83,9 @@ export class ContextConfigBuilder {
     /**
      * Set the name of the context.
      *
-     * @param name - The name of the context.
+     * @param name {string} - The name of the context.
      *
-     * @returns This builder.
+     * @returns {this} This builder.
      *
      * @since 2.0.0
      */
@@ -97,9 +97,9 @@ export class ContextConfigBuilder {
     /**
      * Set the {@link RenderType} of the context.
      *
-     * @param renderType - The {@link RenderType} of the context.
+     * @param renderType {RenderType} - The {@link RenderType} of the context.
      *
-     * @returns This builder.
+     * @returns {this} This builder.
      *
      * @since 2.0.0
      */
@@ -111,9 +111,9 @@ export class ContextConfigBuilder {
     /**
      * Set the {@link AspectRatio} of the context.
      *
-     * @param aspectRatio - The {@link AspectRatio} of the context.
+     * @param aspectRatio {AspectRatio} - The {@link AspectRatio} of the context.
      *
-     * @returns This builder.
+     * @returns {this} This builder.
      *
      * @since 2.0.0
      */
@@ -125,9 +125,9 @@ export class ContextConfigBuilder {
     /**
      * Set the resolution of the context.
      *
-     * @param resolution - The resolution of the context.
+     * @param resolution {number} - The resolution of the context.
      *
-     * @returns This builder.
+     * @returns {this} This builder.
      *
      * @since 2.0.0
      */
@@ -139,9 +139,9 @@ export class ContextConfigBuilder {
     /**
      * Set whether the aspect ratio of the context should match the aspect ratio of its container.
      *
-     * @param matchContainerRatio - Whether the aspect ratio of the context should match the aspect ratio of its container.
+     * @param matchContainerRatio {boolean} - Whether the aspect ratio of the context should match the aspect ratio of its container.
      *
-     * @returns This builder.
+     * @returns {this} This builder.
      *
      * @since 2.0.0
      */
@@ -153,7 +153,7 @@ export class ContextConfigBuilder {
     /**
      * Build a {@link ContextConfig} object from the builder's state.
      *
-     * @returns A {@link ContextConfig} object.
+     * @returns {ContextConfig} A {@link ContextConfig} object.
      *
      * @throws {Error} If the name of the context is not set. The name field can be set using {@link setName}.
      *

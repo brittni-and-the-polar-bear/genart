@@ -33,12 +33,16 @@ export interface PaletteColor extends Discriminable {
     /**
      * The hex string representation of the color (format: `#RRGGBB`).
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly HEX: string;
 
     /**
      * The name of the color.
+     *
+     * @readonly
      *
      * @since 2.0.0
      */
@@ -47,6 +51,8 @@ export interface PaletteColor extends Discriminable {
     /**
      * The luminance of the color (0-1).
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly LUMINANCE?: number;
@@ -54,11 +60,15 @@ export interface PaletteColor extends Discriminable {
     /**
      * The RGB (red, green, blue) components of the color.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly RGB?: {
         /**
          * The red component (0-255).
+         *
+         * @readonly
          *
          * @since 2.0.0
          */
@@ -67,12 +77,16 @@ export interface PaletteColor extends Discriminable {
         /**
          * The green component (0-255).
          *
+         * @readonly
+         *
          * @since 2.0.0
          */
         readonly G: number;
 
         /**
          * The blue component (0-255).
+         *
+         * @readonly
          *
          * @since 2.0.0
          */
@@ -82,11 +96,15 @@ export interface PaletteColor extends Discriminable {
     /**
      * The HSL (hue, saturation, lightness) components of the color.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly HSL?: {
         /**
          * The hue component (0-360).
+         *
+         * @readonly
          *
          * @since 2.0.0
          */
@@ -95,12 +113,16 @@ export interface PaletteColor extends Discriminable {
         /**
          * The saturation component (0-100).
          *
+         * @readonly
+         *
          * @since 2.0.0
          */
         readonly S: number;
 
         /**
          * The lightness component (0-100).
+         *
+         * @readonly
          *
          * @since 2.0.0
          */
