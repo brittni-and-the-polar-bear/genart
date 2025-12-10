@@ -23,7 +23,7 @@
 import { GraphicsContext, GraphicsContextHandler } from '../graphics';
 
 import { ScreenConfig } from './screen-config';
-import {P5Context} from "../p5_context";
+import { P5Context } from '../p5_context';
 
 // TODO - Complete Canvas class implementation.
 
@@ -129,26 +129,8 @@ export abstract class Screen {
         return this.#GRAPHICS_HANDLER;
     }
 
-    /**
-     * Activate the screen.
-     *
-     * @returns {void}
-     *
-     * @since 2.0.0
-     */
-    public activate(): void {
-        this.#isActive = true;
-    }
-
-    /**
-     * Deactivate the screen.
-     *
-     * @returns {void}
-     *
-     * @since 2.0.0
-     */
-    public deactivate(): void {
-        this.#isActive = false;
+    static get #TIMEOUT_MS(): number {
+        return 1_000;
     }
 
     // public draw(): void {
@@ -168,17 +150,6 @@ export abstract class Screen {
     //         );
     //     }
     // }
-
-    /**
-     * Draw the screen to the active graphics context.
-     *
-     * @returns {void}
-     *
-     * @since 2.0.0
-     */
-    public drawToActiveGraphics(): void {
-        this.drawToGraphics(this.#GRAPHICS_HANDLER.activeContext);
-    }
 
     /**
      * Override this method to implement custom behavior when a key is pressed.
@@ -211,6 +182,58 @@ export abstract class Screen {
      */
     public mouseDragged(): void {
         /* empty */
+    }
+
+    /**
+     * Activate the screen.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public activate(): void {
+        this.#isActive = true;
+    }
+
+    /**
+     * Deactivate the screen.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public deactivate(): void {
+        this.#isActive = false;
+    }
+
+    /**
+     * Draw the screen to the active graphics context.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public drawToActiveGraphics(): void {
+        this.drawToGraphics(this.#GRAPHICS_HANDLER.activeContext);
+    }
+
+    public saveActiveGraphics(): void {
+        this.#saveGraphics(this.#GRAPHICS_HANDLER.activeContext, Screen.#TIMEOUT_MS)
+            .then(
+                (filename: string): void => {
+                    console.log(`Saved file: ${filename}.`);
+                },
+                (error: unknown): void => {
+                    console.error(error);
+                }
+            );
+    }
+
+    public saveAllGraphics(): void {
+        this.#saveAllGraphics()
+            .then((): void => {
+                console.log('All graphics saved.');
+            });
     }
 
     /**
@@ -278,7 +301,7 @@ export abstract class Screen {
 
         for (const context of this.#GRAPHICS_HANDLER.contexts) {
             promises.push(
-                this.#saveGraphics(context, 1_000)
+                this.#saveGraphics(context, Screen.#TIMEOUT_MS)
                     .then(
                         (filename: string): void => {
                             console.log(`Saved file: ${filename}.`);
