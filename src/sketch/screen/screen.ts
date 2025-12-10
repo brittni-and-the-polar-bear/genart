@@ -21,12 +21,13 @@
  */
 
 import { GraphicsContext, GraphicsContextHandler } from '../graphics';
+import { P5Context } from '../p5_context';
 
 import { ScreenConfig } from './screen-config';
-import { P5Context } from '../p5_context';
 
 // TODO - Complete Canvas class implementation.
 
+// TODO - documentation
 export abstract class Screen {
     /**
      * The {@link GraphicsContextHandler} for the screen.
@@ -133,6 +134,7 @@ export abstract class Screen {
         return 1_000;
     }
 
+    // TODO - complete
     // public draw(): void {
     //     if (this.isActive) {
     //         const p5Ctx: p5 = P5Context.instance;
@@ -249,6 +251,7 @@ export abstract class Screen {
      */
     public abstract drawToGraphics(context: GraphicsContext): void;
 
+    // TODO - complete
     // #calculateGraphicsDimensions(): { width: number; height: number; } {
     //     const graphicsContext: GraphicsContext = this.#GRAPHICS_HANDLER.activeContext;
     //     const graphicsRatio: AspectRatio = graphicsContext.aspectRatio;
