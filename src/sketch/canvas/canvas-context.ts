@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,59 +20,13 @@
  * SOFTWARE.
  */
 
-export * from './aspect_ratio';
-export * from './canvas';
-export * from './context';
-export * from './coordinate';
-export * from './graphics';
-export * from './p5_context';
-export * from './screen';
+import {Context, ContextConfig} from '../context';
+import {P5Context} from "../p5_context";
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as aspect_ratio from './aspect_ratio';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as canvas from './canvas';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as context from './context';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as coordinate from './coordinate';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as graphics from './graphics';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as p5_context from './p5_context';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as screen from './screen';
+export class CanvasContext extends Context {
+    public constructor(config: ContextConfig) {
+        super(config);
+        P5Context.instance.createCanvas(this.width, this.height, this.RENDER_TYPE);
+        this.resize();
+    }
+}
