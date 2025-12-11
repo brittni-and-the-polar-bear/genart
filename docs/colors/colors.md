@@ -19,4 +19,6 @@ layout: base
 
 ## > [purple](./purple/purple-colors.md)
 
+## > [teal](./teal/teal-colors.md)
+
 ## > [white](./white/white-colors.md)
