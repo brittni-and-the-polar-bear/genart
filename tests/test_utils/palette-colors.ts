@@ -59,7 +59,7 @@ export const PURPLE_HEXES: HexCollection = [
 export const TEAL_HEXES: HexCollection = [
     { hexString: '#19414D' },
     { hexString: '#223944' },
-    { hexString: '#334A57' },
+    { hexString: '#334A57' }
 ];
 
 export const WHITE_HEXES: HexCollection = [
