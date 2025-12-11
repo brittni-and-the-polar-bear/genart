@@ -20,34 +20,4 @@
  * SOFTWARE.
  */
 
-import { ColorNames } from '../../color';
-import { Discriminators } from '../../discriminator';
-
-import { ALL_PALETTE_COLORS } from '../all-colors';
-import { PaletteColor } from '../palette-color';
-
-import { NEUTRAL_PALETTE_COLORS } from './neutral-colors';
-
-/**
- * <div class="color-block" style="background: #334A57;">
- *     <a href="https://coolors.co/334a57" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block white-pass">sailor's coat (#334A57)</h2>
- *     </a>
- * </div>
- *
- * @since 2.0.0
- *
- * @category Neutral
- */
-export const PC_334A57: PaletteColor = {
-    HEX: '#334A57',
-    RGB: { R: 51, G: 74, B: 87 },
-    HSL: { H: 202, S: 26, L: 27 },
-    NAME: "sailor's coat",
-    LUMINANCE: 0.0628948595,
-    DISCRIMINATOR: Discriminators.PALETTE_COLOR
-};
-
-ALL_PALETTE_COLORS.setIfAbsent(PC_334A57.HEX, PC_334A57);
-NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_334A57.HEX, PC_334A57);
-ColorNames.addColor(PC_334A57);
+export * from './teal-colors';

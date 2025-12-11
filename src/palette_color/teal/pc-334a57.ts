@@ -26,28 +26,28 @@ import { Discriminators } from '../../discriminator';
 import { ALL_PALETTE_COLORS } from '../all-colors';
 import { PaletteColor } from '../palette-color';
 
-import { NEUTRAL_PALETTE_COLORS } from './neutral-colors';
+import { TEAL_PALETTE_COLORS } from './teal-colors';
 
 /**
- * <div class="color-block" style="background: #223944;">
- *     <a href="https://coolors.co/223944" target="_blank" rel="noopener noreferrer">
- *         <h2 class="color-block white-pass">astral nomad (#223944)</h2>
+ * <div class="color-block" style="background: #334A57;">
+ *     <a href="https://coolors.co/334a57" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">sailor's coat (#334A57)</h2>
  *     </a>
  * </div>
  *
  * @since 2.0.0
  *
- * @category Neutral
+ * @category Teal
  */
-export const PC_223944: PaletteColor = {
-    HEX: '#223944',
-    HSL: { H: 199, S: 33, L: 20 },
-    RGB: { R: 34, G: 57, B: 68 },
-    NAME: 'astral nomad',
-    LUMINANCE: 0.0368369129,
+export const PC_334A57: PaletteColor = {
+    HEX: '#334A57',
+    RGB: { R: 51, G: 74, B: 87 },
+    HSL: { H: 202, S: 26, L: 27 },
+    NAME: "sailor's coat",
+    LUMINANCE: 0.0628948595,
     DISCRIMINATOR: Discriminators.PALETTE_COLOR
 };
 
-ALL_PALETTE_COLORS.setIfAbsent(PC_223944.HEX, PC_223944);
-NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_223944.HEX, PC_223944);
-ColorNames.addColor(PC_223944);
+ALL_PALETTE_COLORS.setIfAbsent(PC_334A57.HEX, PC_334A57);
+TEAL_PALETTE_COLORS.setIfAbsent(PC_334A57.HEX, PC_334A57);
+ColorNames.addColor(PC_334A57);

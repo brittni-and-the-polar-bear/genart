@@ -20,7 +20,18 @@
  * SOFTWARE.
  */
 
-export * from './neutral-colors';
+import { StringMap } from '../../map';
 
-export * from './pc-857b7a';
-export * from './pc-938f80';
+import { PaletteColor } from '../palette-color';
+
+/**
+ * A map of hex values to {@link PaletteColor} objects for all teal palette colors.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/colors/teal/teal-colors.html" target="_blank" rel="noopener noreferrer">See the Colors.</a>
+ *
+ * @since 2.0.0
+ *
+ * @category PaletteColor Collections
+ * @category Teal
+ */
+export const TEAL_PALETTE_COLORS: StringMap<PaletteColor> = new StringMap<PaletteColor>();
