@@ -53,6 +53,7 @@ export const PINK_HEXES: HexCollection = [
 ];
 
 export const PURPLE_HEXES: HexCollection = [
+    { hexString: '#29263B' },
     { hexString: '#80007F' }
 ];
 
