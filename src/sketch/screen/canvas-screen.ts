@@ -23,12 +23,12 @@
 import { GraphicsContext, GraphicsContextHandler } from '../graphics';
 import { P5Context } from '../p5_context';
 
-import { ScreenConfig } from './screen-config';
+import { CanvasScreenConfig } from './canvas-screen-config';
 
 // TODO - Complete Canvas class implementation.
 
 // TODO - documentation
-export abstract class Screen {
+export abstract class CanvasScreen {
     /**
      * The {@link GraphicsContextHandler} for the screen.
      *
@@ -62,7 +62,7 @@ export abstract class Screen {
      *
      * @protected
      */
-    protected constructor(config: ScreenConfig) {
+    protected constructor(config: CanvasScreenConfig) {
         this.#NAME = config.NAME;
         this.#GRAPHICS_HANDLER = new GraphicsContextHandler(config.ACTIVE_GRAPHICS, config.OTHER_GRAPHICS);
     }
@@ -135,7 +135,8 @@ export abstract class Screen {
     }
 
     // TODO - complete
-    // public draw(): void {
+    public draw(): void {
+        console.log(`CanvasScreen.draw() called for screen: ${this.NAME}`);
     //     if (this.isActive) {
     //         const p5Ctx: p5 = P5Context.instance;
     //         this.drawToActiveGraphics();
@@ -151,7 +152,7 @@ export abstract class Screen {
     //             height
     //         );
     //     }
-    // }
+    }
 
     /**
      * Override this method to implement custom behavior when a key is pressed.
@@ -220,7 +221,7 @@ export abstract class Screen {
     }
 
     public saveActiveGraphics(): void {
-        this.#saveGraphics(this.#GRAPHICS_HANDLER.activeContext, Screen.#TIMEOUT_MS)
+        this.#saveGraphics(this.#GRAPHICS_HANDLER.activeContext, CanvasScreen.#TIMEOUT_MS)
             .then(
                 (filename: string): void => {
                     console.log(`Saved file: ${filename}.`);
@@ -304,7 +305,7 @@ export abstract class Screen {
 
         for (const context of this.#GRAPHICS_HANDLER.contexts) {
             promises.push(
-                this.#saveGraphics(context, Screen.#TIMEOUT_MS)
+                this.#saveGraphics(context, CanvasScreen.#TIMEOUT_MS)
                     .then(
                         (filename: string): void => {
                             console.log(`Saved file: ${filename}.`);

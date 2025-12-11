@@ -20,5 +20,6 @@
  * SOFTWARE.
  */
 
-export * from './screen';
-export * from './screen-config';
+export * from './canvas-screen';
+export * from './canvas-screen-config';
+export * from './canvas-screen-handler';

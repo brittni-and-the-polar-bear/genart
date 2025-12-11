@@ -22,16 +22,16 @@
 
 import { GraphicsContext } from '../graphics';
 
-import { Screen } from './screen';
+import { CanvasScreen } from './canvas-screen';
 
 /**
- * Configuration for a {@link Screen}.
+ * Configuration for a {@link CanvasScreen}.
  *
  * @category Screen
  *
  * @since 2.0.0
  */
-export interface ScreenConfig {
+export interface CanvasScreenConfig {
     /**
      * The name of the screen.
      *
