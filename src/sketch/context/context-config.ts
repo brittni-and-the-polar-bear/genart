@@ -35,12 +35,16 @@ export interface ContextConfig {
     /**
      * The name of the context.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly NAME: string;
 
     /**
      * The {@link RenderType} of the context.
+     *
+     * @readonly
      *
      * @since 2.0.0
      */
@@ -49,6 +53,8 @@ export interface ContextConfig {
     /**
      * The {@link AspectRatio} of the context.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly ASPECT_RATIO?: AspectRatio;
@@ -56,12 +62,16 @@ export interface ContextConfig {
     /**
      * The resolution of the context.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly RESOLUTION?: number;
 
     /**
      * Should the aspect ratio of the context match the aspect ratio of its container?
+     *
+     * @readonly
      *
      * @since 2.0.0
      */

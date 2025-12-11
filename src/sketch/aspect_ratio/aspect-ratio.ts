@@ -37,33 +37,33 @@ export class AspectRatio {
     /**
      * The name of the aspect ratio.
      *
-     * @private
      * @readonly
+     * @private
      */
     readonly #NAME: string;
 
     /**
      * The width component of the aspect ratio.
      *
-     * @private
      * @readonly
+     * @private
      */
     readonly #WIDTH_RATIO: number;
 
     /**
      * The height component of the aspect ratio.
      *
-     * @private
      * @readonly
+     * @private
      */
     readonly #HEIGHT_RATIO: number;
 
     /**
      *  Create an aspect ratio using the given target width and height.
      *
-     * @param width - The target width of the canvas or graphic. Minimum value is {@link Context.MIN_RESOLUTION}.
-     * @param height - The target height of the canvas or graphic. Minimum value is {@link Context.MIN_RESOLUTION}.
-     * @param name - Optional name to use.
+     * @param width {number} - The target width of the canvas or graphic. Minimum value is {@link Context.MIN_RESOLUTION}.
+     * @param height {number} - The target height of the canvas or graphic. Minimum value is {@link Context.MIN_RESOLUTION}.
+     * @param name {string} - Optional name to use.
      *
      * @since 2.0.0
      */
@@ -71,7 +71,7 @@ export class AspectRatio {
     /**
      * Create an aspect ratio using the given {@link AspectRatioConfig}.
      *
-     * @param config - The {@link AspectRatioConfig} to use.
+     * @param config {AspectRatioConfig} - The {@link AspectRatioConfig} to use.
      *
      * @since 2.0.0
      */
@@ -108,7 +108,7 @@ export class AspectRatio {
     }
 
     /**
-     * The name of the aspect ratio.
+     * @returns {string} The name of the aspect ratio.
      *
      * @since 2.0.0
      */
@@ -117,7 +117,7 @@ export class AspectRatio {
     }
 
     /**
-     * The width component of the aspect ratio.
+     * @returns {number} The width component of the aspect ratio.
      *
      * @since 2.0.0
      */
@@ -126,7 +126,7 @@ export class AspectRatio {
     }
 
     /**
-     * The height component of the aspect ratio.
+     * @returns {number} The height component of the aspect ratio.
      *
      * @since 2.0.0
      */
@@ -135,10 +135,10 @@ export class AspectRatio {
     }
 
     /**
-     * Calculates the width of the canvas or graphic given the target resolution.
+     * @param resolution {number} - The target resolution.
+     * @param applyToLongSide {boolean} - When `true`, the long side of the canvas or graphic will be equal to the target resolution.
      *
-     * @param resolution - The target resolution.
-     * @param applyToLongSide - When true, long side of the canvas or graphic will be equal to the target resolution.
+     * @returns {number} The width of the canvas or graphic given the target resolution.
      *
      * @since 2.0.0
      */
@@ -147,10 +147,10 @@ export class AspectRatio {
     }
 
     /**
-     * Calculates the height of the canvas or graphic given the target resolution.
+     * @param resolution {number} - The target resolution.
+     * @param applyToLongSide {boolean} - When `true`, the long side of the canvas or graphic will be equal to the target resolution.
      *
-     * @param resolution - The target resolution.
-     * @param applyToLongSide - When true, long side of the canvas or graphic will be equal to the target resolution.
+     * @returns {number} The height of the canvas or graphic given the target resolution.
      *
      * @since 2.0.0
      */
@@ -159,10 +159,10 @@ export class AspectRatio {
     }
 
     /**
-     * Calculates the base unit for the aspect ratio given the target resolution.
+     * @param resolution {number} - The target resolution.
+     * @param applyToLongSide {boolean} - When `true`, the long side of the canvas or graphic will be equal to the target resolution.
      *
-     * @param resolution - The target resolution.
-     * @param applyToLongSide - When true, long side of the canvas or graphic will be equal to the target resolution.
+     * @returns {number} The base unit for the aspect ratio given the target resolution.
      *
      * @private
      */
@@ -181,9 +181,9 @@ export class AspectRatio {
     /**
      * Builds the name of the aspect ratio.
      *
-     * @param name - Optional name to use.
+     * @param name {string} - Optional name to use.
      *
-     * @returns The given name or a name built from the width and height ratios.
+     * @returns {string} The given name or a name built from the width and height ratios.
      *
      * @private
      */

@@ -35,6 +35,8 @@ export interface AspectRatioConfig extends Discriminable {
     /**
      * The name of the aspect ratio.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly NAME?: string;
@@ -42,12 +44,16 @@ export interface AspectRatioConfig extends Discriminable {
     /**
      * The width component of the aspect ratio.
      *
+     * @readonly
+     *
      * @since 2.0.0
      */
     readonly WIDTH_RATIO: number;
 
     /**
      * The height component of the aspect ratio.
+     *
+     * @readonly
      *
      * @since 2.0.0
      */

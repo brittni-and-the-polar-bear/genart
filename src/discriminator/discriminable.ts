@@ -33,6 +33,10 @@ import { Discriminators } from './discriminators';
 export interface Discriminable {
     /**
      * Discriminator value for the implementing interface.
+     *
+     * @readonly
+     *
+     * @since 2.0.0
      */
     readonly DISCRIMINATOR: Discriminators;
 }

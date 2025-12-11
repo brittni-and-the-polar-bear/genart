@@ -33,9 +33,26 @@ import { P5Context } from '../p5_context';
  * @category Coordinate
  */
 export class CoordinateRatioMapper {
+    /**
+     * Is the coordinate system in WebGL mode?
+     *
+     * @readonly
+     * @private
+     */
     readonly #IS_WEBGL: boolean;
 
+    /**
+     * The width of the coordinate system.
+     *
+     * @private
+     */
     #width: number;
+
+    /**
+     * The height of the coordinate system.
+     *
+     * @private
+     */
     #height: number;
 
     /**
@@ -48,9 +65,9 @@ export class CoordinateRatioMapper {
     /**
      * Constructor for the CoordinateRatioMapper class.
      *
-     * @param width - The width of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
-     * @param height - The height of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
-     * @param isWebGL - Is the coordinate system in WebGL mode?
+     * @param width {number} - The width of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
+     * @param height {number} - The height of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
+     * @param isWebGL {boolean} - Is the coordinate system in WebGL mode?
      *
      * @since 2.0.0
      */
@@ -72,7 +89,7 @@ export class CoordinateRatioMapper {
     }
 
     /**
-     * The center of the coordinate system.
+     * @returns {p5.Vector} The center of the coordinate system.
      *
      * @since 2.0.0
      */
@@ -81,7 +98,7 @@ export class CoordinateRatioMapper {
     }
 
     /**
-     * The center x-axis value of the coordinate system.
+     * @returns {number} The center x-axis value of the coordinate system.
      *
      * @since 2.0.0
      */
@@ -90,7 +107,7 @@ export class CoordinateRatioMapper {
     }
 
     /**
-     * The center y-axis value of the coordinate system.
+     * @returns {number} The center y-axis value of the coordinate system.
      *
      * @since 2.0.0
      */
@@ -101,6 +118,8 @@ export class CoordinateRatioMapper {
     /**
      * Is the coordinate system in WebGL mode?
      *
+     * @returns {boolean} `true` if the coordinate system is in WebGL mode, `false` otherwise.
+     *
      * @since 2.0.0
      */
     public get isWebGL(): boolean {
@@ -108,7 +127,7 @@ export class CoordinateRatioMapper {
     }
 
     /**
-     * The minimum visible x-axis value.
+     * @returns {number} The minimum visible x-axis value.
      *
      * @since 2.0.0
      */
@@ -123,7 +142,7 @@ export class CoordinateRatioMapper {
     }
 
     /**
-     * The maximum visible x-axis value.
+     * @returns {number} The maximum visible x-axis value.
      *
      * @since 2.0.0
      */
@@ -138,7 +157,7 @@ export class CoordinateRatioMapper {
     }
 
     /**
-     * The minimum visible y-axis value.
+     * @returns {number} The minimum visible y-axis value.
      *
      * @since 2.0.0
      */
@@ -153,7 +172,7 @@ export class CoordinateRatioMapper {
     }
 
     /**
-     * The maximum visible y-axis value.
+     * @returns {number} The maximum visible y-axis value.
      *
      * @since 2.0.0
      */
@@ -168,7 +187,7 @@ export class CoordinateRatioMapper {
     }
 
     /**
-     * The width of the coordinate system.
+     * @returns {number} The width of the coordinate system.
      *
      * @since 2.0.0
      */
@@ -179,7 +198,7 @@ export class CoordinateRatioMapper {
     /**
      * Set the width of the coordinate system.
      *
-     * @param width - The width of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
+     * @param width {number} - The width of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
      *
      * @since 2.0.0
      */
@@ -192,7 +211,7 @@ export class CoordinateRatioMapper {
     }
 
     /**
-     * The height of the coordinate system.
+     * @returns {number} The height of the coordinate system.
      *
      * @since 2.0.0
      */
@@ -203,7 +222,7 @@ export class CoordinateRatioMapper {
     /**
      * Set the height of the coordinate system.
      *
-     * @param height - The height of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
+     * @param height {number} - The height of the coordinate system. Minimum value is {@link Context.MIN_RESOLUTION}.
      *
      * @since 2.0.0
      */
@@ -220,7 +239,9 @@ export class CoordinateRatioMapper {
      * A percentage value of 0.5 will be exactly in the middle of the respective axis,
      * regardless of context resolution or aspect ratio.
      *
-     * @param ratioVector - The percentage vector expressed as decimal numbers (e.g. 50% = 0.5)
+     * @param ratioVector {p5.Vector} - The percentage vector expressed as decimal numbers (e.g. 50% = 0.5)
+     *
+     * @returns {p5.Vector} The coordinate vector.
      *
      * @since 2.0.0
      */
@@ -235,7 +256,9 @@ export class CoordinateRatioMapper {
      * A percentage value of 0.5 will be exactly in the middle of the x-axis,
      * regardless of context resolution or aspect ratio.
      *
-     * @param ratioX - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     * @param ratioX {number} - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     *
+     * @returns {number} The coordinate value on the x-axis.
      *
      * @since 2.0.0
      */
@@ -248,7 +271,9 @@ export class CoordinateRatioMapper {
      * A percentage value of 0.5 will be exactly in the middle of the y-axis,
      * regardless of context resolution or aspect ratio.
      *
-     * @param ratioY - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     * @param ratioY {number} - The percentage expressed as a decimal number (e.g. 50% = 0.5)
+     *
+     * @returns {number} The coordinate value on the y-axis.
      *
      * @since 2.0.0
      */
@@ -259,7 +284,9 @@ export class CoordinateRatioMapper {
     /**
      * Map a coordinate vector to percentage values relative to the minimum and maximum x-axis and y-axis values.
      *
-     * @param coordinateVector - The coordinate vector.
+     * @param coordinateVector {p5.Vector} - The coordinate vector.
+     *
+     * @returns {p5.Vector} The percentage vector.
      *
      * @since 2.0.0
      */
@@ -272,7 +299,9 @@ export class CoordinateRatioMapper {
     /**
      * Map a coordinate value on the x-axis to a percentage value relative to the minimum and maximum x-axis values.
      *
-     * @param coordinateX - The coordinate value on the x-axis.
+     * @param coordinateX {number} - The coordinate value on the x-axis.
+     *
+     * @returns {number} The percentage value on the x-axis.
      *
      * @since 2.0.0
      */
@@ -283,7 +312,9 @@ export class CoordinateRatioMapper {
     /**
      * Map a coordinate value on the y-axis to a percentage value relative to the minimum and maximum y-axis values.
      *
-     * @param coordinateY - The coordinate value on the y-axis.
+     * @param coordinateY {number} - The coordinate value on the y-axis.
+     *
+     * @returns {number} The percentage value on the y-axis.
      *
      * @since 2.0.0
      */

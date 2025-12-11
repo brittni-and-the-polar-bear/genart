@@ -109,16 +109,20 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 ├── src/                          # TypeScript source code
 │   ├── color/                    # Color utilities module
 │   │   └── color_name/           # Color name functionality
-│   │       └── color-names.ts    # ColorNames class
+│   │       ├── color-names.ts    # ColorNames class
+│   │       └── index.ts          # Color name module exports
 │   ├── discriminator/            # Type discrimination utilities
 │   │   ├── discriminable.ts      # Discriminable interface
 │   │   ├── discriminator.ts      # Discriminator class
-│   │   └── discriminators.ts     # Discriminators enum
+│   │   ├── discriminators.ts     # Discriminators enum
+│   │   └── index.ts              # Discriminator module exports
 │   ├── map/                      # Map data structures
+│   │   ├── index.ts              # Map module exports
 │   │   └── string-map.ts         # StringMap class
 │   ├── palette/                  # Color palette definitions
 │   │   ├── palette.ts            # Palette interface
 │   │   ├── all-palettes.ts       # ALL_PALETTES map
+│   │   ├── index.ts              # Palette module exports
 │   │   ├── nature/               # Nature palette collections
 │   │   │   ├── index.ts          # Nature module exports
 │   │   │   ├── nature-palettes.ts # NATURE_PALETTES map
@@ -129,19 +133,61 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │       └── asexual-pride-palette.ts # ASEXUAL_PRIDE_PALETTE
 │   ├── sketch/                   # Sketch and p5.js utilities
 │   │   ├── index.ts              # Sketch module exports
+│   │   ├── aspect_ratio/         # Aspect ratio functionality
+│   │   │   ├── aspect-ratio-config.ts # AspectRatioConfig interface
+│   │   │   ├── aspect-ratio.ts   # AspectRatio class
+│   │   │   ├── aspect-ratios.ts  # ASPECT_RATIOS constant
+│   │   │   └── index.ts          # Aspect ratio module exports
+│   │   ├── context/              # Context management
+│   │   │   ├── context-config-builder.ts # ContextConfigBuilder class
+│   │   │   ├── context-config.ts # ContextConfig interface
+│   │   │   ├── context.ts        # Context abstract class
+│   │   │   ├── render-type.ts    # RenderType type
+│   │   │   └── index.ts          # Context module exports
+│   │   ├── coordinate/           # Coordinate mapping utilities
+│   │   │   ├── coordinate-ratio-mapper.ts # CoordinateRatioMapper class
+│   │   │   └── index.ts          # Coordinate module exports
+│   │   ├── graphics/             # Graphics context functionality
+│   │   │   ├── graphics-context-handler.ts # GraphicsContextHandler class
+│   │   │   ├── graphics-context.ts # GraphicsContext class
+│   │   │   └── index.ts          # Graphics module exports
 │   │   └── p5_context/           # P5.js context management
 │   │       ├── index.ts          # P5Context module exports
 │   │       └── p5-context.ts     # P5Context class
 │   ├── palette_color/            # Palette color definitions
 │   │   ├── palette-color.ts      # PaletteColor interface
 │   │   ├── all-colors.ts         # ALL_PALETTE_COLORS map
+│   │   ├── index.ts              # Palette color module exports
 │   │   ├── black/                # Black color collection
+│   │   │   ├── black-colors.ts   # BLACK_PALETTE_COLORS map
+│   │   │   ├── index.ts          # Black colors module exports
+│   │   │   └── pc-000000.ts      # PC_000000 color
 │   │   ├── blue/                 # Blue color collection
+│   │   │   ├── blue-colors.ts    # BLUE_PALETTE_COLORS map
+│   │   │   ├── index.ts          # Blue colors module exports
+│   │   │   └── pc-1e1a75.ts      # PC_1E1A75 color
 │   │   ├── gray/                 # Gray color collection
+│   │   │   ├── gray-colors.ts    # GRAY_PALETTE_COLORS map
+│   │   │   ├── index.ts          # Gray colors module exports
+│   │   │   └── pc-a3a3a3.ts      # PC_A3A3A3 color
 │   │   ├── orange/               # Orange color collection
+│   │   │   ├── index.ts          # Orange colors module exports
+│   │   │   ├── orange-colors.ts  # ORANGE_PALETTE_COLORS map
+│   │   │   ├── pc-ff704d.ts      # PC_FF704D color
+│   │   │   └── pc_ffa852.ts      # PC_FFA852 color
 │   │   ├── pink/                 # Pink color collection
+│   │   │   ├── index.ts          # Pink colors module exports
+│   │   │   ├── pc-9f1475.ts      # PC_9F1475 color
+│   │   │   ├── pc-e13762.ts      # PC_E13762 color
+│   │   │   └── pink-colors.ts    # PINK_PALETTE_COLORS map
 │   │   ├── purple/               # Purple color collection
+│   │   │   ├── index.ts          # Purple colors module exports
+│   │   │   ├── pc-80007f.ts      # PC_80007F color
+│   │   │   └── purple-colors.ts  # PURPLE_PALETTE_COLORS map
 │   │   └── white/                # White color collection
+│   │       ├── index.ts          # White colors module exports
+│   │       ├── pc-ffffff.ts      # PC_FFFFFF color
+│   │       └── white-colors.ts   # WHITE_PALETTE_COLORS map
 │   ├── string/                   # String utility module
 │   │   ├── index.ts              # Module exports
 │   │   └── string-validator.ts   # StringValidator class
@@ -151,21 +197,39 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   └── color_name/           # Color name tests
 │   │       └── color-names.test.ts # ColorNames unit tests
 │   ├── discriminator/            # Discriminator module tests
+│   │   └── discriminators.test.ts # Discriminators enum tests
 │   ├── palette_color/            # Palette color module tests
 │   │   ├── all-colors.test.ts    # ALL_PALETTE_COLORS map tests
 │   │   ├── black/                # Black colors tests
+│   │   │   └── black-colors.test.ts # Black colors unit tests
 │   │   ├── blue/                 # Blue colors tests
+│   │   │   └── blue-colors.test.ts # Blue colors unit tests
 │   │   ├── gray/                 # Gray colors tests
+│   │   │   └── gray-colors.test.ts # Gray colors unit tests
 │   │   ├── orange/               # Orange colors tests
+│   │   │   └── orange-colors.test.ts # Orange colors unit tests
 │   │   ├── pink/                 # Pink colors tests
+│   │   │   └── pink-colors.test.ts # Pink colors unit tests
 │   │   ├── purple/               # Purple colors tests
+│   │   │   └── purple-colors.test.ts # Purple colors unit tests
 │   │   └── white/                # White colors tests
+│   │       └── white-colors.test.ts # White colors unit tests
 │   ├── sketch/                   # Sketch module tests
+│   │   ├── aspect_ratio/         # Aspect ratio tests
+│   │   │   ├── aspect-ratio.test.ts # AspectRatio unit tests
+│   │   │   └── aspect-ratios.test.ts # ASPECT_RATIOS constant tests
+│   │   ├── context/              # Context tests
+│   │   │   ├── context-config-builder.test.ts # ContextConfigBuilder tests
+│   │   │   └── context.test.ts   # Context tests
+│   │   ├── graphics/             # Graphics tests
+│   │   │   ├── graphics-context-handler.test.ts # GraphicsContextHandler tests
+│   │   │   └── graphics-context.test.ts # GraphicsContext tests
 │   │   └── p5_context/           # P5Context tests
 │   │       └── p5-context.test.ts # P5Context unit tests
 │   ├── string/                   # String module tests
 │   │   └── string-validator.test.ts # StringValidator unit tests
 │   └── test_utils/               # Testing utilities
+│       ├── index.ts              # Test utilities module exports
 │       ├── map.ts                # StringMap testing utilities
 │       ├── palette-color.ts      # PaletteColor testing utilities
 │       └── palette-colors.ts     # Palette color collection utilities
@@ -217,10 +281,13 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 ## Dependencies and Development Tools
 
 ### Core Dependencies
+- **@types/p5** - TypeScript type definitions for p5.js
+- **p5** - p5.js library for creative coding
 - **typescript** - TypeScript compiler and language support
 - **tsdown** - Build tool for TypeScript packages  
 - **ts-node** - TypeScript execution environment
 - **tslib** - TypeScript runtime library
+- **@types/nearest-color** - TypeScript type definitions for nearest-color
 - **nearest-color** - Find the nearest named color from a given hex color
 - **color-name-list** - A list of color names and their hex values (peer dependency)
 
@@ -232,7 +299,10 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - **vitest**: Fast unit testing framework with coverage reporting, outputs to `_coverage/`
 - **@vitest/coverage-v8**: Coverage reporting with v8 provider
 - **@vitest/ui**: Web UI for vitest testing
+- **canvas**: HTML5 Canvas API implementation for Node.js (required for p5.js testing)
+- **jsdom**: JavaScript implementation of web standards for testing
 - **test_utils module**: Comprehensive testing utilities
+  - `index.ts`: Test utilities module exports
   - `map.ts`: Testing utilities for StringMap class
   - `palette-color.ts`: Testing utilities for PaletteColor objects and collections
   - `palette-colors.ts`: Collection utilities for palette color testing
@@ -279,9 +349,24 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
 - **`map` module**: Data structure utilities
   - StringMap class for string-keyed maps
 - **`sketch` module**: Sketch and p5.js utilities
-  - P5Context class for managing p5.js context and canvas
-  - Provides static access to p5.js instance
-  - Methods for initializing, resetting, and checking p5.js context
+  - **`aspect_ratio` submodule**: Aspect ratio configuration and management
+    - AspectRatio class - Defines width-to-height ratio of canvas or graphics
+    - AspectRatioConfig interface - Configuration for aspect ratios
+    - ASPECT_RATIOS constant - Collection of predefined aspect ratios
+  - **`context` submodule**: Rendering context management
+    - Context abstract class - Base class for managing rendering contexts
+    - ContextConfig interface - Configuration for rendering contexts
+    - ContextConfigBuilder class - Builder pattern for creating context configurations
+    - RenderType type - Defines rendering modes (2D, WebGL)
+  - **`coordinate` submodule**: Coordinate mapping utilities
+    - CoordinateRatioMapper class - Maps coordinates between ratio and coordinate systems
+  - **`graphics` submodule**: Graphics context functionality
+    - GraphicsContext class - Manages p5.Graphics instances
+    - GraphicsContextHandler class - Handles graphics context operations
+  - **`p5_context` submodule**: P5.js context management
+    - P5Context class - Manages p5.js context and canvas
+    - Provides static access to p5.js instance
+    - Methods for initializing, resetting, and checking p5.js context
 - **`palette` module**: Color palette definitions and collections
   - Palette interface for color palette objects
   - ASEXUAL_PRIDE_PALETTE - Asexual pride flag color palette
@@ -330,6 +415,7 @@ This project now has comprehensive TypeScript development infrastructure:
 - Vitest testing framework with comprehensive coverage and multiple test modes
 - GitHub Actions workflows for CI/CD, security scanning, and publishing
 - Code is organized in modules: `color`, `discriminator`, `map`, `palette`, `palette_color`, `sketch`, `string`
+- The `sketch` module contains submodules: `aspect_ratio`, `context`, `coordinate`, `graphics`, `p5_context`
 - Comprehensive color and palette system with discriminator-based type safety
 - Jekyll-based documentation site with collections for colors and palettes
 - Testing utilities in `test_utils` module for comprehensive unit testing
@@ -348,6 +434,51 @@ This project now has comprehensive TypeScript development infrastructure:
 - **vitest**: Fast unit testing framework with coverage reporting, outputs to `_coverage/`
 - **GitHub Actions**: Automated CI/CD workflows for testing, security scanning, and publishing
 - **Package exports**: Configured for proper module resolution in different environments
+
+### Documentation Comment Preferences
+
+When writing or reviewing code, follow these documentation standards for maximum compatibility:
+
+- **Use `@returns` instead of `@return`**: Always use `@returns` in documentation comments for compatibility with documentation generators.
+- **Always specify parameter types with `@param`**: Include a type indicator in every `@param` annotation.
+- **Always specify return types with `@returns`**: Include a type indicator in every `@returns` annotation.
+- **Document void returns with `@returns {void}`**: For methods that do not return a value, explicitly use `@returns {void}`.
+- **Use `@returns` for getter methods**: Prefer `@returns` for getter documentation.
+- **Document version with `@since`**: Add `@since` to all public/exported members.
+- **Annotate abstract members with `@abstract`**: Use `@abstract` for all abstract classes, methods, and properties.
+- **Annotate readonly members with `@readonly`**: Use `@readonly` for all readonly members.
+- **Annotate private members with `@private`**: Use `@private` for all private members.
+- **Annotate protected members with `@protected`**: Use `@protected` for all protected members.
+- **Annotate overrides with `@override`**: Use `@override` for all methods that override parent class methods.
+- **Enclose boolean values in backticks**: Always use backticks for `true` and `false` in documentation comments.
+- **Use consistent tense and voice**: Write documentation in the present tense and active voice for clarity.
+- **Document exceptions with `@throws`**: Use `@throws` to document any errors or exceptions a function may throw.
+- **Document default parameter values**: Indicate default values for parameters in the `@param` annotation.
+- **Document all exported symbols**: Ensure every exported class, function, interface, type, enum, and constant has a documentation comment.
+- **Do not use `@constructor`**: Do not use `@constructor` in documentation comments. It is not supported by typedoc.
+- **Do not use `@static`**: Do not use `@static` in documentation comments. It is not supported by typedoc.
+
+**Annotation Order:**
+Place annotations in the following order for consistency and readability:
+
+1. `@remarks`
+1. `@param`
+1. `@returns`
+1. `@throws`
+1. `@default`
+1. `@see`
+1. `@example`
+1. `@readonly`
+1. `@private`
+1. `@protected`
+1. `@public`
+1. `@abstract`
+1. `@override`
+1. `@deprecated`
+1. `@since`
+1. `@category`
+
+Include other relevant tags (such as `@template`, `@type`) after the above, as appropriate for the context.
 
 ## Quick Reference Commands
 
