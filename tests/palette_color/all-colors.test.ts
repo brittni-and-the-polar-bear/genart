@@ -32,6 +32,7 @@ import {
     ORANGE_HEXES,
     PINK_HEXES,
     PURPLE_HEXES,
+    TEAL_HEXES,
     WHITE_HEXES,
     HexCollection,
     testPaletteColorMap
@@ -46,6 +47,7 @@ ALL_HEXES.push(
     ...ORANGE_HEXES,
     ...PINK_HEXES,
     ...PURPLE_HEXES,
+    ...TEAL_HEXES,
     ...WHITE_HEXES
 );
 

@@ -20,78 +20,12 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './blue';
-export * from './gray';
-export * from './neutral';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './teal';
-export * from './white';
+import { describe } from 'vitest';
 
-export * from './all-colors';
-export * from './palette-color';
+import { TEAL_PALETTE_COLORS } from '../../../src';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as black from './black';
+import { TEAL_HEXES, testPaletteColorMap } from '../../test_utils';
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as blue from './blue';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as neutral from './neutral';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as teal from './teal';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+describe('TEAL_PALETTE_COLORS', (): void => {
+    testPaletteColorMap(TEAL_PALETTE_COLORS, 'TEAL_PALETTE_COLORS', TEAL_HEXES);
+});

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 brittni and the polar bear LLC.
+ * Copyright (C) 2025 brittni and the polar bear LLC.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,78 +20,34 @@
  * SOFTWARE.
  */
 
-export * from './black';
-export * from './blue';
-export * from './gray';
-export * from './neutral';
-export * from './orange';
-export * from './pink';
-export * from './purple';
-export * from './teal';
-export * from './white';
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export * from './all-colors';
-export * from './palette-color';
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { TEAL_PALETTE_COLORS } from './teal-colors';
 
 /**
- * @category Namespace
+ * <div class="color-block" style="background: #19414D;">
+ *     <a href="https://coolors.co/19414d" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">cold and dark (#19414D)</h2>
+ *     </a>
+ * </div>
  *
  * @since 2.0.0
+ *
+ * @category Teal
  */
-export * as black from './black';
+export const PC_19414D: PaletteColor = {
+    HEX: '#19414D',
+    HSL: { H: 194, S: 51, L: 20 },
+    RGB: { R: 25, G: 65, B: 77 },
+    NAME: 'cold and dark',
+    LUMINANCE: 0.0452308852,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
 
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as blue from './blue';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as gray from './gray';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as neutral from './neutral';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as orange from './orange';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as pink from './pink';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as purple from './purple';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as teal from './teal';
-
-/**
- * @category Namespace
- *
- * @since 2.0.0
- */
-export * as white from './white';
+ALL_PALETTE_COLORS.setIfAbsent(PC_19414D.HEX, PC_19414D);
+TEAL_PALETTE_COLORS.setIfAbsent(PC_19414D.HEX, PC_19414D);
+ColorNames.addColor(PC_19414D);
