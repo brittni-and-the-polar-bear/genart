@@ -20,9 +20,34 @@
  * SOFTWARE.
  */
 
-export * from './neutral-colors';
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
 
-export * from './pc-223944';
-export * from './pc-334a57';
-export * from './pc-857b7a';
-export * from './pc-938f80';
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { NEUTRAL_PALETTE_COLORS } from './neutral-colors';
+
+/**
+ * <div class="color-block" style="background: #223944;">
+ *     <a href="https://coolors.co/223944" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block white-pass">astral nomad (#223944)</h2>
+ *     </a>
+ * </div>
+ *
+ * @since 2.0.0
+ *
+ * @category Neutral
+ */
+export const PC_223944: PaletteColor = {
+    HEX: '#223944',
+    HSL: { H: 199, S: 33, L: 20 },
+    RGB: { R: 34, G: 57, B: 68 },
+    NAME: 'astral nomad',
+    LUMINANCE: 0.0368369129,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
+
+ALL_PALETTE_COLORS.setIfAbsent(PC_223944.HEX, PC_223944);
+NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_223944.HEX, PC_223944);
+ColorNames.addColor(PC_223944);
