@@ -53,23 +53,38 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   └── palette.html          # Layout for individual palette pages
 │   ├── _collections/             # Jekyll collections
 │   │   ├── _palette_colors/      # Palette color collection files
-│   │   │   ├── pc-000000.md      # PC_000000 color page
-│   │   │   ├── pc-a3a3a3.md      # PC_A3A3A3 color page
-│   │   │   ├── pc-ffffff.md      # PC_FFFFFF color page
-│   │   │   ├── pc_80007f.md      # PC_80007F color page
+│   │   │   ├── black/            # Black color collection files
+│   │   │   │   ├── pc-000000.md  # PC_000000 color page
+│   │   │   │   └── pc-121212.md  # PC_121212 color page
 │   │   │   ├── blue/             # Blue color collection files
 │   │   │   │   └── pc-1e1a75.md  # PC_1E1A75 color page
+│   │   │   ├── gray/             # Gray color collection files
+│   │   │   │   ├── pc-3a3e40.md  # PC_3A3E40 color page
+│   │   │   │   ├── pc-a3a3a3.md  # PC_A3A3A3 color page
+│   │   │   │   └── pc-d2d3d5.md  # PC_D2D3D5 color page
+│   │   │   ├── neutral/          # Neutral color collection files
+│   │   │   │   ├── pc-857b7a.md  # PC_857B7A color page
+│   │   │   │   └── pc-938f80.md  # PC_938F80 color page
 │   │   │   ├── orange/           # Orange color collection files
 │   │   │   │   ├── pc-ff704d.md  # PC_FF704D color page
 │   │   │   │   └── pc-ffa852.md  # PC_FFA852 color page
-│   │   │   └── pink/             # Pink color collection files
-│   │   │       ├── pc-9f1475.md  # PC_9F1475 color page
-│   │   │       └── pc-e13762.md  # PC_E13762 color page
+│   │   │   ├── pink/             # Pink color collection files
+│   │   │   │   ├── pc-9f1475.md  # PC_9F1475 color page
+│   │   │   │   └── pc-e13762.md  # PC_E13762 color page
+│   │   │   ├── purple/           # Purple color collection files
+│   │   │   │   ├── pc-29263b.md  # PC_29263B color page
+│   │   │   │   └── pc-80007f.md  # PC_80007F color page
+│   │   │   ├── teal/             # Teal color collection files
+│   │   │   │   ├── pc-19414d.md  # PC_19414D color page
+│   │   │   │   ├── pc-223944.md  # PC_223944 color page
+│   │   │   │   └── pc-334a57.md  # PC_334A57 color page
+│   │   │   └── white/            # White color collection files
+│   │   │       └── pc-ffffff.md  # PC_FFFFFF color page
 │   │   └── _palettes/            # Palette collection files
 │   │       ├── nature/           # Nature palette collection files
 │   │       │   └── california-wine-sunset-palette.md # CALIFORNIA_WINE_SUNSET_PALETTE page
-│   │       └── pride/            # Pride palette collection files
-│   │           └── asexual-pride-palette.md # ASEXUAL_PRIDE_PALETTE page
+│   │       ├── pride/            # Pride palette collection files
+│   │       │   └── asexual-pride-palette.md # ASEXUAL_PRIDE_PALETTE page
 │   ├── colors/                   # Color documentation pages
 │   │   ├── colors.md             # Main colors page
 │   │   ├── black/                # Black color category
@@ -78,18 +93,24 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   │   └── blue-colors.md    # Blue colors display page
 │   │   ├── gray/                 # Gray color category
 │   │   │   └── gray-colors.md    # Gray colors display page
+│   │   ├── neutral/              # Neutral color category
+│   │   │   └── neutral-colors.md # Neutral colors display page
 │   │   ├── orange/               # Orange color category
 │   │   │   └── orange-colors.md  # Orange colors display page
 │   │   ├── pink/                 # Pink color category
 │   │   │   └── pink-colors.md    # Pink colors display page
 │   │   ├── purple/               # Purple color category
 │   │   │   └── purple-colors.md  # Purple colors display page
+│   │   ├── teal/                 # Teal color category
+│   │   │   └── teal-colors.md    # Teal colors display page
 │   │   └── white/                # White color category
 │   │       └── white-colors.md   # White colors display page
 │   ├── palettes/                 # Palette documentation pages
 │   │   ├── palettes.md           # Main palettes page
 │   │   ├── all-palettes.md       # All palettes display page
-│   │   ├── gradient-palettes.md   # Gradient palettes display page
+│   │   ├── gradient-palettes.md  # Gradient palettes display page
+│   │   ├── miscellaneous/        # Miscellaneous palette category
+│   │   │   └── miscellaneous-palettes.md # Miscellaneous palettes display page
 │   │   ├── nature/               # Nature palette category
 │   │   │   └── nature-palettes.md # Nature palettes display page
 │   │   └── pride/                # Pride palette category
@@ -123,6 +144,9 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   ├── palette.ts            # Palette interface
 │   │   ├── all-palettes.ts       # ALL_PALETTES map
 │   │   ├── index.ts              # Palette module exports
+│   │   ├── miscellaneous/        # Miscellaneous palette collections
+│   │   │   ├── index.ts          # Miscellaneous module exports
+│   │   │   └── miscellaneous-palettes.ts # MISCELLANEOUS_PALETTES map
 │   │   ├── nature/               # Nature palette collections
 │   │   │   ├── index.ts          # Nature module exports
 │   │   │   ├── nature-palettes.ts # NATURE_PALETTES map
@@ -161,7 +185,8 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   ├── black/                # Black color collection
 │   │   │   ├── black-colors.ts   # BLACK_PALETTE_COLORS map
 │   │   │   ├── index.ts          # Black colors module exports
-│   │   │   └── pc-000000.ts      # PC_000000 color
+│   │   │   ├── pc-000000.ts      # PC_000000 color
+│   │   │   └── pc-121212.ts      # PC_121212 color
 │   │   ├── blue/                 # Blue color collection
 │   │   │   ├── blue-colors.ts    # BLUE_PALETTE_COLORS map
 │   │   │   ├── index.ts          # Blue colors module exports
@@ -169,7 +194,14 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   ├── gray/                 # Gray color collection
 │   │   │   ├── gray-colors.ts    # GRAY_PALETTE_COLORS map
 │   │   │   ├── index.ts          # Gray colors module exports
-│   │   │   └── pc-a3a3a3.ts      # PC_A3A3A3 color
+│   │   │   ├── pc-3a3e40.ts      # PC_3A3E40 color
+│   │   │   ├── pc-a3a3a3.ts      # PC_A3A3A3 color
+│   │   │   └── pc-d2d3d5.ts      # PC_D2D3D5 color
+│   │   ├── neutral/              # Neutral color collection
+│   │   │   ├── index.ts          # Neutral colors module exports
+│   │   │   ├── neutral-colors.ts # NEUTRAL_PALETTE_COLORS map
+│   │   │   ├── pc-857b7a.ts      # PC_857B7A color
+│   │   │   └── pc-938f80.ts      # PC_938F80 color
 │   │   ├── orange/               # Orange color collection
 │   │   │   ├── index.ts          # Orange colors module exports
 │   │   │   ├── orange-colors.ts  # ORANGE_PALETTE_COLORS map
@@ -182,8 +214,15 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   │   └── pink-colors.ts    # PINK_PALETTE_COLORS map
 │   │   ├── purple/               # Purple color collection
 │   │   │   ├── index.ts          # Purple colors module exports
+│   │   │   ├── pc-29263b.ts      # PC_29263B color
 │   │   │   ├── pc-80007f.ts      # PC_80007F color
 │   │   │   └── purple-colors.ts  # PURPLE_PALETTE_COLORS map
+│   │   ├── teal/                 # Teal color collection
+│   │   │   ├── index.ts          # Teal colors module exports
+│   │   │   ├── pc-19414d.ts      # PC_19414D color
+│   │   │   ├── pc-223944.ts      # PC_223944 color
+│   │   │   ├── pc-334a57.ts      # PC_334A57 color
+│   │   │   └── teal-colors.ts    # TEAL_PALETTE_COLORS map
 │   │   └── white/                # White color collection
 │   │       ├── index.ts          # White colors module exports
 │   │       ├── pc-ffffff.ts      # PC_FFFFFF color
@@ -206,12 +245,16 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │   │   └── blue-colors.test.ts # Blue colors unit tests
 │   │   ├── gray/                 # Gray colors tests
 │   │   │   └── gray-colors.test.ts # Gray colors unit tests
+│   │   ├── neutral/              # Neutral colors tests
+│   │   │   └── neutral-colors.test.ts # Neutral colors unit tests
 │   │   ├── orange/               # Orange colors tests
 │   │   │   └── orange-colors.test.ts # Orange colors unit tests
 │   │   ├── pink/                 # Pink colors tests
 │   │   │   └── pink-colors.test.ts # Pink colors unit tests
 │   │   ├── purple/               # Purple colors tests
 │   │   │   └── purple-colors.test.ts # Purple colors unit tests
+│   │   ├── teal/                 # Teal colors tests
+│   │   │   └── teal-colors.test.ts # Teal colors unit tests
 │   │   └── white/                # White colors tests
 │   │       └── white-colors.test.ts # White colors unit tests
 │   ├── sketch/                   # Sketch module tests
@@ -371,20 +414,23 @@ The project includes a Jekyll-based documentation site in the `docs/` directory:
   - Palette interface for color palette objects
   - ASEXUAL_PRIDE_PALETTE - Asexual pride flag color palette
   - CALIFORNIA_WINE_SUNSET_PALETTE - California wine sunset color palette
+  - MISCELLANEOUS_PALETTES map - Collection of miscellaneous palettes
   - PRIDE_PALETTES map - Collection of pride flag palettes
   - NATURE_PALETTES map - Collection of nature palettes
   - GRADIENT_PALETTES map - Collection of gradient palettes
   - ALL_PALETTES map - Collection of all available palettes
 - **`palette_color` module**: Individual color definitions and collections
   - PaletteColor interface for individual color objects
-  - Individual colors: PC_000000, PC_A3A3A3, PC_FFFFFF, PC_80007F, PC_FFA852, PC_FF704D, PC_E13762, PC_9F1475, PC_1E1A75
+  - Individual colors: PC_000000, PC_121212, PC_1E1A75, PC_3A3E40, PC_A3A3A3, PC_D2D3D5, PC_857B7A, PC_938F80, PC_FF704D, PC_FFA852, PC_E13762, PC_9F1475, PC_29263B, PC_80007F, PC_19414D, PC_223944, PC_334A57, PC_FFFFFF
   - ALL_PALETTE_COLORS map - Collection of all palette colors
   - BLACK_PALETTE_COLORS map - Collection of black palette colors
   - BLUE_PALETTE_COLORS map - Collection of blue palette colors
   - GRAY_PALETTE_COLORS map - Collection of gray palette colors
+  - NEUTRAL_PALETTE_COLORS map - Collection of neutral palette colors
   - ORANGE_PALETTE_COLORS map - Collection of orange palette colors
   - PINK_PALETTE_COLORS map - Collection of pink palette colors
   - PURPLE_PALETTE_COLORS map - Collection of purple palette colors
+  - TEAL_PALETTE_COLORS map - Collection of teal palette colors
   - WHITE_PALETTE_COLORS map - Collection of white palette colors
 
 ### Available Scripts
@@ -440,8 +486,8 @@ This project now has comprehensive TypeScript development infrastructure:
 When writing or reviewing code, follow these documentation standards for maximum compatibility:
 
 - **Use `@returns` instead of `@return`**: Always use `@returns` in documentation comments for compatibility with documentation generators.
-- **Always specify parameter types with `@param`**: Include a type indicator in every `@param` annotation.
-- **Always specify return types with `@returns`**: Include a type indicator in every `@returns` annotation.
+- **Use `@param name {type}` format**: Always specify parameter types with the format `@param name {type}` (e.g., `@param hex {string}`) rather than `@param {type} name`.
+- **Always specify return types with `@returns`**: Include a type indicator in every `@returns` annotation (e.g., `@returns {boolean}`).
 - **Document void returns with `@returns {void}`**: For methods that do not return a value, explicitly use `@returns {void}`.
 - **Use `@returns` for getter methods**: Prefer `@returns` for getter documentation.
 - **Document version with `@since`**: Add `@since` to all public/exported members.
@@ -455,8 +501,6 @@ When writing or reviewing code, follow these documentation standards for maximum
 - **Document exceptions with `@throws`**: Use `@throws` to document any errors or exceptions a function may throw.
 - **Document default parameter values**: Indicate default values for parameters in the `@param` annotation.
 - **Document all exported symbols**: Ensure every exported class, function, interface, type, enum, and constant has a documentation comment.
-- **Do not use `@constructor`**: Do not use `@constructor` in documentation comments. It is not supported by typedoc.
-- **Do not use `@static`**: Do not use `@static` in documentation comments. It is not supported by typedoc.
 
 **Annotation Order:**
 Place annotations in the following order for consistency and readability:
