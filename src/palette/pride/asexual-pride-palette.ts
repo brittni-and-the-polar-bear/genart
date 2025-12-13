@@ -23,9 +23,10 @@
 import { Discriminators } from '../../discriminator';
 import { PC_000000, PC_80007F, PC_A3A3A3, PC_FFFFFF } from '../../palette_color';
 
+import { ALL_PALETTES } from '../all-palettes';
 import { Palette } from '../palette';
-import {ALL_PALETTES} from "../all-palettes";
-import {PRIDE_PALETTES} from "./pride-palettes";
+
+import { PRIDE_PALETTES } from './pride-palettes';
 
 /**
  * <!-- Coolors Palette Widget -->

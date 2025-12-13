@@ -23,9 +23,10 @@
 import { Discriminators } from '../../discriminator';
 import { PC_1E1A75, PC_9F1475, PC_E13762, PC_FF704D, PC_FFA852 } from '../../palette_color';
 
+import { ALL_PALETTES, GRADIENT_PALETTES } from '../all-palettes';
 import { Palette } from '../palette';
-import {ALL_PALETTES, GRADIENT_PALETTES} from "../all-palettes";
-import {NATURE_PALETTES} from "./nature-palettes";
+
+import { NATURE_PALETTES } from './nature-palettes';
 
 /**
  * <!-- Coolors Palette Widget -->
