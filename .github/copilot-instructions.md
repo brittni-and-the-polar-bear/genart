@@ -85,7 +85,6 @@ This is a TypeScript-compatible library for creating algorithmic generative art 
 │   │       │   └── california-wine-sunset-palette.md # CALIFORNIA_WINE_SUNSET_PALETTE page
 │   │       ├── pride/            # Pride palette collection files
 │   │       │   └── asexual-pride-palette.md # ASEXUAL_PRIDE_PALETTE page
-│   │       └── miscellaneous/    # Miscellaneous palette collection files
 │   ├── colors/                   # Color documentation pages
 │   │   ├── colors.md             # Main colors page
 │   │   ├── black/                # Black color category
