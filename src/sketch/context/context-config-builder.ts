@@ -22,7 +22,7 @@
 
 import { ContextConfig } from './context-config';
 import { RenderType } from './render-type';
-import {AspectRatio, AspectRatioConfig} from '../aspect_ratio';
+import { AspectRatio, AspectRatioConfig } from '../aspect_ratio';
 
 /**
  * Builder for {@link ContextConfig} objects.

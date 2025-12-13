@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import {AspectRatio, AspectRatioConfig} from '../aspect_ratio';
+import { AspectRatio, AspectRatioConfig } from '../aspect_ratio';
 
 import { Context } from './context';
 import { RenderType } from './render-type';
