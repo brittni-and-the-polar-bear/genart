@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import { AspectRatio } from '../aspect_ratio';
+import {AspectRatio, AspectRatioConfig} from '../aspect_ratio';
 
 import { Context } from './context';
 import { RenderType } from './render-type';
@@ -52,13 +52,14 @@ export interface ContextConfig {
     readonly RENDER_TYPE?: RenderType;
 
     /**
-     * The {@link AspectRatio} of the context.
+     * A representation of the aspect ratio of the context.
+     * This may be an {@link AspectRatio} object or an {@link AspectRatioConfig} object.
      *
      * @readonly
      *
      * @since 2.0.0
      */
-    readonly ASPECT_RATIO?: AspectRatio;
+    readonly ASPECT_RATIO?: AspectRatio | AspectRatioConfig;
 
     /**
      * The resolution of the context.

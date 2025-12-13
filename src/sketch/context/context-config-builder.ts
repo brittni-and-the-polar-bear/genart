@@ -22,7 +22,7 @@
 
 import { ContextConfig } from './context-config';
 import { RenderType } from './render-type';
-import { AspectRatio } from '../aspect_ratio';
+import {AspectRatio, AspectRatioConfig} from '../aspect_ratio';
 
 /**
  * Builder for {@link ContextConfig} objects.
@@ -51,7 +51,7 @@ export class ContextConfigBuilder {
      *
      * @private
      */
-    #aspectRatio: AspectRatio | undefined;
+    #aspectRatio: AspectRatio | AspectRatioConfig | undefined;
 
     /**
      * The resolution of the context.
@@ -109,15 +109,16 @@ export class ContextConfigBuilder {
     }
 
     /**
-     * Set the {@link AspectRatio} of the context.
+     * Set the aspect ratio of the context.
      *
-     * @param aspectRatio {AspectRatio} - The {@link AspectRatio} of the context.
+     * @param aspectRatio {AspectRatio | AspectRatioConfig} - The aspect ratio of the context.
+     * This may be an {@link AspectRatio} object or an {@link AspectRatioConfig} object.
      *
      * @returns {this} This builder.
      *
      * @since 2.0.0
      */
-    public setAspectRatio(aspectRatio: AspectRatio): this {
+    public setAspectRatio(aspectRatio: AspectRatio | AspectRatioConfig): this {
         this.#aspectRatio = aspectRatio;
         return this;
     }

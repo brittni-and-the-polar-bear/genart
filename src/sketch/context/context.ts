@@ -93,9 +93,18 @@ export abstract class Context {
     protected constructor(config: ContextConfig) {
         this.#RENDER_TYPE = config.RENDER_TYPE ?? P5Context.instance.P2D;
         this.#NAME = config.NAME;
-        this.#aspectRatio = config.ASPECT_RATIO ?? new AspectRatio(ASPECT_RATIOS.SQUARE);
         this.#resolution = config.RESOLUTION ?? Context.MIN_RESOLUTION;
         this.#matchContainerRatio = config.MATCH_CONTAINER_RATIO ?? false;
+
+        if (config.ASPECT_RATIO) {
+            if (config.ASPECT_RATIO instanceof AspectRatio) {
+                this.#aspectRatio = config.ASPECT_RATIO;
+            } else {
+                this.#aspectRatio = new AspectRatio(config.ASPECT_RATIO);
+            }
+        } else {
+            this.#aspectRatio = new AspectRatio(ASPECT_RATIOS.SQUARE);
+        }
 
         if (this.#resolution < Context.MIN_RESOLUTION) {
             this.#resolution = Context.MIN_RESOLUTION;
