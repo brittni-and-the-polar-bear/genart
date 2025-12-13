@@ -246,7 +246,7 @@ export abstract class CanvasScreen {
     public saveActiveGraphics(): void {
         this.#saveGraphics(this.#GRAPHICS_HANDLER.activeContext, CanvasScreen.#TIMEOUT_MS)
             .then((filename: string): void => {
-                    console.log(`Saved file: ${filename}.`);
+                console.log(`Saved file: ${filename}.`);
             })
             .catch((error: unknown): void => {
                 console.error('Error saving graphics: ', error);
@@ -379,10 +379,13 @@ export abstract class CanvasScreen {
      */
     async #timeout(milliseconds: number): Promise<void> {
         await new Promise<void>((resolve: (value: void | PromiseLike<void>) => void): void => {
-            setTimeout((): void => { resolve(); }, milliseconds);
+            setTimeout(
+                (): void => {
+                    resolve();
+                },
+                milliseconds);
         });
     }
-
 
     // TODO - Does this work? Do all graphics save with the correct size and elements? Do all graphics save in parallel?
     /**
