@@ -26,8 +26,13 @@ import { AspectRatio } from '../aspect_ratio';
 import { Context, ContextConfig } from '../context';
 import { P5Context } from '../p5_context';
 
+// TODO - container coordinate mapper to parent screen?
+// TODO - OR - container coordinate mapper to singleton Canvas?
+
 /**
  * Graphics context for handling a p5.Graphics instance.
+ *
+ * @see {@link Context}
  *
  * @since 2.0.0
  *

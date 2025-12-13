@@ -24,6 +24,13 @@ import { StringMap } from '../../map';
 
 import { CanvasScreen } from './canvas-screen';
 
+/**
+ * The CanvasScreenHandler class manages a collection of {@link CanvasScreen} objects.
+ *
+ * @category Screen
+ *
+ * @since 2.0.0
+ */
 export class CanvasScreenHandler {
     /**
      * All {@link CanvasScreen} objects managed by this handler.
@@ -84,6 +91,8 @@ export class CanvasScreenHandler {
     /**
      * Draws the active screen.
      *
+     * @returns {void}
+     *
      * @since 2.0.0
      */
     public draw(): void {
@@ -92,6 +101,8 @@ export class CanvasScreenHandler {
 
     /**
      * Handles key presses for the active screen.
+     *
+     * @returns {void}
      *
      * @since 2.0.0
      */
@@ -102,9 +113,22 @@ export class CanvasScreenHandler {
     /**
      * Handles mouse presses for the active screen.
      *
+     * @returns {void}
+     *
      * @since 2.0.0
      */
     public mousePressed(): void {
         this.#activeScreen?.mousePressed();
+    }
+
+    /**
+     * Handles mouse drags for the active screen.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
+    public mouseDragged(): void {
+        this.#activeScreen?.mouseDragged();
     }
 }
