@@ -9,6 +9,8 @@ layout: base
 
 ## > [gradient](./gradient-palettes.md)
 
+## > [miscellaneous](./miscellaneous/miscellaneous-palettes.md)
+
 ## > [nature](./nature/nature-palettes.md)
 
 ## > [pride](./pride/pride-palettes.md)

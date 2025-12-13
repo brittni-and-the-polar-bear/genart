@@ -23,7 +23,8 @@
 export type HexCollection = { hexString: string; }[];
 
 export const BLACK_HEXES: HexCollection = [
-    { hexString: '#000000' }
+    { hexString: '#000000' },
+    { hexString: '#121212' }
 ];
 
 export const BLUE_HEXES: HexCollection = [
@@ -31,7 +32,14 @@ export const BLUE_HEXES: HexCollection = [
 ];
 
 export const GRAY_HEXES: HexCollection = [
-    { hexString: '#A3A3A3' }
+    { hexString: '#3A3E40' },
+    { hexString: '#A3A3A3' },
+    { hexString: '#D2D3D5' }
+];
+
+export const NEUTRAL_HEXES: HexCollection = [
+    { hexString: '#857B7A' },
+    { hexString: '#938F80' }
 ];
 
 export const ORANGE_HEXES: HexCollection = [
@@ -45,7 +53,14 @@ export const PINK_HEXES: HexCollection = [
 ];
 
 export const PURPLE_HEXES: HexCollection = [
+    { hexString: '#29263B' },
     { hexString: '#80007F' }
+];
+
+export const TEAL_HEXES: HexCollection = [
+    { hexString: '#19414D' },
+    { hexString: '#223944' },
+    { hexString: '#334A57' }
 ];
 
 export const WHITE_HEXES: HexCollection = [
