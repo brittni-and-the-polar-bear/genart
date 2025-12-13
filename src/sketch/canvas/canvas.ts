@@ -123,7 +123,7 @@ export class Canvas {
      *
      * @remarks The effective container for the canvas is the browser window.
      *
-     * @alias {@link Canvas.matchWindowRatio}
+     * @see {@link Canvas.matchWindowRatio}
      *
      * @since 2.0.0
      */
@@ -136,7 +136,7 @@ export class Canvas {
      *
      * @param match {boolean} - The new value for the matchContainerRatio property.
      *
-     * @alias {@link Canvas.matchWindowRatio}
+     * @see {@link Canvas.matchWindowRatio}
      *
      * @since 2.0.0
      */
@@ -150,7 +150,7 @@ export class Canvas {
      * @returns {boolean} `true` if the canvas aspect ratio matches the browser window aspect ratio.
      * `false` if the canvas aspect ratio does not match the browser window aspect ratio.
      *
-     * @alias {@link Canvas.matchContainerRatio}
+     * @see {@link Canvas.matchContainerRatio}
      *
      * @since 2.0.0
      */
@@ -163,7 +163,7 @@ export class Canvas {
      *
      * @param match {boolean} - The new value for the matchWindowRatio property.
      *
-     * @alias {@link Canvas.matchContainerRatio}
+     * @see {@link Canvas.matchContainerRatio}
      *
      * @since 2.0.0
      */

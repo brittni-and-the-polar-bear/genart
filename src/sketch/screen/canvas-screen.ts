@@ -20,14 +20,22 @@
  * SOFTWARE.
  */
 
+import p5 from 'p5';
+
+import { AspectRatio } from '../aspect_ratio';
+import { Canvas } from '../canvas';
 import { GraphicsContext, GraphicsContextHandler } from '../graphics';
 import { P5Context } from '../p5_context';
 
 import { CanvasScreenConfig } from './canvas-screen-config';
 
-// TODO - Complete Canvas class implementation.
-
-// TODO - documentation
+/**
+ * The abstract base class for screens that draw to a {@link GraphicsContext}.
+ *
+ * @since 2.0.0
+ *
+ * @category Screen
+ */
 export abstract class CanvasScreen {
     /**
      * The {@link GraphicsContextHandler} for the screen.
@@ -52,8 +60,6 @@ export abstract class CanvasScreen {
      * @private
      */
     #isActive: boolean = false;
-
-    #saveCount: number = 0;
 
     /**
      * The constructor for the Screen class.
@@ -130,28 +136,38 @@ export abstract class CanvasScreen {
         return this.#GRAPHICS_HANDLER;
     }
 
+    /**
+     * @returns {number} The timeout in milliseconds to wait before saving a graphics context.
+     *
+     * @private
+     */
     static get #TIMEOUT_MS(): number {
         return 1_000;
     }
 
-    // TODO - complete
+    /**
+     * Draw the current active graphics context to the canvas if the screen is active.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
     public draw(): void {
-        console.log(`CanvasScreen.draw() called for screen: ${this.NAME}`);
-    //     if (this.isActive) {
-    //         const p5Ctx: p5 = P5Context.instance;
-    //         this.drawToActiveGraphics();
-    //         p5Ctx.imageMode(p5Ctx.CENTER);
-    //         const canvasCenter: p5.Vector = Canvas.center;
-    //         const { width, height } = this.#calculateGraphicsDimensions();
-    //
-    //         p5Ctx.image(
-    //             this.#GRAPHICS_HANDLER.activeGraphics,
-    //             canvasCenter.x,
-    //             canvasCenter.y,
-    //             width,
-    //             height
-    //         );
-    //     }
+        if (this.isActive) {
+            const p5Ctx: p5 = P5Context.instance;
+            this.drawToActiveGraphics();
+            p5Ctx.imageMode(p5Ctx.CENTER);
+            const canvasCenter: p5.Vector = Canvas.center;
+            const { width, height } = this.#calculateGraphicsDimensions();
+
+            p5Ctx.image(
+                this.#GRAPHICS_HANDLER.activeGraphics,
+                canvasCenter.x,
+                canvasCenter.y,
+                width,
+                height
+            );
+        }
     }
 
     /**
@@ -220,18 +236,32 @@ export abstract class CanvasScreen {
         this.drawToGraphics(this.#GRAPHICS_HANDLER.activeContext);
     }
 
+    /**
+     * Save the active graphics context to a file.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
     public saveActiveGraphics(): void {
         this.#saveGraphics(this.#GRAPHICS_HANDLER.activeContext, CanvasScreen.#TIMEOUT_MS)
-            .then(
-                (filename: string): void => {
+            .then((filename: string): void => {
                     console.log(`Saved file: ${filename}.`);
-                },
-                (error: unknown): void => {
-                    console.error(error);
-                }
-            );
+            })
+            .catch((error: unknown): void => {
+                console.error('Error saving graphics: ', error);
+            });
     }
 
+    /**
+     * Save all graphics contexts to files.
+     * This method is asynchronous and returns immediately.
+     * The graphics contexts are saved in parallel, and the results are logged to the console.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
     public saveAllGraphics(): void {
         this.#saveAllGraphics()
             .then((): void => {
@@ -255,36 +285,80 @@ export abstract class CanvasScreen {
      */
     public abstract drawToGraphics(context: GraphicsContext): void;
 
-    // TODO - complete
-    // #calculateGraphicsDimensions(): { width: number; height: number; } {
-    //     const graphicsContext: GraphicsContext = this.#GRAPHICS_HANDLER.activeContext;
-    //     const graphicsRatio: AspectRatio = graphicsContext.aspectRatio;
-    //
-    //     let width: number = graphicsRatio.getWidth(Canvas.resolution, true);
-    //     let height: number = graphicsRatio.getHeight(Canvas.resolution, true);
-    //
-    //     if (width > Canvas.width) {
-    //         width = graphicsRatio.getWidth(Canvas.width, true);
-    //         height = graphicsRatio.getHeight(Canvas.width, true);
-    //     }
-    //
-    //     if (height > Canvas.height) {
-    //         width = graphicsRatio.getWidth(Canvas.height, true);
-    //         height = graphicsRatio.getHeight(Canvas.height, true);
-    //     }
-    //
-    //     return { width: width, height: height };
-    // }
+    /**
+     * Calculates the dimensions of the graphics context that will be drawn to the canvas.
+     * The dimensions are calculated based on the aspect ratio of the graphics context and the canvas resolution.
+     * The dimensions are scaled down to fit within the canvas dimensions.
+     *
+     * @returns {{ width: number; height: number; }} - The dimensions of the graphics context.
+     *
+     * @private
+     */
+    #calculateGraphicsDimensions(): { width: number; height: number; } {
+        const graphicsContext: GraphicsContext = this.#GRAPHICS_HANDLER.activeContext;
+        const graphicsRatio: AspectRatio = graphicsContext.aspectRatio;
 
-    private get saveCount(): number {
-        return this.#saveCount++;
+        let width: number = graphicsRatio.getWidth(Canvas.resolution, true);
+        let height: number = graphicsRatio.getHeight(Canvas.resolution, true);
+
+        if (width > Canvas.width) {
+            width = graphicsRatio.getWidth(Canvas.width, true);
+            height = graphicsRatio.getHeight(Canvas.width, true);
+        }
+
+        if (height > Canvas.height) {
+            width = graphicsRatio.getWidth(Canvas.height, true);
+            height = graphicsRatio.getHeight(Canvas.height, true);
+        }
+
+        return { width: width, height: height };
     }
 
+    /**
+     * Builds a timestamp string in the format `YYYY-MM-DD_HH-MM-SS`.
+     *
+     * @returns {string} - The timestamp string.
+     *
+     * @private
+     */
+    #buildTimestamp(): string {
+        const p5Ctx: p5 = P5Context.instance;
+        const year: string = p5Ctx.year().toString();
+        const month: string = p5Ctx.month().toString().padStart(2, '0');
+        const day: string = p5Ctx.day().toString().padStart(2, '0');
+        const hour: string = p5Ctx.hour().toString().padStart(2, '0');
+        const minute: string = p5Ctx.minute().toString().padStart(2, '0');
+        const second: string = p5Ctx.second().toString().padStart(2, '0');
+        return `${year}-${month}-${day}_${hour}-${minute}-${second}`;
+    }
+
+    /**
+     * Builds a filename for a graphics context based on the screen name and graphics context name.
+     * The filename is in the format `{timestamp}_{screen_name}_{graphics_context_name}.png`.
+     *
+     * @param graphicsContext {GraphicsContext} - The graphics context to build the filename for.
+     *
+     * @returns {string} - The filename.
+     *
+     * @private
+     */
     #buildFileName(graphicsContext: GraphicsContext): string {
-        const saveCount: string = this.saveCount.toString().padStart(3, '0');
-        return `${this.NAME}_${saveCount}_${graphicsContext.NAME}.png`;
+        return `${this.#buildTimestamp()}_${this.NAME}_${graphicsContext.NAME}.png`;
     }
 
+    /**
+     * Saves a graphics context to a file.
+     * The graphics context is saved after a short delay to allow the canvas to update.
+     * The filename is built based on the screen name and graphics context name.
+     * The filename is in the format `{timestamp}_{screen_name}_{graphics_context_name}.png`.
+     *
+     * @param graphicsContext {GraphicsContext} - The graphics context to save.
+     * @param timeout {number} - The delay in milliseconds to wait before saving the graphics context.
+     *
+     * @returns {Promise<string>} - A promise that resolves with the filename of the saved graphics context.
+     *
+     * @private
+     */
     async #saveGraphics(graphicsContext: GraphicsContext, timeout: number): Promise<string> {
         this.drawToGraphics(graphicsContext);
         await this.#timeout(timeout);
@@ -294,15 +368,32 @@ export abstract class CanvasScreen {
         return filename;
     }
 
+    /**
+     * Pauses execution for the specified number of milliseconds.
+     *
+     * @param milliseconds {number} - The number of milliseconds to pause execution for.
+     *
+     * @returns {Promise<void>} - A promise that resolves when the timeout has expired.
+     *
+     * @private
+     */
     async #timeout(milliseconds: number): Promise<void> {
-        await new Promise<void>((): void => {
-            setTimeout((): void => { /* empty */ }, milliseconds);
+        await new Promise<void>((resolve: (value: void | PromiseLike<void>) => void): void => {
+            setTimeout((): void => { resolve(); }, milliseconds);
         });
     }
 
-    // TODO - Does this work?
-    // TODO - Do all graphics save with the correct size and elements?
-    // TODO - Do all graphics save in parallel?
+
+    // TODO - Does this work? Do all graphics save with the correct size and elements? Do all graphics save in parallel?
+    /**
+     * Saves all graphics contexts to files.
+     * This method is asynchronous and returns immediately.
+     * The graphics contexts are saved in parallel, and the results are logged to the console.
+     *
+     * @returns {Promise<void>} - A promise that resolves when all graphics contexts have been saved.
+     *
+     * @private
+     */
     async #saveAllGraphics(): Promise<void> {
         const promises: Promise<void>[] = [];
 
