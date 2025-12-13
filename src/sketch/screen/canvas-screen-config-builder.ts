@@ -130,6 +130,6 @@ export class CanvasScreenConfigBuilder {
             NAME: this.#name,
             ACTIVE_GRAPHICS: this.#activeGraphics,
             OTHER_GRAPHICS: this.#otherGraphics
-        }
+        };
     }
 }

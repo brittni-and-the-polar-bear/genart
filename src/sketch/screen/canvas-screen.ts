@@ -236,6 +236,9 @@ export abstract class CanvasScreen {
         this.#saveAllGraphics()
             .then((): void => {
                 console.log('All graphics saved.');
+            })
+            .catch((error: unknown): void => {
+                console.error('Error saving graphics: ', error);
             });
     }
 
@@ -293,7 +296,7 @@ export abstract class CanvasScreen {
 
     async #timeout(milliseconds: number): Promise<void> {
         await new Promise<void>((): void => {
-            setTimeout((): void => {}, milliseconds);
+            setTimeout((): void => { /* empty */ }, milliseconds);
         });
     }
 

@@ -20,8 +20,8 @@
  * SOFTWARE.
  */
 
-import {Context, ContextConfig} from '../context';
-import {P5Context} from "../p5_context";
+import { Context, ContextConfig } from '../context';
+import { P5Context } from '../p5_context';
 
 export class CanvasContext extends Context {
     public constructor(config: ContextConfig) {
