@@ -17,7 +17,7 @@ layout: base
 
 * [Alex Cristache](https://x.com/AlexCristache)
 * [color-hex](https://www.color-hex.com/)
-* [coolors](https://coolors.co/)
+* [coolors](https://coolors.co/?ref=661adcb5e39ba3000bf24bec)
 * [culrs](https://culrs.com/)
 
 ----

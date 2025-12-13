@@ -22,4 +22,5 @@
 
 export * from './purple-colors';
 
+export * from './pc-29263b';
 export * from './pc-80007f';

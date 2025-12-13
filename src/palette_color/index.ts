@@ -23,9 +23,11 @@
 export * from './black';
 export * from './blue';
 export * from './gray';
+export * from './neutral';
 export * from './orange';
 export * from './pink';
 export * from './purple';
+export * from './teal';
 export * from './white';
 
 export * from './all-colors';
@@ -57,6 +59,13 @@ export * as gray from './gray';
  *
  * @since 2.0.0
  */
+export * as neutral from './neutral';
+
+/**
+ * @category Namespace
+ *
+ * @since 2.0.0
+ */
 export * as orange from './orange';
 
 /**
@@ -72,6 +81,13 @@ export * as pink from './pink';
  * @since 2.0.0
  */
 export * as purple from './purple';
+
+/**
+ * @category Namespace
+ *
+ * @since 2.0.0
+ */
+export * as teal from './teal';
 
 /**
  * @category Namespace

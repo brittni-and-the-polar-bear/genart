@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 
+export * from './miscellaneous';
 export * from './nature';
 export * from './pride';
 

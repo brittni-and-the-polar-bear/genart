@@ -1,0 +1,53 @@
+/*
+ * Copyright (C) 2025 brittni and the polar bear LLC.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+import { ColorNames } from '../../color';
+import { Discriminators } from '../../discriminator';
+
+import { ALL_PALETTE_COLORS } from '../all-colors';
+import { PaletteColor } from '../palette-color';
+
+import { NEUTRAL_PALETTE_COLORS } from './neutral-colors';
+
+/**
+ * <div class="color-block" style="background: #938F80;">
+ *     <a href="https://coolors.co/938f80" target="_blank" rel="noopener noreferrer">
+ *         <h2 class="color-block black-pass">muted sage (#938F80)</h2>
+ *     </a>
+ * </div>
+ *
+ * @since 2.0.0
+ *
+ * @category Neutral
+ */
+export const PC_938F80: PaletteColor = {
+    HEX: '#938F80',
+    RGB: { R: 147, G: 143, B: 128 },
+    HSL: { H: 47, S: 8, L: 54 },
+    NAME: 'muted sage',
+    LUMINANCE: 0.2740647818,
+    DISCRIMINATOR: Discriminators.PALETTE_COLOR
+};
+
+ALL_PALETTE_COLORS.setIfAbsent(PC_938F80.HEX, PC_938F80);
+NEUTRAL_PALETTE_COLORS.setIfAbsent(PC_938F80.HEX, PC_938F80);
+ColorNames.addColor(PC_938F80);

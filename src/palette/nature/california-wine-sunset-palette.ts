@@ -23,7 +23,10 @@
 import { Discriminators } from '../../discriminator';
 import { PC_1E1A75, PC_9F1475, PC_E13762, PC_FF704D, PC_FFA852 } from '../../palette_color';
 
+import { ALL_PALETTES, GRADIENT_PALETTES } from '../all-palettes';
 import { Palette } from '../palette';
+
+import { NATURE_PALETTES } from './nature-palettes';
 
 /**
  * <!-- Coolors Palette Widget -->
@@ -42,7 +45,7 @@ import { Palette } from '../palette';
  */
 export const CALIFORNIA_WINE_SUNSET_PALETTE: Palette = {
     NAME: 'california wine sunset',
-    SOURCE: 'color-hex, from user jenner8675309',
+    SOURCE: 'color-hex user jenner8675309',
     SOURCE_URL: 'https://www.color-hex.com/color-palette/107525',
     IS_GRADIENT: true,
     DISCRIMINATOR: Discriminators.PALETTE,
@@ -65,3 +68,7 @@ export const CALIFORNIA_WINE_SUNSET_PALETTE: Palette = {
         '#1E1A75': ['#FFA852', '#FF704D', '#FFFFFF']
     }
 };
+
+ALL_PALETTES.setIfAbsent(CALIFORNIA_WINE_SUNSET_PALETTE.NAME, CALIFORNIA_WINE_SUNSET_PALETTE);
+NATURE_PALETTES.setIfAbsent(CALIFORNIA_WINE_SUNSET_PALETTE.NAME, CALIFORNIA_WINE_SUNSET_PALETTE);
+GRADIENT_PALETTES.setIfAbsent(CALIFORNIA_WINE_SUNSET_PALETTE.NAME, CALIFORNIA_WINE_SUNSET_PALETTE);
