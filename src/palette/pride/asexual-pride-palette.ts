@@ -24,6 +24,8 @@ import { Discriminators } from '../../discriminator';
 import { PC_000000, PC_80007F, PC_A3A3A3, PC_FFFFFF } from '../../palette_color';
 
 import { Palette } from '../palette';
+import {ALL_PALETTES} from "../all-palettes";
+import {PRIDE_PALETTES} from "./pride-palettes";
 
 /**
  * <!-- Coolors Palette Widget -->
@@ -60,3 +62,6 @@ export const ASEXUAL_PRIDE_PALETTE: Palette = {
         '#80007F': ['#FFFFFF']
     }
 };
+
+ALL_PALETTES.setIfAbsent(ASEXUAL_PRIDE_PALETTE.NAME, ASEXUAL_PRIDE_PALETTE);
+PRIDE_PALETTES.setIfAbsent(ASEXUAL_PRIDE_PALETTE.NAME, ASEXUAL_PRIDE_PALETTE);

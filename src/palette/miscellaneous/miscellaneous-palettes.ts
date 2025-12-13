@@ -20,10 +20,18 @@
  * SOFTWARE.
  */
 
-export * from './miscellaneous';
-export * from './nature';
-export * from './pride';
+import { StringMap } from '../../map';
 
-export * from './all-palettes';
+import { Palette } from '../palette';
 
-export * from './palette';
+/**
+ * A map of palette names to {@link Palette} objects for miscellaneous palettes.
+ *
+ * <a href="https://brittni-and-the-polar-bear.github.io/genart/palettes/miscellaneous/miscellaneous-palettes.html" target="_blank" rel="noopener noreferrer">See the Palettes.</a>
+ *
+ * @since 2.0.0
+ *
+ * @category Palette Collections
+ * @category Miscellaneous
+ */
+export const MISCELLANEOUS_PALETTES: StringMap<Palette> = new StringMap<Palette>();
