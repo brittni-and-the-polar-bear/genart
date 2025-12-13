@@ -22,6 +22,6 @@
 
 import { describe, test } from 'vitest';
 
-describe('Screen', (): void => {
-    test.todo('Screen');
+describe('CanvasScreen', (): void => {
+    test.todo('CanvasScreen');
 });
