@@ -77,23 +77,23 @@
     "p5": "^1.11.11"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^9.39.2",
     "@stylistic/eslint-plugin": "^5.6.1",
-    "@vitest/coverage-v8": "^4.0.15",
+    "@vitest/coverage-v8": "^4.0.16",
     "@vitest/ui": "^4.0.14",
     "canvas": "^3.2.0",
-    "eslint": "^9.39.1",
-    "eslint-plugin-es-x": "^9.2.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-es-x": "^9.3.0",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-security": "^3.0.1",
     "jsdom": "^27.3.0",
     "ts-node": "^10.9.2",
-    "tsdown": "^0.17.2",
+    "tsdown": "^0.18.1",
     "tslib": "^2.8.1",
     "typedoc": "^0.28.15",
     "typedoc-plugin-coverage": "^4.0.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.49.0",
+    "typescript-eslint": "^8.50.0",
     "vitest": "^4.0.14"
   }
 }
