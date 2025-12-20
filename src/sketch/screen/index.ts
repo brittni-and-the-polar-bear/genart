@@ -22,4 +22,5 @@
 
 export * from './canvas-screen';
 export * from './canvas-screen-config';
+export * from './canvas-screen-config-builder';
 export * from './canvas-screen-handler';
