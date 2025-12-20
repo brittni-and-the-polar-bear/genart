@@ -72,11 +72,9 @@
   "dependencies": {
     "@types/nearest-color": "^0.4.1",
     "@types/p5": "^1.7.7",
+    "color-name-list": "^14.14.0",
     "nearest-color": "^0.4.4",
     "p5": "^1.11.11"
-  },
-  "peerDependencies": {
-    "color-name-list": "^13.41.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -88,7 +86,7 @@
     "eslint-plugin-es-x": "^9.2.0",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-security": "^3.0.1",
-    "jsdom": "^27.2.0",
+    "jsdom": "^27.3.0",
     "ts-node": "^10.9.2",
     "tsdown": "^0.17.2",
     "tslib": "^2.8.1",
