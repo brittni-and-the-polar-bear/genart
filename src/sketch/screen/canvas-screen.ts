@@ -237,6 +237,15 @@ export abstract class CanvasScreen {
         this.drawToGraphics(this.#GRAPHICS_HANDLER.activeContext);
     }
 
+    /**
+     * Resize all graphics contexts.
+     *
+     * @returns {void}
+     *
+     * @see {@link GraphicsContext.resize}
+     *
+     * @since 2.0.0
+     */
     public resize(): void {
         this.#GRAPHICS_HANDLER.contexts.forEach((context: GraphicsContext): void => {
             context.resize();

@@ -132,6 +132,13 @@ export class CanvasScreenHandler {
         this.#activeScreen?.mouseDragged();
     }
 
+    /**
+     * Handles resize actions for the active screen.
+     *
+     * @returns {void}
+     *
+     * @since 2.0.0
+     */
     public resize(): void {
         this.#activeScreen?.resize();
     }

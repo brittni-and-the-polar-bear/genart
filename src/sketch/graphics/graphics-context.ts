@@ -107,6 +107,13 @@ export class GraphicsContext extends Context {
         return this.#GRAPHICS;
     }
 
+    /**
+     * Resizes the p5.Graphics instance backing this context.
+     *
+     * @returns {void}
+     *
+     * @private
+     */
     #resizeGraphics(): void {
         this.#GRAPHICS.resizeCanvas(this.width, this.height);
     }
