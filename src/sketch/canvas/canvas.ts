@@ -54,6 +54,19 @@ export class Canvas {
     static #canvasContext: CanvasContext | null = null;
 
     /**
+     * @returns {AspectRatio | null} The current aspect ratio of the canvas.
+     * `null` if the canvas has not been built yet.
+     * The canvas can be built by calling {@link buildCanvas}.
+     *
+     * @see {@link CanvasContext.aspectRatio}
+     *
+     * @since 2.0.0
+     */
+    public static get aspectRatio(): AspectRatio | null {
+        return Canvas.#canvasContext?.aspectRatio ?? null;
+    }
+
+    /**
      * @returns {CanvasContext | null} The underlying {@link CanvasContext} object.
      * `null` if the canvas has not been built yet.
      * The canvas can be built by calling {@link buildCanvas}.

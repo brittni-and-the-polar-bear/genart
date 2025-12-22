@@ -65,7 +65,7 @@ export class CanvasScreenHandler {
      *
      * @since 2.0.0
      */
-    public set currentScreen(name: string) {
+    public set activeScreen(name: string) {
         const screen: CanvasScreen | undefined = this.#SCREENS.get(name);
 
         if (screen) {
@@ -130,5 +130,9 @@ export class CanvasScreenHandler {
      */
     public mouseDragged(): void {
         this.#activeScreen?.mouseDragged();
+    }
+
+    public resize(): void {
+        this.#activeScreen?.resize();
     }
 }

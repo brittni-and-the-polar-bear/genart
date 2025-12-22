@@ -75,7 +75,7 @@ export class CanvasContext extends Context {
      * @since 2.0.0
      */
     public get currentScreen(): string {
-        return this.#SCREEN_HANDLER.currentScreen;
+        return this.#SCREEN_HANDLER.activeScreen;
     }
 
     /**
@@ -83,12 +83,12 @@ export class CanvasContext extends Context {
      *
      * @param name {string} - The name of the screen to activate.
      *
-     * @see {@link CanvasScreenHandler.currentScreen}
+     * @see {@link CanvasScreenHandler.activeScreen}
      *
      * @since 2.0.0
      */
     public set currentScreen(name: string) {
-        this.#SCREEN_HANDLER.currentScreen = name;
+        this.#SCREEN_HANDLER.activeScreen = name;
     }
 
     /**
@@ -116,6 +116,7 @@ export class CanvasContext extends Context {
         }
 
         this.#decorateCanvas();
+        this.#SCREEN_HANDLER.resize();
     }
 
     /**

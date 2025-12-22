@@ -212,6 +212,7 @@ export abstract class CanvasScreen {
      */
     public activate(): void {
         this.#isActive = true;
+        this.resize();
     }
 
     /**
@@ -234,6 +235,12 @@ export abstract class CanvasScreen {
      */
     public drawToActiveGraphics(): void {
         this.drawToGraphics(this.#GRAPHICS_HANDLER.activeContext);
+    }
+
+    public resize(): void {
+        this.#GRAPHICS_HANDLER.contexts.forEach((context: GraphicsContext): void => {
+            context.resize();
+        });
     }
 
     /**
@@ -387,7 +394,6 @@ export abstract class CanvasScreen {
         });
     }
 
-    // TODO - Does this work? Do all graphics save with the correct size and elements? Do all graphics save in parallel?
     /**
      * Saves all graphics contexts to files.
      * This method is asynchronous and returns immediately.
