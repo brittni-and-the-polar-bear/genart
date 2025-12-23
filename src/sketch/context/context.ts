@@ -28,6 +28,7 @@ import { P5Context } from '../p5_context';
 
 import { ContextConfig } from './context-config';
 import { RenderType } from './render-type';
+import {StringValidator} from "../../string";
 
 /**
  * Abstract base class for managing rendering contexts in generative art sketches.
@@ -38,6 +39,8 @@ import { RenderType } from './render-type';
  * @category Context
  */
 export abstract class Context {
+    static #counter: number = 0;
+
     /**
      * The {@link RenderType} of the context.
      *
@@ -92,7 +95,7 @@ export abstract class Context {
      */
     protected constructor(config: ContextConfig) {
         this.#RENDER_TYPE = config.RENDER_TYPE ?? P5Context.instance.P2D;
-        this.#NAME = config.NAME;
+        this.#NAME = Context.#buildName(config.NAME);
         this.#resolution = config.RESOLUTION ?? Context.MIN_RESOLUTION;
         this.#matchContainerRatio = config.MATCH_CONTAINER_RATIO ?? false;
 
@@ -303,4 +306,16 @@ export abstract class Context {
      * @since 2.0.0
      */
     public abstract updateResolution(resolution: number): void;
+
+    static #buildName(name: string): string {
+        if (StringValidator.isString(name)) {
+            return name.trim();
+        } else {
+            return `context-${Context.#count}`;
+        }
+    }
+
+    static get #count(): number {
+        return Context.#counter++;
+    }
 }
