@@ -36,6 +36,19 @@ export class StringValidator {
     }
 
     /**
+     * Is the given value a string that is not empty?
+     *
+     * @param value - The value to check.
+     *
+     * @returns `true` if the given value is a string that is not empty, `false` otherwise.
+     *
+     * @since 2.0.0
+     */
+    public static isString(value: unknown): value is string {
+        return (typeof value === 'string') && (value.trim().length > 0);
+    }
+
+    /**
      * Is the given string a hex color string?
      *
      * @param hex {string} - string to check for the hex color pattern

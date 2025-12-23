@@ -23,11 +23,14 @@
 import p5 from 'p5';
 
 import { AspectRatio } from '../aspect_ratio';
+import { Canvas } from '../canvas';
 import { Context, ContextConfig } from '../context';
 import { P5Context } from '../p5_context';
 
 /**
  * Graphics context for handling a p5.Graphics instance.
+ *
+ * @see {@link Context}
  *
  * @since 2.0.0
  *
@@ -52,18 +55,7 @@ export class GraphicsContext extends Context {
     public constructor(config: ContextConfig) {
         super(config);
         this.#GRAPHICS = P5Context.instance.createGraphics(this.width, this.height, this.RENDER_TYPE);
-    }
-
-    /**
-     * @inheritDoc
-     * @override
-     */
-    public override get NAME(): string {
-        if (!super.NAME) {
-            return this.#GRAPHICS.id();
-        }
-
-        return super.NAME;
+        this.#GRAPHICS.id(this.NAME);
     }
 
     /**
@@ -71,8 +63,11 @@ export class GraphicsContext extends Context {
      * @override
      */
     public override resize(): void {
-        // TODO - resize graphics
-        console.log('resize');
+        const aspectRatio: AspectRatio | null = Canvas.aspectRatio;
+
+        if (this.matchContainerRatio && aspectRatio) {
+            this.updateAspectRatio(aspectRatio);
+        }
     }
 
     /**
@@ -80,8 +75,8 @@ export class GraphicsContext extends Context {
      * @override
      */
     public override updateAspectRatio(aspectRatio: AspectRatio): void {
-        // TODO - update aspect ratio of graphics
-        console.log('updateAspectRatio', aspectRatio.NAME);
+        this.aspectRatio = aspectRatio;
+        this.#resizeGraphics();
     }
 
     /**
@@ -89,8 +84,8 @@ export class GraphicsContext extends Context {
      * @override
      */
     public override updateResolution(resolution: number): void {
-        // TODO - update resolution of graphics
-        console.log('updateResolution', resolution.toString());
+        this.resolution = resolution;
+        this.#resizeGraphics();
     }
 
     /**
@@ -100,5 +95,16 @@ export class GraphicsContext extends Context {
      */
     public get GRAPHICS(): p5.Graphics {
         return this.#GRAPHICS;
+    }
+
+    /**
+     * Resizes the p5.Graphics instance backing this context.
+     *
+     * @returns {void}
+     *
+     * @private
+     */
+    #resizeGraphics(): void {
+        this.#GRAPHICS.resizeCanvas(this.width, this.height);
     }
 }
